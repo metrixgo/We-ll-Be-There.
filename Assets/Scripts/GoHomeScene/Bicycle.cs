@@ -12,7 +12,6 @@ public class Bicycle : MonoBehaviour
     private bool getOn = false;
     private bool isLeft = true;
     private bool controlling = false;
-    private bool crashed = false;
     private float maxSpeed = 13.0f;
     private float stepSpeed = 1.0f;
     private float velocity = 0;
@@ -40,14 +39,14 @@ public class Bicycle : MonoBehaviour
         Destroy(wall);
         Destroy(trigger);
         ad.Play();
-        MainManager.instance.SetPrompt("Press [A] and [D] to ride");
+        MainManager.instance.SetPrompt("Press [A] and [D] to ride", true);
         getOn = true;
         controlling = true;
     }
 
     private void Update()
     {
-        if (MainManager.instance.gameState != 1 || !getOn || crashed)
+        if (MainManager.instance.gameState != 1 || !getOn)
         {
             ad.Stop();
             return ;
@@ -67,7 +66,7 @@ public class Bicycle : MonoBehaviour
                 {
                     ad.clip = ridingSound;
                     started = true;
-                    MainManager.instance.SetPrompt("");
+                    MainManager.instance.SetPrompt("", true);
                 }
                 if (!ad.isPlaying) ad.Play();
             }
@@ -81,7 +80,7 @@ public class Bicycle : MonoBehaviour
 
         if (velocity < 1.0f) ad.Stop();
 
-        Vector3 move = velocity * Time.deltaTime * transform.forward;
+            Vector3 move = velocity * Time.deltaTime * transform.forward;
         transform.Translate(move, Space.World);
         
         if (angle != 0)
@@ -106,11 +105,6 @@ public class Bicycle : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90.0f, 90.0f);
         cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         ridePlayer.transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
-    }
-
-    public void Crash()
-    {
-        crashed = true;
     }
 
     public void Accelerate()

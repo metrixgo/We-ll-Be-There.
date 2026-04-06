@@ -3,31 +3,23 @@ using UnityEngine;
 
 public class CrushTrigger : MonoBehaviour
 {
+    [SerializeField] private Bicycle bicycle;
+    [SerializeField] private AudioClip crush;
     [SerializeField] private GameObject man;
-    [SerializeField] private GameObject corpse;
-    [SerializeField] private AudioClip crash;
-    [SerializeField] private AudioClip tense;
-    [SerializeField] private GameObject bicycle;
-    [SerializeField] private GameObject standingUpPlayer;
-    [SerializeField] private GameObject crashedBike;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bicycle")) StartCoroutine(Crash());
+        if (!other.CompareTag("Bicycle")) return ;
+        StartCoroutine(Crush());
     }
 
-    private IEnumerator Crash()
+    private IEnumerator Crush()
     {
-        bicycle.GetComponent<Bicycle>().Crash();
-        MainManager.instance.PlayEffect(crash);
-        MainManager.instance.PlayMusic(tense);
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;0");
-        yield return new WaitForSeconds(5.0f);
         man.SetActive(false);
-        bicycle.SetActive(false);
-        corpse.SetActive(true);
-        crashedBike.SetActive(true);
-        standingUpPlayer.SetActive(true);
-        Destroy(gameObject);
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#000000FF;1");
+        MainManager.instance.PlayEffect(crush);
+        bicycle.GetOff();
+        yield return new WaitForSeconds(0.5f);
+        MainManager.instance.LoadScene("CleanUpScene");
     }
 }

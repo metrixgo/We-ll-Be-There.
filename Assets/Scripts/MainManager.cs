@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,20 +10,27 @@ public class MainManager : MonoBehaviour
     public static MainManager instance;
 
     [SerializeField] private Image screen;
+    [SerializeField] private Image endScreen;
     [SerializeField] private GameObject dialogueScreen;
     [SerializeField] private GameObject pausedScreen;
+    [SerializeField] private GameObject endingScreen;
     [SerializeField] private GameObject focus;
+    [SerializeField] private GameObject endingReturnMenu;
     [SerializeField] private PlayerController player;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI dialogueSpeaker;
     [SerializeField] private TextMeshProUGUI promptText;
+    [SerializeField] private TextMeshProUGUI endingTitle;
+    [SerializeField] private TextMeshProUGUI endingText;
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource effectsPlayer;
     [SerializeField] private AudioClip writtingEffect;
 
     public int gameState { get; private set; } = 1;
     private bool isExecutingTriggers = false;
+    private bool isLoadingScene = false;
     private bool atPausedScreen = false;
+    private bool atEndingScreen = false;
     
     private List<string> inventory = new List<string>();
     private List<string> triggers = new List<string>();
@@ -50,6 +56,7 @@ public class MainManager : MonoBehaviour
         {"Walking home this late might be a bad idea.", "这么晚走路回家可能不太好。"},
         {"I need to ride to get home faster.", "我需要骑车快点回家。"},
         {"Press [A] and [D] to ride", "按 [A] 和 [D] 骑车"},
+        {"Press [Shift] to run", "按 [Shift] 奔跑"},
         {"Turn Left", "左转"},
         {"Turn Right", "右转"},
         {"Bicycle", "自行车"},
@@ -67,7 +74,82 @@ public class MainManager : MonoBehaviour
         {"Maybe... maybe... I can clean this up? ...... H-i-d-e him? Haha.", "也许...也许...我能收拾干净？...把他...藏起来？哈哈。"},
         {"I... well... I should rush home to get this shit cleaned up. Damn it.", "我...呃...我得赶紧回家把这处理了。该死。"},
         {"This is all for now! Follow me on itch to see how I work out this game!", "目前就这些内容啦！在 itch 上关注我以获得我的进程。"},
-        {"Also, I'm a pretty new game developer, so if you have any suggestions, feel free to leave a comment!", "还有，我是一个挺新的游戏制作者，所以如果你有任何建议，请随便留个言！"}
+        {"Also, I'm a pretty new game developer, so if you have any suggestions, feel free to leave a comment!", "还有，我是一个挺新的游戏制作者，所以如果你有任何建议，请随便留个言！"},
+        {"Hello, sir.", "你好，先生。"},
+        {"H... Hello?", "你...你好？"},
+        {"What are you doing out here so late?", "这么晚了你在外面做什么？"},
+        {"Um... I... I just came back from school...", "呃...我...我刚刚从学校回来。"},
+        {"Are you sure? It's already 2 o'clock midnight.", "你确定吗？现在已经半夜2点了。"},
+        {"Well... um... I just accidentally fell asleep in my classroom.", "呃...嗯...我就是不小心在我教室睡着了。"},
+        {"...Ok. I just heard a large sound somewhere, it's like a car crash. Do you know where it came from?", "......好吧。我刚刚听到在某处传来一声巨响，像是车祸。你知道这是从哪里传来的吗？"},
+        {"Oh. I have no idea. You must be imagining.", "哦。我不知道。你肯定是在想象。"},
+        {"I don't think that's true, sir. It woke me up from my sleep.", "我不这么认为，先生。那声音把我都给惊醒了。"},
+        {"Alright. Seems like you have no idea what you're doing as well. I'm going to call backups to come and check this out. I don't want anything bad going on here to disrupt my sleep.", "好吧。看来你也没主意。我到时候会叫后援来检查这事。我可不想这里发生任何坏事来打扰我休息。"},
+        {"Wait... No...", "等等...不..."},
+        {"Mhm?", "嗯？"},
+        {"Well... Never mind.", "呃...没什么。"},
+        {"It's dangerous out here. Get home now and we'll investigate this.", "这里很危险。你现在就赶紧回家吧，我们会调查这事。"},
+        {"Okay... Thanks for the advice...", "好吧...谢谢你的提醒..."},
+        {"Policewoman", "女警"},
+        {"I don't want to give up. I can still hide him. I still have a chance.", "我不想放弃。我仍然能把他藏起来。我还有机会。"},
+        {"No. No. No. My life will be ruined. Everything will fall apart.", "不。不。不。我的人生会被毁掉。我的一切都会崩塌。"},
+        {"Why... I'm still in school... I can have a good future...", "为什么...我还在上学...我是可以有一个美好的未来的..."},
+        {"Please... I just made a mistake... we all make mistakes... I don't want this to cost my entire life...", "求求了...我就犯了个错...我们都会犯错...我不想为此付出整个人生..."},
+        {"Maybe... maybe you're right...", "也许...也许你是对的..."},
+        {"Bed", "床"},
+        {"Put Down", "放下"},
+        {"Dig", "挖"},
+        {"Take a Shower", "冲澡"},
+        {"Packed Body", "尸袋"},
+        {"Shovel", "铲子"},
+        {"Call the Police", "报警"},
+        {"Plastic Bag", "塑料袋"},
+        {"Body", "尸体"},
+        {"Blood", "血"},
+        {"Mop", "拖把"},
+        {"Cover", "覆盖"},
+        {"Talk To", "说话"},
+        {"I can't believe it was you...", "我真不敢相信是你..."},
+        {"I'm... I'm sorry...", "我...我很抱歉..."},
+        {"I'm glad you turned in yourself. This makes things much easier for both you and me.", "我很高兴你选择了自首。这让对你我的事情都变得很简单了。"},
+        {"Yeah... Shall we go now?", "是的...我们现在走吗？"},
+        {"Yes. Please sit on the back. We'll make sure to give you a fair result.", "嗯。请坐到后座吧。我们会确保给你一个公平的结果。"},
+        {"Thanks...", "谢谢..."},
+        {"Ok, I think this is fine now.", "好了。我觉得现在这个应该没问题了。"},
+        {"Now I need to grab a plastic bag from home to pack this up.", "现在我需要回家拿个塑料袋把这个装起来。"},
+        {"I can't clean these up with my hands. I need to go home to get a mop.", "我没法用手收拾这些。我得回家拿个拖把。"},
+        {"I need to get a mop to clean up all the blood.", "我得拿个拖把把血都清理干净。"},
+        {"I believe it's somewhere in a bathroom.", "我记得应该在一个浴室的某个地方里。"},
+        {"I think the plastic bags are in the garage.", "我认为塑料袋都在车库里。"},
+        {"This door is blocked...", "这个门被挡住了..."},
+        {"I need to grab a plastic bag from home to pack this body in.", "我得回家拿个塑料袋把这个尸体装进去。"},
+        {"Ok this looks... fine...", "好了。这看起来...还可以..."},
+        {"Time to bury it in my backyard.", "是时候把它埋在我后院了。"},
+        {"I hope no one will notice me on my way back... hopefully...", "希望我回去的路上没人注意到我...希望吧..."},
+        {"Whoo...", "呼..."},
+        {"It's all done now... Finally I can have a good rest...", "现在一切都做完了...我总算可以好好休息了..."},
+        {"I didn't do anything wrong, right? I didn't do anything. No one saw it. Nothing happened.", "我没有做错任何事，对吧？我什么都没做。没人看见。什么都没发生。"},
+        {"Tomorrow will be a fresh day. I'll eat. I'll work. I'll walk. I'll play. I'll watch. I'll sleep. I'll relax. I'll be a normal person. I'll be like everyone else. I'll be fine. I'll be fine.  I'll be fine.", "明天会是新的一天。我会吃饭。我会学习。我会散步。我会玩东西。我会看东西。我会睡觉。我会放松。我会是个正常人。我会像其他人一样。我会没事。我会没事。我会没事。"},
+        {"Please let this thing end...", "请让这一切结束吧..."},
+        {"They are watching me...", "他们在看着我..."},
+        {"Alright... Time to go to bed...", "好了...该去睡觉了..."},
+        {"Ahhh I just love showering...", "啊啊啊我就是喜欢冲澡..."},
+        {"Water. Please bring away my feelings...", "水啊。请带走我的心情..."},
+        {"Alright... I really need to go to bed now.", "好了...我现在真的得去睡觉了.."},
+        {"I think that's enough showering. I really need to go to bed. I'm just so exhausted.", "我觉得我已经洗够了。我真的需要去睡觉。我就是太累了。"},
+        {"Why did I come back without picking up the body?!", "我怎么没把尸体拿上就回来了？！"},
+        {"I'm so stupid. I need to go back to pick up that packed body.", "我太笨了。我得回去把那尸袋拿回来。"},
+        {"Nice.", "不错。"},
+        {"Now I need to take the shovel from the garage to bury this body.", "现在我需要从车库拿那个铲子把这尸体埋了。"},
+        {"I need a shovel to bury this.", "我需要铲子才能把这个埋了。"},
+        {"Now I just need to cover all of these up.", "现在我只需要把这些都盖上就行了。"},
+        {"Phew... Finally...", "呼...终于..."},
+        {"I'm so tired...", "我好累..."},
+        {"I should take a shower and sleep...", "我该去洗个澡然后睡觉了..."},
+        {"May god bless me...", "愿上帝保佑我..."},
+        {"I don't really want to sleep here...", "我不是很想睡在这..."},
+        {"ENDING 1/5: SURRENDER", "结局 1/5：自首"},
+        {"You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.", "你向警察自首了。他们把你带到了警察局并询问发生了什么。当你描述完事情经过后，他们让你去了一个私人房间休息。你认为你做出了正确的选择并放下心来，但是你总感觉有什么奇怪的地方。并且当你意识到的时候，一切都太迟了。"},
     };
 
     private void Awake()
@@ -85,6 +167,8 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        if (atEndingScreen) gameState = 0;
+        
         if (!isExecutingTriggers && triggers.Count > 0)
         {
             isExecutingTriggers = true;
@@ -94,7 +178,7 @@ public class MainManager : MonoBehaviour
             StartCoroutine(ExecuteTriggers());
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !isExecutingTriggers)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isExecutingTriggers && !atEndingScreen)
         {
             if (atPausedScreen)
             {
@@ -120,20 +204,35 @@ public class MainManager : MonoBehaviour
 
     }
 
+    public void DisplayEnding(string t, string c)
+    {
+        StartCoroutine(Ending(t, c));
+    }
+
     public void LoadScene(string s, float t)
     {
-        StartCoroutine(LoadSceneCoroutine(s, t));
+        if (!isLoadingScene)
+        {
+            isLoadingScene = true;
+            StartCoroutine(LoadSceneCoroutine(s, t));
+        }
     }
 
     public void LoadScene(string s)
     {
-        LoadScene(s, 0.5f);
+        if (s == "MainMenu") LoadScene(s, 2.0f);
+        else LoadScene(s, 0);
     }
 
     public void PlayMusic(AudioClip ac)
     {
         musicPlayer.clip = ac;
         musicPlayer.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicPlayer.Stop();
     }
 
     public void PlayEffect(AudioClip ac)
@@ -162,6 +261,11 @@ public class MainManager : MonoBehaviour
         inventory.Add(s);
     }
 
+    public void RemoveItem(string s)
+    {
+        inventory.Remove(s);
+    }
+
     public void AddTrigger(string s)
     {
         triggers.Add(s);
@@ -169,7 +273,15 @@ public class MainManager : MonoBehaviour
 
     public void SetPrompt(string s)
     {
+        SetPrompt(s, false);
+    }
+
+    public void SetPrompt(string s, bool b)
+    {
         promptText.text = Translate(s);
+        promptText.color = Color.white;
+        StopCoroutine("FlashPrompt");
+        if (b && s.Length > 0) StartCoroutine("FlashPrompt");
     }
 
     private Color ParseColor(string colorString)
@@ -183,6 +295,18 @@ public class MainManager : MonoBehaviour
         if (PlayerPrefs.GetString("Language", "English") == "English") return s;
         if (translations.ContainsKey(s)) return translations[s];
         return s;
+    }
+
+    private IEnumerator FlashPrompt()
+    {
+        float t = 0;
+        float speed = 4.0f;
+        while(true)
+        {
+            promptText.color = Color.Lerp(Color.clear, Color.white, (Mathf.Cos(t * speed) + 1) / 2 * 0.75f + 0.25f);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private IEnumerator LoadSceneCoroutine(string s, float t)
@@ -218,9 +342,17 @@ public class MainManager : MonoBehaviour
                 Vector3 pos = new Vector3(float.Parse(s[1]), float.Parse(s[2]), float.Parse(s[3]));
                 player.SetPosition(pos);
             }
+            else if (key == "rotateplayerto")
+            {
+                player.SetRotation(float.Parse(s[1]), float.Parse(s[2]));
+            }
             else if (key == "prompt")
             {
                 SetPrompt(s[1]);
+            }
+            else if (key == "flashprompt")
+            {
+                SetPrompt(s[1], true);
             }
             else if (key == "flashdialogue")
             {
@@ -231,6 +363,15 @@ public class MainManager : MonoBehaviour
             else if (key == "wait")
             {
                 yield return new WaitForSeconds(float.Parse(s[1]));
+            }
+            else if (key == "loadscene")
+            {
+                if (s.Length == 1) yield return StartCoroutine(LoadSceneCoroutine(s[1], 0));
+                else yield return StartCoroutine(LoadSceneCoroutine(s[1], float.Parse(s[2])));
+            }
+            else if (key == "ending")
+            {
+                yield return StartCoroutine(Ending(s[1], s[2]));
             }
             else
             {
@@ -294,5 +435,77 @@ public class MainManager : MonoBehaviour
     private IEnumerator DisplayDialogue(string speaker, string content)
     {
         yield return StartCoroutine(DisplayDialogue(speaker, content, -1.0f));
+    }
+    private IEnumerator Ending(string title, string content)
+    {
+        atEndingScreen = true;
+        effectsPlayer.clip = writtingEffect;
+        title = Translate(title);
+        content = Translate(content);
+        endingTitle.text = "";
+        endingText.text = "";
+        endingReturnMenu.SetActive(false);
+        endingScreen.SetActive(true);
+        float t = 0;
+        endScreen.color = Color.clear;
+        while (t < 4.0f)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            endScreen.color = Color.Lerp(Color.clear, Color.black, t / 4.0f);
+        }
+        endScreen.color = Color.black;
+        yield return new WaitForSeconds(2.0f);
+        effectsPlayer.Play();
+
+        t = 0;
+        int idx = 0;
+        float gap = 0.04f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.08f;
+        while (idx < title.Length)
+        {
+            t += Time.deltaTime;
+            if (t >= gap)
+            {
+                t -= gap;
+                endingTitle.text += title[idx];
+                idx++;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                endingTitle.text = title;
+                break;
+            }
+            yield return null;
+        }
+
+        effectsPlayer.Stop();
+        yield return new WaitForSeconds(2.0f);
+        effectsPlayer.Play();
+
+        idx = 0;
+        t = 0;
+        while (idx < content.Length)
+        {
+            t += Time.deltaTime;
+            if (t >= gap)
+            {
+                t -= gap;
+                endingText.text += content[idx];
+                idx++;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                endingText.text = content;
+                break;
+            }
+            yield return null;
+        }
+
+        effectsPlayer.Stop();
+        yield return new WaitForSeconds(2.0f);
+        endingReturnMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

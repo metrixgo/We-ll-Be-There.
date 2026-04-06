@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CorpseJumpScare : MonoBehaviour
+public class CorpseJumpscare : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] private GameObject corpse;
@@ -19,7 +19,7 @@ public class CorpseJumpScare : MonoBehaviour
         corpse.SetActive(true);
         MainManager.instance.PlayEffect(jumpScareEffect);
         MainManager.instance.AddTrigger("changescreen;#FF000020;#FF000000;2");
-        player.SetRotation(61.0f, 35.0f);
+        player.SetRotation(61.0f, 35.0f, 0.1f);
         yield return new WaitForSeconds(1.0f);
         MainManager.instance.PlayMusic(tenseMusic);
         MainManager.instance.AddTrigger("dialogue;You;What was that?!");

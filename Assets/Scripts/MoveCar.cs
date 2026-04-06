@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MoveCar : MonoBehaviour
 {
-    private bool isBackground = false;
     private float speed = 40.0f;
     private float disCount = 0;
     private float angle = 0;
@@ -13,8 +12,7 @@ public class MoveCar : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         disCount += speed * Time.deltaTime;
-        if (!isBackground && disCount > 700.0f) Destroy(gameObject);
-        else if (isBackground && disCount > 100.0f) Destroy(gameObject);
+        if (disCount > 700.0f) Destroy(gameObject);
 
         if (angle != 0)
         {
@@ -38,11 +36,6 @@ public class MoveCar : MonoBehaviour
     public void SetAngle(float f)
     {
         angle = f;
-    }
-
-    public void SetIsBackground(bool b)
-    {
-        isBackground = b;
     }
 
     public void ChangeDis(float f)

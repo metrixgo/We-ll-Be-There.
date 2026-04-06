@@ -8,7 +8,12 @@ public class SetSound : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if(isEffect) audioSource.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
+        Set();
+    }
+
+    public void Set()
+    {
+        if (isEffect) audioSource.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
         else audioSource.volume = PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
     }
 }

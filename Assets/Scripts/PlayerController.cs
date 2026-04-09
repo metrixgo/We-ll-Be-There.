@@ -24,12 +24,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CameraBobbing());
         ad = GetComponent<AudioSource>();
         characterController = GetComponent<CharacterController>();
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
         cam = transform.Find("Camera").GetComponent<Camera>();
         rotationX = cam.transform.localEulerAngles.x;
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(CameraBobbing());
     }
 
     private void Update()
@@ -97,6 +101,14 @@ public class PlayerController : MonoBehaviour
 
     public void SetRotation(float y, float x, float l)
     {
+        StartCoroutine(TurnTo(y, x, l));
+    }
+
+    public void LookAt(Vector3 pos, float l)
+    {
+        Vector3 dir = (pos - transform.position).normalized;
+        float y = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        float x = -Mathf.Asin(dir.y) * Mathf.Rad2Deg;
         StartCoroutine(TurnTo(y, x, l));
     }
 

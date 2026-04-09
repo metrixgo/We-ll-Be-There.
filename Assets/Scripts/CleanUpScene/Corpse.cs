@@ -22,13 +22,13 @@ public class Corpse : MonoBehaviour
 
     private IEnumerator PackUp()
     {
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;9");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("dialogue;You;Ok this looks... fine...");
         MainManager.instance.AddTrigger("dialogue;You;Time to bury it in my backyard.");
         MainManager.instance.AddTrigger("dialogue;You;I hope no one will notice me on my way back... hopefully...");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         MainManager.instance.PlayEffect(packingEffect);
         packedBody.SetActive(true);
         tomb.SetActive(true);

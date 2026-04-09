@@ -31,7 +31,7 @@ public class MainManager : MonoBehaviour
     private bool isLoadingScene = false;
     private bool atPausedScreen = false;
     private bool atEndingScreen = false;
-    
+
     private List<string> inventory = new List<string>();
     private List<string> triggers = new List<string>();
 
@@ -150,6 +150,24 @@ public class MainManager : MonoBehaviour
         {"I don't really want to sleep here...", "我不是很想睡在这..."},
         {"ENDING 1/5: SURRENDER", "结局 1/5：自首"},
         {"You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.", "你向警察自首了。他们把你带到了警察局并询问发生了什么。当你描述完事情经过后，他们让你去了一个私人房间休息。你认为你做出了正确的选择并放下心来，但是你总感觉有什么奇怪的地方。并且当你意识到的时候，一切都太迟了。"},
+        {"I can't see anything... Everything is black...", "我什么都看不到...一切都是黑色..."},
+        {"Window", "窗户"},
+        {"Wh... What?", "什... 什么？"},
+        {"It looks like there're some candles in a distance...", "好像不远处有些蜡烛..."},
+        {"Hammer", "锤子"},
+        {"CRASHED BIKE FOUND: The local police discovered an abandoned bike broken into pieces on the sidewalk.", "被发现的撞毁的自行车：当地警方在人行道上发现了一辆被撞得支离破碎的废弃自行车。"},
+        {"There were blood traces on the wheels and investigators believe there might have been an accident last night that no one noticed.", "在轮胎上发现了血迹，调查者认为昨晚发生了一起不为人知的事故。"},
+        {"MAYOR'S SON WENT MISSING: The mayor announced that his son went missing last night.", "市长的儿子失踪：市长昨晚宣布他的儿子失踪了。"},
+        {"The police have opened an investigation for this. Almost all the police force was involved.", "警方已经开始了调查。几乎所有警力都参与其中。"},
+        {"The mayor said that he will use all his power and resources to find his son, and if he knows anyone who did anything to his son, they will be harshly punished.", "市长表示他会用自己所有的权力和资源去找他的儿子，并且一旦他知道有任何人对他的儿子干了任何事，他们都会被严厉地惩罚。"},
+        {"MYSTERIOUS FIGURE REPORTED: A 12-year-old boy named Charlie woke up last night and saw a tall, black figure outside the window.", "神秘的身影被报告：一名叫查理的12岁的男孩从昨晚醒来时在窗外发现了一个高大的黑色身影。"},
+        {"He said he saw the figure carrying a large bag with both of his hands. When asked for more details, Charlie said he was scared at that time and ran to his mom.", "他说他看到那身影双手拿着一个很大的袋子。当被询问具体情况时，查理表示他当时太害怕了并跑向了他的妈妈。"},
+        {"When they went to the window again, the figure was gone. They then reported this incident to the police later.", "当他们一起再去那个窗户时，身影已经消失了。他们随后将这一情况报告给了警察。"},
+        {"Newspaper", "报纸"},
+        {"I still want to see the last newspaper...", "我还是想看那最后一个报纸..."},
+        {"I still want to see the remaining two newspapers...", "我还是想看剩下的那两份报纸..."},
+        {"I really want to see all the newspapers...", "我真的很想看看所有报纸..."},
+        {"Alarm Clock", "闹钟"},
     };
 
     private void Awake()
@@ -233,6 +251,11 @@ public class MainManager : MonoBehaviour
     public void StopMusic()
     {
         musicPlayer.Stop();
+    }
+
+    public void SetMusicVolume(float f)
+    {
+        musicPlayer.volume = f / 100.0f;
     }
 
     public void PlayEffect(AudioClip ac)
@@ -366,8 +389,8 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "loadscene")
             {
-                if (s.Length == 1) yield return StartCoroutine(LoadSceneCoroutine(s[1], 0));
-                else yield return StartCoroutine(LoadSceneCoroutine(s[1], float.Parse(s[2])));
+                if (s.Length == 1) StartCoroutine(LoadSceneCoroutine(s[1], 0));
+                else StartCoroutine(LoadSceneCoroutine(s[1], float.Parse(s[2])));
             }
             else if (key == "ending")
             {
@@ -406,8 +429,8 @@ public class MainManager : MonoBehaviour
         dialogueText.text = "";
         dialogueScreen.SetActive(true);
         int idx = 0;
-        float t = 0, gap = 0.04f;
-        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.08f;
+        float t = 0, gap = 0.02f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;
         yield return new WaitForSeconds(0.05f);
         while (idx < content.Length)
         {
@@ -460,8 +483,8 @@ public class MainManager : MonoBehaviour
 
         t = 0;
         int idx = 0;
-        float gap = 0.04f;
-        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.08f;
+        float gap = 0.02f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;
         while (idx < title.Length)
         {
             t += Time.deltaTime;

@@ -19,11 +19,11 @@ public class Shower : MonoBehaviour
 
     private IEnumerator Showering()
     {
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("moveplayerto;-58.2;4.761;356.187");
         MainManager.instance.AddTrigger("rotateplayerto;90;-20");
         MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("dialogue;You;Whoo...");
         MainManager.instance.AddTrigger("wait;1");
@@ -43,7 +43,7 @@ public class Shower : MonoBehaviour
         MainManager.instance.AddTrigger("wait;3");
         MainManager.instance.AddTrigger("dialogue;You;They are watching me...");
         MainManager.instance.AddTrigger("wait;3");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         float t = 0, v = ad.volume;
         ps.Play();
         ad.volume = 0;
@@ -56,14 +56,14 @@ public class Shower : MonoBehaviour
         }
         ad.volume = v;
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;3");
         MainManager.instance.AddTrigger("moveplayerto;-58.276;4.761;357.355");
         MainManager.instance.AddTrigger("rotateplayerto;180;20");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("dialogue;You;Alright... Time to go to bed...");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         t = 0;
         ps.Stop();
         while (t < 2.5f)
@@ -82,17 +82,17 @@ public class Shower : MonoBehaviour
 
     private IEnumerator ShoweringAgain()
     {
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("moveplayerto;-58.2;4.761;356.187");
         MainManager.instance.AddTrigger("rotateplayerto;90;-20");
         MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("dialogue;You;Ahhh I just love showering...");
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("dialogue;You;Water. Please bring away my feelings...");
         MainManager.instance.AddTrigger("wait;3");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         float t = 0, v = ad.volume;
         ps.Play();
         ad.volume = 0;
@@ -105,14 +105,14 @@ public class Shower : MonoBehaviour
         }
         ad.volume = v;
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;3");
         MainManager.instance.AddTrigger("moveplayerto;-58.276;4.761;357.355");
         MainManager.instance.AddTrigger("rotateplayerto;180;20");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("dialogue;You;Alright... I really need to go to bed now.");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         t = 0;
         ps.Stop();
         while (t < 2.5f)

@@ -59,11 +59,11 @@ public class Tomb : MonoBehaviour
 
     private IEnumerator Dig()
     {
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;9");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("dialogue;You;Now I just need to cover all of these up.");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(dig);
         dirtPile.SetActive(true);
         packedBody.transform.position = new Vector3(-72.945f, -0.57f, 359.596f);
@@ -72,23 +72,23 @@ public class Tomb : MonoBehaviour
 
     private IEnumerator Rebury()
     {
-        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;9");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("dialogue;You;Phew... Finally...");
         MainManager.instance.AddTrigger("dialogue;You;......");
         MainManager.instance.AddTrigger("dialogue;You;I'm so tired...");
         MainManager.instance.AddTrigger("dialogue;You;I should take a shower and sleep...");
         MainManager.instance.AddTrigger("dialogue;You;......");
         MainManager.instance.AddTrigger("dialogue;You;May god bless me...");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(dig);
         Destroy(dirtPile);
         dirtCover.SetActive(true);
         shovel.transform.SetParent(environment.transform);
         shovel.transform.localPosition = new Vector3(-259.651f, 0.1922f, -88.235f);
         shovel.transform.rotation = Quaternion.Euler(0, 150.0f, -90.0f);
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(9.0f);
         MainManager.instance.PlayMusic(night);
         shower.tag = "Interactable";
         pc.CanRun(false);

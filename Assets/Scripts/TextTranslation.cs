@@ -26,6 +26,7 @@ public class TextTranslation : MonoBehaviour
             else if (s == "paused") r = "暂停";
             else if (s == "main menu") r = "主菜单";
             else if (s == "esc to continue...") r = "按Esc继续...";
+            else if (s == "nowhere to run :)") r = "无处可逃 :)";
             else r = s;
             if(txt != null) txt.text = r;
             else txt2.text = r;

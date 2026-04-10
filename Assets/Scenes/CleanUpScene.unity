@@ -9883,7 +9883,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &223282283
 GameObject:
@@ -62944,6 +62944,7 @@ GameObject:
   - component: {fileID: 1285896608}
   - component: {fileID: 1285896610}
   - component: {fileID: 1285896609}
+  - component: {fileID: 1285896611}
   m_Layer: 0
   m_Name: Refrigerator.001
   m_TagString: Untagged
@@ -63022,6 +63023,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285896607}
+  m_Mesh: {fileID: -929309748538720381, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!64 &1285896611
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285896607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -929309748538720381, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &1286074568
 GameObject:
@@ -105969,7 +105992,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2070806703
 GameObject:

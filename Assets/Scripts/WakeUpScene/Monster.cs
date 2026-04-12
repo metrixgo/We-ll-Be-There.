@@ -58,7 +58,7 @@ public class Monster : MonoBehaviour
         }
         MainManager.instance.StopMusic();
         MainManager.instance.SetMusicVolume(v);
-        transform.position = new Vector3(-100.3f, 28.4f, 16.3f);
+        transform.position = new Vector3(-100.5f, 28.4f, 16.3f);
         anim.SetBool("Attack", true);
         yield return new WaitForSeconds(0.1f);
         player.SetActive(false);

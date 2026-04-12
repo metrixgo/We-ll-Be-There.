@@ -30,6 +30,7 @@ public class Blood : MonoBehaviour
                 MainManager.instance.AddTrigger("wait;1");
                 MainManager.instance.AddTrigger("dialogue;You;Ok, I think this is fine now.");
                 MainManager.instance.AddTrigger("dialogue;You;Now I need to grab a plastic bag from home to pack this up.");
+                MainManager.instance.AddTrigger("task;Get home");
                 plasticBag.tag = "Interactable";
                 corpse.tag = "Interactable";
                 trig.SetActive(true);

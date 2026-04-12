@@ -40,6 +40,7 @@ public class Bicycle : MonoBehaviour
         Destroy(trigger);
         ad.Play();
         MainManager.instance.SetPrompt("Press [A] and [D] to ride", true);
+        MainManager.instance.SetTask("Ride home");
         getOn = true;
         controlling = true;
     }

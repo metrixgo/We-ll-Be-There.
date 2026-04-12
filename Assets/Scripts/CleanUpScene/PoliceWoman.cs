@@ -28,7 +28,7 @@ public class PoliceWoman : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         ad.Play();
         animator.SetBool("walking", true);
-        while (t < 4.0f)
+        while (t < 4.3f)
         {
             transform.Translate(Vector3.left * Time.deltaTime * 2.0f, Space.World);
             t+= Time.deltaTime;

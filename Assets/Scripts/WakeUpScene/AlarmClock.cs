@@ -21,14 +21,10 @@ public class AlarmClock : MonoBehaviour
             ad.clip = stop;
             ad.loop = false;
             ad.Play();
-            MainManager.instance.AddTrigger("dialogue;You;This is all for now! Follow me on itch to see how I work out this game!");
-            MainManager.instance.AddTrigger("dialogue;You;Also, I'm a pretty new game developer, so if you have any suggestions, feel free to leave a comment!");
         }
         else if (!ad.isPlaying)
         {
             ad.Play();
-            MainManager.instance.AddTrigger("dialogue;You;This is all for now! Follow me on itch to see how I work out this game!");
-            MainManager.instance.AddTrigger("dialogue;You;Also, I'm a pretty new game developer, so if you have any suggestions, feel free to leave a comment!");
         }
     }
 }

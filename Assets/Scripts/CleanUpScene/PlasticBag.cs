@@ -15,6 +15,7 @@ public class PlasticBag : MonoBehaviour
 
         MainManager.instance.AddItem(name);
         MainManager.instance.PlayEffect(soundEffect);
+        MainManager.instance.SetTask("Go back to pack up the body");
         transform.SetParent(hold.transform);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(angle);

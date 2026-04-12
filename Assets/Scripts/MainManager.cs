@@ -20,6 +20,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI dialogueSpeaker;
     [SerializeField] private TextMeshProUGUI promptText;
+    [SerializeField] private TextMeshProUGUI taskText;
     [SerializeField] private TextMeshProUGUI endingTitle;
     [SerializeField] private TextMeshProUGUI endingText;
     [SerializeField] private AudioSource musicPlayer;
@@ -41,6 +42,7 @@ public class MainManager : MonoBehaviour
         {"Looks like everyone has left the school...", "看起来所有人都离开学校了..."},
         {"It's too dark now... I can barely see anything.", "这里太黑了...我几乎什么都看不到。"},
         {"I need to get home fast...", "我得赶紧回家..."},
+        {"Leave school", "离开学校"},
         {"You", "你"},
         {"Door", "门"},
         {"Classroom Key", "教室钥匙"},
@@ -53,6 +55,18 @@ public class MainManager : MonoBehaviour
         {"Damn it, I must get outta here real quick.", "该死的，我得赶紧离开这里。"},
         {"Phew... Feels good breathing fresh air.", "呼...能呼吸到新鲜空气真好。"},
         {"I should get on my bike and get home now.", "我现在得骑车回家了。"},
+        {"Get on the bike", "上自行车"},
+        {"Ride home", "骑车回家"},
+        {"Get home", "赶回家"},
+        {"Get a mop from the bathroom", "从厕所拿一个拖把"},
+        {"Go back to clean up the blood", "回去把血迹清理干净"},
+        {"Get a plastic bag from the garage", "从车库拿一个塑料袋"},
+        {"Go back to pack up the body", "回去把尸体包好"},
+        {"Bury the body in the backyard", "将尸体埋在后院"},
+        {"Take the shovel from the garage", "从车库拿一把铲子"},
+        {"Bury the body", "将尸体埋了"},
+        {"Take a shower", "去冲澡"},
+        {"Go to bed", "上床睡觉"},
         {"Walking home this late might be a bad idea.", "这么晚走路回家可能不太好。"},
         {"I need to ride to get home faster.", "我需要骑车快点回家。"},
         {"Press [A] and [D] to ride", "按 [A] 和 [D] 骑车"},
@@ -168,6 +182,21 @@ public class MainManager : MonoBehaviour
         {"I still want to see the remaining two newspapers...", "我还是想看剩下的那两份报纸..."},
         {"I really want to see all the newspapers...", "我真的很想看看所有报纸..."},
         {"Alarm Clock", "闹钟"},
+        {"Instant Ramen", "方便面"},
+        {"Eat", "吃"},
+        {"Microwave", "微波炉"},
+        {"Go eat breakfast", "去吃早饭"},
+        {"Microwave the instant ramen", "用微波炉加热方便面"},
+        {"Put the instant ramen on the table", "把方便面放桌子上"},
+        {"Eat the instant ramen", "吃方便面"},
+        {"I'm feeling dizzy right now...", "我现在感觉有点晕..."},
+        {"That dream feels so real...", "那个梦感觉太真实了..."},
+        {"But anyways, I'm still here, right?", "不过不管怎样，我还在这，对吧？"},
+        {"Well it already happened. I should eat first.", "事已至此，先吃饭吧。"},
+        {"I remember I left some instant ramen last morning.", "我记得我昨天早上还剩了些方便面。"},
+        {"I should go microwave that and eat it.", "我应该去用微波炉热一下然后吃了。"},
+        {"Okay, now I should put it on the table and eat it.", "好了，我现在应该放桌子上吃了。"},
+        {"Mmm... Very good.", "嗯...真不错。"},
     };
 
     private void Awake()
@@ -192,6 +221,7 @@ public class MainManager : MonoBehaviour
             isExecutingTriggers = true;
             gameState = 0;
             promptText.enabled = false;
+            taskText.enabled = false;
             focus.SetActive(false);
             StartCoroutine(ExecuteTriggers());
         }
@@ -202,6 +232,7 @@ public class MainManager : MonoBehaviour
             {
                 atPausedScreen = false;
                 promptText.enabled = true;
+                taskText.enabled = true;
                 focus.SetActive(true);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -212,6 +243,7 @@ public class MainManager : MonoBehaviour
             {
                 atPausedScreen = true;
                 promptText.enabled = false;
+                taskText.enabled = false;
                 focus.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -292,6 +324,11 @@ public class MainManager : MonoBehaviour
     public void AddTrigger(string s)
     {
         triggers.Add(s);
+    }
+
+    public void SetTask(string s)
+    {
+        taskText.text = Translate(s);
     }
 
     public void SetPrompt(string s)
@@ -383,6 +420,10 @@ public class MainManager : MonoBehaviour
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
                 gameState = 0;
             }
+            else if (key == "task")
+            {
+                SetTask(s[1]);
+            }
             else if (key == "wait")
             {
                 yield return new WaitForSeconds(float.Parse(s[1]));
@@ -404,6 +445,7 @@ public class MainManager : MonoBehaviour
         isExecutingTriggers = false;
         gameState = 1;
         promptText.enabled = true;
+        taskText.enabled = true;
         focus.SetActive(true);
     }
 

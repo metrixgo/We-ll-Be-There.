@@ -23,6 +23,7 @@ public class StandUp : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;You;......");
         MainManager.instance.AddTrigger("dialogue;You;Maybe... maybe... I can clean this up? ...... H-i-d-e him? Haha.");
         MainManager.instance.AddTrigger("dialogue;You;I... well... I should rush home to get this shit cleaned up. Damn it.");
+        MainManager.instance.AddTrigger("task;Get home");
         Destroy(gameObject);
     }
 }

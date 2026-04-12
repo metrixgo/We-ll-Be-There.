@@ -8,10 +8,13 @@ public class DoorKnockTrigger : MonoBehaviour
     [SerializeField] private AudioClip woodRun;
     [SerializeField] private AudioSource ad;
 
+    private bool triggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(MainManager.instance.HasItem("Packed Body"))
+        if(MainManager.instance.HasItem("Packed Body") && !triggered)
         {
+            triggered = true;
             StartCoroutine(Sounds());
         }
     }

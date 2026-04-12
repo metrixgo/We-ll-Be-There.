@@ -63,6 +63,7 @@ public class Shower : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("dialogue;You;Alright... Time to go to bed...");
+        MainManager.instance.AddTrigger("task;Go to bed");
         yield return new WaitForSeconds(1.5f);
         t = 0;
         ps.Stop();

@@ -8,7 +8,6 @@ public class Bicycle : MonoBehaviour
     [SerializeField] private GameObject trigger;
     [SerializeField] private AudioClip ridingSound;
 
-    private bool started = false;
     private bool getOn = false;
     private bool isLeft = true;
     private bool controlling = false;
@@ -40,9 +39,11 @@ public class Bicycle : MonoBehaviour
         Destroy(trigger);
         ad.Play();
         MainManager.instance.SetPrompt("Press [A] and [D] to ride", true);
-        MainManager.instance.SetTask("Ride home");
+        MainManager.instance.ClearTasks();
+        MainManager.instance.AddTask("Ride home");
         getOn = true;
         controlling = true;
+        ad.clip = ridingSound;
     }
 
     private void Update()
@@ -63,12 +64,6 @@ public class Bicycle : MonoBehaviour
                 isLeft = !isLeft;
                 velocity += stepSpeed;
                 velocity = Mathf.Min(velocity, maxSpeed);
-                if (!started)
-                {
-                    ad.clip = ridingSound;
-                    started = true;
-                    MainManager.instance.SetPrompt("", true);
-                }
                 if (!ad.isPlaying) ad.Play();
             }
         }

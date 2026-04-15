@@ -36,6 +36,7 @@ public class Tomb : MonoBehaviour
             MainManager.instance.AddTrigger("wait;0.5");
             MainManager.instance.AddTrigger("dialogue;You;Nice.");
             MainManager.instance.AddTrigger("dialogue;You;Now I need to take the shovel from the garage to bury this body.");
+            MainManager.instance.AddTrigger("cleartasks");
             MainManager.instance.AddTrigger("task;Take the shovel from the garage");
         }
         else if (state == 1)
@@ -82,6 +83,7 @@ public class Tomb : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;You;I should take a shower and sleep...");
         MainManager.instance.AddTrigger("dialogue;You;......");
         MainManager.instance.AddTrigger("dialogue;You;May god bless me...");
+        MainManager.instance.AddTrigger("cleartasks");
         MainManager.instance.AddTrigger("task;Take a shower");
         yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(dig);

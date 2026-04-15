@@ -7,6 +7,7 @@ public class PutDownRamen : MonoBehaviour
     [SerializeField] private AudioClip eat;
     [SerializeField] private GameObject ramen;
     [SerializeField] private GameObject environment;
+    [SerializeField] private GameObject police;
 
     private int state = 0;
 
@@ -20,11 +21,12 @@ public class PutDownRamen : MonoBehaviour
             ramen.transform.rotation = Quaternion.Euler(-90.0f, 0, 0);
             name = "Eat";
             MainManager.instance.SetPrompt("Eat");
-            MainManager.instance.SetTask("Eat the instant ramen");
+            MainManager.instance.ClearTasks();
+            MainManager.instance.AddTask("Eat the instant ramen");
         }
         else
         {
-            MainManager.instance.SetTask("");
+            MainManager.instance.ClearTasks();
             StartCoroutine(Eat());
             state++;
         }
@@ -37,10 +39,14 @@ public class PutDownRamen : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;0.5");
         MainManager.instance.AddTrigger("dialogue;You;Mmm... Very good.");
-        MainManager.instance.AddTrigger("dialogue;You;That's all for now.");
+        tag = "Untagged";
         yield return new WaitForSeconds(1.5f);
         MainManager.instance.PlayEffect(eat);
         ramen.GetComponent<Renderer>().material = empty;
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitForSeconds(1.0f);
+        police.SetActive(true);
+        police.GetComponent<AudioSource>().Play();
         Destroy(gameObject);
     }
 }

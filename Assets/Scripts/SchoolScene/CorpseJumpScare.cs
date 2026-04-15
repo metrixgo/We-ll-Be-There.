@@ -20,10 +20,12 @@ public class CorpseJumpscare : MonoBehaviour
         MainManager.instance.PlayEffect(jumpScareEffect);
         MainManager.instance.AddTrigger("changescreen;#FF000020;#FF000000;2");
         player.SetRotation(61.0f, 35.0f, 0.1f);
+        player.CanRun(true);
         yield return new WaitForSeconds(1.0f);
         MainManager.instance.PlayMusic(tenseMusic);
         MainManager.instance.AddTrigger("dialogue;You;What was that?!");
         MainManager.instance.AddTrigger("dialogue;You;Damn it, I must get outta here real quick.");
+        MainManager.instance.SetPrompt("Press [Shift] to run", true);
         Destroy(corpse);
         Destroy(gameObject);
     }

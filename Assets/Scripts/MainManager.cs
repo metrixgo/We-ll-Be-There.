@@ -35,6 +35,7 @@ public class MainManager : MonoBehaviour
 
     private List<string> inventory = new List<string>();
     private List<string> triggers = new List<string>();
+    private List<string> tasks = new List<string>();
 
     private Dictionary<string, string> translations = new Dictionary<string, string>()
     {
@@ -180,7 +181,7 @@ public class MainManager : MonoBehaviour
         {"Newspaper", "报纸"},
         {"I still want to see the last newspaper...", "我还是想看那最后一个报纸..."},
         {"I still want to see the remaining two newspapers...", "我还是想看剩下的那两份报纸..."},
-        {"I really want to see all the newspapers...", "我真的很想看看所有报纸..."},
+        {"I really want to se all the newspapers...", "我真的很想看看所有报纸..."},
         {"Alarm Clock", "闹钟"},
         {"Instant Ramen", "方便面"},
         {"Eat", "吃"},
@@ -197,6 +198,13 @@ public class MainManager : MonoBehaviour
         {"I should go microwave that and eat it.", "我应该去用微波炉热一下然后吃了。"},
         {"Okay, now I should put it on the table and eat it.", "好了，我现在应该放桌子上吃了。"},
         {"Mmm... Very good.", "嗯...真不错。"},
+        {"Hello...?", "你...好？"},
+        {"Hello. The local police discovered a crashed bike last night. You were acting very suspiciously, and you were right near the bicycle when I heard the crash. We have listed you as a suspect in the death of an important person.", "你好。当地警方在昨晚发现了一辆被撞毁的自行车。你当时的行为非常可疑，并且在我听到撞击声时你就在自行车附近。我们已经将你列为导致一个重要人物死亡的嫌疑人。"},
+        {"Oh I'm sorry I didn't do anything I was just going back home...", "哦对不起我啥都没做我就是在回家..."},
+        {"You have the right to remain silent. Anything you say can and will be used against you in a court of law. You have the right to talk to a lawyer for advice before we ask you any questions.", "你有权保持沉默，但你所说的每一句话都可以在法庭上作为指控你的不利证据。审问前，你有权与律师谈话。"},
+        {"A group of police will arrive after 2 minutes with a warrant to search your house. Any evidence of crimes will be used directly against you. Please be prepared.", "一队警察会在两分钟后带着搜查令到你的房子进行搜查。任何犯罪证据都将直接用于指控你。请你做好准备。"},
+        {"Alright...?!", "好吧...？!"},
+        {"Looks like I need to hurry...", "看起来我得快一点了..."},
     };
 
     private void Awake()
@@ -326,9 +334,32 @@ public class MainManager : MonoBehaviour
         triggers.Add(s);
     }
 
-    public void SetTask(string s)
+    public void AddTask(string s)
     {
-        taskText.text = Translate(s);
+        tasks.Add(s);
+        UpdateTask();
+    }
+
+    public void ClearTasks()
+    {
+        tasks.Clear();
+        UpdateTask();
+    }
+
+    public void RemoveTask(string s)
+    {
+        tasks.Remove(s);
+        UpdateTask();
+    }
+
+    public void UpdateTask()
+    {
+        string s = "";
+        foreach (string task in tasks)
+        {
+            s += "- " + Translate(task) + "\n";
+        }
+        taskText.text = s;
     }
 
     public void SetPrompt(string s)
@@ -406,6 +437,11 @@ public class MainManager : MonoBehaviour
             {
                 player.SetRotation(float.Parse(s[1]), float.Parse(s[2]));
             }
+            else if (key == "canrun")
+            {
+                if (s[1].ToLower() == "1") player.CanRun(true);
+                else player.CanRun(false);
+            }
             else if (key == "prompt")
             {
                 SetPrompt(s[1]);
@@ -422,7 +458,11 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "task")
             {
-                SetTask(s[1]);
+                AddTask(s[1]);
+            }
+            else if (key == "cleartasks")
+            {
+                ClearTasks();
             }
             else if (key == "wait")
             {

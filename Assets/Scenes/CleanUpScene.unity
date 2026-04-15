@@ -460,6 +460,7 @@ MonoBehaviour:
   selfDestructs: 1
   triggers:
   - dialogue;You;I think the plastic bags are in the garage.
+  - cleartasks
   - task;Get a plastic bag from the garage
 --- !u!65 &11954031
 BoxCollider:
@@ -22175,11 +22176,11 @@ Transform:
   m_GameObject: {fileID: 461919489}
   serializedVersion: 2
   m_LocalRotation: {x: -0.54785424, y: 0.44705236, z: 0.44705266, w: 0.54785395}
-  m_LocalPosition: {x: -261.28195, y: 0.918, z: -81.94813}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalPosition: {x: -76.692276, y: 0.789596, z: -83.42105}
+  m_LocalScale: {x: 105.00003, y: 105.00002, z: 105}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1722271296}
+  m_Father: {fileID: 1700763447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &461919491
 MeshRenderer:
@@ -35358,6 +35359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
   selfDestructs: 0
   triggers:
+  - cleartasks
   - task;Go back to clean up the blood
 --- !u!1 &722220586
 GameObject:
@@ -51245,11 +51247,11 @@ Transform:
   m_GameObject: {fileID: 1048707976}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -262.21576, y: 0.9323811, z: -81.805275}
-  m_LocalScale: {x: 34.307854, y: 34.307873, z: 34.30788}
+  m_LocalPosition: {x: -78.653275, y: 0.8197964, z: -83.12106}
+  m_LocalScale: {x: 72.04651, y: 72.04655, z: 72.046555}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1722271296}
+  m_Father: {fileID: 1700763447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1048707978
 MeshRenderer:
@@ -54062,6 +54064,7 @@ MonoBehaviour:
   triggers:
   - dialogue;You;I need to get a mop to clean up all the blood.
   - dialogue;You;I believe it's somewhere in a bathroom.
+  - cleartasks
   - task;Get a mop from the bathroom
 --- !u!65 &1106879860
 BoxCollider:
@@ -56841,11 +56844,11 @@ Transform:
   m_GameObject: {fileID: 1159582787}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5478541, y: 0.44705245, z: 0.44705254, w: 0.547854}
-  m_LocalPosition: {x: -261.55338, y: 0.8503038, z: -79.878136}
-  m_LocalScale: {x: 42.352245, y: 42.35222, z: 42.352222}
+  m_LocalPosition: {x: -77.26227, y: 0.64743423, z: -79.074066}
+  m_LocalScale: {x: 88.939735, y: 88.93967, z: 88.939674}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1722271296}
+  m_Father: {fileID: 1700763447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1159582789
 MeshRenderer:
@@ -61994,6 +61997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
   selfDestructs: 0
   triggers:
+  - cleartasks
   - task;Bury the body
 --- !u!1 &1256683784
 GameObject:
@@ -87297,6 +87301,9 @@ Transform:
   - {fileID: 5609818993384012313}
   - {fileID: 397599474}
   - {fileID: 2086633719}
+  - {fileID: 1048707977}
+  - {fileID: 1159582788}
+  - {fileID: 461919490}
   m_Father: {fileID: 1722271296}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1701041941
@@ -87884,9 +87891,6 @@ Transform:
   - {fileID: 8946049342677173199}
   - {fileID: 1065190382}
   - {fileID: 51577570}
-  - {fileID: 1048707977}
-  - {fileID: 1159582788}
-  - {fileID: 461919490}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725236104

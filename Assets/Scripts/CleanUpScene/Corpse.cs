@@ -28,6 +28,7 @@ public class Corpse : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;You;Ok this looks... fine...");
         MainManager.instance.AddTrigger("dialogue;You;Time to bury it in my backyard.");
         MainManager.instance.AddTrigger("dialogue;You;I hope no one will notice me on my way back... hopefully...");
+        MainManager.instance.AddTrigger("cleartasks");
         MainManager.instance.AddTrigger("task;Bury the body in the backyard");
         yield return new WaitForSeconds(1.5f);
         MainManager.instance.PlayEffect(packingEffect);

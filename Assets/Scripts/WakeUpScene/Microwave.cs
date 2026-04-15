@@ -62,7 +62,7 @@ public class Microwave : MonoBehaviour
             state++;
             ad.clip = microwaving;
             ad.Play();
-            MainManager.instance.SetTask("");
+            MainManager.instance.ClearTasks();
         }
         else if (state == 4)
         {
@@ -80,6 +80,7 @@ public class Microwave : MonoBehaviour
             table.SetActive(true);
             MainManager.instance.AddTrigger("wait;0.5");
             MainManager.instance.AddTrigger("dialogue;You;Okay, now I should put it on the table and eat it.");
+            MainManager.instance.AddTrigger("cleartasks");
             MainManager.instance.AddTrigger("task;Put the instant ramen on the table");
         }
         else if (state == 6)

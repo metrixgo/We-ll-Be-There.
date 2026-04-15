@@ -4,4 +4,4 @@ You are a normal student. You made a mistake. A mistake that you need to pay bac
 
 Play this game: https://metrixgo.itch.io/well-be-there
 
-Devlog (I'm mainly concentrating the updates on itch instead of github): https://metrixgo.itch.io/well-be-there/devlog
+Devlog: https://metrixgo.itch.io/well-be-there/devlog

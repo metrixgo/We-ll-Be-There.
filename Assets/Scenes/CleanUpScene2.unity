@@ -4986,8 +4986,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
   selfDestructs: 0
   triggers:
-  - dialogue;Book;Not everything is as clean as it looks. Everything leaves a trace.
-    Use the Ultimate Blood Trace Detector to lose your tail!
+  - dialogue;Book;They can see it. The question is, can you? The Untimate Blood Trace
+    Detector can help you see the things they can see.
 --- !u!114 &62038955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5954,6 +5954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7934623851786406043}
   - {fileID: 1545544556}
   - {fileID: 580300985}
   - {fileID: 62038950}
@@ -40625,7 +40626,6 @@ GameObject:
   - component: {fileID: 580300991}
   - component: {fileID: 580300990}
   - component: {fileID: 580300989}
-  - component: {fileID: 580300988}
   - component: {fileID: 580300987}
   - component: {fileID: 580300986}
   m_Layer: 0
@@ -40693,24 +40693,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &580300988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 580300984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 0.11764706}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!65 &580300989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40730,8 +40712,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.024893671, y: 0.022374915, z: 0.01}
-  m_Center: {x: 0, y: 0, z: 0.005}
+  m_Size: {x: 0.024893671, y: 0.022374915, z: 0.014}
+  m_Center: {x: 0, y: 0, z: 0.007}
 --- !u!23 &580300990
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -72437,7 +72419,6 @@ GameObject:
   - component: {fileID: 1103097765}
   - component: {fileID: 1103097768}
   - component: {fileID: 1103097767}
-  - component: {fileID: 1103097772}
   - component: {fileID: 1103097771}
   - component: {fileID: 1103097770}
   - component: {fileID: 1103097769}
@@ -72584,24 +72565,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1103097772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103097764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 0.11764706}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1105163189
 GameObject:
   m_ObjectHideFlags: 0
@@ -142903,9 +142866,12 @@ GameObject:
   - component: {fileID: 7934623851786406043}
   - component: {fileID: 6463415125345634110}
   - component: {fileID: 9103567627402212340}
+  - component: {fileID: 9103567627402212343}
+  - component: {fileID: 9103567627402212342}
+  - component: {fileID: 9103567627402212341}
   m_Layer: 0
   m_Name: Flashlight
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142919,11 +142885,11 @@ Transform:
   m_GameObject: {fileID: 7302203023451902497}
   serializedVersion: 2
   m_LocalRotation: {x: -0.036892124, y: 0.3417564, z: 0.013427633, w: 0.9389682}
-  m_LocalPosition: {x: -60.479, y: 5.039, z: -69.679}
-  m_LocalScale: {x: 5, y: 5, z: 24.273046}
+  m_LocalPosition: {x: -6.69141, y: 3.4475904, z: -1.6790009}
+  m_LocalScale: {x: 5, y: 5, z: 24.273048}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 86664794}
   m_LocalEulerAnglesHint: {x: -4.5, y: 40, z: 0}
 --- !u!23 &9103567627402212340
 MeshRenderer:
@@ -142974,6 +142940,70 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9103567627402212341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302203023451902497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6002c46e43ebb5b49a43e74f5f4fd28d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
+  soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
+  hold: {fileID: 123347130}
+  pos: {x: 0, y: 0, z: 0}
+  angle: {x: 0, y: 0, z: 0}
+--- !u!114 &9103567627402212342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302203023451902497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9103567627402212341}
+        m_TargetAssemblyTypeName: PickUpItem, Assembly-CSharp
+        m_MethodName: PickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &9103567627402212343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302203023451902497}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02887485, y: 0.0333418, z: 0.02}
+  m_Center: {x: -0.00000029802322, y: 0.00000023841858, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -142982,7 +143012,6 @@ SceneRoots:
   - {fileID: 1899239093}
   - {fileID: 1134240987}
   - {fileID: 508594365}
-  - {fileID: 7934623851786406043}
   - {fileID: 86664794}
   - {fileID: 1546320730}
   - {fileID: 3427651}

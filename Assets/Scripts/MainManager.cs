@@ -210,6 +210,8 @@ public class MainManager : MonoBehaviour
         {"Ultimate Blood Trace Detector is now ON SALE!!! Use it like a flashlight, and discover the unseen mystery!", "超级血迹探测器现已特价发售！！！像手电筒一样使用它，然后探索无法看到奥秘！"},
         {"Not everything is as clean as it looks. Everything leaves a trace. Use the Ultimate Blood Trace Detector to lose your tail!", "不是所有东西都如它所见一样干净。所有东西都会留下痕迹。使用超级血迹探测器去甩掉跟踪你的尾巴！"},
         {"They can see it. The question is, can you? The Untimate Blood Trace Detector can help you see the things they can see.", "他们能看到。问题是，你能吗？超级血迹探测器能帮你看到他们能看到的东西。"},
+        {"Flashlight", "手电筒"},
+        {"Press [F] to use flashlight", "按 [F] 用手电筒"},
     };
 
     private void Awake()

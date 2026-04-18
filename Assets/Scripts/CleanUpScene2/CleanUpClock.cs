@@ -20,6 +20,7 @@ public class CleanUpClock : MonoBehaviour
         {
             if(MainManager.instance.gameState != 1)
             {
+                countdown.text = "";
                 yield return null;
                 continue;
             }

@@ -143130,8 +143130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
-  hold: {fileID: 123347130}
-  pos: {x: 0.05, y: -0.02, z: -0.05}
+  hold: {fileID: 0}
+  pos: {x: 0, y: 0, z: 0}
   angle: {x: 0, y: 0, z: 0}
 --- !u!114 &9103567627402212342
 MonoBehaviour:

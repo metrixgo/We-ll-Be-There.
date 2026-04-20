@@ -212,6 +212,7 @@ public class MainManager : MonoBehaviour
         {"They can see it. The question is, can you? The Untimate Blood Trace Detector can help you see the things they can see.", "他们能看到。问题是，你能吗？超级血迹探测器能帮你看到他们能看到的东西。"},
         {"Flashlight", "手电筒"},
         {"Press [F] to use flashlight", "按 [F] 用手电筒"},
+        {"I see no reason to use a flashlight right now.", "我看不出有什么理由在现在用一个手电筒。"},
     };
 
     private void Awake()

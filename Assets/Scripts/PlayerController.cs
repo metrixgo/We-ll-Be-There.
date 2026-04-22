@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource ad;
     private Camera cam;
-    private float speed = 2.5f;
+    private float speed = 52.5f;
     private float runSpeed = 5.0f;
     private float reachRange = 1.5f;
     private float sensitivity;

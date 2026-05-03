@@ -5,3 +5,5 @@ You are a normal student. You made a mistake. A mistake that you need to pay bac
 Play this game: https://metrixgo.itch.io/well-be-there
 
 Devlog: https://metrixgo.itch.io/well-be-there/devlog
+
+There is no AI content in this game. Hope you can enjoy it!

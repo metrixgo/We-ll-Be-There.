@@ -9,6 +9,7 @@ public class Microwave : MonoBehaviour
     [SerializeField] private AudioClip microwaving;
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject ramen;
+    [SerializeField] private GameObject light;
     [SerializeField] private GameObject environment;
     [SerializeField] private GameObject table;
 
@@ -62,6 +63,7 @@ public class Microwave : MonoBehaviour
             state++;
             ad.clip = microwaving;
             ad.Play();
+            StartCoroutine(Heat());
             MainManager.instance.ClearTasks();
         }
         else if (state == 4)
@@ -88,6 +90,19 @@ public class Microwave : MonoBehaviour
             isTurning = true;
             StartCoroutine(TurnDoor());
         }
+    }
+
+    private IEnumerator Heat()
+    {
+        float t = 0;
+        light.SetActive(true);
+        while(t < microwaving.length)
+        {
+            ramen.transform.Rotate(Vector3.up * 45.0f * Time.deltaTime, Space.World);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        light.SetActive(false);
     }
 
     private IEnumerator TurnDoor()

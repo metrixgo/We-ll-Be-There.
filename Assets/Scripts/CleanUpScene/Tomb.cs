@@ -10,6 +10,7 @@ public class Tomb : MonoBehaviour
     [SerializeField] private GameObject dirtPile;
     [SerializeField] private GameObject shovel;
     [SerializeField] private GameObject shower;
+    [SerializeField] private GameObject trigger;
     [SerializeField] private AudioClip dig;
     [SerializeField] private AudioClip putEffect;
     [SerializeField] private AudioClip night;
@@ -89,6 +90,7 @@ public class Tomb : MonoBehaviour
         MainManager.instance.PlayEffect(dig);
         Destroy(dirtPile);
         dirtCover.SetActive(true);
+        trigger.SetActive(true);
         shovel.transform.SetParent(environment.transform);
         shovel.transform.localPosition = new Vector3(-259.651f, 0.1922f, -88.235f);
         shovel.transform.rotation = Quaternion.Euler(0, 150.0f, -90.0f);

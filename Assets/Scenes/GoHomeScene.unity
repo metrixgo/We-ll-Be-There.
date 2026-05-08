@@ -6005,6 +6005,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175916557}
   m_Mesh: {fileID: 2242208504943823033, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &176733779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176733780}
+  - component: {fileID: 176733782}
+  - component: {fileID: 176733781}
+  m_Layer: 0
+  m_Name: LoseControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &176733780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176733779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -114.67, y: 0.05439365, z: 383.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 350753645}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &176733781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176733779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4cb3d1eea29b94d8b2fdf64f3469a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoseControl
+  bicycle: {fileID: 326408012}
+--- !u!65 &176733782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176733779}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 3, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &177327548
 GameObject:
   m_ObjectHideFlags: 0
@@ -13038,6 +13105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
+  multiplier: 1
 --- !u!1 &327076520
 GameObject:
   m_ObjectHideFlags: 0
@@ -13730,6 +13798,7 @@ Transform:
   - {fileID: 45180380}
   - {fileID: 983298004}
   - {fileID: 1576949648}
+  - {fileID: 176733780}
   - {fileID: 1828947965}
   - {fileID: 1169681928}
   - {fileID: 1753943249}
@@ -14616,6 +14685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
+  multiplier: 1
 --- !u!82 &395640817
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50297,6 +50367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
+  multiplier: 1
 --- !u!1 &1518628637
 GameObject:
   m_ObjectHideFlags: 0
@@ -52516,6 +52587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoopStart
   bicycle: {fileID: 326408012}
+  trigger: {fileID: 176733779}
 --- !u!1 &1578302949
 GameObject:
   m_ObjectHideFlags: 0

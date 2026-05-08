@@ -12,7 +12,7 @@ public class LoopEnd : MonoBehaviour
         if (!other.CompareTag("Bicycle")) return ;
 
         cnt++;
-        if (cnt <= 11)
+        if (cnt <= 8)
         {
             bicycle.transform.Translate(0, 0, -102.5f);
             GameObject[] cars = GameObject.FindGameObjectsWithTag("Car");

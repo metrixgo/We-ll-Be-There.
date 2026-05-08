@@ -23,7 +23,7 @@ public class Blood : MonoBehaviour
         {
             mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, --layers/15.0f);
             MainManager.instance.PlayEffect(cleanEffect);
-            MainManager.instance.AddTrigger("wait;1.2");
+            MainManager.instance.AddTrigger("wait;"+(cleanEffect.length + 0.1f));
             if(layers == 0)
             {
                 MainManager.instance.AddTrigger("wait;1");

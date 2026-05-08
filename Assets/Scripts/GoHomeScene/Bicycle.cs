@@ -11,7 +11,7 @@ public class Bicycle : MonoBehaviour
     private bool getOn = false;
     private bool isLeft = true;
     private bool controlling = false;
-    private float maxSpeed = 13.0f;
+    private float maxSpeed = 133.0f;
     private float stepSpeed = 1.0f;
     private float velocity = 0;
     private float angle = 0;

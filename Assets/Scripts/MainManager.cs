@@ -214,6 +214,7 @@ public class MainManager : MonoBehaviour
         {"Washing Machine", "洗衣机"},
         {"Press [F] to use flashlight", "按 [F] 用手电筒"},
         {"I see no reason to use a flashlight right now.", "我看不出有什么理由在现在用一个手电筒。"},
+        {"I can't clean these up with my hands. I need to get a mop.", "我没法用手收拾这些。我得拿个拖把。"},
     };
 
     private void Awake()
@@ -269,6 +270,11 @@ public class MainManager : MonoBehaviour
             }
         }
 
+    }
+
+    public bool AtPausedScreen()
+    {
+        return atPausedScreen;
     }
 
     public void DisplayEnding(string t, string c)

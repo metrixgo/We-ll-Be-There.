@@ -8,6 +8,7 @@ public class Flashlight : MonoBehaviour
 
     private bool pickedUp = false;
     private bool opened = false;
+    private int count = 0;
     private Light bulb;
     private MeshRenderer mr;
 
@@ -19,13 +20,6 @@ public class Flashlight : MonoBehaviour
 
     private void Update()
     {
-        if (MainManager.instance.gameState != 1) return ;
-        if (Input.GetKeyDown(KeyCode.F) && pickedUp)
-        {
-            opened = !opened;
-            bulb.enabled = opened;
-            MainManager.instance.PlayEffect(flashlight);
-        }
         if (opened)
         {
             Shader.SetGlobalFloat("_LightOn", 1.0f);
@@ -37,6 +31,14 @@ public class Flashlight : MonoBehaviour
         else
         {
             Shader.SetGlobalInt("_LightOn", 0);
+        }
+
+        if (MainManager.instance.gameState != 1) return ;
+        if (Input.GetKeyDown(KeyCode.F) && pickedUp)
+        {
+            opened = !opened;
+            bulb.enabled = opened;
+            MainManager.instance.PlayEffect(flashlight);
         }
     }
 
@@ -51,5 +53,15 @@ public class Flashlight : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         tag = "Untagged";
         mr.enabled = false;
+    }
+
+    public bool IsOpened()
+    {
+        return opened;
+    }
+
+    public void FinishedOne()
+    {
+        count++;
     }
 }

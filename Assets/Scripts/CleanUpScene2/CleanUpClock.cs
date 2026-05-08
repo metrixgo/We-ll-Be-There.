@@ -15,10 +15,11 @@ public class CleanUpClock : MonoBehaviour
     {
         float seconds = 120;
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
 
-        while(seconds > 0)
+        while (seconds > 0)
         {
-            if(MainManager.instance.gameState != 1)
+            if(MainManager.instance.AtPausedScreen())
             {
                 countdown.text = "";
                 yield return null;
@@ -28,7 +29,7 @@ public class CleanUpClock : MonoBehaviour
             int sec = Mathf.CeilToInt(seconds);
             if(sec % 60 < 10) countdown.text = sec / 60 + ":0" + sec % 60;
             else countdown.text = sec / 60 + ":" + sec % 60;
-            if(sec <= 10) countdown.color = Color.red;
+            if(sec <= 20) countdown.color = Color.red;
             seconds -= Time.deltaTime;
             yield return null;
         }

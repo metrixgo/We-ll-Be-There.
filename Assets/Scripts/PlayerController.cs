@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool canRun = false;
     private int state = 0;
     private CharacterController characterController;
-    private Interactable currentInteractable;
+    private Interactable curItem;
+    private Interactable newItem;
 
     private void Start()
     {
@@ -56,22 +57,32 @@ public class PlayerController : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, reachRange, ~0, QueryTriggerInteraction.Collide) && hit.collider.tag == "Interactable")
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        RaycastHit[] hits = Physics.RaycastAll(ray, reachRange, ~0, QueryTriggerInteraction.Collide);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+        newItem = null;
+        bool flg = true;
+        for (int i = 0; i < hits.Length; i++)
         {
-            Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-            if (currentInteractable != null && currentInteractable != newInteractable) currentInteractable.SetFocused(false);
-            currentInteractable = newInteractable;
-            currentInteractable.SetFocused(true);
+            if (hits[i].collider.CompareTag("Player")) continue;
+            if (hits[i].collider.CompareTag("Interactable"))
+            {
+                newItem = hits[i].collider.GetComponent<Interactable>();
+                if (curItem != null && curItem != newItem) curItem.SetFocused(false);
+                curItem = newItem;
+                curItem.SetFocused(true);
+                flg = false;
+            }
+            break;
         }
-        else if (currentInteractable != null)
+
+        if (flg && curItem != null)
         {
-            currentInteractable.SetFocused(false);
-            currentInteractable = null;
+            curItem.SetFocused(false);
+            curItem = null;
         }
-        if (Input.GetMouseButtonDown(0) && MainManager.instance.gameState == 1 && currentInteractable)
-        {
-            currentInteractable.Interact();
-        }
+
+        if (Input.GetMouseButtonDown(0) && MainManager.instance.gameState == 1 && curItem) curItem.Interact();
 
     }
 

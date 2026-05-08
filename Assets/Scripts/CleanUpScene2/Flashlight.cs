@@ -31,7 +31,7 @@ public class Flashlight : MonoBehaviour
             Shader.SetGlobalFloat("_LightOn", 1.0f);
             Shader.SetGlobalVector("_LightPos", bulb.transform.position);
             Shader.SetGlobalVector("_LightDir", bulb.transform.forward);
-            Shader.SetGlobalFloat("_LightAngle", bulb.spotAngle);
+            Shader.SetGlobalFloat("_LightCosAngle", Mathf.Cos(bulb.spotAngle * 0.5f * Mathf.Deg2Rad));
             Shader.SetGlobalFloat("_LightRange", bulb.range / 2.5f);
         }
         else

@@ -11,6 +11,7 @@
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
 
         Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
 
         Pass
         {
@@ -43,7 +44,7 @@
                 float _LightOn;
                 float3 _LightPos;
                 float3 _LightDir;
-                float _LightAngle;
+                float _LightCosAngle;
                 float _LightRange;
             CBUFFER_END
 
@@ -61,11 +62,7 @@
                 if (_LightOn < 0.5) return half4(0,0,0,0);
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
                 float3 toPixel = IN.worldPos - _LightPos;
-                float cone = smoothstep(
-                    cos(radians(_LightAngle * 0.5)),
-                    cos(radians(_LightAngle * 0.5)) + 0.1,
-                    dot(normalize(_LightDir), normalize(toPixel))
-                );
+                float cone = smoothstep(_LightCosAngle, _LightCosAngle + 0.1, dot(normalize(_LightDir), normalize(toPixel)));
                 float dist = saturate(1.0 - length(toPixel) / _LightRange);
                 color.a *= cone * dist;
                 return color;

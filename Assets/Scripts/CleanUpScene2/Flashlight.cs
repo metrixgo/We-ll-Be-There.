@@ -5,19 +5,38 @@ public class Flashlight : MonoBehaviour
     [SerializeField] private AudioClip pickUp;
     [SerializeField] private AudioClip flashlight;
     [SerializeField] private GameObject cam;
-    [SerializeField] private GameObject bulb;
 
     private bool pickedUp = false;
     private bool opened = false;
+    private Light bulb;
+    private MeshRenderer mr;
+
+    private void Start()
+    {
+        mr = GetComponent<MeshRenderer>();
+        bulb = GetComponent<Light>();
+    }
 
     private void Update()
     {
         if (MainManager.instance.gameState != 1) return ;
         if (Input.GetKeyDown(KeyCode.F) && pickedUp)
         {
-            bulb.SetActive(!opened);
             opened = !opened;
+            bulb.enabled = opened;
             MainManager.instance.PlayEffect(flashlight);
+        }
+        if (opened)
+        {
+            Shader.SetGlobalFloat("_LightOn", 1.0f);
+            Shader.SetGlobalVector("_LightPos", bulb.transform.position);
+            Shader.SetGlobalVector("_LightDir", bulb.transform.forward);
+            Shader.SetGlobalFloat("_LightAngle", bulb.spotAngle);
+            Shader.SetGlobalFloat("_LightRange", bulb.range / 2.5f);
+        }
+        else
+        {
+            Shader.SetGlobalInt("_LightOn", 0);
         }
     }
 
@@ -31,5 +50,6 @@ public class Flashlight : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, -0.2f);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         tag = "Untagged";
+        mr.enabled = false;
     }
 }

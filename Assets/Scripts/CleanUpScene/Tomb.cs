@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Tomb : MonoBehaviour
 {
-    [SerializeField] private GameObject environment;
     [SerializeField] private GameObject packedBody;
     [SerializeField] private GameObject cover;
     [SerializeField] private GameObject dirtCover;
@@ -30,7 +29,7 @@ public class Tomb : MonoBehaviour
             state = 1;
             name = "Dig";
             shovel.tag = "Interactable";
-            packedBody.transform.SetParent(environment.transform);
+            packedBody.transform.SetParent(null);
             packedBody.transform.position = new Vector3(-73.127f, 0.3f, 359.596f);
             packedBody.transform.rotation = Quaternion.Euler(-90.0f, -90.0f, 0);
             MainManager.instance.PlayEffect(putEffect);
@@ -91,8 +90,8 @@ public class Tomb : MonoBehaviour
         Destroy(dirtPile);
         dirtCover.SetActive(true);
         trigger.SetActive(true);
-        shovel.transform.SetParent(environment.transform);
-        shovel.transform.localPosition = new Vector3(-259.651f, 0.1922f, -88.235f);
+        shovel.transform.SetParent(null);
+        shovel.transform.position = new Vector3(-72.8614883f, 0.203619629f, 359.659332f);
         shovel.transform.rotation = Quaternion.Euler(0, 150.0f, -90.0f);
         yield return new WaitForSeconds(9.0f);
         MainManager.instance.PlayMusic(night);

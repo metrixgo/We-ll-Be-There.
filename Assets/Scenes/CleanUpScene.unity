@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - dialogue;You;I think the plastic bags are in the garage.
@@ -663,6 +664,162 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13389926}
   m_Mesh: {fileID: -8637397606777992221, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &13564616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13564622}
+  - component: {fileID: 13564621}
+  - component: {fileID: 13564620}
+  - component: {fileID: 13564619}
+  - component: {fileID: 13564618}
+  - component: {fileID: 13564617}
+  m_Layer: 0
+  m_Name: Put Down
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &13564617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59edc55f37d27d949a6e05626b138a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PutDownItem
+  soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
+  item: {fileID: 721690768}
+--- !u!114 &13564618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 13564617}
+        m_TargetAssemblyTypeName: PutDownItem, Assembly-CSharp
+        m_MethodName: Putdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!64 &13564619
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!23 &13564620
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9633e2aa8d4557549a1d4f29ee87a23c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &13564621
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!4 &13564622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564616}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.49279723, y: -0.50710046, z: -0.49279717, w: 0.50710046}
+  m_LocalPosition: {x: -262.32, y: 2.402917, z: -79.058}
+  m_LocalScale: {x: 51.668793, y: 51.668804, z: 51.668816}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722271296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &15443504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
-  selfDestructs: 0
+  isPhysical: 1
+  selfDestructs: 1
   triggers:
   - flashprompt;
 --- !u!65 &25099353
@@ -4169,6 +4327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 0
   triggers:
   - dialogue;You;What am I doing?! I need to go home! Why would I want to go back?!
@@ -26692,6 +26851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Not everything is as clean as it looks. Everything leaves
@@ -27823,6 +27983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Press [F] to use flashlight
@@ -31782,6 +31943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;This door is blocked...
@@ -35811,7 +35973,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!114 &721690776
@@ -35830,6 +35992,7 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 0}
+  putBack: {fileID: 13564616}
   additionalEffect:
     m_PersistentCalls:
       m_Calls:
@@ -35857,7 +36020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
-  selfDestructs: 0
+  isPhysical: 0
+  selfDestructs: 1
   triggers:
   - cleartasks
   - task;Go back to clean up the blood
@@ -42437,6 +42601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I don't really want to sleep here...
@@ -48009,6 +48174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Book;They can see it. The question is, can you? The Untimate Blood Trace
@@ -54973,6 +55139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - dialogue;You;I need to get a mop to clean up all the blood.
@@ -62927,6 +63094,7 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 180}
+  putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
       m_Calls:
@@ -63024,7 +63192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
-  selfDestructs: 0
+  isPhysical: 0
+  selfDestructs: 1
   triggers:
   - cleartasks
   - task;Bury the body
@@ -75887,6 +76056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - loadscene;WakeUpScene;3
@@ -84382,7 +84552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4509f8b8afbe9d6489ee2764da27b545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tomb
-  environment: {fileID: 1722271295}
   packedBody: {fileID: 4525374090996183531}
   cover: {fileID: 5085061008357384355}
   dirtCover: {fileID: 397599471}
@@ -89066,12 +89235,8 @@ Transform:
   m_LocalScale: {x: 2.1000004, y: 2.1, z: 2.1000004}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1700763447}
-  - {fileID: 2037722926}
-  - {fileID: 162201129}
-  - {fileID: 1525413666}
-  - {fileID: 396719160}
   - {fileID: 721690769}
+  - {fileID: 13564622}
   - {fileID: 896262261}
   - {fileID: 1923032806975141448}
   - {fileID: 2971105339879324615}
@@ -89080,6 +89245,11 @@ Transform:
   - {fileID: 8946049342677173199}
   - {fileID: 1065190382}
   - {fileID: 51577570}
+  - {fileID: 1700763447}
+  - {fileID: 2037722926}
+  - {fileID: 162201129}
+  - {fileID: 1525413666}
+  - {fileID: 396719160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725236104
@@ -92402,6 +92572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I don't really want to sleep here...
@@ -95430,6 +95601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Magazines;Ultimate Blood Trace Detector is now ON SALE!!! Use it like
@@ -105692,6 +105864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I see no reason to use a flashlight right now.
@@ -116756,7 +116929,7 @@ GameObject:
   - component: {fileID: 7162068581538532809}
   - component: {fileID: 7162068581538532811}
   - component: {fileID: 7162068581538532812}
-  - component: {fileID: 7162068581538532808}
+  - component: {fileID: 7162068581538532813}
   m_Layer: 0
   m_Name: Plastic Bag
   m_TagString: Untagged
@@ -116927,7 +117100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289204367464639730}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0.99904823, z: 0, w: 0.0436195}
   m_LocalPosition: {x: -164.29092, y: 0.48523828, z: -45.443817}
   m_LocalScale: {x: 0.21428569, y: 0.21428572, z: 0.21428569}
   m_ConstrainProportionsScale: 1
@@ -116935,7 +117108,7 @@ Transform:
   - {fileID: 1568237569537009875}
   - {fileID: 6268921528732260060}
   m_Father: {fileID: 1722271296}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 175, z: 0}
 --- !u!4 &1990021420121445958
 Transform:
   m_ObjectHideFlags: 0
@@ -118626,6 +118799,7 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0, y: -0.2, z: 0.3}
   angle: {x: 90, y: 0, z: 90}
+  putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
       m_Calls: []
@@ -120625,20 +120799,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616552067381759881}
   m_Mesh: {fileID: -1414940159294830957, guid: 03f341153640b7849bd017588b0443f4, type: 3}
---- !u!114 &7162068581538532808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616552067381759881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0715f5990f30ee7448d21b970eb171e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlasticBag
-  environment: {fileID: 1722271295}
-  mop: {fileID: 721690768}
 --- !u!114 &7162068581538532809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120722,12 +120882,13 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0, y: 0, z: 0}
   angle: {x: -50, y: -20, z: 50}
+  putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7162068581538532808}
-        m_TargetAssemblyTypeName: PlasticBag, Assembly-CSharp
-        m_MethodName: Effects
+      - m_Target: {fileID: 7162068581538532813}
+        m_TargetAssemblyTypeName: TriggerSequences, Assembly-CSharp
+        m_MethodName: AddTriggers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -120737,6 +120898,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7162068581538532813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616552067381759881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
+  selfDestructs: 1
+  triggers:
+  - cleartasks
+  - task;Go back to pack up the body
 --- !u!4 &7183906765023930352
 Transform:
   m_ObjectHideFlags: 0

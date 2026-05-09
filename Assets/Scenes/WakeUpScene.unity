@@ -6119,6 +6119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 217589383}
   - {fileID: 543450653083528409}
   - {fileID: 1923112043}
   - {fileID: 1167279751}
@@ -15536,6 +15537,187 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216183345}
   m_Mesh: {fileID: 2322679889794311398, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &217589382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217589383}
+  - component: {fileID: 217589389}
+  - component: {fileID: 217589388}
+  - component: {fileID: 217589387}
+  - component: {fileID: 217589386}
+  - component: {fileID: 217589385}
+  - component: {fileID: 217589384}
+  m_Layer: 0
+  m_Name: Mop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &217589383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6969205, y: -0, z: 0.000000059604645, w: 0.7171484}
+  m_LocalPosition: {x: 0.19781494, y: 3.2547154, z: 4.390999}
+  m_LocalScale: {x: 108.50449, y: 108.50453, z: 108.50451}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 86664794}
+  m_LocalEulerAnglesHint: {x: -80, y: 180, z: 0}
+--- !u!114 &217589384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6002c46e43ebb5b49a43e74f5f4fd28d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
+  soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
+  hold: {fileID: 0}
+  pos: {x: 0.1, y: 0, z: 0.1}
+  angle: {x: -40, y: 190, z: 0}
+  putBack: {fileID: 0}
+  additionalEffect:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &217589385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 217589384}
+        m_TargetAssemblyTypeName: PickUpItem, Assembly-CSharp
+        m_MethodName: PickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &217589386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0.11764706}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!64 &217589387
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!23 &217589388
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9ad909628175fed419bc1cc2933dca55, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &217589389
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217589382}
+  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &218703932
 GameObject:
   m_ObjectHideFlags: 0
@@ -28812,6 +28994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - dialogue;You;I'm feeling dizzy right now...
@@ -29395,6 +29578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I can't see anything... Everything is black...
@@ -40531,6 +40715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - dialogue;You;..................
@@ -46431,6 +46616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Press [F] to use flashlight
@@ -50371,6 +50557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Magazines;Ultimate Blood Trace Detector is now ON SALE!!! Use it like
@@ -55446,7 +55633,6 @@ MonoBehaviour:
   empty: {fileID: 2100000, guid: b974a2df4a702e342905c4eca05a42c3, type: 2}
   eat: {fileID: 8300000, guid: a688d33076e51b147900298068750d9c, type: 3}
   ramen: {fileID: 1167279750}
-  environment: {fileID: 86664793}
   police: {fileID: 919132148606121571}
 --- !u!114 &798855382
 MonoBehaviour:
@@ -55913,6 +56099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - dialogue;You;I remember I left some instant ramen last morning.
@@ -56112,6 +56299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I see no reason to use a flashlight right now.
@@ -60604,7 +60792,6 @@ MonoBehaviour:
   monster: {fileID: 4815206499180676686}
   wall: {fileID: 2122946793}
   hammer: {fileID: 158867424864072527}
-  classroom: {fileID: 1559850593}
   normal: {fileID: 1899561999}
   blood: {fileID: 1561656024}
   jumpScare: {fileID: 8300000, guid: 5c084a03a40e0c8489f1aa3706074c2e, type: 3}
@@ -76285,6 +76472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;This door is blocked...
@@ -80410,6 +80598,10 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0, y: -0.05, z: 0.05}
   angle: {x: -90, y: 0, z: 0}
+  putBack: {fileID: 0}
+  additionalEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1169081736
 GameObject:
   m_ObjectHideFlags: 0
@@ -83897,6 +84089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I can't see anything... Everything is black...
@@ -101747,119 +101940,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459576179}
   m_Mesh: {fileID: 3531514662838924595, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
---- !u!1 &1461674405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461674406}
-  - component: {fileID: 1461674412}
-  - component: {fileID: 1461674411}
-  - component: {fileID: 1461674410}
-  m_Layer: 0
-  m_Name: Mop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1461674406
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461674405}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.45451948, y: 0.54167527, z: 0.45451948, w: 0.54167527}
-  m_LocalPosition: {x: -66.49528, y: 0.0905065, z: -82.19757}
-  m_LocalScale: {x: 108.50446, y: 108.5045, z: 108.50451}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1947430297}
-  m_LocalEulerAnglesHint: {x: -80, y: 180, z: 0}
---- !u!64 &1461674410
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461674405}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
---- !u!23 &1461674411
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461674405}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9ad909628175fed419bc1cc2933dca55, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1461674412
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461674405}
-  m_Mesh: {fileID: 8002452162299136939, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &1463354955
 GameObject:
   m_ObjectHideFlags: 0
@@ -109032,6 +109112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Not everything is as clean as it looks. Everything leaves
@@ -124880,6 +124961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Book;They can see it. The question is, can you? The Untimate Blood Trace
@@ -131819,7 +131901,6 @@ MonoBehaviour:
   door: {fileID: 1706313575}
   ramen: {fileID: 1167279750}
   light: {fileID: 1304477913}
-  environment: {fileID: 86664793}
   table: {fileID: 798855379}
 --- !u!114 &1923112047
 MonoBehaviour:
@@ -134323,7 +134404,6 @@ Transform:
   - {fileID: 1153848256}
   - {fileID: 292441717}
   - {fileID: 879841615}
-  - {fileID: 1461674406}
   - {fileID: 526992005}
   - {fileID: 804568561}
   - {fileID: 1457368}
@@ -151868,6 +151948,10 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0.3, y: -0.4, z: 0.1}
   angle: {x: -60, y: 0, z: 0}
+  putBack: {fileID: 0}
+  additionalEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4526225571286885970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153063,6 +153147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;Hello...?

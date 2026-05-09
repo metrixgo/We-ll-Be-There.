@@ -7,7 +7,6 @@ public class MonsterTrigger : MonoBehaviour
     [SerializeField] private GameObject monster;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject hammer;
-    [SerializeField] private GameObject classroom;
     [SerializeField] private GameObject normal;
     [SerializeField] private GameObject blood;
     [SerializeField] private AudioClip jumpScare;
@@ -53,7 +52,7 @@ public class MonsterTrigger : MonoBehaviour
         pc.CanRun(true);
         monster.GetComponent<Animator>().SetBool("Run", true);
         MainManager.instance.SetPrompt("Press [Shift] to run", true);
-        hammer.transform.SetParent(classroom.transform);
+        hammer.transform.SetParent(null);
         hammer.AddComponent<Rigidbody>();
         MainManager.instance.PlayMusic(chaseMusic);
         Destroy(normal);

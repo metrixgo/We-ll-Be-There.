@@ -33635,6 +33635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;This door is blocked...
@@ -34573,6 +34574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Press [F] to use flashlight
@@ -35450,6 +35452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - wait;4
@@ -38026,6 +38029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Magazines;Ultimate Blood Trace Detector is now ON SALE!!! Use it like
@@ -40460,6 +40464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;You;I see no reason to use a flashlight right now.
@@ -40870,6 +40875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Book;They can see it. The question is, can you? The Untimate Blood Trace
@@ -76396,6 +76402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
   selfDestructs: 0
   triggers:
   - dialogue;Tool Note;Not everything is as clean as it looks. Everything leaves

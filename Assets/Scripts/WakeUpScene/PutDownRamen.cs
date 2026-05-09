@@ -6,7 +6,6 @@ public class PutDownRamen : MonoBehaviour
     [SerializeField] private Material empty;
     [SerializeField] private AudioClip eat;
     [SerializeField] private GameObject ramen;
-    [SerializeField] private GameObject environment;
     [SerializeField] private GameObject police;
 
     private int state = 0;
@@ -16,8 +15,8 @@ public class PutDownRamen : MonoBehaviour
         if(state == 0)
         {
             state++;
-            ramen.transform.SetParent(environment.transform);
-            ramen.transform.localPosition = new Vector3(-1.55f, 0.05f, 1.65f);
+            ramen.transform.SetParent(null);
+            ramen.transform.position = new Vector3(-55.3375893f, 1.64140952f, -66.3499985f);
             ramen.transform.rotation = Quaternion.Euler(-90.0f, 0, 0);
             name = "Eat";
             MainManager.instance.SetPrompt("Eat");

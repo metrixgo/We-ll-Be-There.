@@ -14,8 +14,6 @@ public class PickUpItem : MonoBehaviour
     {
         if (MainManager.instance.gameState != 1) return;
 
-        MainManager.instance.AddItem(name);
-        MainManager.instance.PlayEffect(soundEffect);
         if (hold != null)
         {
             if (hold.transform.childCount > 0)
@@ -24,6 +22,8 @@ public class PickUpItem : MonoBehaviour
             }
             else
             {
+                MainManager.instance.AddItem(name);
+                MainManager.instance.PlayEffect(soundEffect);
                 transform.SetParent(hold.transform);
                 transform.localPosition = pos;
                 transform.localRotation = Quaternion.Euler(angle);
@@ -38,6 +38,8 @@ public class PickUpItem : MonoBehaviour
         }
         else
         {
+            MainManager.instance.AddItem(name);
+            MainManager.instance.PlayEffect(soundEffect);
             additionalEffect.Invoke();
             Destroy(gameObject);
         }

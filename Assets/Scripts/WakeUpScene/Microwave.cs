@@ -10,7 +10,6 @@ public class Microwave : MonoBehaviour
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject ramen;
     [SerializeField] private GameObject light;
-    [SerializeField] private GameObject environment;
     [SerializeField] private GameObject table;
 
     private bool opened = false;
@@ -46,8 +45,8 @@ public class Microwave : MonoBehaviour
             {
                 ad.clip = putIn;
                 ad.Play();
-                ramen.transform.SetParent(environment.transform);
-                ramen.transform.localPosition = new Vector3(-4.77f, 0.16f, 4.05f);
+                ramen.transform.SetParent(null);
+                ramen.transform.position = new Vector3(-58.5575905f, 1.75140953f, -63.9500008f);
                 ramen.transform.rotation = Quaternion.Euler(-90.0f, 0, 0);
                 state++;
             }

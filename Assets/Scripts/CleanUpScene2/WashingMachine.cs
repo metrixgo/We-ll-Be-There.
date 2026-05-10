@@ -56,7 +56,7 @@ public class WashingMachine : MonoBehaviour
         else if (state == 4)
         {
             if (!finished) MainManager.instance.AddTrigger("dialogue;You;It's still washing...");
-            else MainManager.instance.AddTrigger("It's done. I think I'll just leave the clothes in there.");
+            else MainManager.instance.AddTrigger("dialogue;You;It's done. I think I'll just leave the clothes in there.");
         }
 
     }
@@ -74,6 +74,8 @@ public class WashingMachine : MonoBehaviour
             yield return null;
         }
         finished = true;
+        CleanUpClock.clock.Clean("clothes", true);
+        MainManager.instance.RemoveTask("Clothes?");
         ad.clip = beep;
         ad.Play();
     }

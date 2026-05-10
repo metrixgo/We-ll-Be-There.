@@ -25,6 +25,9 @@ public class Recover : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         MainManager.instance.PlayEffect(dig);
         cover.SetActive(true);
+        yield return new WaitForSeconds(dig.length);
+        CleanUpClock.clock.Clean("cover", true);
+        CleanUpClock.clock.Clean("shovel", false);
         Destroy(gameObject);
     }
 }

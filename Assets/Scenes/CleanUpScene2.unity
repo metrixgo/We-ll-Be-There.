@@ -6315,6 +6315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 700658142}
   - {fileID: 1153848256}
   - {fileID: 667629298}
   - {fileID: 1373045041}
@@ -6329,10 +6330,10 @@ Transform:
   - {fileID: 580300985}
   - {fileID: 62038950}
   - {fileID: 843044295}
+  - {fileID: 393443908}
   - {fileID: 1947430297}
   - {fileID: 875778758}
   - {fileID: 1730849475}
-  - {fileID: 700658142}
   - {fileID: 1812846950}
   - {fileID: 968684075}
   m_Father: {fileID: 0}
@@ -27646,10 +27647,12 @@ GameObject:
   - component: {fileID: 393443908}
   - component: {fileID: 393443911}
   - component: {fileID: 393443910}
-  - component: {fileID: 393443909}
+  - component: {fileID: 393443914}
+  - component: {fileID: 393443913}
+  - component: {fileID: 393443912}
   m_Layer: 0
-  m_Name: Bote
-  m_TagString: Untagged
+  m_Name: Mop Bucket
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27662,35 +27665,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393443907}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -73.70769, y: -0.15133476, z: -81.78281}
-  m_LocalScale: {x: 91.51716, y: 91.51716, z: 91.51716}
+  m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.50000006, w: 0.4999999}
+  m_LocalPosition: {x: -4.233238, y: -0.8045409, z: -0.7747803}
+  m_LocalScale: {x: 91.51718, y: 91.51717, z: 91.517166}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1947430297}
+  m_Father: {fileID: 86664794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &393443909
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393443907}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1024212901188704161, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!23 &393443910
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27749,6 +27730,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393443907}
   m_Mesh: {fileID: -1024212901188704161, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!114 &393443912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393443907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81faf6bf542ddf141bca46d6cfb42c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MopBucket
+  washing: {fileID: 8300000, guid: 3fcd40ec391ca884b9e8691224c0f13d, type: 3}
+--- !u!114 &393443913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393443907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 393443912}
+        m_TargetAssemblyTypeName: MopBucket, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &393443914
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393443907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0058915783, y: 0.0038723596, z: 0.006}
+  m_Center: {x: 0.00000005961244, y: 0.0000000041249506, z: 0.002}
 --- !u!1 &395557339
 GameObject:
   m_ObjectHideFlags: 0
@@ -41331,8 +41373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!114 &580707184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44323,8 +44365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!114 &636076616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54980,8 +55022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!114 &797697954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56923,8 +56965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!114 &827883794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58273,8 +58315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!1 &856445197
 GameObject:
   m_ObjectHideFlags: 0
@@ -77754,7 +77796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151069130}
   m_Layer: 0
-  m_Name: Bloods
+  m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128967,6 +129009,9 @@ MonoBehaviour:
   - dialogue;You;Looks like I need to hurry...
   - canrun;1
   - flashprompt;Press [Shift] to run
+  - task;Mop?
+  - task;Shovel?
+  - task;Clothes?
 --- !u!65 &1916097438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131187,7 +131232,6 @@ Transform:
   - {fileID: 526980297}
   - {fileID: 1113475019}
   - {fileID: 679208517}
-  - {fileID: 393443908}
   - {fileID: 1449222505}
   - {fileID: 1796226027}
   - {fileID: 1383967041}
@@ -136330,8 +136374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9643a61746d4f7747b0b50d606808bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeBlood
-  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
   flashlight: {fileID: 9103567627402212346}
+  cleanEffect: {fileID: 8300000, guid: 678e85b0947903840bc29da4a315e2a9, type: 3}
 --- !u!114 &2005881519
 MonoBehaviour:
   m_ObjectHideFlags: 0

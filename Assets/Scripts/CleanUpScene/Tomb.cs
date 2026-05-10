@@ -54,8 +54,15 @@ public class Tomb : MonoBehaviour
         }
         else if (state == 2)
         {
-            state = 3;
-            StartCoroutine(Rebury());
+            if (!MainManager.instance.HasItem("Shovel"))
+            {
+                MainManager.instance.AddTrigger("dialogue;You;I need a shovel to bury this.");
+            }
+            else
+            {
+                state = 3;
+                StartCoroutine(Rebury());
+            }
         }
     }
 
@@ -90,11 +97,9 @@ public class Tomb : MonoBehaviour
         Destroy(dirtPile);
         dirtCover.SetActive(true);
         trigger.SetActive(true);
-        shovel.transform.SetParent(null);
-        shovel.transform.position = new Vector3(-72.8614883f, 0.203619629f, 359.659332f);
-        shovel.transform.rotation = Quaternion.Euler(0, 150.0f, -90.0f);
         yield return new WaitForSeconds(9.0f);
         MainManager.instance.PlayMusic(night);
+        shower.tag = "Interactable";
         shower.tag = "Interactable";
         pc.CanRun(false);
         Destroy(gameObject);

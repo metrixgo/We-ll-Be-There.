@@ -11113,6 +11113,161 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236372445}
   m_Mesh: {fileID: 6490120760690703601, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &240032283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240032284}
+  - component: {fileID: 240032289}
+  - component: {fileID: 240032288}
+  - component: {fileID: 240032287}
+  - component: {fileID: 240032286}
+  - component: {fileID: 240032285}
+  m_Layer: 0
+  m_Name: Put Down
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &240032284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -256.0887, y: 0.6913347, z: -79.56858}
+  m_LocalScale: {x: 47.619038, y: 47.619026, z: 47.619038}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722271296}
+  m_LocalEulerAnglesHint: {x: 0, y: 150, z: -90}
+--- !u!114 &240032285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59edc55f37d27d949a6e05626b138a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PutDownItem
+  soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
+  item: {fileID: 1255719578}
+--- !u!114 &240032286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240032285}
+        m_TargetAssemblyTypeName: PutDownItem, Assembly-CSharp
+        m_MethodName: Putdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &240032287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00332281, y: 0.0030516444, z: 0.016117653}
+  m_Center: {x: -0.0002657162, y: -0.000026403528, z: 0.0014855793}
+--- !u!23 &240032288
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9633e2aa8d4557549a1d4f29ee87a23c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &240032289
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240032283}
+  m_Mesh: {fileID: 8556253635750604653, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &240800392
 GameObject:
   m_ObjectHideFlags: 0
@@ -63094,7 +63249,7 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 180}
-  putBack: {fileID: 0}
+  putBack: {fileID: 240032283}
   additionalEffect:
     m_PersistentCalls:
       m_Calls:
@@ -84539,7 +84694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1643533327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89237,10 +89392,11 @@ Transform:
   m_Children:
   - {fileID: 721690769}
   - {fileID: 13564622}
+  - {fileID: 1255719579}
+  - {fileID: 240032284}
   - {fileID: 896262261}
   - {fileID: 1923032806975141448}
   - {fileID: 2971105339879324615}
-  - {fileID: 1255719579}
   - {fileID: 1643533330}
   - {fileID: 8946049342677173199}
   - {fileID: 1065190382}

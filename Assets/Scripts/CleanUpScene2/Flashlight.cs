@@ -8,7 +8,6 @@ public class Flashlight : MonoBehaviour
 
     private bool pickedUp = false;
     private bool opened = false;
-    private int count = 0;
     private Light bulb;
     private MeshRenderer mr;
 
@@ -58,10 +57,5 @@ public class Flashlight : MonoBehaviour
     public bool IsOpened()
     {
         return opened;
-    }
-
-    public void FinishedOne()
-    {
-        count++;
     }
 }

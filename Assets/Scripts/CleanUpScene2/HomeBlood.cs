@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HomeBlood : MonoBehaviour
 {
-    [SerializeField] private AudioClip cleanEffect;
     [SerializeField] private Flashlight flashlight;
+    [SerializeField] private AudioClip cleanEffect;
 
     private Material mat;
     private int layers = 3;
@@ -30,7 +30,7 @@ public class HomeBlood : MonoBehaviour
             MainManager.instance.AddTrigger("wait;"+(cleanEffect.length + 0.1f));
             if (layers == 0)
             {
-                flashlight.FinishedOne();
+                CleanUpClock.clock.FinishedOne();
                 Destroy(gameObject);
             }
         }

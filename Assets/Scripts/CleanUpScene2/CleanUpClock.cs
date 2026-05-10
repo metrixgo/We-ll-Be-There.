@@ -1,13 +1,30 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class CleanUpClock : MonoBehaviour
 {
+    public static CleanUpClock clock;
+
     [SerializeField] private TextMeshProUGUI countdown;
 
     private float length = 120.0f;
     private float seconds;
+    private int count = 0;
+    private Dictionary<string, bool> status = new Dictionary<string, bool>()
+    {
+        {"covered", false},
+        {"shovel", false},
+        {"mop", false},
+        {"clothes", false},
+        {"mopbucket", false},
+    };
+
+    private void Awake()
+    {
+        clock = this;
+    }
 
     private void Start()
     {
@@ -42,5 +59,15 @@ public class CleanUpClock : MonoBehaviour
     public float GetProgress()
     {
         return 1.0f - seconds/length;
+    }
+
+    public void Clean(string s, bool b)
+    {
+        status[s] = b;
+    }
+
+    public void FinishedOne()
+    {
+        count++;
     }
 }

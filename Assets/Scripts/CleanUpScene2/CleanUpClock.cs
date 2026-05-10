@@ -6,14 +6,17 @@ public class CleanUpClock : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI countdown;
 
+    private float length = 120.0f;
+    private float seconds;
+
     private void Start()
     {
+        seconds = length;
         StartCoroutine(CountDown());
     }
 
     private IEnumerator CountDown()
     {
-        float seconds = 120;
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
 
@@ -34,5 +37,10 @@ public class CleanUpClock : MonoBehaviour
             yield return null;
         }
         countdown.text = "0:00";
+    }
+
+    public float GetProgress()
+    {
+        return 1.0f - seconds/length;
     }
 }

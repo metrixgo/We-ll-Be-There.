@@ -8229,7 +8229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6767da25a764dfc4ba51e74459371fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Whispers
-  c: {fileID: 700658147}
+  c: {fileID: 0}
 --- !u!1 &137958623
 GameObject:
   m_ObjectHideFlags: 0
@@ -24950,7 +24950,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75d6a353d1b712a4faa2038852028fae, type: 2}
-  m_sharedMaterial: {fileID: 2390681825956094765, guid: 18ecdbb864cf7d24e8949f065b5debd5, type: 2}
+  m_sharedMaterial: {fileID: -8936784441542627655, guid: 75d6a353d1b712a4faa2038852028fae, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25016,7 +25016,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &448550636
@@ -39897,7 +39897,6 @@ GameObject:
   - component: {fileID: 700658145}
   - component: {fileID: 700658144}
   - component: {fileID: 700658143}
-  - component: {fileID: 700658147}
   - component: {fileID: 700658148}
   m_Layer: 0
   m_Name: Clock
@@ -40092,19 +40091,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700658141}
   m_Mesh: {fileID: -9033993755548025789, guid: ec03bcd7515dc6f4e89022d7077d76cc, type: 3}
---- !u!114 &700658147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700658141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89529a320a18a54d8e25e15fedc56cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CleanUpClock
-  countdown: {fileID: 1149441854}
 --- !u!114 &700658148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87099,7 +87085,7 @@ MonoBehaviour:
   m_text: Speaker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75d6a353d1b712a4faa2038852028fae, type: 2}
-  m_sharedMaterial: {fileID: 2390681825956094765, guid: 18ecdbb864cf7d24e8949f065b5debd5, type: 2}
+  m_sharedMaterial: {fileID: -8936784441542627655, guid: 75d6a353d1b712a4faa2038852028fae, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -87165,7 +87151,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1539813273
@@ -92202,7 +92188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1639247031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102911,15 +102897,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.38039216}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5e4036020b3da8747bfa46cbef4fbc77, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

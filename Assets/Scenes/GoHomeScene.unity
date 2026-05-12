@@ -2211,6 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - flashprompt;Turn Left
@@ -3991,6 +3992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 0
   triggers:
   - dialogue;You;Walking home this late might be a bad idea.
@@ -49212,6 +49214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - flashprompt;
@@ -53062,15 +53065,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.38039216}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5e4036020b3da8747bfa46cbef4fbc77, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -59633,6 +59636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - changescreen;#000000FF;#00000000;2.0
@@ -65172,6 +65176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - flashprompt;Turn Right
@@ -71022,6 +71027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddDialogue
+  isPhysical: 1
   selfDestructs: 1
   triggers:
   - flashprompt;

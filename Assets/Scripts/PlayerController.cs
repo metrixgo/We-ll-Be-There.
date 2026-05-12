@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour
     private float velocityY = -1.0f;
     private Vector3 move;
     private bool canRun = false;
+    private bool freezed = false;
     private int state = 0;
-    private CharacterController characterController;
+    private CharacterController characterController; 
     private Interactable curItem;
     private Interactable newItem;
 
@@ -45,13 +46,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float f = speed;
-        if (canRun && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) f = runSpeed;
-        move = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * f;
+        if (!freezed)
+        {
+            float f = speed;
+            if (canRun && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) f = runSpeed;
+            move = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * f;
 
-        if (characterController.isGrounded) velocityY = -1.0f;
-        else velocityY -= 9.8f * Time.deltaTime;
-        characterController.Move((move + Vector3.up * velocityY) * Time.deltaTime);
+            if (characterController.isGrounded) velocityY = -1.0f;
+            else velocityY -= 9.8f * Time.deltaTime;
+            characterController.Move((move + Vector3.up * velocityY) * Time.deltaTime);
+        }
+
         rotationX -= Input.GetAxis("Mouse Y") * sensitivity;
         rotationX = Mathf.Clamp(rotationX, -90.0f, 90.0f);
         cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
@@ -84,6 +89,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && MainManager.instance.gameState == 1 && curItem) curItem.Interact();
 
+    }
+
+    public void Freeze(bool b)
+    {
+        freezed = b;
     }
 
     public void CanRun(bool b)

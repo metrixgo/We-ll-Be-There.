@@ -6,6 +6,7 @@ using UnityEngine;
 public class CleanUpClock : MonoBehaviour
 {
     public static CleanUpClock clock;
+    public static string errorType;
 
     [SerializeField] private TextMeshProUGUI countdown;
 
@@ -81,7 +82,16 @@ public class CleanUpClock : MonoBehaviour
     {
         MainManager.instance.AddTrigger("wait;1");
         yield return new WaitForSeconds(1.0f);
-        if (status["covered"] && status["shovel"] && status["mop"] && status["clothes"] && status["mopbucket"] && count == 6) Debug.Log("YOU WIN");
+        bool flg = false;
+        if (!status["mop"]) errorType = "mop";
+        else if (!status["shovel"]) errorType = "shovel";
+        else if (!status["clothes"]) errorType = "clothes";
+        else if (!status["covered"]) errorType = "covered";
+        else if (count != 6) errorType = "blood";
+        else if (!status["mopbucket"]) errorType = "mopbucket";
+        else flg = true;
+
+        if(flg) Debug.Log("YOU WIN");
         else MainManager.instance.LoadScene("Ending2");
     }
 }

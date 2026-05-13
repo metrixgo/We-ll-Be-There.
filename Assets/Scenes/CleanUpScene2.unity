@@ -7501,7 +7501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6767da25a764dfc4ba51e74459371fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Whispers
-  c: {fileID: 0}
+  c: {fileID: 1848583646}
 --- !u!1 &137958623
 GameObject:
   m_ObjectHideFlags: 0

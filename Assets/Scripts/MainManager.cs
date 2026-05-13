@@ -224,6 +224,7 @@ public class MainManager : MonoBehaviour
         {"It's still washing...", "它还在洗..."},
         {"It's done. I think I'll just leave the clothes in there.", "它结束了。我觉得我把衣服放里面就行了。"},
         {"Mop Bucket", "拖把桶"},
+        {"I can wash things here. I also need to clean this up when I'm done using it.", "我可以在这里洗东西。我在用完以后还得把这个也清理了。"},
     };
 
     private void Awake()

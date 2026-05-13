@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class CleanUpClock : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class CleanUpClock : MonoBehaviour
         {"shovel", false},
         {"mop", false},
         {"clothes", false},
-        {"mopbucket", false},
+        {"mopbucket", true},
     };
 
     private void Awake()
@@ -54,6 +55,11 @@ public class CleanUpClock : MonoBehaviour
             yield return null;
         }
         countdown.text = "0:00";
+    }
+
+    public bool OnlyBucket()
+    {
+        return status["covered"] && status["shovel"] && status["mop"] && count == 6;
     }
 
     public float GetProgress()

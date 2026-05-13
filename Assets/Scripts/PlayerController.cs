@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     public void LookAt(Vector3 pos, float l)
     {
-        Vector3 dir = (pos - transform.position).normalized;
+        Vector3 dir = (pos - transform.Find("Camera").position).normalized;
         float y = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
         float x = -Mathf.Asin(dir.y) * Mathf.Rad2Deg;
         StartCoroutine(TurnTo(y, x, l));

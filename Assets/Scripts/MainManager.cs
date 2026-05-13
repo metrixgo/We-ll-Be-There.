@@ -202,7 +202,7 @@ public class MainManager : MonoBehaviour
         {"Hello. The local police discovered a crashed bike last night. You were acting very suspiciously, and you were right near the bicycle when I heard the crash. We have listed you as a suspect in the death of an important person.", "你好。当地警方在昨晚发现了一辆被撞毁的自行车。你当时的行为非常可疑，并且在我听到撞击声时你就在自行车附近。我们已经将你列为导致一个重要人物死亡的嫌疑人。"},
         {"Oh I'm sorry I didn't do anything I was just going back home...", "哦对不起我啥都没做我就是在回家..."},
         {"You have the right to remain silent. Anything you say can and will be used against you in a court of law. You have the right to talk to a lawyer for advice before we ask you any questions.", "你有权保持沉默，但你所说的每一句话都可以在法庭上作为指控你的不利证据。审问前，你有权与律师谈话。"},
-        {"A group of police will arrive after 2 minutes with a warrant to search your house. Any evidence of crimes will be used directly against you. Please be prepared.", "一队警察会在两分钟后带着搜查令到你的房子进行搜查。任何犯罪证据都将直接用于指控你。请你做好准备。"},
+        {"A group of police will arrive after three minutes with a warrant to search your house. Any evidence of crimes will be used directly against you. Please be prepared.", "一队警察会在三分钟后带着搜查令到你的房子进行搜查。任何犯罪证据都将直接用于指控你。请你做好准备。"},
         {"Alright...?!", "好吧...？!"},
         {"Looks like I need to hurry...", "看起来我得快一点了..."},
         {"Magazines", "杂志"},
@@ -221,10 +221,11 @@ public class MainManager : MonoBehaviour
         {"Mop?", "拖把？"},
         {"Shovel?", "铲子？"},
         {"Clothes?", "衣服？"},
+        {"Sink", "水池"},
         {"It's still washing...", "它还在洗..."},
         {"It's done. I think I'll just leave the clothes in there.", "它结束了。我觉得我把衣服放里面就行了。"},
         {"Mop Bucket", "拖把桶"},
-        {"I can wash things here. I also need to clean this up when I'm done using it.", "我可以在这里洗东西。我在用完以后还得把这个也清理了。"},
+        {"I can wash my mop bucket here. I believe it's somewhere on the first floor.", "我可以在这里洗我的拖把桶。我相信它在一层的某个地方。"},
     };
 
     private void Awake()

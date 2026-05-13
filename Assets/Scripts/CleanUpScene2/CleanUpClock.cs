@@ -9,7 +9,7 @@ public class CleanUpClock : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI countdown;
 
-    private float length = 120.0f;
+    private float length = 180.0f;
     private float seconds;
     private int count = 0;
     private Dictionary<string, bool> status = new Dictionary<string, bool>()
@@ -57,9 +57,9 @@ public class CleanUpClock : MonoBehaviour
         StartCoroutine(TimeUp());
     }
 
-    public bool OnlyBucket()
+    public bool GetStatus(string s)
     {
-        return status["covered"] && status["shovel"] && status["mop"] && count == 6;
+        return status[s];
     }
 
     public float GetProgress()

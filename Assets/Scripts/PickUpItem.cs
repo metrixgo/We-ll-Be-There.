@@ -10,6 +10,13 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private GameObject putBack;
     [SerializeField] private UnityEvent additionalEffect;
 
+    private Collider coll;
+
+    private void Start()
+    {
+        coll = GetComponent<Collider>();
+    }
+
     public void PickUp()
     {
         if (MainManager.instance.gameState != 1) return;
@@ -32,7 +39,10 @@ public class PickUpItem : MonoBehaviour
                 if(putBack != null)
                 {
                     putBack.SetActive(true);
-
+                }
+                if(coll != null)
+                {
+                    coll.enabled = false;
                 }
             }
         }

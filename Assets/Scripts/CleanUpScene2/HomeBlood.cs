@@ -28,7 +28,7 @@ public class HomeBlood : MonoBehaviour
             mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, --layers / 3.0f + 0.1f);
             MainManager.instance.PlayEffect(cleanEffect);
             MainManager.instance.AddTrigger("wait;"+(cleanEffect.length + 0.1f));
-            CleanUpClock.clock.Clean("Mop", false);
+            CleanUpClock.clock.Clean("mop", false);
             if (layers == 0)
             {
                 CleanUpClock.clock.FinishedOne();

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 public class CleanUpClock : MonoBehaviour
 {
@@ -55,6 +54,7 @@ public class CleanUpClock : MonoBehaviour
             yield return null;
         }
         countdown.text = "0:00";
+        StartCoroutine(TimeUp());
     }
 
     public bool OnlyBucket()
@@ -75,5 +75,13 @@ public class CleanUpClock : MonoBehaviour
     public void FinishedOne()
     {
         count++;
+    }
+
+    private IEnumerator TimeUp()
+    {
+        MainManager.instance.AddTrigger("wait;1");
+        yield return new WaitForSeconds(1.0f);
+        if (status["covered"] && status["shovel"] && status["mop"] && status["clothes"] && status["mopbucket"] && count == 6) Debug.Log("YOU WIN");
+        else MainManager.instance.LoadScene("Ending2");
     }
 }

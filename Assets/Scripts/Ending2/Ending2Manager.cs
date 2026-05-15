@@ -43,6 +43,8 @@ public class Ending2Manager : MonoBehaviour
     {
         MainManager.instance.AddTrigger("wait;6.6");
         MainManager.instance.AddTrigger("changescreen;#00000000;#ff0000ff;0");
+        MainManager.instance.AddTrigger("wait;0.2");
+        MainManager.instance.AddTrigger("changescreen;#ff0000ff;#00000000;2");
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
         MainManager.instance.StopMusic();
@@ -63,7 +65,7 @@ public class Ending2Manager : MonoBehaviour
         float t = 0;
         while(t < 0.7f)
         {
-            secondPlayer.transform.position = Vector3.Lerp(startPos, endPos, t);
+            secondPlayer.transform.position = Vector3.Lerp(startPos, endPos, t / 0.7f);
             secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 0.7f);
             t += Time.deltaTime;
             yield return null;
@@ -74,25 +76,31 @@ public class Ending2Manager : MonoBehaviour
         endPos = new Vector3(-51.7f, 2.2f, -70.8f);
         endRot = new Vector3(20.0f, 80.0f, 0);
         t = 0;
-        while (t < 1.0f)
+        bool flg = false;
+        while (t < 1.2f)
         {
-            secondPlayer.transform.position = Vector3.Lerp(startPos, endPos, t);
-            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t);
+            if(t > 1.0f && !flg)
+            {
+                flg = true;
+                police.SetActive(true);
+            }
+            secondPlayer.transform.position = Vector3.Lerp(startPos, endPos, t / 1.2f);
+            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 1.2f);
             t += Time.deltaTime;
             yield return null;
         }
         startRot = endRot;
         endRot = new Vector3(0, 0, 0);
         t = 0;
-        police.SetActive(true);
         while (t < 0.2f)
         {
             secondPlayer.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t / 0.2f));
             t += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         MainManager.instance.PlayEffect(hit);
+        yield return new WaitForSeconds(1.0f);
     }
 
     private IEnumerator EndIt()

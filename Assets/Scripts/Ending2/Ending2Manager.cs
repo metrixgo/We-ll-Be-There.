@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,8 +52,9 @@ public class Ending2Manager : MonoBehaviour
         MainManager.instance.AddTrigger("wait;0.2");
         MainManager.instance.AddTrigger("changescreen;#ff0000ff;#000000ff;2");
         MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("changescreen;#000000ff;#00000088;5");
-        MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;2");
+        MainManager.instance.AddTrigger("flashscreen;#000000ff;#00000088;5");
+        MainManager.instance.AddTrigger("wait;2");
+        MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;2;true");
         string s = "";
         if (CleanUpClock.errorType == "mop") s = "We found his mop on the second floor covered in blood. We believe it was used to clean up the crime scene.";
         else if (CleanUpClock.errorType == "shovel") s = "We found his shovel in the garage covered with plastic fibers and blood. We believe it was used to hide the body.";
@@ -62,7 +62,8 @@ public class Ending2Manager : MonoBehaviour
         else if (CleanUpClock.errorType == "covered") s = "We found a suspicious spot in the backyard. We dug down and saw the actual body.";
         else if (CleanUpClock.errorType == "blood") s = "We used ultraviolet lights to find blood traces on the ground. We believe it was from the crime scene that he forgot to clean up.";
         else if (CleanUpClock.errorType == "mopbucket") s = "We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.";
-
+        MainManager.instance.AddTrigger("flashdialogue;Policeman;" + s + ";3;true");
+        MainManager.instance.AddTrigger("flashdialogue;Policewoman;Nice. Now shall we go eat lunch?;2;true");
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
         MainManager.instance.StopMusic();
@@ -126,6 +127,10 @@ public class Ending2Manager : MonoBehaviour
         police.transform.rotation = new Quaternion(0f, -0.84f, 0f, -0.55f);
         policeman.SetActive(true);
         Destroy(hammer);
+        secondPlayer.transform.position = new Vector3(-51.56f, 0.81f, -71.27f);
+        startRot = new Vector3(50.01f, -10.29f, 0);
+        endRot = new Vector3(-20f, 20.0f, 0);
+        secondPlayer.transform.rotation = Quaternion.Euler(startRot);
         yield return new WaitForSeconds(4.2f);
 
         ad.spatialBlend = 0;
@@ -136,11 +141,14 @@ public class Ending2Manager : MonoBehaviour
         t = 0;
         while (t < 5.0f)
         {
-            ad.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 4.0f);
+            ad.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 5.0f);
+            secondPlayer.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t / 5.0f));
             t += Time.deltaTime;
             yield return null;
         }
         ad.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f;
+
+
     }
 
     private IEnumerator EndIt()

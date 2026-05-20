@@ -449,6 +449,10 @@ public class MainManager : MonoBehaviour
             {
                 yield return StartCoroutine(ChangeScreen(ParseColor(s[1]), ParseColor(s[2]), float.Parse(s[3])));
             }
+            else if (key == "flashscreen")
+            {
+                StartCoroutine(ChangeScreen(ParseColor(s[1]), ParseColor(s[2]), float.Parse(s[3])));
+            }
             else if (key == "moveplayer")
             {
                 Vector3 dir = new Vector3(float.Parse(s[1]), float.Parse(s[2]), float.Parse(s[3]));
@@ -478,9 +482,9 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "flashdialogue")
             {
-                gameState = 1;
+                if (s.Length <= 3) gameState = 1;
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
-                gameState = 0;
+                if (s.Length <= 3) gameState = 0;
             }
             else if (key == "task")
             {

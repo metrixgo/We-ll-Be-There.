@@ -53,17 +53,17 @@ public class Ending2Manager : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#ff0000ff;#000000ff;2");
         MainManager.instance.AddTrigger("wait;3");
         MainManager.instance.AddTrigger("flashscreen;#000000ff;#00000088;5");
-        MainManager.instance.AddTrigger("wait;2");
-        MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;2;true");
+        MainManager.instance.AddTrigger("wait;3");
+        MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;6;true");
         string s = "";
-        if (CleanUpClock.errorType == "mop") s = "We found his mop on the second floor covered in blood. We believe it was used to clean up the crime scene.";
+        if (CleanUpClock.errorType == "mop") s = "We found his mop on the second floor with blood traces on it. We believe it was used to clean up the crime scene.";
         else if (CleanUpClock.errorType == "shovel") s = "We found his shovel in the garage covered with plastic fibers and blood. We believe it was used to hide the body.";
-        else if (CleanUpClock.errorType == "clothes") s = "We found his clothes with blood traces on them. We believe it was from the crime scene.";
+        else if (CleanUpClock.errorType == "clothes") s = "We found his clothes with blood traces on them. We believe the blood came from the crime scene.";
         else if (CleanUpClock.errorType == "covered") s = "We found a suspicious spot in the backyard. We dug down and saw the actual body.";
-        else if (CleanUpClock.errorType == "blood") s = "We used ultraviolet lights to find blood traces on the ground. We believe it was from the crime scene that he forgot to clean up.";
-        else if (CleanUpClock.errorType == "mopbucket") s = "We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.";
-        MainManager.instance.AddTrigger("flashdialogue;Policeman;" + s + ";3;true");
-        MainManager.instance.AddTrigger("flashdialogue;Policewoman;Nice. Now shall we go eat lunch?;2;true");
+        else if (CleanUpClock.errorType == "blood") s = "We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.";
+        else s = "We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.";
+        MainManager.instance.AddTrigger("flashdialogue;Policeman;" + s + ";8;true");
+        MainManager.instance.AddTrigger("flashdialogue;Policewoman;Nice. Now shall we go eat lunch?;3;true");
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
         MainManager.instance.StopMusic();
@@ -127,9 +127,9 @@ public class Ending2Manager : MonoBehaviour
         police.transform.rotation = new Quaternion(0f, -0.84f, 0f, -0.55f);
         policeman.SetActive(true);
         Destroy(hammer);
-        secondPlayer.transform.position = new Vector3(-51.56f, 0.81f, -71.27f);
+        secondPlayer.transform.position = new Vector3(-51.56f, 1.2f, -71.27f);
         startRot = new Vector3(50.01f, -10.29f, 0);
-        endRot = new Vector3(-20f, 20.0f, 0);
+        endRot = new Vector3(-20f, 10.0f, 0);
         secondPlayer.transform.rotation = Quaternion.Euler(startRot);
         yield return new WaitForSeconds(4.2f);
 
@@ -148,7 +148,29 @@ public class Ending2Manager : MonoBehaviour
         }
         ad.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f;
 
+        t = 0;
+        while(MainManager.instance.gameState != 1)
+        {
+            secondPlayer.transform.rotation = Quaternion.Euler(-20.0f + Mathf.Sin(t) * 2.0f, 10.0f + Mathf.Sin(t * 1.5f) * 2.0f, 0);
+            t += Time.deltaTime;
+            yield return null;
+        }
 
+        MainManager.instance.AddTrigger("changescreen;#00000088;#000000ff;2");
+        MainManager.instance.AddTrigger("ending;ENDING 2/5: EXPOSED;You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.");
+        startPos = secondPlayer.transform.position;
+        endPos = new Vector3(-51.56f, 0.6f, -70.0f);
+        startRot = secondPlayer.transform.eulerAngles;
+        endRot = new Vector3(90.0f, 10.0f, 0);
+        t = 0;
+        while (t < 2.0f)
+        {
+            ad.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, 0, t / 5.0f);
+            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 5.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        ad.Stop();
     }
 
     private IEnumerator EndIt()

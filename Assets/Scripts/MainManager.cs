@@ -226,6 +226,14 @@ public class MainManager : MonoBehaviour
         {"It's done. I think I'll just leave the clothes in there.", "它结束了。我觉得我把衣服放里面就行了。"},
         {"Mop Bucket", "拖把桶"},
         {"I can wash my mop bucket here. I believe it's somewhere on the first floor.", "我可以在这里洗我的拖把桶。我相信它在一层的某个地方。"},
+        {"I got him. This thing can finally end... How did you know it was him?", "我搞定他了。这件事终于可以结束了...你怎么知道是他的？"},
+        {"We found his mop on the second floor with blood traces on it. We believe it was used to clean up the crime scene.", "我们在二楼发现了他沾有血迹的拖把。我们相信那是用来清理案发现场的。"},
+        {"We found his shovel in the garage covered with plastic fibers and blood. We believe it was used to hide the body.", "我们在车库里发现了他沾有塑料纤维和血迹的铲子。我们相信那是用来掩盖尸体的。"},
+        {"We found his clothes with blood traces on them. We believe the blood came from the crime scene.", "我们发现了他带有血迹的衣服。我们相信那血迹是来自案发现场的。"},
+        {"We found a suspicious spot in the backyard. We dug down and saw the actual body.", "我们在后院发现了一处可疑地点。我们往下挖开以后看到了尸体。"},
+        {"We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.", "我们用紫外线灯光发现了地上的血迹。我们相信那是他忘记清理的从案发现场带来的血迹。"},
+        {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
+        {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
     };
 
     private void Awake()
@@ -591,6 +599,7 @@ public class MainManager : MonoBehaviour
         }
         endScreen.color = Color.black;
         yield return new WaitForSeconds(2.0f);
+        screen.color = Color.clear;
         effectsPlayer.Play();
 
         t = 0;

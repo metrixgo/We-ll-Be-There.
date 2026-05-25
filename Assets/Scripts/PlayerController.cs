@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
+
         if (!freezed)
         {
             float f = speed;
@@ -176,6 +178,7 @@ public class PlayerController : MonoBehaviour
 
             if (prev != state)
             {
+                StartCoroutine(ChangeCameraField(prev, state));
                 yield return StartCoroutine(ResetCamera(mid));
                 t = 0;
             }
@@ -204,17 +207,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetCamera(float mid)
+    private IEnumerator ChangeCameraField(int prev, int stat)
     {
-        Transform cam = transform.Find("Camera");
-        while (Mathf.Abs(cam.localPosition.y - mid) > 0.002f)
+        float t = 0;
+        float startF = cam.fieldOfView;
+        while (t < 0.3f)
         {
-            Vector3 temp = new Vector3(cam.localPosition.x, cam.localPosition.y, cam.localPosition.z);
-            if (temp.y > mid) temp.y -= 0.0015f;
-            else temp.y += 0.0015f;
-            cam.localPosition = temp;
+            if (stat != state) break;
+            if (prev == 1 && stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 80.0f, t / 0.3f);
+            else if (prev == 2 && stat == 1) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.3f);
+            else break;
+            t += Time.deltaTime;
             yield return null;
         }
-        cam.localPosition = new Vector3(cam.localPosition.x, mid, cam.localPosition.z);
+    }
+
+    private IEnumerator ResetCamera(float mid)
+    {
+        Transform camTrans = transform.Find("Camera");
+        while (Mathf.Abs(camTrans.localPosition.y - mid) > 0.002f)
+        {
+            Vector3 temp = new Vector3(camTrans.localPosition.x, camTrans.localPosition.y, camTrans.localPosition.z);
+            if (temp.y > mid) temp.y -= 0.0015f;
+            else temp.y += 0.0015f;
+            camTrans.localPosition = temp;
+            yield return null;
+        }
+        camTrans.localPosition = new Vector3(camTrans.localPosition.x, mid, camTrans.localPosition.z);
     }
 }

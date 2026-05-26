@@ -41,6 +41,23 @@ public class AfterManager : MonoBehaviour
     private IEnumerator OpenDoor()
     {
         MainManager.instance.AddTrigger("wait;8");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;Stop where you are!");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;We are now arresting you for committing first-degree murder!");
+        MainManager.instance.AddTrigger("dialogue;Policeman;Um... Sorry...");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;What?");
+        MainManager.instance.AddTrigger("dialogue;Policeman;I don't think we have any direct evidence to arrest him...");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;What are you saying?! We knew it was him!!");
+        MainManager.instance.AddTrigger("dialogue;Policeman;No... We couldn't find anything...");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;I... I saw him last night!!! He... he was... he was definitely cleaning up the crime scene!!!");
+        MainManager.instance.AddTrigger("dialogue;Policeman;We cannot convict him just because you saw him. We have to leave now, since we didn't find anything.");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;NO NO NO do the search again!!!");
+        MainManager.instance.AddTrigger("dialogue;Policeman;If we stay here, we will be the ones committing crimes.");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;......");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;Fine...");
+        MainManager.instance.AddTrigger("wait;8");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah");
+        MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
+        MainManager.instance.AddTrigger("wait;8");
 
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
@@ -85,13 +102,15 @@ public class AfterManager : MonoBehaviour
         police.SetActive(true);
         policeman.SetActive(true);
         t = 0;
+        MainManager.instance.PlayEffect(jumpScare);
         while (t < 0.2f)
         {
             secondPlayer.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t / 0.2f));
             t += Time.deltaTime;
             yield return null;
         }
-        MainManager.instance.PlayEffect(jumpScare);
+
+
     }
 
     private IEnumerator EndIt()

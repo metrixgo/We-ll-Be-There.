@@ -35666,7 +35666,7 @@ MonoBehaviour:
   hourHand: {fileID: 768982974}
   tick: {fileID: 8300000, guid: 4c1a5503f88b3254dbb3cf541804ca84, type: 3}
   tock: {fileID: 8300000, guid: ce7ccbbaac92b2047bbd6c70bf6779e7, type: 3}
-  seconds: 0
+  seconds: 3300
 --- !u!114 &500692289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149184,6 +149184,7 @@ GameObject:
   - component: {fileID: 1711813854826171486}
   - component: {fileID: 1911761166}
   - component: {fileID: 1911761165}
+  - component: {fileID: 3469287837748263061}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
@@ -151882,6 +151883,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147815427467}
   m_Mesh: {fileID: -9033993755548025789, guid: ec03bcd7515dc6f4e89022d7077d76cc, type: 3}
+--- !u!114 &3469287837748263061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147815427467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a2f22c425f3e745ad5bf492bd8406d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HomeClock
+  secHand: {fileID: 8163675089786699083}
+  minHand: {fileID: 7284850233373410217}
+  hourHand: {fileID: 7814628083498912100}
+  tick: {fileID: 8300000, guid: 4c1a5503f88b3254dbb3cf541804ca84, type: 3}
+  tock: {fileID: 8300000, guid: ce7ccbbaac92b2047bbd6c70bf6779e7, type: 3}
+  seconds: 1000
 --- !u!4 &3503259140114029587
 Transform:
   m_ObjectHideFlags: 0

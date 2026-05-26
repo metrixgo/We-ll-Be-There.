@@ -214,9 +214,8 @@ public class PlayerController : MonoBehaviour
         while (t < 0.2f)
         {
             if (stat != state) break;
-            if (prev == 1 && stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 70.0f, t / 0.2f);
-            else if (prev == 2 && stat == 1) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.2f);
-            else if (prev == 2 && stat == 0) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.2f);
+            if (stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 70.0f, Mathf.SmoothStep(0, 1.0f, t / 0.2f));
+            else if (prev == 2) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, Mathf.SmoothStep(0, 1.0f, t / 0.2f));
             else break;
             t += Time.deltaTime;
             yield return null;
@@ -226,14 +225,17 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ResetCamera(float mid)
     {
         Transform camTrans = transform.Find("Camera");
-        while (Mathf.Abs(camTrans.localPosition.y - mid) > 0.002f)
+        Vector3 startPos = camTrans.localPosition;
+        Vector3 endPos = new Vector3(startPos.x, mid, startPos.z);
+        float l = Mathf.Abs(camTrans.localPosition.y - mid) / 0.2f;
+        float t = 0;
+
+        while(t < l)
         {
-            Vector3 temp = new Vector3(camTrans.localPosition.x, camTrans.localPosition.y, camTrans.localPosition.z);
-            if (temp.y > mid) temp.y -= 0.0015f;
-            else temp.y += 0.0015f;
-            camTrans.localPosition = temp;
+            camTrans.localPosition = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1.0f, t / l));
+            t += Time.deltaTime;
             yield return null;
         }
-        camTrans.localPosition = new Vector3(camTrans.localPosition.x, mid, camTrans.localPosition.z);
+        camTrans.localPosition = endPos;
     }
 }

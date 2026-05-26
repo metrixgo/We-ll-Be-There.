@@ -32368,7 +32368,7 @@ MonoBehaviour:
   hourHand: {fileID: 911462020}
   tick: {fileID: 8300000, guid: 4c1a5503f88b3254dbb3cf541804ca84, type: 3}
   tock: {fileID: 8300000, guid: ce7ccbbaac92b2047bbd6c70bf6779e7, type: 3}
-  seconds: 0
+  seconds: 3800
 --- !u!1 &705635262
 GameObject:
   m_ObjectHideFlags: 0
@@ -74024,7 +74024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1639247031
 RectTransform:
   m_ObjectHideFlags: 0

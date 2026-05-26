@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource ad;
     private Camera cam;
-    private float speed = 52.5f;
+    private float speed = 2.5f;
     private float runSpeed = 5.0f;
     private float reachRange = 1.5f;
     private float sensitivity;
@@ -211,11 +211,12 @@ public class PlayerController : MonoBehaviour
     {
         float t = 0;
         float startF = cam.fieldOfView;
-        while (t < 0.3f)
+        while (t < 0.2f)
         {
             if (stat != state) break;
-            if (prev == 1 && stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 80.0f, t / 0.3f);
-            else if (prev == 2 && stat == 1) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.3f);
+            if (prev == 1 && stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 70.0f, t / 0.2f);
+            else if (prev == 2 && stat == 1) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.2f);
+            else if (prev == 2 && stat == 0) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, t / 0.2f);
             else break;
             t += Time.deltaTime;
             yield return null;

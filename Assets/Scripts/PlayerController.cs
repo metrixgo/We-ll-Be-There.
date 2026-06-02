@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
             else if (Mathf.Abs(f - speed) < 0.05f) state = 1;
             else if (Mathf.Abs(f - runSpeed) < 0.05f) state = 2;
 
-            ys[0] = Mathf.Sin(t * 2 * Mathf.PI / 2.0f) * 0.02f;
+            ys[0] = Mathf.Sin(t * 2 * Mathf.PI / 5.0f) * 0.02f;
             ys[1] = Mathf.Sin(t * 2 * Mathf.PI / 0.8f) * 0.05f;
             ys[2] = Mathf.Sin(t * 2 * Mathf.PI / 0.5f) * 0.08f;
 

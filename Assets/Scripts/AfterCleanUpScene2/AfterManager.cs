@@ -21,10 +21,12 @@ public class AfterManager : MonoBehaviour
     private float angSpeed = 150.0f;
     private AudioSource ad;
     private PlayerController pc;
+    private PoliceWomanWarning pww;
 
     private void Start()
     {
         pc = player.GetComponent<PlayerController>();
+        pww = police.GetComponent<PoliceWomanWarning>();
         ad = GetComponent<AudioSource>();
         StartCoroutine(EndIt());
     }
@@ -54,10 +56,6 @@ public class AfterManager : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;Policeman;If we stay here, we will be the ones committing crimes.");
         MainManager.instance.AddTrigger("dialogue;Policewoman;......");
         MainManager.instance.AddTrigger("dialogue;Policewoman;Fine...");
-        MainManager.instance.AddTrigger("wait;8");
-        MainManager.instance.AddTrigger("dialogue;Policewoman;You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah");
-        MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
-        MainManager.instance.AddTrigger("wait;8");
 
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
@@ -110,6 +108,9 @@ public class AfterManager : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitForSeconds(2.0f);
+        pww.MoveOut();
 
     }
 

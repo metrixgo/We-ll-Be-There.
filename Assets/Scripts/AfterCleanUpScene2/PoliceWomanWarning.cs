@@ -23,30 +23,49 @@ public class PoliceWomanWarning : MonoBehaviour
     private IEnumerator Move()
     {
         float t = 0;
-        animator.SetBool("walking", false);
         ad.Play();
         animator.SetBool("walking", true);
-        while (t < 4.5f)
+        while (t < 2.5f)
         {
-            transform.Translate(-Vector3.forward * Time.deltaTime / 4.5f * 0.3f, Space.World);
-            t += Time.deltaTime;
+            if(MainManager.instance.gameState == 1)
+            {
+                transform.Translate(-Vector3.forward * Time.deltaTime / 2.5f * 0.3f, Space.World);
+                t += Time.deltaTime;
+            }
             yield return null;
         }
         animator.SetBool("walking", false);
         ad.Stop();
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
 
         t = 0;
-        while(t < 0.2f)
+        bool flg = false;
+        while(t < 0.1f)
         {
-            transform.Translate(-Vector3.up * Time.deltaTime / 4.5f * 0.6f, Space.World);
+            if(t > 0.05f && !flg)
+            {
+                flg = true;
+                MainManager.instance.PlayEffect(jumpScare);
+            }
+            transform.Translate(-Vector3.up * Time.deltaTime / 0.1f * 0.6f, Space.World);
             t += Time.deltaTime;
             yield return null;
         }
 
-        MainManager.instance.PlayEffect(jumpScare);
+        MainManager.instance.AddTrigger("wait;4");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah");
+        MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitForSeconds(2.0f);
+
+        t = 0;
+        while (t < 0.6f)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime / 0.6f * 0.6f, Space.World);
+            t += Time.deltaTime;
+            yield return null;
+        }
         ad.Play();
         animator.SetBool("walking", true);
         t = 0;

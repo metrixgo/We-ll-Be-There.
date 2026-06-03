@@ -3396,7 +3396,7 @@ MonoBehaviour:
   isPhysical: 0
   selfDestructs: 0
   triggers:
-  - dialogue;Book;They can see it. The question is, can you? The Untimate Blood Trace
+  - dialogue;Book;They can see it. The question is, can you? The Ultimate Blood Trace
     Detector can help you see the things they can see.
 --- !u!114 &62038955
 MonoBehaviour:

@@ -234,6 +234,19 @@ public class MainManager : MonoBehaviour
         {"We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.", "我们用紫外线灯光发现了地上的血迹。我们相信那是他忘记清理的从案发现场带来的血迹。"},
         {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
         {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
+        {"Stop where you are!", "别动！"},
+        {"We are now arresting you for committing first-degree murder!", "我们现在以故意杀人罪逮捕你！"},
+        {"Um... Sorry...", "呃...抱歉..."},
+        {"What?", "什么？"},
+        {"I don't think we have any direct evidence to arrest him...", "我不认为我们有任何直接证据来逮捕他..."},
+        {"What are you saying?! We knew it was him!!", "你在说什么？！我们早就知道是他了！！"},
+        {"No... We couldn't find anything...", "不...我们什么都没找到..."},
+        {"I... I saw him last night!!! He... he was... he was definitely cleaning up the crime scene!!!", "我...我昨晚看到他了！！！他...他当时...他当时绝对是在清理犯罪现场！！！"},
+        {"We cannot convict him just because you saw him. We have to leave now, since we didn't find anything.", "我们不能仅凭你看到了他就定罪。我们现在必须离开，因为我们什么都没找到。"},
+        {"NO NO NO do the search again!!!", "不 不 不 再搜查一次！！！"},
+        {"If we stay here, we will be the ones committing crimes.", "如果我们继续呆在这，我们就会成犯罪的。"},
+        {"Fine...", "行..."},
+        {"Phew... Looks like I got away with it.", "呼...看来一切都归于平静了。"},
     };
 
     private void Awake()

@@ -235,6 +235,7 @@ public class MainManager : MonoBehaviour
         {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
         {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
         {"Stop where you are!", "别动！"},
+        {"Policeman", "男警"},
         {"We are now arresting you for committing first-degree murder!", "我们现在以故意杀人罪逮捕你！"},
         {"Um... Sorry...", "呃...抱歉..."},
         {"What?", "什么？"},
@@ -246,7 +247,14 @@ public class MainManager : MonoBehaviour
         {"NO NO NO do the search again!!!", "不 不 不 再搜查一次！！！"},
         {"If we stay here, we will be the ones committing crimes.", "如果我们继续呆在这，我们就会成犯罪的。"},
         {"Fine...", "行..."},
+        {"You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah", "你可能这次侥幸逃过一劫了。但是...嘿嘿嘿...下一次就不一定了...并且他们会过来找你...呵呵呵呵哈哈哈哈哈"},
+        {"What are you doing?! We need to leave!", "你在干什么？我们得走了！"},
         {"Phew... Looks like I got away with it.", "呼...看来一切都归于平静了。"},
+        {"I can't believe they just broke my glass...", "我无法相信他们刚刚把我玻璃给打碎了..."},
+        {"Glass Door", "玻璃门"},
+        {"Where did all the police cars went?!", "那些警车全都去哪了？！"},
+        {"Where did they go? I don't see them leaving at all.", "他们去哪了？我完全没看到他们离开。"},
+        {"That's so weird. I need to go check all the rooms on the second floor.", "这有点奇怪。我得去检查所有二楼的房间。"},
     };
 
     private void Awake()

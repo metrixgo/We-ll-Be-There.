@@ -111,7 +111,7 @@ public class AfterManager : MonoBehaviour
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         yield return new WaitForSeconds(2.0f);
         pww.MoveOut();
-
+        Destroy(this);
     }
 
     private IEnumerator EndIt()

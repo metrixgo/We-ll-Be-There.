@@ -6,6 +6,9 @@ public class PoliceWomanWarning : MonoBehaviour
     [SerializeField] private AudioClip jumpScare;
     [SerializeField] private GameObject policeman;
     [SerializeField] private AudioSource ad;
+    [SerializeField] private GameObject secondPlayer;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject policeCars;
 
     private Animator animator;
     private Animator animator2;
@@ -49,7 +52,12 @@ public class PoliceWomanWarning : MonoBehaviour
         RenderSettings.fogColor = Color.black;
         RenderSettings.fogDensity = 1.0f;
         RenderSettings.ambientIntensity = 0.5f;
+        Destroy(secondPlayer);
+        player.SetActive(true);
         ad.Play();
+        player.GetComponent<PlayerController>().SetPosition(secondPlayer.transform.position - 0.75f * Vector3.up);
+        player.GetComponent<PlayerController>().SetRotation(secondPlayer.transform.rotation.y, secondPlayer.transform.rotation.x);
+        player.GetComponent<PlayerController>().Freeze(false);
         MainManager.instance.AddTrigger("wait;4");
         MainManager.instance.AddTrigger("dialogue;Policewoman;You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah");
         MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
@@ -63,6 +71,8 @@ public class PoliceWomanWarning : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;2");
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("dialogue;You;Phew... Looks like I got away with it.");
+        MainManager.instance.AddTrigger("dialogue;You;......");
+
         yield return new WaitForSeconds(2.0f);
 
         t = 0;
@@ -105,6 +115,9 @@ public class PoliceWomanWarning : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        animator.SetBool("walking", false);
+
+        Destroy(policeman);
+        Destroy(policeCars);
+        Destroy(gameObject);
     }
 }

@@ -9,6 +9,8 @@ public class PoliceWomanWarning : MonoBehaviour
     [SerializeField] private GameObject secondPlayer;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject policeCars;
+    [SerializeField] private GameObject oldDoor;
+    [SerializeField] private GameObject newDoor;
 
     private Animator animator;
     private Animator animator2;
@@ -63,13 +65,13 @@ public class PoliceWomanWarning : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;2");
-        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;2");
-        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;2");
-        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;2");
-        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;2");
-        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;2");
-        MainManager.instance.AddTrigger("wait;2");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1.5");
+        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1.5");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1.5");
+        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1.5");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000DD;2");
+        MainManager.instance.AddTrigger("changescreen;#000000DD;#00000000;2");
+        MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("dialogue;You;Phew... Looks like I got away with it.");
         MainManager.instance.AddTrigger("dialogue;You;......");
 
@@ -118,6 +120,8 @@ public class PoliceWomanWarning : MonoBehaviour
 
         Destroy(policeman);
         Destroy(policeCars);
+        Destroy(oldDoor);
+        newDoor.SetActive(true);
         Destroy(gameObject);
     }
 }

@@ -255,6 +255,11 @@ public class MainManager : MonoBehaviour
         {"Where did all the police cars went?!", "那些警车全都去哪了？！"},
         {"Where did they go? I don't see them leaving at all.", "他们去哪了？我完全没看到他们离开。"},
         {"That's so weird. I need to go check all the rooms on the second floor.", "这有点奇怪。我得去检查所有二楼的房间。"},
+        {"I can't find them...", "我找不到他们..."},
+        {"Maybe it's just me hallucinating...", "也许只是我产生幻觉了..."},
+        {"Anyways, I should just go and relax on the couch. It has been such a tiring and stressful day.", "事已至此，我还是去沙发上放松一下吧。今天真是又累又让我压力山大。"},
+        {"Go relax on the sofa", "去沙发上放松"},
+        {"Sofa", "沙发"},
     };
 
     private void Awake()
@@ -582,7 +587,7 @@ public class MainManager : MonoBehaviour
                 dialogueText.text += content[idx];
                 idx++;
             }
-            if (Input.GetMouseButtonDown(0) && length < 0)
+            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && length < 0)
             {
                 dialogueText.text = content;
                 break;
@@ -592,7 +597,7 @@ public class MainManager : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         effectsPlayer.Stop();
         if(length >= 0) yield return new WaitForSeconds(length);
-        else yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        else yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return));
         dialogueScreen.SetActive(false);
     }
 
@@ -636,7 +641,7 @@ public class MainManager : MonoBehaviour
                 endingTitle.text += title[idx];
                 idx++;
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 endingTitle.text = title;
                 break;
@@ -659,7 +664,7 @@ public class MainManager : MonoBehaviour
                 endingText.text += content[idx];
                 idx++;
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 endingText.text = content;
                 break;

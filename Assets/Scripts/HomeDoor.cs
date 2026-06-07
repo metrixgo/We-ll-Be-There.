@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HomeDoor : MonoBehaviour
 {
-    private bool opened = false;
+    [SerializeField] private bool opened = false;
     private bool isTurning = false;
     private float maxRot = 95.0f;
     private float angSpeed = 150.0f;

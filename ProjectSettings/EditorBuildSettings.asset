@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AfterCleanUpScene2.unity
     guid: 36aa886ae016b4d47999cff3c958c4e0
+  - enabled: 1
+    path: Assets/Scenes/NightScene.unity
+    guid: dad43af2732975a47a05864dd0c79709
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

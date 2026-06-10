@@ -25998,7 +25998,7 @@ MonoBehaviour:
   endingScreen: {fileID: 1671036219}
   focus: {fileID: 1770386867}
   endingReturnMenu: {fileID: 7210121}
-  player: {fileID: 0}
+  player: {fileID: 508594364}
   dialogueText: {fileID: 559907615}
   dialogueSpeaker: {fileID: 525945616}
   promptText: {fileID: 20490260}
@@ -32593,7 +32593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 1
+  multiplier: 0.8
 --- !u!82 &1548620007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32651,7 +32651,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.95
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

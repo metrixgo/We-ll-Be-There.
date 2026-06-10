@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &14145202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6541,6 +6542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &93097101
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35703,7 +35705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 1
+  multiplier: 0.8
 --- !u!82 &500692290
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35761,7 +35763,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.95
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -66791,7 +66793,7 @@ MonoBehaviour:
   endingScreen: {fileID: 49469923}
   focus: {fileID: 129804676}
   endingReturnMenu: {fileID: 1566700247}
-  player: {fileID: 0}
+  player: {fileID: 508594364}
   dialogueText: {fileID: 326211896}
   dialogueSpeaker: {fileID: 1924442069}
   promptText: {fileID: 1817737790}
@@ -69308,6 +69310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1018029148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -75605,6 +75608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1105163194
 AudioSource:
   m_ObjectHideFlags: 0
@@ -105062,6 +105066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1503396003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -106757,6 +106762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1537637600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -113987,6 +113993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1633615558
 AudioSource:
   m_ObjectHideFlags: 0
@@ -114562,6 +114569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &1637748623
 AudioSource:
   m_ObjectHideFlags: 0
@@ -130969,7 +130977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 1
+  multiplier: 0.8
 --- !u!82 &1911761166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -146960,6 +146968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06a62b323f4a1441b9cabfa00649dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeDoor
+  opened: 0
 --- !u!82 &2129867775
 AudioSource:
   m_ObjectHideFlags: 0

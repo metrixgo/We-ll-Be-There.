@@ -234,6 +234,8 @@ public class MainManager : MonoBehaviour
         {"We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.", "我们用紫外线灯光发现了地上的血迹。我们相信那是他忘记清理的从案发现场带来的血迹。"},
         {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
         {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
+        {"ENDING 2/5: EXPOSED", "结局 2/5：暴露"},
+        {"You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.", "你以为你把一切都搞定了，但是警察还是查出了蛛丝马迹。现在，你只能看着一切事情对你发生。"},
         {"Stop where you are!", "别动！"},
         {"Policeman", "男警"},
         {"We are now arresting you for committing first-degree murder!", "我们现在以故意杀人罪逮捕你！"},

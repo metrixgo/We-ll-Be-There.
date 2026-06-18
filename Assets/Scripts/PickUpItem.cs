@@ -10,6 +10,7 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private GameObject putBack;
     [SerializeField] private UnityEvent additionalEffect;
 
+    private bool pickedUpBefore = false;
     private Collider coll;
 
     private void Start()
@@ -35,7 +36,7 @@ public class PickUpItem : MonoBehaviour
                 transform.localPosition = pos;
                 transform.localRotation = Quaternion.Euler(angle);
                 tag = "Untagged";
-                additionalEffect.Invoke();
+                if(!pickedUpBefore) additionalEffect.Invoke();
                 if(putBack != null)
                 {
                     putBack.SetActive(true);
@@ -53,5 +54,6 @@ public class PickUpItem : MonoBehaviour
             additionalEffect.Invoke();
             Destroy(gameObject);
         }
+        pickedUpBefore = true;
     }
 }

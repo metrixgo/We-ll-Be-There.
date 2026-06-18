@@ -6,9 +6,10 @@ public class Blood : MonoBehaviour
     [SerializeField] private GameObject plasticBag;
     [SerializeField] private GameObject corpse;
     [SerializeField] private GameObject trig;
+    [SerializeField] private GameObject toHome;
 
     private Material mat;
-    private int layers = 15;
+    private int layers = 10;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Blood : MonoBehaviour
 
         if (MainManager.instance.HasItem("Mop"))
         {
-            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, --layers/15.0f);
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, --layers/10.0f);
             MainManager.instance.PlayEffect(cleanEffect);
             MainManager.instance.AddTrigger("wait;"+(cleanEffect.length + 0.1f));
             if(layers == 0)
@@ -34,6 +35,7 @@ public class Blood : MonoBehaviour
                 plasticBag.tag = "Interactable";
                 corpse.tag = "Interactable";
                 trig.SetActive(true);
+                toHome.SetActive(true);
                 Destroy(gameObject);
             }
         }

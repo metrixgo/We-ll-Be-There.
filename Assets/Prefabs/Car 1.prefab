@@ -411,7 +411,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b88ef5afb012be8468858d09122febdc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5e2a39f3844e8874ea69aa2fc0d0dd06, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
+  multiplier: 1
 --- !u!54 &-6095481461592027826
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -75,7 +75,6 @@ public class WashingMachine : MonoBehaviour
         }
         finished = true;
         CleanUpClock.clock.Clean("clothes", true);
-        MainManager.instance.RemoveTask("Clothes?");
         ad.clip = beep;
         ad.Play();
     }

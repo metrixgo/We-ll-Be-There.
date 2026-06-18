@@ -35,7 +35,6 @@ public class MopBucket : MonoBehaviour
         {
             MainManager.instance.PlayEffect(washing);
             MainManager.instance.AddTrigger("wait;"+washing.length);
-            MainManager.instance.RemoveTask("Mop?");
             if (!CleanUpClock.clock.GetStatus("mop")) CleanUpClock.clock.Clean("mopbucket", false);
             CleanUpClock.clock.Clean("mop", true);
         }
@@ -43,7 +42,6 @@ public class MopBucket : MonoBehaviour
         {
             MainManager.instance.PlayEffect(washing);
             MainManager.instance.AddTrigger("wait;" + washing.length);
-            MainManager.instance.RemoveTask("Shovel?");
             if (!CleanUpClock.clock.GetStatus("shovel")) CleanUpClock.clock.Clean("mopbucket", false);
             CleanUpClock.clock.Clean("shovel", true);
         }

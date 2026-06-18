@@ -60760,7 +60760,7 @@ MonoBehaviour:
   normal: {fileID: 1899561999}
   blood: {fileID: 1561656024}
   jumpScare: {fileID: 8300000, guid: 5c084a03a40e0c8489f1aa3706074c2e, type: 3}
-  chaseMusic: {fileID: 8300000, guid: 70fa66a053a624549b960b075505b03a, type: 3}
+  chaseMusic: {fileID: 8300000, guid: de0cfd66295bc1f468db23d6ac209efa, type: 3}
 --- !u!65 &890449790
 BoxCollider:
   m_ObjectHideFlags: 0

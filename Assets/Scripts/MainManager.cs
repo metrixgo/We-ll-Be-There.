@@ -32,6 +32,10 @@ public class MainManager : MonoBehaviour
     private bool isLoadingScene = false;
     private bool atPausedScreen = false;
     private bool atEndingScreen = false;
+    private string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789" +
+        "!@#$%^&*()-_=+[]{};:,.<>?/";
 
     private List<string> inventory = new List<string>();
     private List<string> triggers = new List<string>();
@@ -521,6 +525,12 @@ public class MainManager : MonoBehaviour
                 if (s.Length <= 3) gameState = 1;
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
                 if (s.Length <= 3) gameState = 0;
+            }
+            else if (key == "chaosdialogue")
+            {
+                string temp = "";
+                for (int i = 1; i <= 50; i++) temp += chars[Random.Range(0, chars.Length)];
+                yield return StartCoroutine(DisplayDialogue(s[1], temp));
             }
             else if (key == "task")
             {

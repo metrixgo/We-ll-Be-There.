@@ -98404,9 +98404,6 @@ MonoBehaviour:
   - dialogue;You;Looks like I need to hurry...
   - canrun;1
   - flashprompt;Press [Shift] to run
-  - task;Mop?
-  - task;Shovel?
-  - task;Clothes?
 --- !u!65 &1916097438
 BoxCollider:
   m_ObjectHideFlags: 0

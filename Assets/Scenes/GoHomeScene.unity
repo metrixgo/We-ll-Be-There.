@@ -12814,7 +12814,7 @@ MonoBehaviour:
   ridePlayer: {fileID: 2004589675}
   wall: {fileID: 1155658613}
   trigger: {fileID: 114229911}
-  ridingSound: {fileID: 8300000, guid: c81d6256d1e758d4d8e0d96200dd2a38, type: 3}
+  ridingSound: {fileID: 8300000, guid: 1112d36ba9bc75b4dbc48fd1f5ea974f, type: 3}
 --- !u!4 &326408013
 Transform:
   m_ObjectHideFlags: 0

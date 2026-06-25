@@ -27,6 +27,7 @@ public class TextTranslation : MonoBehaviour
             else if (s == "main menu") r = "主菜单";
             else if (s == "esc to continue...") r = "按Esc继续...";
             else if (s == "nowhere to run :)") r = "无处可逃 :)";
+            else if (s == "5 hours later...") r = "5 小时后...";
             else r = s;
             if(txt != null) txt.text = r;
             else txt2.text = r;

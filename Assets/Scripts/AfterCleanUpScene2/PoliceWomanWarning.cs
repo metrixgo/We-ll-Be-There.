@@ -43,11 +43,13 @@ public class PoliceWomanWarning : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         MainManager.instance.PlayEffect(jumpScare);
         yield return new WaitForSeconds(0.2f);
-
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         t = 0;
+        Vector3 startPos = transform.position;
+        Vector3 endPos = transform.position - 0.44f * Vector3.up;
         while(t < 0.1f)
         {
-            transform.Translate(-Vector3.up * Time.deltaTime / 0.1f * 0.4f, Space.World);
+            transform.position = Vector3.Lerp(startPos, endPos, t / 0.1f);
             t += Time.deltaTime;
             yield return null;
         }
@@ -60,15 +62,16 @@ public class PoliceWomanWarning : MonoBehaviour
         player.GetComponent<PlayerController>().SetPosition(secondPlayer.transform.position - 0.75f * Vector3.up);
         player.GetComponent<PlayerController>().SetRotation(secondPlayer.transform.rotation.y, secondPlayer.transform.rotation.x);
         player.GetComponent<PlayerController>().Freeze(false);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.AddTrigger("wait;4");
         MainManager.instance.AddTrigger("dialogue;Policewoman;You might have got away this time. But... hehehe... you won't get away next time... and they will be here to FIND YOU... heheheheehahahahah");
         MainManager.instance.AddTrigger("dialogue;Policeman;What are you doing?! We need to leave!");
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1.5");
-        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1.5");
-        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1.5");
-        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1.5");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1");
+        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#00000099;1");
+        MainManager.instance.AddTrigger("changescreen;#00000099;#00000000;1");
         MainManager.instance.AddTrigger("changescreen;#00000000;#000000DD;2");
         MainManager.instance.AddTrigger("changescreen;#000000DD;#00000000;2");
         MainManager.instance.AddTrigger("wait;1");

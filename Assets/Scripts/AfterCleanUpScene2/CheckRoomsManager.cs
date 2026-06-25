@@ -8,6 +8,8 @@ public class CheckRoomsManager : MonoBehaviour
     [SerializeField] private AudioSource ad;
     [SerializeField] private AudioClip tense;
     [SerializeField] private GameObject sofa;
+    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject oldDoor;
 
     private int cnt = 0;
     private bool touched = false;
@@ -50,11 +52,16 @@ public class CheckRoomsManager : MonoBehaviour
         MainManager.instance.AddTrigger("cleartasks");
         MainManager.instance.AddTrigger("task;" + header + cnt + "/6" + enclose);
 
-        if(cnt == 3)
+        if (cnt == 2)
         {
             ad.Play();
         }
-        else if(cnt >= 6)
+        else if (cnt == 4)
+        {
+            door.SetActive(true);
+            Destroy(oldDoor);
+        }
+        else if (cnt >= 6)
         {
             StartCoroutine(Realize());
         }

@@ -266,6 +266,12 @@ public class MainManager : MonoBehaviour
         {"Anyways, I should just go and relax on the couch. It has been such a tiring and stressful day.", "事已至此，我还是去沙发上放松一下吧。今天真是又累又让我压力山大。"},
         {"Go relax on the sofa", "去沙发上放松"},
         {"Sofa", "沙发"},
+        {"What's wrong with the TV?", "电视出什么问题了？"},
+        {"???", "？？？"},
+        {"L-E-T-U-S-P-L-A-Y-A-G-A-M-E-?", "让-我-们-玩-个-游-戏-不-？"},
+        {"I think I need to get out of here...", "我觉得我得离开这里..."},
+        {"Now.", "现在。"},
+        {"What... I can't open this door...", "什么...我打不开这扇门..."},
     };
 
     private void Awake()

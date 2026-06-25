@@ -1,5 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -8,6 +8,7 @@ public class TVStart : MonoBehaviour
     [SerializeField] private AudioClip getOnSofa;
     [SerializeField] private AudioClip turnOnTV;
     [SerializeField] private AudioSource screamAd;
+    [SerializeField] private TextMeshProUGUI timePrompt;
     [SerializeField] private GameObject firstPlayer;
     [SerializeField] private GameObject player;
     [SerializeField] private Material stat;
@@ -24,7 +25,7 @@ public class TVStart : MonoBehaviour
         tv = GetComponent<AudioSource>();
         rend = GetComponent<Renderer>();
         vp = GetComponent<VideoPlayer>();
-        MainManager.instance.AddTrigger("wait;" + (getOnSofa.length + 1.2f + turnOnTV.length));
+        MainManager.instance.AddTrigger("wait;" + (getOnSofa.length + 1.0f + turnOnTV.length + 1.5f));
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
         StartCoroutine(BeginShow());
     }
@@ -36,7 +37,7 @@ public class TVStart : MonoBehaviour
         t += Time.deltaTime;
         Vector3 pos = firstPlayer.transform.position;
         pos.y = 1.35f + Mathf.Sin(t) / 100.0f;
-        pos.x = -50.85f + Mathf.Cos(2 * t) / 200.0f;
+        pos.x = -50.85f + Mathf.Cos(1.7f * t) / 200.0f;
         firstPlayer.transform.position = pos;
     }
 
@@ -47,7 +48,22 @@ public class TVStart : MonoBehaviour
         MainManager.instance.PlayEffect(turnOnTV);
         yield return new WaitForSeconds(turnOnTV.length);
         vp.Play();
-        yield return new WaitForSeconds((float) vp.length);
+        float t = 0;
+        while(t < 0.5f)
+        {
+            timePrompt.color = Color.Lerp(Color.clear, Color.white, t / 0.5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.0f);
+        t = 0;
+        while (t < 2.0f)
+        {
+            timePrompt.color = Color.Lerp(Color.white, Color.clear, t / 2.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds((float)vp.length - 3.5f);
         rend.material = stat;
         tv.Play();
         yield return new WaitForSeconds(3.0f);
@@ -56,6 +72,7 @@ public class TVStart : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         yield return new WaitForSeconds(2.0f);
+        RenderSettings.fogDensity = 0.4f;
         rend.material = redStat;
         screamAd.Play();
         yield return new WaitForSeconds(3.0f);
@@ -70,15 +87,27 @@ public class TVStart : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         Vector3 startPos = firstPlayer.transform.position;
-        Vector3 endPos = new Vector3(-51.0f, 2.21965301f, -66.3f);
         Quaternion startRot = firstPlayer.transform.rotation;
-        Quaternion endRot = Quaternion.Euler(20.0f, -20.0f, 0);
+        Vector3 endPos = new Vector3(-50.85f, 1.3f, -66.7f);
+        Quaternion endRot = Quaternion.Euler(15.0f, -20.0f, 0);
         getUp = true;
+        t = 0;
+        while (t < 1.0f)
+        {
+            firstPlayer.transform.position = Vector3.Lerp(startPos, endPos, t);
+            firstPlayer.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        startPos = firstPlayer.transform.position;
+        startRot = firstPlayer.transform.rotation;
+        endPos = new Vector3(-51.0f, 2.21965301f, -66.3f);
+        endRot = Quaternion.Euler(30.0f, -30.0f, 0);
         t = 0;
         while(t < 2.0f)
         {
-            firstPlayer.transform.position = Vector3.Lerp(startPos, endPos, t / 2.0f);
-            firstPlayer.transform.rotation = Quaternion.Slerp(startRot, endRot, t / 2.0f);
+            firstPlayer.transform.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1.0f, t / 2.0f));
+            firstPlayer.transform.rotation = Quaternion.Slerp(startRot, endRot, Mathf.SmoothStep(0, 1.0f, t / 2.0f));
             t += Time.deltaTime;
             yield return null;
         }

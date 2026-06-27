@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Monster : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class Monster : MonoBehaviour
     {
         if (MainManager.instance.gameState != 1 || !anim.GetBool("Run") || anim.GetBool("Attack")) return ;
 
-        transform.Translate(Vector3.left * 5.2f * Time.deltaTime, Space.World);
+        Vector3 dir = (player.transform.position - transform.position).normalized;
+        float y = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, y, 0);
+        transform.Translate(transform.forward * 5.0f * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,6 +62,7 @@ public class Monster : MonoBehaviour
         }
         MainManager.instance.StopMusic();
         MainManager.instance.SetMusicVolume(v);
+        transform.rotation = Quaternion.Euler(0, -90.0f, 0);
         transform.position = new Vector3(-100.5f, 28.4f, 16.3f);
         anim.SetBool("Attack", true);
         yield return new WaitForSeconds(0.1f);

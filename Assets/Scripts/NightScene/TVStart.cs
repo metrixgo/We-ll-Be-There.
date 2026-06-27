@@ -18,11 +18,13 @@ public class TVStart : MonoBehaviour
     private AudioSource tv;
     private Renderer rend;
     private VideoPlayer vp;
+    private TVControl tvc;
     private bool getUp = false;
 
     private void Start()
     {
         tv = GetComponent<AudioSource>();
+        tvc = GetComponent<TVControl>();
         rend = GetComponent<Renderer>();
         vp = GetComponent<VideoPlayer>();
         MainManager.instance.AddTrigger("wait;" + (getOnSofa.length + 1.0f + turnOnTV.length + 1.5f));
@@ -115,5 +117,7 @@ public class TVStart : MonoBehaviour
         MainManager.instance.AddTrigger("canrun;1");
         Destroy(firstPlayer);
         player.SetActive(true);
+        tvc.enabled = true;
+        Destroy(this);
     }
 }

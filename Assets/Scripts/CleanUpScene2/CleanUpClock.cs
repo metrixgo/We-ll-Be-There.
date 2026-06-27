@@ -91,7 +91,7 @@ public class CleanUpClock : MonoBehaviour
         else if (!status["mopbucket"]) errorType = "mopbucket";
         else flg = true;
 
-        if(flg) Debug.Log("YOU WIN");
+        if (flg) MainManager.instance.LoadScene("AfterCleanUpScene2");
         else MainManager.instance.LoadScene("Ending2");
     }
 }

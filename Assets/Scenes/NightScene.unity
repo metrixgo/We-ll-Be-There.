@@ -7743,13 +7743,10 @@ GameObject:
   - component: {fileID: 188258209}
   - component: {fileID: 188258217}
   - component: {fileID: 188258216}
-  - component: {fileID: 188258215}
   - component: {fileID: 188258214}
   - component: {fileID: 188258213}
-  - component: {fileID: 188258219}
   - component: {fileID: 188258212}
   - component: {fileID: 188258210}
-  - component: {fileID: 188258218}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -7939,28 +7936,6 @@ VideoPlayer:
   m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
---- !u!64 &188258215
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188258208}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &188258216
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8018,41 +7993,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188258208}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &188258218
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188258208}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 3, y: 2, z: 10}
-  m_Center: {x: 0, y: 0, z: -4.2}
---- !u!114 &188258219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188258208}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff08db14716bdd24eb8228b101bfbb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TVControl
-  control: {fileID: 450592638}
-  turn: {fileID: 0}
 --- !u!1 &191456925
 GameObject:
   m_ObjectHideFlags: 0
@@ -19966,6 +19906,7 @@ GameObject:
   - component: {fileID: 450592644}
   - component: {fileID: 450592643}
   - component: {fileID: 450592642}
+  - component: {fileID: 450592646}
   m_Layer: 0
   m_Name: Control
   m_TagString: Interactable
@@ -20060,11 +20001,23 @@ MonoBehaviour:
   soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
   hold: {fileID: 123347130}
   pos: {x: 0, y: 0, z: 0}
-  angle: {x: 0, y: 0, z: 0}
+  angle: {x: 90, y: 0, z: 180}
   putBack: {fileID: 1565954475}
   additionalEffect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 450592646}
+        m_TargetAssemblyTypeName: TriggerSequences, Assembly-CSharp
+        m_MethodName: AddTriggers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450592643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20079,7 +20032,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 450592642}
+        m_TargetAssemblyTypeName: PickUpItem, Assembly-CSharp
+        m_MethodName: PickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450592644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20117,8 +20082,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02000001, y: 0.08566678, z: 0.0074014207}
-  m_Center: {x: -0.0000057146412, y: -0.00076343695, z: -0.000000029682147}
+  m_Size: {x: 0.02000001, y: 0.08566678, z: 0.06}
+  m_Center: {x: 0, y: 0, z: 0.03}
+--- !u!114 &450592646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450592638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
+  selfDestructs: 1
+  triggers:
+  - flashprompt;Press [E] to use control
 --- !u!1 &451826866
 GameObject:
   m_ObjectHideFlags: 0
@@ -72657,7 +72638,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1565954476}
+        m_TargetAssemblyTypeName: PutDownItem, Assembly-CSharp
+        m_MethodName: Putdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1565954478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72677,8 +72670,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02000001, y: 0.08566678, z: 0.0074014207}
-  m_Center: {x: -0.0000057146412, y: -0.00076343695, z: -0.000000029682147}
+  m_Size: {x: 0.02000001, y: 0.08566678, z: 0.06}
+  m_Center: {x: 0, y: 0, z: 0.03}
 --- !u!23 &1565954479
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86164,7 +86157,6 @@ GameObject:
   - component: {fileID: 1901462039}
   - component: {fileID: 1901462038}
   - component: {fileID: 1901462037}
-  - component: {fileID: 1901462036}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -86187,20 +86179,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1947430297}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &1901462036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901462034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c282ac3554f544985c81946a902b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SetSound
-  isEffect: 1
-  multiplier: 1
 --- !u!114 &1901462037
 MonoBehaviour:
   m_ObjectHideFlags: 0

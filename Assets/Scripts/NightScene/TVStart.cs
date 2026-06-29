@@ -32,20 +32,13 @@ public class TVStart : MonoBehaviour
 
     private void Update()
     {
-        if (!getUp)
-        {
-            t += Time.deltaTime;
-            Vector3 pos = firstPlayer.transform.position;
-            pos.y = 1.35f + Mathf.Sin(t) / 100.0f;
-            pos.x = -50.85f + Mathf.Cos(1.7f * t) / 200.0f;
-            firstPlayer.transform.position = pos;
-        }
-        else if (MainManager.instance.HasItem("Control") && Input.GetKeyDown(KeyCode.E))
-        {
-            MainManager.instance.SetPrompt("");
-            Destroy(gameObject);
-        }
-        
+        if (getUp) return;
+
+        t += Time.deltaTime;
+        Vector3 pos = firstPlayer.transform.position;
+        pos.y = 1.35f + Mathf.Sin(t) / 100.0f;
+        pos.x = -50.85f + Mathf.Cos(1.7f * t) / 200.0f;
+        firstPlayer.transform.position = pos;
     }
 
     private IEnumerator BeginShow()
@@ -79,7 +72,7 @@ public class TVStart : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         yield return new WaitForSeconds(2.0f);
-        RenderSettings.fogDensity = 0.4f;
+        RenderSettings.fogDensity = 0.6f;
         rend.material = redStat;
         screamAd.Play();
         yield return new WaitForSeconds(3.0f);

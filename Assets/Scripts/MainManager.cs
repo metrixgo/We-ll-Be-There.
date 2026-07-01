@@ -552,7 +552,7 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "loadscene")
             {
-                if (s.Length == 1) StartCoroutine(LoadSceneCoroutine(s[1], 0));
+                if (s.Length == 2) StartCoroutine(LoadSceneCoroutine(s[1], 0));
                 else StartCoroutine(LoadSceneCoroutine(s[1], float.Parse(s[2])));
             }
             else if (key == "ending")

@@ -7,21 +7,26 @@ public class NeedTVClose : MonoBehaviour
     [SerializeField] private Control c;
     [SerializeField] private GameObject monster;
     [SerializeField] private GameObject tv;
+    [SerializeField] private GameObject point;
+    [SerializeField] private AudioClip breath;
     [SerializeField] private AudioClip lightsOut;
     [SerializeField] private AudioClip jumpScare;
-    [SerializeField] private AudioClip bite;
+    [SerializeField] private AudioClip fall;
 
     private bool touched = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!c.IsClosed() && !touched)
+        if (touched) return;
+
+        if (!c.IsClosed())
         {
             touched = true;
             StartCoroutine(MonsterKill());
         }
         else
         {
+            Destroy(point);
             Destroy(gameObject);
         }
     }
@@ -29,7 +34,8 @@ public class NeedTVClose : MonoBehaviour
     private IEnumerator MonsterKill()
     {
         pc.LookAt(new Vector3(-50.508f, 1.884f, -64.3f), 4.0f);
-        MainManager.instance.AddTrigger("wait;12");
+        MainManager.instance.AddTrigger("wait;11");
+        MainManager.instance.PlayEffect(breath);
         float t = 0, subT = 0;
         while (t < 4.0f)
         {
@@ -57,11 +63,24 @@ public class NeedTVClose : MonoBehaviour
             yield return null;
         }
         MainManager.instance.PlayEffect(lightsOut);
+        monster.SetActive(false);
         Destroy(tv);
         RenderSettings.fogDensity = 1.0f;
         RenderSettings.ambientIntensity = 0.2f;
 
         yield return new WaitForSeconds(5.0f);
-
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        monster.SetActive(true);
+        monster.transform.position = point.transform.position;
+        monster.transform.rotation = point.transform.rotation;
+        RenderSettings.fogDensity = 0.5f;
+        RenderSettings.ambientIntensity = 0.6f;
+        MainManager.instance.PlayEffect(jumpScare);
+        MainManager.instance.AddTrigger("wait;0.8");
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;1");
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#000000FF;4");
+        MainManager.instance.AddTrigger("loadscene;NightScene");
+        yield return new WaitForSeconds(0.8f);
+        MainManager.instance.PlayEffect(fall);
     }
 }

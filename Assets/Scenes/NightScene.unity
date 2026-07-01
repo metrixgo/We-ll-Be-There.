@@ -49843,6 +49843,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082351289}
   m_Mesh: {fileID: 5319210589332590094, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &1086895002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086895003}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086895003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086895002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.1, y: -3.06, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923483576}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1087476841
 GameObject:
   m_ObjectHideFlags: 0
@@ -57041,9 +57072,12 @@ MonoBehaviour:
   pc: {fileID: 508594364}
   c: {fileID: 450592646}
   monster: {fileID: 5556037645539386082}
+  tv: {fileID: 188258208}
+  point: {fileID: 1086895002}
+  breath: {fileID: 8300000, guid: 15bfb11d2b8e299448ddb68cfbaa05d1, type: 3}
   lightsOut: {fileID: 8300000, guid: 1e7f97fa763699140b29291fe2159496, type: 3}
-  jumpScare: {fileID: 0}
-  bite: {fileID: 0}
+  jumpScare: {fileID: 8300000, guid: 3b38ae895f9b0984eba454ccbba951ff, type: 3}
+  fall: {fileID: 8300000, guid: e1452f7f0cc23694ca164571711f6f84, type: 3}
 --- !u!1 &1225957935
 GameObject:
   m_ObjectHideFlags: 0
@@ -87460,6 +87494,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 123347131}
+  - {fileID: 1086895003}
   m_Father: {fileID: 508594365}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1931311578

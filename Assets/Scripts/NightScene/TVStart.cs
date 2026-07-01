@@ -25,7 +25,7 @@ public class TVStart : MonoBehaviour
         tv = GetComponent<AudioSource>();
         rend = GetComponent<Renderer>();
         vp = GetComponent<VideoPlayer>();
-        MainManager.instance.AddTrigger("wait;" + (getOnSofa.length + 1.0f + turnOnTV.length + 1.5f));
+        MainManager.instance.AddTrigger("wait;" + (getOnSofa.length + turnOnTV.length + 2.0f));
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;2");
         StartCoroutine(BeginShow());
     }
@@ -55,7 +55,7 @@ public class TVStart : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         t = 0;
         while (t < 2.0f)
         {

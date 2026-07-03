@@ -53,7 +53,7 @@ public class NeedTVClose : MonoBehaviour
         Vector3 endScale = monster.transform.localScale * 1.6f;
         while (t < 6.0f)
         {
-            if (subT <= 0 && Random.Range(1, 100) == 1) subT = Random.Range(0.1f, 0.3f);
+            if (subT <= 0 && Random.Range(0, 110) == 0) subT = Random.Range(0.1f, 0.3f);
             if (subT > 0) RenderSettings.fogDensity = 1.0f;
             else RenderSettings.fogDensity = 0.2f;
             monster.transform.position = Vector3.Lerp(startPos, endPos, t / 6.0f);
@@ -73,8 +73,8 @@ public class NeedTVClose : MonoBehaviour
         monster.SetActive(true);
         monster.transform.position = point.transform.position;
         monster.transform.rotation = point.transform.rotation;
-        RenderSettings.fogDensity = 0.5f;
-        RenderSettings.ambientIntensity = 0.6f;
+        RenderSettings.fogDensity = 0.9f;
+        RenderSettings.ambientIntensity = 0.5f;
         MainManager.instance.PlayEffect(jumpScare);
         MainManager.instance.AddTrigger("wait;0.8");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;1");

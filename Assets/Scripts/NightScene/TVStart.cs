@@ -63,7 +63,8 @@ public class TVStart : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds((float)vp.length - 3.5f);
+        yield return new WaitForSeconds((float)vp.length - 3.0f);
+        Destroy(vp);
         rend.material = stat;
         tv.Play();
         yield return new WaitForSeconds(3.0f);

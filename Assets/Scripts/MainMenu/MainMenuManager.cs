@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Image panel;
     [SerializeField] private GameObject startScreen;
     [SerializeField] private GameObject optionScreen;
+    [SerializeField] private GameObject continueButton;
     [SerializeField] private Image chinese;
     [SerializeField] private Image english;
     [SerializeField] private AudioSource musicPlayer;
@@ -20,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
         optionScreen.SetActive(false);
         musicPlayer.volume = PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
         effectsPlayer.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
+        if (PlayerPrefs.GetString("Save", "SchoolScene") != "SchoolScene") continueButton.SetActive(true);
         StartCoroutine(SetUp());
         StartCoroutine(GenerateCars());
     }
@@ -55,6 +57,11 @@ public class MainMenuManager : MonoBehaviour
         optionScreen.SetActive(false);
     }
 
+    public void ContinueGame()
+    {
+        StartCoroutine(ContinueGameCoroutine());
+    }
+
     public void StartGame()
     {
         StartCoroutine(StartGameCoroutine());
@@ -64,6 +71,23 @@ public class MainMenuManager : MonoBehaviour
     {
         effectsPlayer.Play();
         Application.Quit();
+    }
+
+    private IEnumerator ContinueGameCoroutine()
+    {
+        effectsPlayer.Play();
+        panel.raycastTarget = true;
+        panel.color = Color.clear;
+        yield return new WaitForSeconds(0.5f);
+        float t = 0;
+        while (t < 1.0f)
+        {
+            t += Time.deltaTime;
+            panel.color = Color.Lerp(Color.clear, Color.black, t / 1.0f);
+            yield return null;
+        }
+        panel.color = Color.black;
+        SceneManager.LoadScene(PlayerPrefs.GetString("Save", "SchoolScene"));
     }
 
     private IEnumerator StartGameCoroutine()
@@ -80,6 +104,7 @@ public class MainMenuManager : MonoBehaviour
             yield return null;
         }
         panel.color = Color.black;
+        PlayerPrefs.SetString("Save", "SchoolScene");
         SceneManager.LoadScene("SchoolScene");
     }
 

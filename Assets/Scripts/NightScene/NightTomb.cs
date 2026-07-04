@@ -1,17 +1,27 @@
+using System.Collections;
 using UnityEngine;
 
 public class NightTomb : MonoBehaviour
 {
-    public void dig()
+    [SerializeField] private GameObject dirtPile;
+    [SerializeField] private AudioClip dig;
+
+    public void Dig()
     {
-        if (!MainManager.instance.HasItem("Shovel"))
-        {
-            MainManager.instance.AddTrigger("dialogue;You;I need a shovel to dig open this.");
-        }
-        else
-        {
-            MainManager.instance.AddTrigger("dialogue;You;This is all for now! Follow me on itch to see how I work out this game!");
-            MainManager.instance.AddTrigger("dialogue;You;Also, I'm a pretty new game developer, so if you have any suggestions, feel free to leave a comment!");
-        }
+        if (!MainManager.instance.HasItem("Shovel")) MainManager.instance.AddTrigger("dialogue;You;I need a shovel to dig open this.");
+        else StartCoroutine(StartDigging());
+    }
+
+    private IEnumerator StartDigging()
+    {
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
+        MainManager.instance.AddTrigger("wait;9");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
+        yield return new WaitForSeconds(2.0f);
+        MainManager.instance.PlayEffect(dig);
+        dirtPile.transform.localScale += Vector3.forward * 60.0f;
+        yield return new WaitForSeconds(9.0f);
+        MainManager.instance.StopMusic();
+        Destroy(gameObject);
     }
 }

@@ -19,6 +19,7 @@ public class NightTomb : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(dig);
+        GetComponent<MeshRenderer>().enabled = false;
         dirtPile.transform.localScale += Vector3.forward * 60.0f;
         yield return new WaitForSeconds(9.0f);
         MainManager.instance.StopMusic();

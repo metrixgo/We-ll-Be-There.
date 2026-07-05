@@ -34,9 +34,9 @@ public class NeedTVClose : MonoBehaviour
         for (int i = 1; i <= 10; i++)
         {
             monster2.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             monster2.SetActive(false);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
             monster2.transform.Translate(-0.16f, -0.24f, 0, Space.World);
         }
         Destroy(point);

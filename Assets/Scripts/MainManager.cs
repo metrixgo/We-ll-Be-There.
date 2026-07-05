@@ -531,9 +531,9 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "flashdialogue")
             {
-                if (s.Length <= 3) gameState = 1;
+                gameState = 1;
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
-                if (s.Length <= 3) gameState = 0;
+                gameState = 0;
             }
             else if (key == "chaosdialogue")
             {

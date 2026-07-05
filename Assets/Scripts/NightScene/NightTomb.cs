@@ -20,6 +20,7 @@ public class NightTomb : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(dig);
         GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         dirtPile.transform.localScale += Vector3.forward * 60.0f;
         yield return new WaitForSeconds(9.0f);
         MainManager.instance.StopMusic();

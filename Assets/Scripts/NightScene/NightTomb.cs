@@ -7,6 +7,7 @@ public class NightTomb : MonoBehaviour
     [SerializeField] private GameObject downRope;
     [SerializeField] private GameObject rope;
     [SerializeField] private GameObject putDownRope;
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject climbCam;
     [SerializeField] private AudioClip dig;
     [SerializeField] private AudioClip setUpRope;
@@ -27,7 +28,7 @@ public class NightTomb : MonoBehaviour
             if (!MainManager.instance.HasItem("Rope")) MainManager.instance.AddTrigger("dialogue;You;It seems pretty dangerous to go down here...");
             else StartCoroutine(StartRopping());
         }
-        else if (state == 3)
+        else if (state == 2)
         {
             StartCoroutine(ClimbDown());
         }
@@ -39,8 +40,16 @@ public class NightTomb : MonoBehaviour
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         MainManager.instance.AddTrigger("wait;6");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
+        player.SetActive(false);
         climbCam.SetActive(true);
+        while (true)
+        {
+            MainManager.instance.PlayEffect(rope1);
+            yield return new WaitForSeconds(1.0f);
+            MainManager.instance.PlayEffect(rope2);
+            yield return new WaitForSeconds(1.5f);
+        }
     }
 
     private IEnumerator StartRopping()

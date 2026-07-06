@@ -276,6 +276,7 @@ public class MainManager : MonoBehaviour
         {"Rope", "绳子"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
+        {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},
     };
 
     private void Awake()

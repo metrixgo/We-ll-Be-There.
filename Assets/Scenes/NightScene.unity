@@ -4228,7 +4228,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.0012341103, y: -0.70710576, z: 0.0012341103, w: 0.70710576}
   m_LocalPosition: {x: -73.232475, y: -100.776794, z: -96.749596}
-  m_LocalScale: {x: 0.019999994, y: 100, z: 0.019999996}
+  m_LocalScale: {x: 0.1, y: 100, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1947430297}
@@ -8475,7 +8475,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.3
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -60853,7 +60853,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1249100591}
+        m_TargetAssemblyTypeName: PutDownItem, Assembly-CSharp
+        m_MethodName: Putdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1249100593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63922,12 +63934,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TombController
   dirtPile: {fileID: 844603947}
-  downRope: {fileID: 0}
+  downRope: {fileID: 92784074}
+  rope: {fileID: 0}
+  putDownRope: {fileID: 8300000, guid: e53a78b35d55e974490b2660bfd143a4, type: 3}
   climbCam: {fileID: 0}
   dig: {fileID: 8300000, guid: 9689ef06c6c21ed498330bc0d9c3509f, type: 3}
-  putDownRope: {fileID: 0}
-  rope1: {fileID: 0}
-  rope2: {fileID: 0}
+  setUpRope: {fileID: 0}
+  rope1: {fileID: 8300000, guid: e08659805c1696949837638846ed6c07, type: 3}
+  rope2: {fileID: 8300000, guid: 2714bafef3431ec428eea77f28eedc06, type: 3}
 --- !u!114 &1312558515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77573,6 +77587,7 @@ GameObject:
   - component: {fileID: 1620930548}
   - component: {fileID: 1620930547}
   - component: {fileID: 1620930546}
+  - component: {fileID: 1620930549}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Interactable
@@ -77666,8 +77681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   soundEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
   hold: {fileID: 123347130}
-  pos: {x: 0, y: 0, z: 0}
-  angle: {x: 0, y: 0, z: 0}
+  pos: {x: 0.1, y: -0.3, z: 0.2}
+  angle: {x: 0, y: 90, z: 0}
   putBack: {fileID: 1249100589}
   additionalEffect:
     m_PersistentCalls:
@@ -77720,6 +77735,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003, y: 0.007, z: 0.012}
   m_Center: {x: -0.001, y: 0, z: 0}
+--- !u!114 &1620930549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620930542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0.11764706}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1621137859
 GameObject:
   m_ObjectHideFlags: 0

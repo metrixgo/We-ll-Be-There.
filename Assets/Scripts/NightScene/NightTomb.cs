@@ -5,9 +5,11 @@ public class NightTomb : MonoBehaviour
 {
     [SerializeField] private GameObject dirtPile;
     [SerializeField] private GameObject downRope;
+    [SerializeField] private GameObject rope;
+    [SerializeField] private GameObject putDownRope;
     [SerializeField] private GameObject climbCam;
     [SerializeField] private AudioClip dig;
-    [SerializeField] private AudioClip putDownRope;
+    [SerializeField] private AudioClip setUpRope;
     [SerializeField] private AudioClip rope1;
     [SerializeField] private AudioClip rope2;
 
@@ -44,19 +46,21 @@ public class NightTomb : MonoBehaviour
     private IEnumerator StartRopping()
     {
         MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;0.5");
-        MainManager.instance.AddTrigger("wait;" + putDownRope.length);
+        MainManager.instance.AddTrigger("wait;" + setUpRope.length);
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;0.5");
         yield return new WaitForSeconds(0.5f);
-        MainManager.instance.PlayEffect(putDownRope);
+        MainManager.instance.PlayEffect(setUpRope);
         state = 2;
         yield return new WaitForSeconds(0.1f);
         downRope.SetActive(true);
+        Destroy(rope);
+        Destroy(putDownRope);
     }
 
     private IEnumerator StartDigging()
     {
         MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
-        MainManager.instance.AddTrigger("wait;" + dig.length + 0.5f);
+        MainManager.instance.AddTrigger("wait;" + (dig.length + 0.5f));
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
         yield return new WaitForSeconds(1.5f);
         MainManager.instance.PlayEffect(dig);

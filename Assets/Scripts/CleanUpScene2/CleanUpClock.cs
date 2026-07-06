@@ -80,8 +80,8 @@ public class CleanUpClock : MonoBehaviour
 
     private IEnumerator TimeUp()
     {
-        MainManager.instance.AddTrigger("wait;1");
         yield return new WaitForSeconds(1.0f);
+        yield return new WaitUntil(() => !MainManager.instance.AtPausedScreen());
         bool flg = false;
         if (!status["mop"]) errorType = "mop";
         else if (!status["shovel"]) errorType = "shovel";

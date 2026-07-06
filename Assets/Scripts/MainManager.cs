@@ -382,6 +382,11 @@ public class MainManager : MonoBehaviour
         effectsPlayer.Play();
     }
 
+    public void StopEffect()
+    {
+        effectsPlayer.Stop();
+    }
+
     public int ItemCount(string s)
     {
         int cnt = 0;

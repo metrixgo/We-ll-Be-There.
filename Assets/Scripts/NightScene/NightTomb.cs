@@ -13,6 +13,8 @@ public class NightTomb : MonoBehaviour
     [SerializeField] private AudioClip setUpRope;
     [SerializeField] private AudioClip rope1;
     [SerializeField] private AudioClip rope2;
+    [SerializeField] private AudioClip slipRope;
+    [SerializeField] private AudioClip land;
 
     private int state = 0;
 
@@ -39,17 +41,22 @@ public class NightTomb : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
-        MainManager.instance.AddTrigger("wait;6");
+        MainManager.instance.AddTrigger("wait;22.9");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#000000FF;1");
+        MainManager.instance.AddTrigger("loadscene;sewerscene");
         yield return new WaitForSeconds(2.0f);
         player.SetActive(false);
         climbCam.SetActive(true);
-        while (true)
+        for (int i = 1; i <= 9; i++)
         {
             MainManager.instance.PlayEffect(rope1);
             yield return new WaitForSeconds(1.0f);
             MainManager.instance.PlayEffect(rope2);
             yield return new WaitForSeconds(1.5f);
         }
+        MainManager.instance.PlayEffect(slipRope);
+        yield return new WaitForSeconds(2.3f);
+        MainManager.instance.PlayEffect(land);
     }
 
     private IEnumerator StartRopping()
@@ -79,6 +86,5 @@ public class NightTomb : MonoBehaviour
         name = "Hole";
         dirtPile.transform.localScale += Vector3.forward * 60.0f;
         yield return new WaitForSeconds(dig.length + 1.0f);
-        MainManager.instance.StopMusic();
     }
 }

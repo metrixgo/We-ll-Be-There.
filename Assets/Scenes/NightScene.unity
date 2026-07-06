@@ -4218,7 +4218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &92784075
 Transform:
   m_ObjectHideFlags: 0
@@ -64104,6 +64104,8 @@ MonoBehaviour:
   setUpRope: {fileID: 8300000, guid: e53a78b35d55e974490b2660bfd143a4, type: 3}
   rope1: {fileID: 8300000, guid: e08659805c1696949837638846ed6c07, type: 3}
   rope2: {fileID: 8300000, guid: 2714bafef3431ec428eea77f28eedc06, type: 3}
+  slipRope: {fileID: 8300000, guid: d380f5ae2ab8de342a5db9177c0ca844, type: 3}
+  land: {fileID: 8300000, guid: 07940301b4625a34b80e23f320a8c7ca, type: 3}
 --- !u!114 &1312558515
 MonoBehaviour:
   m_ObjectHideFlags: 0

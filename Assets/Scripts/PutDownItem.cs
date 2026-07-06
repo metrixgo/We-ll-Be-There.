@@ -5,11 +5,11 @@ public class PutDownItem : MonoBehaviour
     [SerializeField] private AudioClip soundEffect;
     [SerializeField] private GameObject item;
 
-    private Collider coll;
+    private Collider[] colls;
 
     private void Start()
     {
-        coll = item.GetComponent<Collider>();
+        colls = item.GetComponents<Collider>();
     }
 
     public void Putdown()
@@ -23,7 +23,7 @@ public class PutDownItem : MonoBehaviour
         item.transform.position = transform.position;
         item.transform.rotation = transform.rotation;
         item.tag = "Interactable";
-        if (coll != null) coll.enabled = true;
+        foreach (Collider c in colls) c.enabled = true;
         gameObject.SetActive(false);
     }
 }

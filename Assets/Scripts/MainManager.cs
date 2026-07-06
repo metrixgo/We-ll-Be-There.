@@ -272,6 +272,8 @@ public class MainManager : MonoBehaviour
         {"I think I need to get out of here...", "我觉得我得离开这里..."},
         {"Now.", "现在。"},
         {"Control", "遥控器"},
+        {"Hole", "洞口"},
+        {"Rope", "绳子"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
     };

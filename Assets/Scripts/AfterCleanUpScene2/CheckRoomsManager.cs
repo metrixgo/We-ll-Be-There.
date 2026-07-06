@@ -70,7 +70,7 @@ public class CheckRoomsManager : MonoBehaviour
     private IEnumerator Realize()
     {
         MainManager.instance.PlayEffect(tense);
-        yield return new WaitForSeconds(tense.length);
+        yield return new WaitForSeconds(6.0f);
         MainManager.instance.AddTrigger("dialogue;You;I can't find them...");
         MainManager.instance.AddTrigger("dialogue;You;Maybe it's just me hallucinating...");
         MainManager.instance.AddTrigger("dialogue;You;Anyways, I should just go and relax on the couch. It has been such a tiring and stressful day.");

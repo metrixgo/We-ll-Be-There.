@@ -41,7 +41,7 @@ public class NightTomb : MonoBehaviour
         MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;1");
         MainManager.instance.AddTrigger("wait;2");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;1");
-        MainManager.instance.AddTrigger("wait;22.9");
+        MainManager.instance.AddTrigger("wait;22.8");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#000000FF;1");
         MainManager.instance.AddTrigger("loadscene;sewerscene");
         yield return new WaitForSeconds(2.0f);
@@ -55,7 +55,7 @@ public class NightTomb : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
         MainManager.instance.PlayEffect(slipRope);
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(2.5f);
         MainManager.instance.PlayEffect(land);
     }
 

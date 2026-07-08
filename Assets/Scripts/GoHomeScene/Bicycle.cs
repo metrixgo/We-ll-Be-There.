@@ -4,6 +4,7 @@ public class Bicycle : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject ridePlayer;
+    [SerializeField] private GameObject rideCam;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject trigger;
     [SerializeField] private AudioClip ridingSound;
@@ -19,6 +20,7 @@ public class Bicycle : MonoBehaviour
     private float sensitivity;
     private float angCount = 0;
     private float angAim = 0.114f;
+    private float t = 0;
     private Camera cam;
     private AudioSource ad;
 
@@ -26,15 +28,15 @@ public class Bicycle : MonoBehaviour
     {
         ad = GetComponent<AudioSource>();
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
-        cam = ridePlayer.transform.Find("Camera").GetComponent<Camera>();
+        cam = rideCam.GetComponent<Camera>();
         rotationX = cam.transform.localEulerAngles.x;
     }
 
     public void GetOn()
     {
         tag = "Bicycle";
-        player.SetActive(false);
         ridePlayer.SetActive(true);
+        player.SetActive(false);
         Destroy(wall);
         Destroy(trigger);
         ad.Play();
@@ -48,35 +50,37 @@ public class Bicycle : MonoBehaviour
 
     private void Update()
     {
-        if (MainManager.instance.gameState != 1 || !getOn)
-        {
-            ad.Stop();
-            return ;
-        }
-        if (velocity > 0) velocity -= Time.deltaTime * 7.0f;
-        else velocity = 0;
+        t += Time.deltaTime;
+        cam.transform.localPosition = new Vector3(0, 0.75f + Mathf.Sin(t * 2 * Mathf.PI / 3.0f) * 0.01f, 0);
+
+        velocity -= Time.deltaTime * 5.0f;
+        if (MainManager.instance.gameState != 1) velocity -= Time.deltaTime * 3.0f;
+        if (velocity < 0) velocity = 0;
 
         float key = Input.GetAxisRaw("Horizontal");
-        if (controlling)
+        if (MainManager.instance.gameState == 1 && getOn)
         {
-            if (key < 0 && isLeft || key > 0 && !isLeft)
+            if (controlling)
             {
-                isLeft = !isLeft;
+                if (key < 0 && isLeft || key > 0 && !isLeft)
+                {
+                    isLeft = !isLeft;
+                    velocity += stepSpeed;
+                    velocity = Mathf.Min(velocity, maxSpeed);
+                    if (!ad.isPlaying) ad.Play();
+                }
+            }
+            else
+            {
                 velocity += stepSpeed;
                 velocity = Mathf.Min(velocity, maxSpeed);
                 if (!ad.isPlaying) ad.Play();
             }
         }
-        else
-        {
-            velocity += stepSpeed;
-            velocity = Mathf.Min(velocity, maxSpeed);
-            if (!ad.isPlaying) ad.Play();
-        }
 
         if (velocity < 1.0f) ad.Stop();
 
-            Vector3 move = velocity * Time.deltaTime * transform.forward;
+        Vector3 move = velocity * Time.deltaTime * transform.forward;
         transform.Translate(move, Space.World);
         
         if (angle != 0)
@@ -96,6 +100,8 @@ public class Bicycle : MonoBehaviour
                 angCount = 0;
             }
         }
+
+        if (MainManager.instance.gameState != 1) return;
 
         rotationX -= Input.GetAxis("Mouse Y") * sensitivity;
         rotationX = Mathf.Clamp(rotationX, -90.0f, 90.0f);

@@ -69075,7 +69075,7 @@ MonoBehaviour:
   selfDestructs: 1
   triggers:
   - changescreen;#00000000;#000000FF;2
-  - moveplayerto;5.457;0.786;303
+  - moveplayerto;5.457;0.786;340
   - changescreen;#000000FF;#00000000;2
 --- !u!65 &1350041530
 BoxCollider:
@@ -104312,7 +104312,7 @@ MonoBehaviour:
   selfDestructs: 1
   triggers:
   - changescreen;#00000000;#000000FF;2
-  - moveplayerto;5.457;0.786;303
+  - moveplayerto;5.457;0.786;340
   - changescreen;#000000FF;#00000000;2
 --- !u!65 &1984292316
 BoxCollider:
@@ -118306,7 +118306,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.99904823, z: 0, w: 0.0436195}
   m_LocalPosition: {x: -164.29092, y: 0.48523828, z: -45.443817}
-  m_LocalScale: {x: 0.21428569, y: 0.21428572, z: 0.21428569}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1568237569537009875}

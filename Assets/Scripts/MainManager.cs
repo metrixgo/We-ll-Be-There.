@@ -60,6 +60,7 @@ public class MainManager : MonoBehaviour
         {"Damn it, I must get outta here real quick.", "该死的，我得赶紧离开这里。"},
         {"Phew... Feels good breathing fresh air.", "呼...能呼吸到新鲜空气真好。"},
         {"I should get on my bike and get home now.", "我现在得骑车回家了。"},
+        {"Almost forgot I need to turn left.", "差点忘了我得左转了。"},
         {"Get on the bike", "上自行车"},
         {"Ride home", "骑车回家"},
         {"Get home", "赶回家"},
@@ -349,7 +350,7 @@ public class MainManager : MonoBehaviour
         if (!isLoadingScene)
         {
             isLoadingScene = true;
-            if (s != "MainMenu") PlayerPrefs.SetString("Save", s);
+            if (s != "MainMenu" && !s.Contains("Ending")) PlayerPrefs.SetString("Save", s);
             StartCoroutine(LoadSceneCoroutine(s, t));
         }
     }
@@ -539,9 +540,9 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "flashdialogue")
             {
-                gameState = 1;
+                if (s.Length <= 4) gameState = 1;
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
-                gameState = 0;
+                if (s.Length <= 4) gameState = 0;
             }
             else if (key == "chaosdialogue")
             {

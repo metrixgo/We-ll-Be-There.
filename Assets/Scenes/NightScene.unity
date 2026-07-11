@@ -8307,6 +8307,7 @@ MonoBehaviour:
   turnOnTV: {fileID: 8300000, guid: 4a53c53a0d31209459ea3e24612a9803, type: 3}
   screamAd: {fileID: 1138758366}
   timePrompt: {fileID: 906236382}
+  stupidThing: {fileID: 906236381}
   firstPlayer: {fileID: 2026544141}
   player: {fileID: 508594362}
   stat: {fileID: 2100000, guid: 433cd06826c62484a9e23337acf91e35, type: 2}
@@ -8336,7 +8337,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0.3
+  - 0.5
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00

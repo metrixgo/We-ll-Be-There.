@@ -103,6 +103,11 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CloudBlend: 0.03
+    - _CloudCompare: 5
+    - _CloudDensity: 0.1
+    - _CloudScale: 200
+    - _CloudScatter: 0.95
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -115,6 +120,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GroundBlend: 0.5
+    - _HasClouds: 1
     - _HasStars: 1
     - _HorizonBlend: 50
     - _ImageType: 0
@@ -143,6 +149,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudSpeed: {r: 0.02, g: 0.02, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}

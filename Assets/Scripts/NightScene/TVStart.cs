@@ -9,6 +9,7 @@ public class TVStart : MonoBehaviour
     [SerializeField] private AudioClip turnOnTV;
     [SerializeField] private AudioSource screamAd;
     [SerializeField] private TextMeshProUGUI timePrompt;
+    [SerializeField] private GameObject stupidThing;
     [SerializeField] private GameObject firstPlayer;
     [SerializeField] private GameObject player;
     [SerializeField] private Material stat;
@@ -63,6 +64,7 @@ public class TVStart : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        Destroy(stupidThing);
         yield return new WaitForSeconds((float)vp.length - 3.0f);
         Destroy(vp);
         rend.material = stat;

@@ -274,10 +274,13 @@ public class MainManager : MonoBehaviour
         {"Now.", "现在。"},
         {"Control", "遥控器"},
         {"Hole", "洞口"},
+        {"Enterance", "入口"},
         {"Rope", "绳子"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
         {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},
+        {"It's out of reach...", "我够不到..."},
+        {"A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******", "一队 *** 会 *** 三分钟 *** 到 *** 将直接 *** 你。请 ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******"},
     };
 
     private void Awake()
@@ -527,7 +530,7 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "canrun")
             {
-                if (s[1].ToLower() == "1") player.CanRun(true);
+                if (s[1] == "1") player.CanRun(true);
                 else player.CanRun(false);
             }
             else if (key == "prompt")
@@ -544,10 +547,16 @@ public class MainManager : MonoBehaviour
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
                 if (s.Length <= 4) gameState = 0;
             }
+            else if (key == "flashwait")
+            {
+                gameState = 1;
+                yield return new WaitForSeconds(float.Parse(s[1]));
+                gameState = 0;
+            }
             else if (key == "chaosdialogue")
             {
                 string temp = "";
-                for (int i = 1; i <= 50; i++) temp += chars[Random.Range(0, chars.Length)];
+                for (int i = 1; i <= 30; i++) temp += chars[Random.Range(0, chars.Length)];
                 yield return StartCoroutine(DisplayDialogue(s[1], temp));
             }
             else if (key == "task")

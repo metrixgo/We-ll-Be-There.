@@ -6,7 +6,7 @@ public class SetSound : MonoBehaviour
     [SerializeField] private float multiplier = 1;
     private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         Set();

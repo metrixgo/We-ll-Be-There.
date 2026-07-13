@@ -30,7 +30,7 @@ public class SewerLight : MonoBehaviour
             }
         }
         
-        if (t == 0 && Random.Range(0, 300) == 0)
+        if (t == 0 && Random.Range(0, 350) == 0)
         {
             ad.Stop();
             rend.material = flickerMat;

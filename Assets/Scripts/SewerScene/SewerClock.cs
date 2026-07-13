@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SewerClock : MonoBehaviour
@@ -13,9 +14,7 @@ public class SewerClock : MonoBehaviour
     private void Start()
     {
         ad = GetComponent<AudioSource>();
-        MainManager.instance.AddTrigger("canrun;1");
-        MainManager.instance.AddTrigger("flashprompt;Press [Shift] to run");
-        MainManager.instance.AddTrigger("flashdialogue;???;A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******;0");
+        StartCoroutine(Prompting());
     }
 
     private void Update()
@@ -37,5 +36,13 @@ public class SewerClock : MonoBehaviour
             ad.Play();
             beats++;
         }
+    }
+
+    private IEnumerator Prompting()
+    {
+        MainManager.instance.AddTrigger("canrun;1");
+        MainManager.instance.AddTrigger("flashprompt;Press [Shift] to run");
+        yield return new WaitForSeconds(3.0f);
+        MainManager.instance.AddTrigger("flashdialogue;???;A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******;0");
     }
 }

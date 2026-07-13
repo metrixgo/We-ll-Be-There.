@@ -276,6 +276,8 @@ public class MainManager : MonoBehaviour
         {"Hole", "洞口"},
         {"Enterance", "入口"},
         {"Rope", "绳子"},
+        {"Rock", "石头"},
+        {"Crowbar", "撬棍"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
         {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},

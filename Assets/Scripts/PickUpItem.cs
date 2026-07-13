@@ -7,6 +7,8 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private GameObject hold;
     [SerializeField] private Vector3 pos;
     [SerializeField] private Vector3 angle;
+    [SerializeField] private bool changeScale = false;
+    [SerializeField] private Vector3 scale;
     [SerializeField] private GameObject putBack;
     [SerializeField] private UnityEvent additionalEffect;
 
@@ -35,6 +37,10 @@ public class PickUpItem : MonoBehaviour
                 transform.SetParent(hold.transform);
                 transform.localPosition = pos;
                 transform.localRotation = Quaternion.Euler(angle);
+                if (changeScale)
+                {
+                    transform.localScale = scale;
+                }
                 tag = "Untagged";
                 if(!pickedUpBefore) additionalEffect.Invoke();
                 if(putBack != null)

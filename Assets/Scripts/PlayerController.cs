@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource ad;
     private Camera cam;
-    private float speed = 2.5f;
+    private float speed = 22.5f;
     private float runSpeed = 5.0f;
     private float reachRange = 1.5f;
     private float sensitivity;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         bool flg = true;
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].collider.CompareTag("Player")) continue;
+            if (hits[i].collider.CompareTag("Player") || hits[i].collider.CompareTag("Ignore")) continue;
             if (hits[i].collider.CompareTag("Interactable"))
             {
                 newItem = hits[i].collider.GetComponent<Interactable>();

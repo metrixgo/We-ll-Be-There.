@@ -12,6 +12,7 @@ TagManager:
   - Car
   - Bicycle
   - Wood
+  - Ignore
   layers:
   - Default
   - TransparentFX

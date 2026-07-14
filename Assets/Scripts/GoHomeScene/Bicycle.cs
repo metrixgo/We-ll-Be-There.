@@ -53,6 +53,8 @@ public class Bicycle : MonoBehaviour
         t += Time.deltaTime;
         cam.transform.localPosition = new Vector3(0, 0.75f + Mathf.Sin(t * 2 * Mathf.PI / 3.0f) * 0.01f, 0);
 
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
+
         velocity -= Time.deltaTime * 5.0f;
         if (MainManager.instance.gameState != 1) velocity -= Time.deltaTime * 3.0f;
         if (velocity < 0) velocity = 0;

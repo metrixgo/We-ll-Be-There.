@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class ExtendBoxHallway : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject end;
+    [SerializeField] private GameObject[] units;
+    [SerializeField] private AudioClip shift;
+    
+    private int idx = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        MainManager.instance.PlayEffect(shift);
+        end.transform.Translate(Vector3.left * 12.0f, Space.World);
+        units[idx].SetActive(true);
+        idx++;
+        if (idx == 3) Destroy(gameObject);
     }
 }

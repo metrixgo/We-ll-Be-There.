@@ -4,6 +4,7 @@ public class SewerPlanks : MonoBehaviour
 {
     [SerializeField] private CrowBarTrigger cb;
     [SerializeField] private AudioClip picking;
+    [SerializeField] private SewerMetalDoor door;
 
     private static int cnt = 0;
 
@@ -19,8 +20,13 @@ public class SewerPlanks : MonoBehaviour
             tag = "Untagged";
             MainManager.instance.PlayEffect(picking);
             gameObject.AddComponent<Rigidbody>();
-            GetComponent<Rigidbody>().AddForce(0, 1.5f, 0, ForceMode.Impulse);
-            if (cnt == 5) cb.PutAway();
+            GetComponent<Rigidbody>().AddForce(0, 1.5f, 0.5f, ForceMode.Impulse);
+            if (cnt == 5)
+            {
+                cb.PutAway();
+                door.SetState(1);
+            }
+            Destroy(gameObject, 2.0f);
         }
     }
 }

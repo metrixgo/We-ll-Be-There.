@@ -5,6 +5,7 @@ public class SewerMetalDoor : MonoBehaviour
 {
     [SerializeField] private int state = 0;
     [SerializeField] private string keyName;
+    [SerializeField] private string prompt = "It's locked.";
     [SerializeField] private AudioClip banging;
     [SerializeField] private AudioClip unlock;
     [SerializeField] private AudioClip open;
@@ -18,18 +19,24 @@ public class SewerMetalDoor : MonoBehaviour
         ad = GetComponent<AudioSource>();
     }
 
+    public void SetState(int n)
+    {
+        state = n;
+    }
+
     public void InteractDoor()
     {
         if (MainManager.instance.gameState != 1 || state == -1) return;
 
         if (state == 0)
         {
+            MainManager.instance.AddTrigger("wait;" + unlock.length);
+
             if (MainManager.instance.HasItem(keyName))
             {
                 ad.clip = unlock;
                 ad.Play();
                 state = 1;
-                MainManager.instance.AddTrigger("wait;" + unlock.length);
             }
             else
             {
@@ -38,7 +45,7 @@ public class SewerMetalDoor : MonoBehaviour
                 StartCoroutine(TryLocked());
                 if (firstTimeTry)
                 {
-                    MainManager.instance.AddTrigger("dialogue;You;It's locked.");
+                    MainManager.instance.AddTrigger("dialogue;You;" + prompt);
                     firstTimeTry = false;
                 }
             }

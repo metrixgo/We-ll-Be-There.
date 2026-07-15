@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 move;
     private bool canRun = false;
     private bool freezed = false;
+    private bool runningRC = false;
+    private int prev = 0;
     private int state = 0;
     private CharacterController characterController; 
     private Interactable curItem;
@@ -40,6 +42,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (state == 2 && cam.fieldOfView < 70.0f) cam.fieldOfView += 50.0f * Time.deltaTime;
+        else if ((state == 1 || state == 0) && cam.fieldOfView > 60.0f) cam.fieldOfView -= 50.0f * Time.deltaTime;
+
+        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, 60.0f, 70.0f);
+
         if (MainManager.instance.gameState != 1)
         {
             move = Vector3.zero;
@@ -164,7 +171,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             float f = move.magnitude;
-            int prev = state;
+            prev = state;
             if (f < 0.2f) state = 0;
             else if (Mathf.Abs(f - speed) < 0.05f) state = 1;
             else if (Mathf.Abs(f - runSpeed) < 0.05f) state = 2;
@@ -176,10 +183,16 @@ public class PlayerController : MonoBehaviour
             Vector3 temp = cam.localPosition;
             temp.y = ys[state] + mid;
 
+            if (runningRC)
+            {
+                yield return null;
+                continue;
+            }
+
             if (prev != state)
             {
-                StartCoroutine(ChangeCameraField(prev, state));
-                yield return StartCoroutine(ResetCamera(mid));
+                runningRC = true;
+                StartCoroutine(ResetCamera(mid));
                 t = 0;
             }
             else
@@ -207,21 +220,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeCameraField(int prev, int stat)
-    {
-        float t = 0;
-        float startF = cam.fieldOfView;
-        while (t < 0.2f)
-        {
-            if (stat != state) break;
-            if (stat == 2) cam.fieldOfView = Mathf.Lerp(startF, 70.0f, Mathf.SmoothStep(0, 1.0f, t / 0.2f));
-            else if (prev == 2) cam.fieldOfView = Mathf.Lerp(startF, 60.0f, Mathf.SmoothStep(0, 1.0f, t / 0.2f));
-            else break;
-            t += Time.deltaTime;
-            yield return null;
-        }
-    }
-
     private IEnumerator ResetCamera(float mid)
     {
         Transform camTrans = transform.Find("Camera");
@@ -237,5 +235,6 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         camTrans.localPosition = endPos;
+        runningRC = false;
     }
 }

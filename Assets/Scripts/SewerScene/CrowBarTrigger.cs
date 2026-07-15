@@ -69,12 +69,16 @@ public class CrowBarTrigger : MonoBehaviour
             {
                 screen.color = Color.clear;
                 Destroy(txt.gameObject);
-                ad.volume = 0;
-                Destroy(this);
+                ad.Stop();
+                state = 0;
             }
-            screen.color = Color.Lerp(Color.red / 2.0f, Color.clear, 1 - t / 10.0f);
-            txt.color = Color.Lerp(Color.red, Color.clear, 1 - t / 10.0f);
-            ad.volume = Mathf.Lerp(originalV, 0, 1 - t / hitT);
+            else
+            {
+                screen.color = Color.Lerp(Color.red / 2.0f, Color.clear, 1 - t / 10.0f);
+                txt.color = Color.Lerp(Color.red, Color.clear, 1 - t / 10.0f);
+                ad.volume = Mathf.Lerp(originalV, 0, 1 - t / hitT);
+            }
+                
         }
         else if (state == 4)
         {

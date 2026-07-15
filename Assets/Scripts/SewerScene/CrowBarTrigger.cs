@@ -11,7 +11,6 @@ public class CrowBarTrigger : MonoBehaviour
     [SerializeField] private GameObject sealedDoor;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerHead;
-
     [SerializeField] private Image screen;
     [SerializeField] private TextMeshPro txt;
 
@@ -66,7 +65,7 @@ public class CrowBarTrigger : MonoBehaviour
             t -= Time.deltaTime;
             if (t <= 0)
             {
-                Destroy(screen.gameObject);
+                screen.color = Color.clear;
                 Destroy(txt.gameObject);
                 ad.volume = 0;
                 Destroy(this);

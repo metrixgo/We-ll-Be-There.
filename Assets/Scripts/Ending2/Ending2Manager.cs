@@ -52,8 +52,7 @@ public class Ending2Manager : MonoBehaviour
         MainManager.instance.AddTrigger("wait;0.2");
         MainManager.instance.AddTrigger("changescreen;#ff0000ff;#000000ff;2");
         MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("flashscreen;#000000ff;#00000088;5");
-        MainManager.instance.AddTrigger("wait;3");
+        MainManager.instance.AddTrigger("changescreen;#000000ff;#00000088;5");
         MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;6;true");
         string s = "";
         if (CleanUpClock.errorType == "mop") s = "We found his mop on the second floor with blood traces on it. We believe it was used to clean up the crime scene.";

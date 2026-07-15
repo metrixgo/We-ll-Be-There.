@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SewerMetalDoor : MonoBehaviour
 {
-    private int state = 0;
+    [SerializeField] private int state = 0;
     [SerializeField] private string keyName;
     [SerializeField] private AudioClip banging;
     [SerializeField] private AudioClip unlock;
@@ -68,15 +68,15 @@ public class SewerMetalDoor : MonoBehaviour
         float goal = angles.y;
         while (rot < 7.0f)
         {
-            rot += 60.0f * Time.deltaTime;
-            transform.Rotate(0, 60.0f * Time.deltaTime, 0, Space.World);
+            rot += 80.0f * Time.deltaTime;
+            transform.Rotate(0, 80.0f * Time.deltaTime, 0, Space.World);
             yield return null;
         }
         rot = 0;
         while (rot < 7.0f)
         {
-            rot += 20.0f * Time.deltaTime;
-            transform.Rotate(0, -20.0f * Time.deltaTime, 0, Space.World);
+            rot += 30.0f * Time.deltaTime;
+            transform.Rotate(0, -30.0f * Time.deltaTime, 0, Space.World);
             yield return null;
         }
         transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);

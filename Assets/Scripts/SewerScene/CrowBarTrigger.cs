@@ -8,17 +8,19 @@ public class CrowBarTrigger : MonoBehaviour
     [SerializeField] private AudioClip hit;
     [SerializeField] private AudioClip die;
     [SerializeField] private AudioClip finishHit;
+    [SerializeField] private AudioClip putAway;
     [SerializeField] private GameObject sealedDoor;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerHead;
     [SerializeField] private Image screen;
     [SerializeField] private TextMeshPro txt;
 
-    private int sealState = 0;
+    private int state = 0;
     private int cnt = 0;
     private float t = 0;
     private float hitT = 0;
     private float originalV = 0;
+    private bool temp = false;
     private AudioSource ad;
 
     private void Start()
@@ -29,7 +31,7 @@ public class CrowBarTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (sealState == 1 && MainManager.instance.gameState == 1)
+        if (state == 1 && MainManager.instance.gameState == 1)
         {
             t += Time.deltaTime;
             if (hitT != 0)
@@ -42,7 +44,7 @@ public class CrowBarTrigger : MonoBehaviour
             if (t > 10.0f)
             {
                 t = 0;
-                sealState = 2;
+                state = 2;
                 transform.parent = null;
                 gameObject.AddComponent<Rigidbody>();
                 playerHead.SetActive(true);
@@ -55,12 +57,12 @@ public class CrowBarTrigger : MonoBehaviour
                 MainManager.instance.AddTrigger("loadscene;SewerScene;3");
             }
         }
-        else if (sealState == 2)
+        else if (state == 2)
         {
             t += Time.deltaTime;
             ad.volume = Mathf.Lerp(originalV, 0, t / 6.0f);
         }
-        else if (sealState == 3)
+        else if (state == 3)
         {
             t -= Time.deltaTime;
             if (t <= 0)
@@ -74,13 +76,29 @@ public class CrowBarTrigger : MonoBehaviour
             txt.color = Color.Lerp(Color.red, Color.clear, 1 - t / 10.0f);
             ad.volume = Mathf.Lerp(originalV, 0, 1 - t / hitT);
         }
+        else if (state == 4)
+        {
+            t += Time.deltaTime;
+            if(!temp && t > 1.0f)
+            {
+                temp = true;
+                MainManager.instance.PlayEffect(putAway);
+            }
+            
+            if (t > 2.0f) Destroy(gameObject);
+            
+            if (t > 1.0f)
+            {
+                transform.Translate(0, -0.21f * Time.deltaTime, 0);
+            }
+        }
     }
 
     public void SealIn()
     {
         MainManager.instance.PlayEffect(seal);
         sealedDoor.SetActive(true);
-        sealState = 1;
+        state = 1;
         ad.Play();
     }
 
@@ -92,7 +110,7 @@ public class CrowBarTrigger : MonoBehaviour
         {
             MainManager.instance.PlayEffect(finishHit);
             Destroy(sealedDoor);
-            sealState = 3;
+            state = 3;
             hitT = t;
         }
         else
@@ -100,5 +118,12 @@ public class CrowBarTrigger : MonoBehaviour
             MainManager.instance.PlayEffect(hit);
             hitT = hit.length + 0.5f;
         }
+    }
+
+    public void PutAway()
+    {
+        state = 4;
+        t = 0;
+        hitT = 0;
     }
 }

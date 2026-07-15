@@ -17,6 +17,8 @@ public class ExtendBoxHallway : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+
         MainManager.instance.PlayEffect(shift);
         end.transform.Translate(Vector3.left * 12.0f, Space.World);
         Instantiate(unit, pos, rot);

@@ -287,6 +287,7 @@ public class MainManager : MonoBehaviour
         {"White Key", "白钥匙"},
         {"Brass Key", "铜钥匙"},
         {"It's locked.", "这被锁上了。"},
+        {"I need to use a crowbar to remove these planks.", "我需要一个撬棍把木板撬掉。"},
     };
 
     private void Awake()

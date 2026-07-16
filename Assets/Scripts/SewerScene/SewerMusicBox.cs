@@ -2,23 +2,27 @@ using UnityEngine;
 
 public class SewerMusicBox : MonoBehaviour
 {
-    private float vol;
+    [SerializeField] private AudioClip tense;
+    [SerializeField] private GameObject trig;
+    [SerializeField] private GameObject soundTrig;
+
     private AudioSource ad;
+    private bool closed = false;
 
     private void Start()
     {
         ad = GetComponent<AudioSource>();
-        vol = ad.volume;
-        ad.volume = 0;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Close()
     {
-        if (other.CompareTag("Player")) ad.volume = vol;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player")) ad.volume = 0;
+        if (!closed)
+        {
+            SewerMusicManager.instance.ChangeTo(tense, 3.0f, 20.0f);
+            closed = true;
+            Destroy(trig);
+            Destroy(soundTrig);
+        }
+        if (!ad.isPlaying) ad.Play();
     }
 }

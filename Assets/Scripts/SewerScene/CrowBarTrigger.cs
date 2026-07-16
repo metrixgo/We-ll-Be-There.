@@ -70,6 +70,7 @@ public class CrowBarTrigger : MonoBehaviour
                 screen.color = Color.clear;
                 Destroy(txt.gameObject);
                 ad.Stop();
+                ad.volume = originalV;
                 state = 0;
             }
             else
@@ -86,7 +87,8 @@ public class CrowBarTrigger : MonoBehaviour
             if(!temp && t > 1.0f)
             {
                 temp = true;
-                MainManager.instance.PlayEffect(putAway);
+                ad.clip = putAway;
+                ad.Play();
             }
             
             if (t > 2.0f) Destroy(gameObject);
@@ -110,7 +112,7 @@ public class CrowBarTrigger : MonoBehaviour
     {
         if (hitT > 0) return;
         cnt++;
-        if(cnt >= 6)
+        if(cnt >= 12)
         {
             MainManager.instance.PlayEffect(finishHit);
             Destroy(sealedDoor);
@@ -120,7 +122,7 @@ public class CrowBarTrigger : MonoBehaviour
         else
         {
             MainManager.instance.PlayEffect(hit);
-            hitT = hit.length + 0.5f;
+            hitT = hit.length ;
         }
     }
 

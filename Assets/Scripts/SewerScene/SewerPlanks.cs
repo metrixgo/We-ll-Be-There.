@@ -21,6 +21,8 @@ public class SewerPlanks : MonoBehaviour
             MainManager.instance.PlayEffect(picking);
             gameObject.AddComponent<Rigidbody>();
             GetComponent<Rigidbody>().AddForce(0, 1.5f, 0.5f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddTorque(Vector3.right * 2.0f, ForceMode.Impulse);
+
             if (cnt == 5)
             {
                 cb.PutAway();

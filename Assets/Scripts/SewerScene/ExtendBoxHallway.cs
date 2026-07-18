@@ -30,7 +30,7 @@ public class ExtendBoxHallway : MonoBehaviour
             playerHead.transform.parent = null;
             playerHead.GetComponent<Rigidbody>().AddForce(-1.0f, 1.0f, 0, ForceMode.Impulse);
             playerHead.GetComponent<Rigidbody>().AddTorque(Vector3.up / 3.0f, ForceMode.Impulse);
-            Destroy(player);
+            player.SetActive(false);
             MainManager.instance.PlayEffect(die);
             screen.color = Color.red / 2.0f;
             MainManager.instance.AddTrigger("wait;3");

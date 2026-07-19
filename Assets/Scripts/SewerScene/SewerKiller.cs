@@ -10,8 +10,8 @@ public class SewerKiller : MonoBehaviour
     private float dis;
     private float attackDis = 1.0f;
     private float sightDis = 10.0f;
-    private float speed = 5.0f;
-    private float runSpeed = 6.5f;
+    private float speed = 2.0f;
+    private float runSpeed = 4.5f;
 
     private void Start()
     {
@@ -28,28 +28,15 @@ public class SewerKiller : MonoBehaviour
             agent.isStopped = true;
             anim.SetBool("Attack", true);
         }
-        else if (dis < sightDis)
-        {
-            agent.isStopped = false;
-            anim.SetBool("Attack", false);
-            anim.SetBool("Run", true);
-            agent.destination = target.position;
-        }
         else
         {
             agent.isStopped = false;
             anim.SetBool("Attack", false);
-            anim.SetBool("Run", false);
+            anim.SetBool("Run", dis < sightDis);
             agent.destination = target.position;
         }
-    }
 
-    private void OnAnimatorMove()
-    {
-        if (!anim.GetBool("Attack"))
-        {
-            if (anim.GetBool("Run")) agent.speed = runSpeed * (anim.deltaPosition / Time.deltaTime).magnitude;
-            else agent.speed = speed * (anim.deltaPosition / Time.deltaTime).magnitude;
-        }
+        if (anim.GetBool("Run")) agent.speed = runSpeed;
+        else agent.speed = speed;
     }
 }

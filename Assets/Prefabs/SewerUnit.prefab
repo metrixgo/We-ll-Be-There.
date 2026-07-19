@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8629628891134720525}
   - component: {fileID: 8383661855551500988}
   - component: {fileID: 7083088850362329502}
+  - component: {fileID: 7939081919912127305}
   m_Layer: 0
   m_Name: SewerUnit
   m_TagString: Rock
@@ -115,3 +116,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7804207600280643728, guid: b30e367308be42646a7721adf662a0d0, type: 3}
+--- !u!114 &7939081919912127305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806540482440363987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

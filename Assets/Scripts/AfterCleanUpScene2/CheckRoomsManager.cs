@@ -23,16 +23,8 @@ public class CheckRoomsManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetString("Language", "English") == "English")
-        {
-            header = "Check Rooms (";
-            enclose = ")";
-        }
-        else
-        {
-            header = "¼ì²é·¿¼ä £¨";
-            enclose = "£©";
-        }
+        header = MainManager.instance.Translate("Check rooms (");
+        enclose = MainManager.instance.Translate(")");
     }
 
     private void OnTriggerEnter(Collider other)

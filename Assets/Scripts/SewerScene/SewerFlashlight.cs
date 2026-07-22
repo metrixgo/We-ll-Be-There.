@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class SewerFlashlight : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI prompt;
     [SerializeField] private AudioClip flashlight;
 
     private bool opened = false;
@@ -33,6 +35,16 @@ public class SewerFlashlight : MonoBehaviour
         {
             opened = !opened;
             bulb.enabled = opened;
+            if (opened)
+            {
+                MainManager.instance.SetPromptColor(Color.red);
+                MainManager.instance.SetFocusColor(Color.red);
+            }
+            else
+            {
+                MainManager.instance.SetPromptColor(Color.white);
+                MainManager.instance.SetFocusColor(Color.white);
+            }
             MainManager.instance.PlayEffect(flashlight);
         }
     }

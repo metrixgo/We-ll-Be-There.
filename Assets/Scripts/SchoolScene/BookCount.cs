@@ -19,8 +19,7 @@ public class BookCount : MonoBehaviour
         else
         {
             count.fontSize = 2;
-            if (PlayerPrefs.GetString("Language", "English") == "English") count.text = "Thanks.";
-            else count.text = "Ð»Ð»¡£";
+            count.text = MainManager.instance.Translate("Thanks.");
             if (!first)
             {
                 first = true;

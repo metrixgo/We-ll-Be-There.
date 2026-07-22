@@ -28,7 +28,7 @@ public class SewerPlanks : MonoBehaviour
                 cb.PutAway();
                 door.SetState(1);
             }
-            Destroy(gameObject, 2.0f);
+            Destroy(gameObject, 4.0f);
         }
     }
 }

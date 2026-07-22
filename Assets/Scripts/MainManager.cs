@@ -32,6 +32,8 @@ public class MainManager : MonoBehaviour
     private bool isLoadingScene = false;
     private bool atPausedScreen = false;
     private bool atEndingScreen = false;
+    private Color promptColor = Color.white;
+    private Image focusImg;
     private string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
         "abcdefghijklmnopqrstuvwxyz" +
         "0123456789" +
@@ -52,6 +54,7 @@ public class MainManager : MonoBehaviour
         {"Door", "门"},
         {"Classroom Key", "教室钥匙"},
         {"Apple", "苹果"},
+        {"Thanks.", "谢谢。"},
         {"Book", "书"},
         {"The door is locked... I knew it.", "门被锁了...我就知道。"},
         {"They must've not noticed me when they locked this classroom...", "他们在锁教室的时候一定没注意到我..."},
@@ -262,6 +265,8 @@ public class MainManager : MonoBehaviour
         {"Where did all the police cars went?!", "那些警车全都去哪了？！"},
         {"Where did they go? I don't see them leaving at all.", "他们去哪了？我完全没看到他们离开。"},
         {"That's so weird. I need to go check all the rooms on the second floor.", "这有点奇怪。我得去检查所有二楼的房间。"},
+        {"Check rooms (", "检查房间 （"},
+        {")", "）"},
         {"I can't find them...", "我找不到他们..."},
         {"Maybe it's just me hallucinating...", "也许只是我产生幻觉了..."},
         {"Anyways, I should just go and relax on the couch. It has been such a tiring and stressful day.", "事已至此，我还是去沙发上放松一下吧。今天真是又累又让我压力山大。"},
@@ -278,6 +283,7 @@ public class MainManager : MonoBehaviour
         {"Rope", "绳子"},
         {"Rock", "石头"},
         {"Crowbar", "撬棍"},
+        {"Plank", "木板"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
         {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},
@@ -290,6 +296,17 @@ public class MainManager : MonoBehaviour
         {"It's locked.", "这被锁上了。"},
         {"It's blocked.", "这被挡住了。"},
         {"I need to use a crowbar to remove these planks.", "我需要一个撬棍把木板撬掉。"},
+        {"Once upon a time, there was a little boy who lived with a lovely family.", "很久以前，有一个小男孩在一个幸福的家庭生活。"},
+        {"One day, his parents suddenly decided to move away. The little boy was so scared of being left alone.", "有一天，他的父母突然决定离家出走。那个小男孩非常害怕被独自一人留下。"},
+        {"He asked his parents for the reason they were moving away, but all his parents said was, \"We promise that when you are able to buy a bike on your own, we will be back home.\" The little boy stopped, and then nodded.", "他问了他的父母为什么要离开，但是他的父母只是回答，“当你能够自己买一辆自行车的时候，我们就保证会回到家。”小男孩停顿了一下，随后点了点头。"},
+        {"After his parents left, he started to earn money by doing house chores in the neighborhood. It was tough, but he managed to save a lot of money in his piggy bank. The little boy was so proud of himself!", "父母离开以后，他开始通过在邻居家里做家务来挣钱。这很艰难，但是他设法在自己的存钱罐里存了很多钱。那个小男孩为自己感到非常骄傲！"},
+        {"After three months of hard work, he finally had enough money to buy a bicycle. He carried his piggy bank to the bicycle store. \"I'll have a nice and big bicycle with a headlight and all the decorations, please,\" he said to the store manager.", "经过三个月的埋头苦干，他终于攒够了买自行车的钱。他拿着自己的存钱罐去了自行车店。“我要一个前车灯，一大辆上好的自行车，再加上所有的装饰，”他对商店管理员说道。"},
+        {"The store manager stared at him. \"It'll cost a tidy bit,\" the manager replied. \"That's understood. And a metal basket on the back of the bicycle, please,\" the little boy commanded with a sense of determination.", "商店管理员瞪着他。“这得花不少钱，”管理员回答道。“知道，另外再来一个铁车筐放到自行车后面，”小男孩用坚定的语气命令着。"},
+        {"The little boy exited the store with a brand new bicycle. He rode home happily, humming songs along the way and looking around curiously. He knew his parents must be at home in no time!", "那个小男孩拿着一辆崭新的自行车离开了商店。他开心地骑车回家，路上不断哼着歌，好奇地看着周围的景色。他知道他的父母肯定马上就到家了！"},
+        {"Eight years later, the little boy went into high school. He lived in a big, empty house. His parents were still nowhere to be found. He was lonely. Sad. Helpless. He still waited in front of his house every day to see if his parents had come back. Life was rough, but he still lived happily every day. He believed that as long as he worked hard, everything would be fine.", "八年以后，那个小男孩进了高中。他生活在一个空荡荡的大房子里。他的父母还是无处可寻。他很孤独。伤心。无助。他每天仍然在家门前等着去看他的父母有没有回来。生活很艰难，但是他仍然乐观地生活着。他相信只要他努力，一切都会好的。"},
+        {"But one day the boy was so exhausted at school and accidentally fell asleep since he was extremely tired illusions of him being at school collecting stupid books to escape overwhelmed his mind and when he managed to get rid of that illusion only to found that he was already outside of school so he decided to go home but he was so tired and distracted so he accidentally crashed onto the mayor's son on the ride home at night and killed him and the boy went crazy he did not know what to do so he decided to hide the body the boy managed to hide most of them but there were still traces of evidence left behind that night the boy had a terrible dream and when he woke up he noticed that a group of police will come soon he thinked about lots of places and managed to clean up all the traces before the police came but something was not right and the boy looked like to be manipulated was strangely lured down to a sewer that should not exist and now the boy is likely still reading books inside his illusion but he still do not know what to do he did not know that the escape code was simply 0000 and he will likely be hunted down by a killer next so the destiny of the boy is determined and nothing can be changed and his life is ruined because he made a mistake a really stupid mistake that costed his life.", "但是有一天那个男孩在学校太累了然后不小心睡着了因为他实在太困了他在学校收集该死的书去逃离的幻觉侵蚀了他的大脑并且当他设法消除这幻觉的时候只看到自己已经在学校外面了于是他决定回家但是他太困太不清醒了所以他不小心撞死了市长的儿子然后那个男孩发疯了他不知道该做什么所以他决定把尸体藏起来那个男孩设法把大部分都藏起来了但是仍有部分残留证据被遗忘那晚那个男孩做了一个恐怖至极的噩梦而且当他醒来的时候他注意到会有一群警察来所以他想到了很多地方并且在警察赶来之前清理了所有证据但是有什么东西不对劲然后那个男孩好象是被控制似的被诱导到了一个本不该存在的下水道里然后现在那个男孩应该还在自己的幻觉里读书但是他不知道该做什么他不知道该做什么他不知道逃离密码就只不过是0000然后他待会很可能会被一个杀手追杀所以他的命运已经被注定了没有什么可以被改变并且它的生活被毁了因为他犯下了一个错误一个非常愚蠢的错误让他付出了人生的代价。"},
+        {"\"Oh, sorry everyone. I made a mistake. These texts were added by a strange kid. The story was not like that. The boy bought his bike and went home. His parents were waiting for him. They hugged together. His mom said, 'I knew you could do this! You know, as long as you persist, everything can be solved! We are so proud of you!' Then, the family lived happily ever after. The End. Okay everyone, now go back to your seats. Story time is over.\" \"Ms. Bartlett!!! The real escape code is 0419!!! The real escape code is 0419!!! I saw it with my eyes!!! The little boy got tricked!!! Ms.-\" \"Enough of that, Eric. If you say this nonsense again, I'm going to take away all your stars for this week! Now everyone please be quiet and look at the whiteboard.\"", "“哦，对不起大家，我犯了个错。这些字全都是被一个奇怪的小孩加上去的。故事不是那样的。那个男孩买了他的自行车后回到了家。他的父母已经在等着他了。他们相拥在一起。他的妈妈说道，‘我就知道你可以做到！你懂的，只要你持续坚持，一切都可以被解决！我们为你感到骄傲！’那个家庭之后过上了圆满幸福的生活。完。好了各位，现在回到你的位子上。故事时间结束了。”“巴特老师！！！真正的逃离密码是0419！！！真正的逃离密码是0419！！！我亲眼看到的！！！那个小男孩被骗了！！！老-”“够了，埃里克。如果你再胡说八道，我会把你这周的星星全没收！现在请大家都安静看白板。”"},
+        {"Page", "页"},
     };
 
     private void Awake()
@@ -303,6 +320,7 @@ public class MainManager : MonoBehaviour
     {
         musicPlayer.volume = PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
         effectsPlayer.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
+        focusImg = focus.GetComponent<Image>();
     }
 
     private void Update()
@@ -466,9 +484,19 @@ public class MainManager : MonoBehaviour
     public void SetPrompt(string s, bool b)
     {
         promptText.text = Translate(s);
-        promptText.color = Color.white;
+        promptText.color = promptColor;
         StopCoroutine("FlashPrompt");
         if (b && s.Length > 0) StartCoroutine("FlashPrompt");
+    }
+
+    public void SetPromptColor(Color c)
+    {
+        promptColor = c;
+    }
+
+    public void SetFocusColor(Color c)
+    {
+        focusImg.color = c;
     }
 
     private Color ParseColor(string colorString)
@@ -477,7 +505,7 @@ public class MainManager : MonoBehaviour
         else return Color.black;
     }
 
-    private string Translate(string s)
+    public string Translate(string s)
     {
         if (PlayerPrefs.GetString("Language", "English") == "English") return s;
         if (translations.ContainsKey(s)) return translations[s];
@@ -490,7 +518,7 @@ public class MainManager : MonoBehaviour
         float speed = 4.0f;
         while(true)
         {
-            promptText.color = Color.Lerp(Color.clear, Color.white, (Mathf.Cos(t * speed) + 1) / 2 * 0.75f + 0.25f);
+            promptText.color = Color.Lerp(Color.clear, promptColor, (Mathf.Cos(t * speed) + 1) / 2 * 0.75f + 0.25f);
             t += Time.deltaTime;
             yield return null;
         }

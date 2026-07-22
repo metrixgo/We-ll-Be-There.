@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,7 @@ public class CrowBarTrigger : MonoBehaviour
     [SerializeField] private AudioClip finishHit;
     [SerializeField] private AudioClip putAway;
     [SerializeField] private GameObject sealedDoor;
+    [SerializeField] private GameObject scatteredRocks;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerHead;
     [SerializeField] private Image screen;
@@ -112,17 +115,19 @@ public class CrowBarTrigger : MonoBehaviour
     {
         if (hitT > 0) return;
         cnt++;
-        if(cnt >= 12)
+        if(cnt >= 10)
         {
             MainManager.instance.PlayEffect(finishHit);
             Destroy(sealedDoor);
+            scatteredRocks.SetActive(true);
             state = 3;
             hitT = t;
         }
         else
         {
             MainManager.instance.PlayEffect(hit);
-            hitT = hit.length ;
+            hitT = hit.length;
+            StartCoroutine(MoveCrowBar());
         }
     }
 
@@ -131,5 +136,29 @@ public class CrowBarTrigger : MonoBehaviour
         state = 4;
         t = 0;
         hitT = 0;
+    }
+
+    private IEnumerator MoveCrowBar()
+    {
+        float t = 0;
+        Vector3 rot = transform.localEulerAngles;
+        while (t < hit.length / 7.0f)
+        {
+            rot.z = Mathf.Lerp(0, 15.0f, t / (hit.length / 7.0f));
+            transform.localEulerAngles = rot;
+            t += Time.deltaTime;
+            yield return null;
+        }
+        t = 0;
+        while (t < 6.0f * hit.length / 7.0f)
+        {
+            rot.z = Mathf.Lerp(15.0f, 0, t / (6.0f * hit.length / 7.0f));
+            transform.localEulerAngles = rot;
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        rot.z = 0;
+        transform.localEulerAngles = rot;
     }
 }

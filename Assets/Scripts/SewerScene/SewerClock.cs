@@ -43,6 +43,6 @@ public class SewerClock : MonoBehaviour
         MainManager.instance.AddTrigger("canrun;1");
         MainManager.instance.AddTrigger("flashprompt;Press [Shift] to run");
         yield return new WaitForSeconds(3.0f);
-        MainManager.instance.AddTrigger("flashdialogue;???;A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******;0");
+        //MainManager.instance.AddTrigger("flashdialogue;???;A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******;0");
     }
 }

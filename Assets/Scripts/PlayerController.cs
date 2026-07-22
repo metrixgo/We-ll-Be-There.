@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip grassWalk;
     [SerializeField] private AudioClip rockWalk;
     [SerializeField] private AudioClip woodWalk;
+    [SerializeField] private AudioClip waterWalk;
 
     private AudioSource ad;
     private Camera cam;
-    private float speed = 2.5f;
+    private float speed = 22.5f;
     private float runSpeed = 5.0f;
     private float reachRange = 1.5f;
     private float sensitivity;
@@ -207,6 +208,7 @@ public class PlayerController : MonoBehaviour
                         else if (s == "grass") ad.clip = grassWalk;
                         else if (s == "rock") ad.clip = rockWalk;
                         else if (s == "wood") ad.clip = woodWalk;
+                        else if (s == "water") ad.clip = waterWalk;
                         else ad.clip = null;
                     }
                     flg = true;

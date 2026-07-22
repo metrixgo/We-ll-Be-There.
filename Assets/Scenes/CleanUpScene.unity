@@ -36354,6 +36354,8 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 0}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 13564616}
   additionalEffect:
     m_PersistentCalls:
@@ -36411,6 +36413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe59fddfda3b0184894872d00a532165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetObjectActive
+  isPhysical: 0
+  selfDestructs: 0
   setActive: 1
   objects:
   - {fileID: 454985781}
@@ -38914,6 +38918,7 @@ MonoBehaviour:
   grassWalk: {fileID: 8300000, guid: e3c0f450dbba35d4b8ffb3316a753dc1, type: 3}
   rockWalk: {fileID: 8300000, guid: 6fcb622a1898d0d40b82695bb31c8e25, type: 3}
   woodWalk: {fileID: 8300000, guid: 15208416476bcf1479379474a1f2ce66, type: 3}
+  waterWalk: {fileID: 0}
 --- !u!4 &784062231
 Transform:
   m_ObjectHideFlags: 0
@@ -61868,7 +61873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorKnockTrigger
   doorKnock: {fileID: 8300000, guid: 2fa40d1710af7634fb7e5a16baebc1e1, type: 3}
   doorOpen: {fileID: 8300000, guid: 4ab234fafb4cf804cb67ba95ac4d5b70, type: 3}
-  woodRun: {fileID: 8300000, guid: 505a015d5525e0442ae4a62d5bac304d, type: 3}
+  woodRun: {fileID: 8300000, guid: 0df7948693bc9a44bb9a68351e88f17d, type: 3}
   ad: {fileID: 1452006298}
 --- !u!65 &1227012401
 BoxCollider:
@@ -63548,6 +63553,8 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 180}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 240032283}
   additionalEffect:
     m_PersistentCalls:
@@ -120003,6 +120010,8 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0, y: -0.2, z: 0.3}
   angle: {x: 90, y: 0, z: 90}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
@@ -122076,6 +122085,8 @@ MonoBehaviour:
   hold: {fileID: 154294581}
   pos: {x: 0, y: 0, z: 0}
   angle: {x: -50, y: -20, z: 50}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 1159128517}
   additionalEffect:
     m_PersistentCalls:
@@ -122133,6 +122144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe59fddfda3b0184894872d00a532165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetObjectActive
+  isPhysical: 0
+  selfDestructs: 0
   setActive: 1
   objects:
   - {fileID: 1769690226}

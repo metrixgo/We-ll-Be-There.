@@ -13,6 +13,7 @@ TagManager:
   - Bicycle
   - Wood
   - Ignore
+  - Water
   layers:
   - Default
   - TransparentFX

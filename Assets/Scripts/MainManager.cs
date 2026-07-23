@@ -309,6 +309,7 @@ public class MainManager : MonoBehaviour
         {"Page", "页"},
         {"Carving", "刻印"},
         {"You just can't stop looping the music you like. It's such an addiction. Stop the music. Live a better life.", "你根本无法停止循环播放你喜欢的音乐。这简直就是上瘾。停下音乐。享受更好的生活。"},
+        {"How about looking behind you?", "再看看你的后面呢？"},
     };
 
     private void Awake()

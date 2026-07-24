@@ -6,6 +6,7 @@ public class SewerKiller : MonoBehaviour
 {
     [SerializeField] private Transform player;
 
+    private bool killed = false;
     private NavMeshAgent agent;
     private Animator animator;
 
@@ -18,12 +19,13 @@ public class SewerKiller : MonoBehaviour
 
     private void Update()
     {
-        if (MainManager.instance.gameState == 1) agent.isStopped = false;
+        if (MainManager.instance.gameState == 1 && !killed) agent.isStopped = false;
         else agent.isStopped = true;
 
-        if(Vector3.Distance(transform.position, player.position) < 0.2f)
+        if (Vector3.Distance(transform.position, player.position) < 0.2f)
         {
-            animator.SetInteger("State", 3);
+            killed = true;
+            animator.SetInteger("State", 0);
             StartCoroutine(KillIt());
         }
 

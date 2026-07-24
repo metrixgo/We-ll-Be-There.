@@ -279,7 +279,7 @@ public class MainManager : MonoBehaviour
         {"Now.", "现在。"},
         {"Control", "遥控器"},
         {"Hole", "洞口"},
-        {"Enterance", "入口"},
+        {"Entrance", "入口"},
         {"Rope", "绳子"},
         {"Rock", "石头"},
         {"Crowbar", "撬棍"},

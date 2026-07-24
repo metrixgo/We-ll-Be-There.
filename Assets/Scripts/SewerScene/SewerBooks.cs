@@ -55,6 +55,6 @@ public class SewerBooks : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         RenderSettings.fogDensity = 0.15f;
-        RenderSettings.ambientIntensity = 0.2f;
+        RenderSettings.ambientIntensity = 0.3f;
     }
 }

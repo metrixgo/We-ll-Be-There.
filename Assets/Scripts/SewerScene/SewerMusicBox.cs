@@ -18,7 +18,7 @@ public class SewerMusicBox : MonoBehaviour
     {
         if (!closed)
         {
-            SewerMusicManager.instance.ChangeTo(tense, 3.0f, 20.0f);
+            SewerMusicManager.instance.ChangeTo(tense, 3.0f, 50.0f);
             closed = true;
             Destroy(trig);
             Destroy(soundTrig);

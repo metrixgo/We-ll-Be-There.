@@ -4609,6 +4609,7 @@ GameObject:
   - component: {fileID: 203200628}
   - component: {fileID: 203200630}
   - component: {fileID: 203200629}
+  - component: {fileID: 203200631}
   m_Layer: 0
   m_Name: SewerTransitionSmall (1)
   m_TagString: Untagged
@@ -4689,6 +4690,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203200627}
+  m_Mesh: {fileID: 4493585093827132993, guid: 34e506414f071df4fae2a039c42134b2, type: 3}
+--- !u!64 &203200631
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203200627}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 34e506414f071df4fae2a039c42134b2, type: 3}
 --- !u!1001 &206027035
 PrefabInstance:
@@ -5263,6 +5286,7 @@ GameObject:
   - component: {fileID: 267919352}
   - component: {fileID: 267919354}
   - component: {fileID: 267919353}
+  - component: {fileID: 267919355}
   m_Layer: 0
   m_Name: SewerTransitionSmall (2)
   m_TagString: Untagged
@@ -5343,6 +5367,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267919351}
+  m_Mesh: {fileID: 4493585093827132993, guid: 34e506414f071df4fae2a039c42134b2, type: 3}
+--- !u!64 &267919355
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267919351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 34e506414f071df4fae2a039c42134b2, type: 3}
 --- !u!1001 &273577994
 PrefabInstance:
@@ -5840,6 +5886,7 @@ GameObject:
   - component: {fileID: 310438485}
   - component: {fileID: 310438487}
   - component: {fileID: 310438486}
+  - component: {fileID: 310438488}
   m_Layer: 0
   m_Name: SewerTransitionBig
   m_TagString: Untagged
@@ -5918,6 +5965,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310438484}
+  m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
+--- !u!64 &310438488
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310438484}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
 --- !u!1001 &314562736
 PrefabInstance:
@@ -9162,9 +9231,9 @@ Light:
   m_Type: 0
   m_Color: {r: 0.5660378, g: 0.5664421, b: 1, a: 1}
   m_Intensity: 60
-  m_Range: 13
-  m_SpotAngle: 63.688156
-  m_InnerSpotAngle: 26.922565
+  m_Range: 15
+  m_SpotAngle: 78
+  m_InnerSpotAngle: 23.306404
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -9638,6 +9707,7 @@ GameObject:
   - component: {fileID: 493690541}
   - component: {fileID: 493690543}
   - component: {fileID: 493690542}
+  - component: {fileID: 493690544}
   m_Layer: 0
   m_Name: SewerTransitionBig (1)
   m_TagString: Untagged
@@ -9716,6 +9786,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493690540}
+  m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
+--- !u!64 &493690544
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493690540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
 --- !u!1 &505495417
 GameObject:
@@ -11049,6 +11141,7 @@ GameObject:
   - component: {fileID: 565220099}
   - component: {fileID: 565220101}
   - component: {fileID: 565220100}
+  - component: {fileID: 565220102}
   m_Layer: 0
   m_Name: SewerTransitionBig (2)
   m_TagString: Untagged
@@ -11127,6 +11220,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565220098}
+  m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
+--- !u!64 &565220102
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565220098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
 --- !u!1 &566157052
 GameObject:
@@ -11287,7 +11402,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.2
+  m_VoxelSize: 0.03
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 7f7d3a78427fc4344abc73c1a058079b, type: 2}
   m_BuildHeightMesh: 0
@@ -12570,7 +12685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &623522026
 Transform:
   m_ObjectHideFlags: 0
@@ -12891,7 +13006,7 @@ MonoBehaviour:
   isPhysical: 0
   selfDestructs: 1
   triggers:
-  - moveplayerto;39.6800117;14.3530016;17.7579975
+  - moveplayer;30.79011912;-5.0005169;17.370743739
   - dialogue;Book;How about looking behind you?
 --- !u!65 &625132897
 BoxCollider:
@@ -13994,6 +14109,7 @@ GameObject:
   - component: {fileID: 669120232}
   - component: {fileID: 669120231}
   - component: {fileID: 669120230}
+  - component: {fileID: 669120235}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Interactable
@@ -14138,6 +14254,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669120228}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &669120235
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669120228}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &671118891
 GameObject:
   m_ObjectHideFlags: 0
@@ -21289,6 +21421,7 @@ GameObject:
   - component: {fileID: 1001244089}
   - component: {fileID: 1001244093}
   - component: {fileID: 1001244092}
+  - component: {fileID: 1001244094}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Interactable
@@ -21433,6 +21566,22 @@ MonoBehaviour:
   cb: {fileID: 8796577450640301848}
   picking: {fileID: 8300000, guid: 2ee8020b95568ab4893e5b8dd8331d09, type: 3}
   door: {fileID: 840047696}
+--- !u!208 &1001244094
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001244087}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1005780458
 GameObject:
   m_ObjectHideFlags: 0
@@ -31226,6 +31375,7 @@ GameObject:
   - component: {fileID: 1448758550}
   - component: {fileID: 1448758549}
   - component: {fileID: 1448758548}
+  - component: {fileID: 1448758553}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Interactable
@@ -31370,6 +31520,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448758546}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1448758553
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448758546}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1450773323
 GameObject:
   m_ObjectHideFlags: 0
@@ -44217,6 +44383,7 @@ GameObject:
   - component: {fileID: 1987960095}
   - component: {fileID: 1987960099}
   - component: {fileID: 1987960098}
+  - component: {fileID: 1987960100}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Interactable
@@ -44361,6 +44528,22 @@ MonoBehaviour:
   cb: {fileID: 8796577450640301848}
   picking: {fileID: 8300000, guid: 2ee8020b95568ab4893e5b8dd8331d09, type: 3}
   door: {fileID: 840047696}
+--- !u!208 &1987960100
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987960093}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1999193114
 GameObject:
   m_ObjectHideFlags: 0
@@ -46291,6 +46474,7 @@ GameObject:
   - component: {fileID: 2132799734}
   - component: {fileID: 2132799738}
   - component: {fileID: 2132799737}
+  - component: {fileID: 2132799739}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Interactable
@@ -46435,6 +46619,22 @@ MonoBehaviour:
   cb: {fileID: 8796577450640301848}
   picking: {fileID: 8300000, guid: 2ee8020b95568ab4893e5b8dd8331d09, type: 3}
   door: {fileID: 840047696}
+--- !u!208 &2132799739
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132799732}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2135815947
 GameObject:
   m_ObjectHideFlags: 0
@@ -48357,7 +48557,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -48403,7 +48603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0fbf15f2bd7ce41ad324d2933debb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerKiller
-  patrolPoints: []
+  player: {fileID: 871380078}
 --- !u!1 &919132147972573383
 GameObject:
   m_ObjectHideFlags: 0
@@ -48415,6 +48615,7 @@ GameObject:
   - component: {fileID: 543450651695010429}
   - component: {fileID: 3469287837624655320}
   - component: {fileID: 1711813854971013394}
+  - component: {fileID: 3469287837624655321}
   m_Layer: 0
   m_Name: SewerTransitionBig
   m_TagString: Untagged
@@ -52291,6 +52492,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147972573383}
+  m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
+--- !u!64 &3469287837624655321
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147972573383}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 77076580a684a0f4996730349438a1b2, type: 3}
 --- !u!4 &3496065589807392270
 Transform:
@@ -62156,6 +62379,7 @@ GameObject:
   - component: {fileID: 8090354991131513525}
   - component: {fileID: 5181793151508864272}
   - component: {fileID: 6921357678881810906}
+  - component: {fileID: 8866855749700257808}
   m_Layer: 0
   m_Name: SewerTransitionSmall
   m_TagString: Untagged
@@ -62163,6 +62387,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8866855749700257808
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866855749700257807}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4493585093827132993, guid: 34e506414f071df4fae2a039c42134b2, type: 3}
 --- !u!4 &8887140993774416867
 Transform:
   m_ObjectHideFlags: 0

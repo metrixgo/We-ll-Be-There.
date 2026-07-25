@@ -29,6 +29,8 @@ public class TextTranslation : MonoBehaviour
             else if (s == "nowhere to run :)") r = "无处可逃 :)";
             else if (s == "5 hours later...") r = "5 小时后...";
             else if (s == "continue") r = "继续";
+            else if (s == "You should've went for the entrance...") r = "你当时应该去入口的...";
+            else if (s == "...Except you didn't.") r = "...只不过你没有。";
             else r = s;
             if(txt != null) txt.text = r;
             else txt2.text = r;

@@ -5,6 +5,7 @@ public class DisplayBook : MonoBehaviour
 {
     public static DisplayBook instance;
 
+    [SerializeField] private GameObject book;
     [SerializeField] private TextMeshProUGUI leftPage;
     [SerializeField] private TextMeshProUGUI rightPage;
     [SerializeField] private TextMeshProUGUI leftNum;
@@ -12,6 +13,7 @@ public class DisplayBook : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bigPage;
     [SerializeField] private GameObject leftTurn;
     [SerializeField] private GameObject rightTurn;
+    [SerializeField] private AudioClip bookFlip;
 
     private string[] pages = {
     "",
@@ -28,6 +30,7 @@ public class DisplayBook : MonoBehaviour
     };
 
     private int unlockedNum = 0;
+    private int curPage = 0;
 
     private void Awake()
     {
@@ -42,11 +45,24 @@ public class DisplayBook : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!book.activeSelf) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape)) book.SetActive(false);
+
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && leftTurn.activeSelf) DisplayPage(curPage - 2);
+        else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightTurn.activeSelf) DisplayPage(curPage + 2);
+    }
+
     public void DisplayPage(int p)
     {
         unlockedNum = Mathf.Max(unlockedNum, p);
+        curPage = p;
+        book.SetActive(true);
+        MainManager.instance.PlayEffect(bookFlip);
 
-        if (p <= 8)
+        if (p < 8)
         {
             bigPage.text = "";
             if (p % 2 == 0)
@@ -66,7 +82,11 @@ public class DisplayBook : MonoBehaviour
             }
 
             leftTurn.SetActive(p > 1);
-            rightTurn.SetActive(true);
+            rightTurn.SetActive(unlockedNum > p);
+        }
+        else if (p == 8)
+        {
+            //tbd
         }
         else if (p == 9)
         {

@@ -4497,7 +4497,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6770,7 +6770,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10124,6 +10124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 1655245895}
 --- !u!65 &429986054
 BoxCollider:
@@ -11168,7 +11170,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13587,6 +13589,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604876736}
   m_CullTransparentMesh: 1
+--- !u!1 &609366938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609366939}
+  m_Layer: 5
+  m_Name: Book
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &609366939
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609366938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 171097023}
+  - {fileID: 1666957194}
+  - {fileID: 1412068664}
+  - {fileID: 798037885}
+  - {fileID: 481354294}
+  - {fileID: 294142705}
+  - {fileID: 672488581}
+  - {fileID: 2143320971}
+  m_Father: {fileID: 2120524293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 380}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &609427576
 GameObject:
   m_ObjectHideFlags: 0
@@ -16435,7 +16480,7 @@ RectTransform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18447,7 +18492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &789438743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18866,7 +18911,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27050,7 +27095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1129995968
 Transform:
   m_ObjectHideFlags: 0
@@ -27454,6 +27499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 368461129}
 --- !u!65 &1143886326
 BoxCollider:
@@ -33598,6 +33645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 1252495149}
 --- !u!65 &1371518864
 BoxCollider:
@@ -34254,6 +34303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 1550752023}
 --- !u!65 &1405317815
 BoxCollider:
@@ -34327,7 +34378,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -36322,6 +36373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 838865487}
 --- !u!65 &1466991880
 BoxCollider:
@@ -40716,6 +40769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 1241593481}
 --- !u!65 &1642307239
 BoxCollider:
@@ -41242,7 +41297,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42192,6 +42247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 559926164}
 --- !u!65 &1682605135
 BoxCollider:
@@ -43972,6 +44029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 1843154742}
 --- !u!65 &1739076991
 BoxCollider:
@@ -47769,6 +47828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
+  teleport: {fileID: 8300000, guid: c48a5c6f9a1da96438d63610089897dd, type: 3}
+  clock: {fileID: 707006990}
   corBook: {fileID: 18264437}
 --- !u!65 &1858720178
 BoxCollider:
@@ -52968,13 +53029,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120524293}
+  - component: {fileID: 2120524294}
   m_Layer: 5
   m_Name: BookScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2120524293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52987,14 +53049,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 171097023}
-  - {fileID: 1666957194}
-  - {fileID: 1412068664}
-  - {fileID: 798037885}
-  - {fileID: 481354294}
-  - {fileID: 294142705}
-  - {fileID: 672488581}
-  - {fileID: 2143320971}
+  - {fileID: 609366939}
   m_Father: {fileID: 1328736205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -53002,6 +53057,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2120524294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120524292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad935a9af35844d40a8cd76a120529b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayBook
+  book: {fileID: 609366938}
+  leftPage: {fileID: 1666957195}
+  rightPage: {fileID: 1412068665}
+  leftNum: {fileID: 798037886}
+  rightNum: {fileID: 481354295}
+  bigPage: {fileID: 2143320972}
+  leftTurn: {fileID: 294142704}
+  rightTurn: {fileID: 672488580}
+  bookFlip: {fileID: 8300000, guid: c7126f638c6fbe846a070074a147b18a, type: 3}
 --- !u!1 &2131332711
 GameObject:
   m_ObjectHideFlags: 0
@@ -53632,7 +53708,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120524293}
+  m_Father: {fileID: 609366939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

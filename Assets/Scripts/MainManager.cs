@@ -613,6 +613,11 @@ public class MainManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(float.Parse(s[1]));
             }
+            else if (key == "waitesc")
+            {
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Escape));
+                yield return new WaitForEndOfFrame();
+            }
             else if (key == "loadscene")
             {
                 if (s.Length == 2) StartCoroutine(LoadSceneCoroutine(s[1], 0));

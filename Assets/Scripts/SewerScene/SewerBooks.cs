@@ -42,12 +42,12 @@ public class SewerBooks : MonoBehaviour
     {
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("moveplayer;" + to);
-        MainManager.instance.AddTrigger("wait;2");
+        MainManager.instance.AddTrigger("wait;1.5");
         MainManager.instance.AddTrigger("waitesc");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
         if (clock != null) clock.volume = 0;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         DisplayBook.instance.DisplayPage(page);
         RenderSettings.fogDensity = 1.0f;
         RenderSettings.ambientIntensity = 0.6f;
@@ -55,11 +55,11 @@ public class SewerBooks : MonoBehaviour
 
         MainManager.instance.AddTrigger("wait;1");
         MainManager.instance.AddTrigger("moveplayer;" + back);
-        MainManager.instance.AddTrigger("wait;2");
+        MainManager.instance.AddTrigger("wait;1.5");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
         if (clock != null) clock.volume = clockV;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         RenderSettings.fogDensity = 0.15f;
         RenderSettings.ambientIntensity = 0.3f;
     }

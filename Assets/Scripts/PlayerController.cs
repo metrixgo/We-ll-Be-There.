@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float sensitivity;
     private float rotationX = 0;
     private float velocityY = -1.0f;
+    private float camT = 0;
     private Vector3 move;
     private bool canRun = false;
     private bool freezed = false;
@@ -165,7 +166,6 @@ public class PlayerController : MonoBehaviour
     {
         Transform cam = transform.Find("Camera");
         float mid = 0.75f;
-        float t = 0;
         float[] ys = { mid, mid, mid };
         float[] bottom = { -1.0f, mid - 0.05f, mid - 0.08f };
         bool flg = false;
@@ -177,9 +177,9 @@ public class PlayerController : MonoBehaviour
             else if (Mathf.Abs(f - speed) < 0.05f) state = 1;
             else if (Mathf.Abs(f - runSpeed) < 0.05f) state = 2;
 
-            ys[0] = Mathf.Sin(t * 2 * Mathf.PI / 3.0f) * 0.01f;
-            ys[1] = Mathf.Sin(t * 2 * Mathf.PI / 0.8f) * 0.05f;
-            ys[2] = Mathf.Sin(t * 2 * Mathf.PI / 0.5f) * 0.08f;
+            ys[0] = Mathf.Sin(camT * 2 * Mathf.PI / 3.0f) * 0.01f;
+            ys[1] = Mathf.Sin(camT * 2 * Mathf.PI / 0.8f) * 0.05f;
+            ys[2] = Mathf.Sin(camT * 2 * Mathf.PI / 0.5f) * 0.08f;
 
             Vector3 temp = cam.localPosition;
             temp.y = ys[state] + mid;
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             {
                 runningRC = true;
                 StartCoroutine(ResetCamera(mid));
-                t = 0;
+                camT = 0;
             }
             else
             {
@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
                 else if (Mathf.Abs(temp.y - bottom[state]) > 0.02f) flg = false;
             }
 
-            t += Time.deltaTime;
+            camT += Time.deltaTime;
             yield return null;
         }
     }

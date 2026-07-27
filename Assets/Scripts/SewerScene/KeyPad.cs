@@ -4,6 +4,7 @@ using UnityEngine;
 public class KeyPad : MonoBehaviour
 {
     [SerializeField] private AudioClip type;
+    [SerializeField] private GameObject door;
     [SerializeField] private GameObject[] keys;
     [SerializeField] private TextMeshPro[] displays;
 
@@ -59,5 +60,10 @@ public class KeyPad : MonoBehaviour
     private bool ClickedOn(GameObject o)
     {
         return false;
+    }
+
+    public void TryOpen()
+    {
+
     }
 }

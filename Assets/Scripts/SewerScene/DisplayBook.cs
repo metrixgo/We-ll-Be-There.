@@ -51,8 +51,16 @@ public class DisplayBook : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape)) book.SetActive(false);
 
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && leftTurn.activeSelf) DisplayPage(curPage - 2);
-        else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightTurn.activeSelf) DisplayPage(curPage + 2);
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && leftTurn.activeSelf)
+        {
+            if (curPage <= 8) DisplayPage(curPage - 2);
+            else DisplayPage(curPage - 1);
+        }
+        else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightTurn.activeSelf)
+        {
+            if (curPage < 7) DisplayPage(curPage + 2);
+            else DisplayPage(curPage + 1);
+        }
     }
 
     public void DisplayPage(int p)
@@ -62,7 +70,7 @@ public class DisplayBook : MonoBehaviour
         book.SetActive(true);
         MainManager.instance.PlayEffect(bookFlip);
 
-        if (p < 8)
+        if (p <= 8)
         {
             bigPage.text = "";
             if (p % 2 == 0)
@@ -70,7 +78,7 @@ public class DisplayBook : MonoBehaviour
                 leftNum.text = p.ToString();
                 rightNum.text = (p + 1).ToString();
                 leftPage.text = pages[p];
-                if (unlockedNum >= p + 1) rightPage.text = pages[p + 1];
+                if (unlockedNum >= p + 1 && p != 8) rightPage.text = pages[p + 1];
                 else rightPage.text = "";
             }
             else
@@ -84,14 +92,10 @@ public class DisplayBook : MonoBehaviour
             leftTurn.SetActive(p > 1);
             rightTurn.SetActive(unlockedNum > p);
         }
-        else if (p == 8)
-        {
-            //tbd
-        }
         else if (p == 9)
         {
             leftNum.text = "9999999999999999999999999999999999999999999999999999999999999999";
-            rightNum.text = "0";
+            rightNum.text = "";
             leftTurn.SetActive(true);
             rightTurn.SetActive(unlockedNum > 9);
             leftPage.text = "";

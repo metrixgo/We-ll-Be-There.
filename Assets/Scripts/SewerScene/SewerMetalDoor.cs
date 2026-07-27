@@ -4,6 +4,7 @@ using UnityEngine;
 public class SewerMetalDoor : MonoBehaviour
 {
     [SerializeField] private int state = 0;
+    [SerializeField] private float tryRot = 7.0f;
     [SerializeField] private string keyName;
     [SerializeField] private string prompt = "It's locked.";
     [SerializeField] private AudioClip banging;
@@ -73,14 +74,14 @@ public class SewerMetalDoor : MonoBehaviour
         float rot = 0;
         Vector3 angles = transform.eulerAngles;
         float goal = angles.y;
-        while (rot < 7.0f)
+        while (rot < tryRot)
         {
             rot += 80.0f * Time.deltaTime;
             transform.Rotate(0, 80.0f * Time.deltaTime, 0, Space.World);
             yield return null;
         }
         rot = 0;
-        while (rot < 7.0f)
+        while (rot < tryRot)
         {
             rot += 30.0f * Time.deltaTime;
             transform.Rotate(0, -30.0f * Time.deltaTime, 0, Space.World);

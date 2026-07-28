@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class KeyPad : MonoBehaviour
 {
+    [SerializeField] private RectTransform rawImage;
+    [SerializeField] private RenderTexture renderTexture;
     [SerializeField] private AudioClip type;
-    [SerializeField] private AudioClip doorBang;
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerCam;
+    [SerializeField] private SewerFlashlight playerFlashLight;
     [SerializeField] private GameObject[] keys;
     [SerializeField] private TextMeshPro[] displays;
 
@@ -18,11 +21,13 @@ public class KeyPad : MonoBehaviour
     private int numsSize = 0;
     private int[] nums = new int[4];
     private Camera padCam;
+    private AudioSource doorAd;
     private Vector3 camPos = new Vector3(15.6794491f, -7.95501661f, -4.65597343f);
     private Quaternion camRot = Quaternion.Euler(0, -90.0f, 0);
 
     private void Start()
     {
+        doorAd = door.GetComponent<AudioSource>();
         padCam = cam.GetComponent<Camera>();
     }
 
@@ -83,14 +88,16 @@ public class KeyPad : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Something");
-            Ray ray = padCam.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rawImage, Input.mousePosition, null, out Vector2 localPoint))
             {
-                Debug.Log("SomethingGotHit");
-                Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject == o) return true;
+                float x = (localPoint.x - rawImage.rect.x) / rawImage.rect.width;
+                float y = (localPoint.y - rawImage.rect.y) / rawImage.rect.height;
+                Vector3 texPos = new Vector3(x * renderTexture.width, y * renderTexture.height, 0);
+                Ray ray = padCam.ScreenPointToRay(texPos);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+                {
+                    return hit.collider.gameObject == o;
+                }
             }
         }
         return false;
@@ -113,6 +120,8 @@ public class KeyPad : MonoBehaviour
         if (b)
         {
             MainManager.instance.AddTrigger("waitesc");
+            if (playerFlashLight.IsOpened()) flashLight.SetActive(true);
+            else flashLight.SetActive(false);
             cam.SetActive(true);
             player.SetActive(false);
             while (t < l)
@@ -123,8 +132,10 @@ public class KeyPad : MonoBehaviour
                 yield return null;
             }
             cam.transform.position = camPos;
+            cam.transform.rotation = camRot;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            state = 1;
         }
         else
         {
@@ -139,9 +150,8 @@ public class KeyPad : MonoBehaviour
             }
             cam.SetActive(false);
             player.SetActive(true);
-
+            state = 0;
         }
-        state = 1;
     }
 
     public void TryOpen()
@@ -156,7 +166,7 @@ public class KeyPad : MonoBehaviour
             tried = true;
             MainManager.instance.AddTrigger("dialogue;You;It's locked.");
         }
-        MainManager.instance.PlayEffect(doorBang);
+        doorAd.Play();
         state = -1;
         float rot = 0;
         Vector3 angles = door.transform.eulerAngles;

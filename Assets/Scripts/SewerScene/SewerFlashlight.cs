@@ -48,4 +48,9 @@ public class SewerFlashlight : MonoBehaviour
             MainManager.instance.PlayEffect(flashlight);
         }
     }
+
+    public bool IsOpened()
+    {
+        return opened;
+    }
 }

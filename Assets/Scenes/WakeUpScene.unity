@@ -11797,6 +11797,8 @@ MonoBehaviour:
   hold: {fileID: 0}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 0}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
@@ -27260,7 +27262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.8
+  multiplier: 1
 --- !u!82 &500692290
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27949,6 +27951,7 @@ MonoBehaviour:
   grassWalk: {fileID: 8300000, guid: e3c0f450dbba35d4b8ffb3316a753dc1, type: 3}
   rockWalk: {fileID: 8300000, guid: 6fcb622a1898d0d40b82695bb31c8e25, type: 3}
   woodWalk: {fileID: 8300000, guid: 15208416476bcf1479379474a1f2ce66, type: 3}
+  waterWalk: {fileID: 0}
 --- !u!4 &508594365
 Transform:
   m_ObjectHideFlags: 0
@@ -62304,6 +62307,8 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0, y: -0.05, z: 0.05}
   angle: {x: -90, y: 0, z: 0}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:
@@ -102146,7 +102151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.8
+  multiplier: 1
 --- !u!82 &1911761166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -103043,7 +103048,7 @@ MonoBehaviour:
   microwaving: {fileID: 8300000, guid: 86390f4588379fd41b473a2edb9eeb12, type: 3}
   door: {fileID: 1706313575}
   ramen: {fileID: 1167279750}
-  light: {fileID: 1304477913}
+  lit: {fileID: 0}
   table: {fileID: 798855379}
 --- !u!114 &1923112047
 MonoBehaviour:
@@ -119940,6 +119945,8 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0.3, y: -0.4, z: 0.1}
   angle: {x: -60, y: 0, z: 0}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 0}
   additionalEffect:
     m_PersistentCalls:

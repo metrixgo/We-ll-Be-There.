@@ -4,7 +4,7 @@ using UnityEngine;
 public class SewerBooks : MonoBehaviour
 {
     [SerializeField] private AudioClip teleport;
-    [SerializeField] private AudioSource clock;
+    [SerializeField] private SewerClock clock;
     [SerializeField] private Transform corBook;
 
     private static int num = 0;
@@ -13,7 +13,6 @@ public class SewerBooks : MonoBehaviour
     private string to;
     private string back;
     private int page;
-    private float clockV;
 
     private void Start()
     {
@@ -22,7 +21,6 @@ public class SewerBooks : MonoBehaviour
         float z = corBook.position.z - transform.position.z;
         to = x + ";" + y + ";" + z;
         back = (-x) + ";" + (-y) + ";" + (-z);
-        clockV = clock.volume;
     }
 
     public void Read()
@@ -46,7 +44,7 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.AddTrigger("waitesc");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
-        if (clock != null) clock.volume = 0;
+        if (clock != null) clock.Mute(true);
         yield return new WaitForSeconds(1.5f);
         DisplayBook.instance.DisplayPage(page);
         RenderSettings.fogDensity = 1.0f;
@@ -58,7 +56,7 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.AddTrigger("wait;1.5");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
-        if (clock != null) clock.volume = clockV;
+        if (clock != null) clock.Mute(false);
         yield return new WaitForSeconds(1.5f);
         RenderSettings.fogDensity = 0.15f;
         RenderSettings.ambientIntensity = 0.3f;

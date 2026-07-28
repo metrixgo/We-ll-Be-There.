@@ -34,6 +34,7 @@ public class MainManager : MonoBehaviour
     private bool atEndingScreen = false;
     private Color promptColor = Color.white;
     private Image focusImg;
+    private Coroutine curExeTrig;
     private string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
         "abcdefghijklmnopqrstuvwxyz" +
         "0123456789" +
@@ -288,7 +289,6 @@ public class MainManager : MonoBehaviour
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
         {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},
         {"It's out of reach...", "我够不到..."},
-        {"A group ****** will arrive ****** three minutes ****** to ****** directly ****** you. Please ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******", "一队 ……… 会 ……… 三分钟 ……… 到 ……… 将直接 ……… 你。请 ……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………"},
         {"Box", "盒子"},
         {"Music Box", "音乐盒"},
         {"White Key", "白钥匙"},
@@ -329,7 +329,7 @@ public class MainManager : MonoBehaviour
     private void Update()
     {
         if (atEndingScreen) gameState = 0;
-        
+
         if (!isExecutingTriggers && triggers.Count > 0)
         {
             isExecutingTriggers = true;
@@ -337,7 +337,7 @@ public class MainManager : MonoBehaviour
             promptText.enabled = false;
             taskText.enabled = false;
             focus.SetActive(false);
-            StartCoroutine(ExecuteTriggers());
+            curExeTrig = StartCoroutine(ExecuteTriggers());
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !isExecutingTriggers && !atEndingScreen)
@@ -376,6 +376,17 @@ public class MainManager : MonoBehaviour
     public void DisplayEnding(string t, string c)
     {
         StartCoroutine(Ending(t, c));
+    }
+
+    public void ClearTriggers()
+    {
+        if (curExeTrig != null) StopCoroutine(curExeTrig);
+        triggers.Clear();
+        isExecutingTriggers = false;
+        gameState = 1;
+        promptText.enabled = true;
+        taskText.enabled = true;
+        focus.SetActive(true);
     }
 
     public void LoadScene(string s, float t)
@@ -424,7 +435,7 @@ public class MainManager : MonoBehaviour
     public int ItemCount(string s)
     {
         int cnt = 0;
-        foreach(string item in inventory)
+        foreach (string item in inventory)
         {
             if (s == item) cnt++;
         }
@@ -519,7 +530,7 @@ public class MainManager : MonoBehaviour
     {
         float t = 0;
         float speed = 4.0f;
-        while(true)
+        while (true)
         {
             promptText.color = Color.Lerp(Color.clear, promptColor, (Mathf.Cos(t * speed) + 1) / 2 * 0.75f + 0.25f);
             t += Time.deltaTime;
@@ -529,7 +540,7 @@ public class MainManager : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string s, float t)
     {
-        AddTrigger("changescreen;#00000000;#000000FF;"+t);
+        AddTrigger("changescreen;#00000000;#000000FF;" + t);
         yield return new WaitForSeconds(t);
         SceneManager.LoadScene(s);
     }
@@ -682,7 +693,7 @@ public class MainManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.05f);
         effectsPlayer.Stop();
-        if(length >= 0) yield return new WaitForSeconds(length);
+        if (length >= 0) yield return new WaitForSeconds(length);
         else yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return));
         dialogueScreen.SetActive(false);
     }

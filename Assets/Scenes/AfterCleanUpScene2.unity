@@ -24318,6 +24318,7 @@ MonoBehaviour:
   grassWalk: {fileID: 8300000, guid: e3c0f450dbba35d4b8ffb3316a753dc1, type: 3}
   rockWalk: {fileID: 8300000, guid: 6fcb622a1898d0d40b82695bb31c8e25, type: 3}
   woodWalk: {fileID: 8300000, guid: 15208416476bcf1479379474a1f2ce66, type: 3}
+  waterWalk: {fileID: 0}
 --- !u!4 &508594365
 Transform:
   m_ObjectHideFlags: 0
@@ -34100,7 +34101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.8
+  multiplier: 1
 --- !u!82 &700658144
 AudioSource:
   m_ObjectHideFlags: 0

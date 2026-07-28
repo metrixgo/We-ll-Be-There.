@@ -4278,6 +4278,8 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 0}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 261395123}
   additionalEffect:
     m_PersistentCalls:
@@ -26293,6 +26295,7 @@ MonoBehaviour:
   grassWalk: {fileID: 8300000, guid: e3c0f450dbba35d4b8ffb3316a753dc1, type: 3}
   rockWalk: {fileID: 8300000, guid: 6fcb622a1898d0d40b82695bb31c8e25, type: 3}
   woodWalk: {fileID: 8300000, guid: 15208416476bcf1479379474a1f2ce66, type: 3}
+  waterWalk: {fileID: 0}
 --- !u!4 &508594365
 Transform:
   m_ObjectHideFlags: 0
@@ -72086,6 +72089,8 @@ MonoBehaviour:
   hold: {fileID: 123347130}
   pos: {x: 0.1, y: 0, z: 0.1}
   angle: {x: -40, y: 190, z: 180}
+  changeScale: 0
+  scale: {x: 0, y: 0, z: 0}
   putBack: {fileID: 1476509478}
   additionalEffect:
     m_PersistentCalls:
@@ -94814,7 +94819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.8
+  multiplier: 1
 --- !u!82 &1848583648
 AudioSource:
   m_ObjectHideFlags: 0

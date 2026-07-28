@@ -37930,7 +37930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.8
+  multiplier: 1
 --- !u!82 &763673484
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,35 +7,39 @@ public class KeyPad : MonoBehaviour
     [SerializeField] private RectTransform rawImage;
     [SerializeField] private RenderTexture renderTexture;
     [SerializeField] private AudioClip type;
-    [SerializeField] private GameObject door;
+    [SerializeField] private AudioClip wrong;
+    [SerializeField] private AudioClip correct;
+    [SerializeField] private SewerMetalDoor door;
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerCam;
     [SerializeField] private SewerFlashlight playerFlashLight;
+    [SerializeField] private Light pLight;
+    [SerializeField] private Renderer pRend;
     [SerializeField] private GameObject[] keys;
     [SerializeField] private TextMeshPro[] displays;
 
-    private bool tried = false;
     private int state = 0;
     private int numsSize = 0;
     private int[] nums = new int[4];
+    private float wrongT = 0;
     private Camera padCam;
-    private AudioSource doorAd;
+    private AudioSource ad;
     private Vector3 camPos = new Vector3(15.6794491f, -7.95501661f, -4.65597343f);
     private Quaternion camRot = Quaternion.Euler(0, -90.0f, 0);
 
     private void Start()
     {
-        doorAd = door.GetComponent<AudioSource>();
         padCam = cam.GetComponent<Camera>();
+        ad = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (state != 1) return;
 
-        if (state == 1 && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             FocusOn(false);
             return;
@@ -55,14 +59,27 @@ public class KeyPad : MonoBehaviour
         if (ClickedOn(keys[10]) || Input.GetKeyDown(KeyCode.Return))
         {
             flg = true;
-            if (numsSize == 4)
+            if (numsSize == 4 && nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0)
             {
-                Debug.Log("Correct");
+                door.SetState(1);
+                ad.clip = correct;
+                ad.Play();
+                pLight.enabled = true;
+                pLight.color = Color.green;
+                pRend.material.color = Color.green;
+                MainManager.instance.ClearTriggers();
+                FocusOn(false);
+                tag = "Untagged";
             }
             else
             {
                 numsSize = 0;
-                Debug.Log("Incorrect");
+                ad.clip = wrong;
+                ad.Play();
+                wrongT = 1.0f;
+                pLight.enabled = true;
+                pLight.color = Color.red;
+                pRend.material.color = Color.red;
             }
         }
         if (ClickedOn(keys[11]) || Input.GetKeyDown(KeyCode.Backspace))
@@ -81,6 +98,20 @@ public class KeyPad : MonoBehaviour
         }
 
         if (flg) MainManager.instance.PlayEffect(type);
+
+        if(wrongT > 0)
+        {
+            wrongT -= Time.deltaTime;
+            if(wrongT <= 0)
+            {
+                if (CompareTag("Interactable"))
+                {
+                    pLight.enabled = false;
+                    pRend.material.color = Color.white;
+                }
+                wrongT = 0;
+            }
+        }
 
     }
 
@@ -152,39 +183,5 @@ public class KeyPad : MonoBehaviour
             player.SetActive(true);
             state = 0;
         }
-    }
-
-    public void TryOpen()
-    {
-        if (state == 0) StartCoroutine(TryLocked());
-    }
-
-    private IEnumerator TryLocked()
-    {
-        if (!tried)
-        {
-            tried = true;
-            MainManager.instance.AddTrigger("dialogue;You;It's locked.");
-        }
-        doorAd.Play();
-        state = -1;
-        float rot = 0;
-        Vector3 angles = door.transform.eulerAngles;
-        float goal = angles.y;
-        while (rot < 4.0f)
-        {
-            rot += 60.0f * Time.deltaTime;
-            door.transform.Rotate(0, 60.0f * Time.deltaTime, 0, Space.World);
-            yield return null;
-        }
-        rot = 0;
-        while (rot < 4.0f)
-        {
-            rot += 20.0f * Time.deltaTime;
-            door.transform.Rotate(0, -20.0f * Time.deltaTime, 0, Space.World);
-            yield return null;
-        }
-        door.transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
-        state = 0;
     }
 }

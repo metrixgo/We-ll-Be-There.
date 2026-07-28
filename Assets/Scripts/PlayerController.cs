@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Interactable curItem;
     private Interactable newItem;
 
-    private void Start()
+    private void Awake()
     {
         ad = GetComponent<AudioSource>();
         characterController = GetComponent<CharacterController>();
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        cam.fieldOfView = 60.0f;
         StartCoroutine(CameraBobbing());
     }
 
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
 
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        RaycastHit[] hits = Physics.RaycastAll(ray, reachRange, ~0, QueryTriggerInteraction.Collide);
+        RaycastHit[] hits = Physics.RaycastAll(ray, reachRange, Physics.AllLayers, QueryTriggerInteraction.Collide);
         System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
         newItem = null;
         bool flg = true;

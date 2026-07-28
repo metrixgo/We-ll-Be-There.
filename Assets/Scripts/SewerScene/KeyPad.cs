@@ -17,16 +17,21 @@ public class KeyPad : MonoBehaviour
     private int state = 0;
     private int numsSize = 0;
     private int[] nums = new int[4];
+    private Camera padCam;
     private Vector3 camPos = new Vector3(15.6794491f, -7.95501661f, -4.65597343f);
+    private Quaternion camRot = Quaternion.Euler(0, -90.0f, 0);
 
+    private void Start()
+    {
+        padCam = cam.GetComponent<Camera>();
+    }
 
     private void Update()
     {
-        if (state != 1 || MainManager.instance.gameState != 1) return;
+        if (state != 1) return;
 
         if (state == 1 && Input.GetKeyDown(KeyCode.Escape))
         {
-            state = -1;
             FocusOn(false);
             return;
         }
@@ -76,43 +81,65 @@ public class KeyPad : MonoBehaviour
 
     private bool ClickedOn(GameObject o)
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Something");
+            Ray ray = padCam.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("SomethingGotHit");
+                Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.gameObject == o) return true;
+            }
+        }
         return false;
     }
 
     public void FocusOn(bool b)
     {
-        if (state != -1) StartCoroutine(FocusOnPad());
+        if (state != -1) StartCoroutine(FocusOnPad(b));
     }
 
-    private IEnumerator FocusOnPad()
+    private IEnumerator FocusOnPad(bool b)
     {
-        bool b = true;
         state = -1;
         float t = 0;
+        float l = 0.7f;
+        Vector3 pos = playerCam.transform.position;
+        Quaternion rot = playerCam.transform.rotation;
+        MainManager.instance.AddTrigger("wait;" + l);
+
         if (b)
         {
-            Vector3 pos = playerCam.transform.position;
+            MainManager.instance.AddTrigger("waitesc");
             cam.SetActive(true);
             player.SetActive(false);
-            while (t < 1.5f)
+            while (t < l)
             {
-                cam.transform.position = Vector3.Lerp(pos, camPos, t / 1.5f);
+                cam.transform.position = Vector3.Lerp(pos, camPos, t / l);
+                cam.transform.rotation = Quaternion.Slerp(rot, camRot, t / l);
                 t += Time.deltaTime;
                 yield return null;
             }
             cam.transform.position = camPos;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
-            Vector3 pos = playerCam.transform.position;
-            while (t < 1.5f)
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            while (t < l)
             {
-                cam.transform.position = Vector3.Lerp(camPos, pos, t / 1.5f);
+                cam.transform.position = Vector3.Lerp(camPos, pos, t / l);
+                cam.transform.rotation = Quaternion.Slerp(camRot, rot, t / l);
                 t += Time.deltaTime;
                 yield return null;
             }
             cam.SetActive(false);
             player.SetActive(true);
+
         }
         state = 1;
     }

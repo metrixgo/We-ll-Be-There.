@@ -29,7 +29,7 @@ public class SewerBooks : MonoBehaviour
     {
         if (!alreadyRead)
         {
-            //alreadyRead = true;
+            alreadyRead = true;
             num++;
             page = num;
         }

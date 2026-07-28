@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.3
+  m_AmbientIntensity: 2
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 08413a61299086641811a6fe6bacc337, type: 2}
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9402530a7ee1ce544a3ecba224401dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerMusicBox
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   trig: {fileID: 906132559}
   soundTrig: {fileID: 1952408762}
   clock: {fileID: 707006987}
@@ -10278,7 +10278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1655245895}
 --- !u!65 &429986054
@@ -27931,7 +27931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 368461129}
 --- !u!65 &1143886326
@@ -34192,7 +34192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1252495149}
 --- !u!65 &1371518864
@@ -34850,7 +34850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1550752023}
 --- !u!65 &1405317815
@@ -36920,7 +36920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 838865487}
 --- !u!65 &1466991880
@@ -41370,7 +41370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1241593481}
 --- !u!65 &1642307239
@@ -42848,7 +42848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 559926164}
 --- !u!65 &1682605135
@@ -44741,7 +44741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1843154742}
 --- !u!65 &1739076991
@@ -48541,7 +48541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  teleport: {fileID: 8300000, guid: 37259f18648009c4a8cb3b3910b7bcd3, type: 3}
+  teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 18264437}
 --- !u!65 &1858720178
@@ -48707,9 +48707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4fc21d5582be74b9784c32bdc7cd86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerMusicChange
-  music: {fileID: 8300000, guid: de0cfd66295bc1f468db23d6ac209efa, type: 3}
+  music: {fileID: 8300000, guid: 187f6117b07d0bc4dbbeebfa87904238, type: 3}
   changeTime: 0
-  volume: 0
+  volume: 100
 --- !u!114 &1861043845
 MonoBehaviour:
   m_ObjectHideFlags: 0

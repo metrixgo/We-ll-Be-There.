@@ -45509,7 +45509,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -59150,7 +59150,7 @@ MonoBehaviour:
   jumpScare: {fileID: 8300000, guid: 3b38ae895f9b0984eba454ccbba951ff, type: 3}
   fall: {fileID: 8300000, guid: e1452f7f0cc23694ca164571711f6f84, type: 3}
   ri: {fileID: 201842800}
-  mat: {fileID: 2100000, guid: d14aed6823d21df4a95f3ea096181974, type: 2}
+  mat: {fileID: 2100000, guid: 5a0b6309cc68bf34c83cec1a0bec4c53, type: 2}
 --- !u!1 &1225957935
 GameObject:
   m_ObjectHideFlags: 0

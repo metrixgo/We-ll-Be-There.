@@ -118,6 +118,7 @@ public class CrowBarTrigger : MonoBehaviour
         if(cnt >= 10)
         {
             MainManager.instance.PlayEffect(finishHit);
+            StartCoroutine(MoveCrowBar());
             Destroy(sealedDoor);
             scatteredRocks.SetActive(true);
             state = 3;

@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 2
+  m_AmbientIntensity: 0.3
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 08413a61299086641811a6fe6bacc337, type: 2}
@@ -26402,7 +26402,7 @@ GameObject:
   - component: {fileID: 1101167157}
   - component: {fileID: 1101167156}
   m_Layer: 0
-  m_Name: KeyPad
+  m_Name: Key Pad
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48686,8 +48686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861043847}
   - component: {fileID: 1861043846}
-  - component: {fileID: 1861043845}
-  - component: {fileID: 1861043844}
+  - component: {fileID: 1861043848}
   m_Layer: 0
   m_Name: StartKiller
   m_TagString: Untagged
@@ -48695,38 +48694,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1861043844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861043843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba4fc21d5582be74b9784c32bdc7cd86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SewerMusicChange
-  music: {fileID: 8300000, guid: 187f6117b07d0bc4dbbeebfa87904238, type: 3}
-  changeTime: 0
-  volume: 100
---- !u!114 &1861043845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861043843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe59fddfda3b0184894872d00a532165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SetObjectActive
-  isPhysical: 1
-  selfDestructs: 1
-  setActive: 1
-  objects:
-  - {fileID: 919132147531240509}
 --- !u!65 &1861043846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48763,6 +48730,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2111319899}
   m_LocalEulerAnglesHint: {x: 0, y: 35, z: 0}
+--- !u!114 &1861043848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861043843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c315a5479578be48b9373c462a65d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartKiller
+  killer: {fileID: 919132147531240509}
+  chase: {fileID: 8300000, guid: 187f6117b07d0bc4dbbeebfa87904238, type: 3}
+  jumpscare: {fileID: 8300000, guid: db3039c4809d1d74aa7824021e61cb28, type: 3}
+  ri: {fileID: 1809200048}
+  mat: {fileID: 2100000, guid: d14aed6823d21df4a95f3ea096181974, type: 2}
 --- !u!1 &1862186256
 GameObject:
   m_ObjectHideFlags: 0
@@ -55880,7 +55864,7 @@ Transform:
   m_GameObject: {fileID: 919132147531240509}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 25.368002, y: -7.9860005, z: 11.07}
+  m_LocalPosition: {x: 25.368002, y: -7.938, z: 10.059}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.6666666}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -56368,7 +56352,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4.5
+  m_Speed: 4.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 240
@@ -56415,6 +56399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerKiller
   player: {fileID: 871380078}
+  screen: {fileID: 604876738}
 --- !u!1 &919132147972573383
 GameObject:
   m_ObjectHideFlags: 0

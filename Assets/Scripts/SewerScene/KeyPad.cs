@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class KeyPad : MonoBehaviour
@@ -136,7 +137,11 @@ public class KeyPad : MonoBehaviour
 
     public void FocusOn(bool b)
     {
-        if (state != -1) StartCoroutine(FocusOnPad(b));
+        if (state != -1)
+        {
+            if (b && SewerBooks.num < 9) MainManager.instance.AddTrigger("dialogue;You;I don't know the code yet.");
+            else StartCoroutine(FocusOnPad(b));
+        }
     }
 
     private IEnumerator FocusOnPad(bool b)

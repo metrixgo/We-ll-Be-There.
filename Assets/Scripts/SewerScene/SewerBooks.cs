@@ -7,7 +7,7 @@ public class SewerBooks : MonoBehaviour
     [SerializeField] private SewerClock clock;
     [SerializeField] private Transform corBook;
 
-    private static int num = 0;
+    public static int num { get; private set; } = 0;
 
     private bool alreadyRead = false;
     private string to;
@@ -16,6 +16,7 @@ public class SewerBooks : MonoBehaviour
 
     private void Start()
     {
+        num = 0;
         float x = corBook.position.x - transform.position.x;
         float y = corBook.position.y - transform.position.y;
         float z = corBook.position.z - transform.position.z;
@@ -44,7 +45,7 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.AddTrigger("waitesc");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
-        if (clock != null) clock.Mute(true);
+        if (clock != null && clock.gameObject.activeSelf) clock.Mute(true);
         yield return new WaitForSeconds(1.5f);
         DisplayBook.instance.DisplayPage(page);
         RenderSettings.fogDensity = 1.0f;
@@ -56,7 +57,7 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.AddTrigger("wait;1.5");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
-        if (clock != null) clock.Mute(false);
+        if (clock != null && clock.gameObject.activeSelf) clock.Mute(false);
         yield return new WaitForSeconds(1.5f);
         RenderSettings.fogDensity = 0.15f;
         RenderSettings.ambientIntensity = 0.3f;

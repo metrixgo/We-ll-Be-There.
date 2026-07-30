@@ -311,6 +311,10 @@ public class MainManager : MonoBehaviour
         {"You just can't stop looping the music you like. It's such an addiction. Stop the music. Live a better life.", "你根本无法停止循环播放你喜欢的音乐。这简直就是上瘾。停下音乐。享受更好的生活。"},
         {"How about looking behind you?", "再看看你的后面呢？"},
         {"I don't know the code yet.", "我还不知道密码是什么。"},
+        {"Why does this look so much like a ritual...", "为什么这看起来这么像一个仪式..."},
+        {"Props", "杂物"},
+        {"Screen", "屏幕"},
+        {"I think I need to close it... I believe there's a control somewhere.", "我觉得我得把这个关了...我相信某处有个遥控器。"},
     };
 
     private void Awake()
@@ -395,7 +399,6 @@ public class MainManager : MonoBehaviour
         if (!isLoadingScene)
         {
             isLoadingScene = true;
-            if (s != "MainMenu" && !s.Contains("Ending")) PlayerPrefs.SetString("Save", s);
             StartCoroutine(LoadSceneCoroutine(s, t));
         }
     }
@@ -541,6 +544,7 @@ public class MainManager : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string s, float t)
     {
+        if (s != "MainMenu" && !s.Contains("Ending")) PlayerPrefs.SetString("Save", s);
         AddTrigger("changescreen;#00000000;#000000FF;" + t);
         yield return new WaitForSeconds(t);
         SceneManager.LoadScene(s);

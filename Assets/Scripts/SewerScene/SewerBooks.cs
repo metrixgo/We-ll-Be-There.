@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SewerBooks : MonoBehaviour
 {
+    [SerializeField] private AudioClip tense;
     [SerializeField] private AudioClip teleport;
     [SerializeField] private SewerClock clock;
     [SerializeField] private Transform corBook;
@@ -31,12 +32,13 @@ public class SewerBooks : MonoBehaviour
             alreadyRead = true;
             num++;
             page = num;
+            if (num == 9) SewerMusicManager.instance.ChangeTo(tense, 3.0f, 50.0f);
         }
 
         StartCoroutine(Teleport());
 
     }
-    
+
     private IEnumerator Teleport()
     {
         MainManager.instance.AddTrigger("wait;1");
@@ -45,11 +47,11 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.AddTrigger("waitesc");
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
+        RenderSettings.fogDensity = 1.0f;
+        RenderSettings.ambientIntensity = 0.6f;
         if (clock != null && clock.gameObject.activeSelf) clock.Mute(true);
         yield return new WaitForSeconds(1.5f);
         DisplayBook.instance.DisplayPage(page);
-        RenderSettings.fogDensity = 1.0f;
-        RenderSettings.ambientIntensity = 0.6f;
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
 
         MainManager.instance.AddTrigger("wait;1");
@@ -58,8 +60,8 @@ public class SewerBooks : MonoBehaviour
         MainManager.instance.PlayEffect(teleport);
         yield return new WaitForSeconds(1.0f);
         if (clock != null && clock.gameObject.activeSelf) clock.Mute(false);
-        yield return new WaitForSeconds(1.5f);
         RenderSettings.fogDensity = 0.15f;
         RenderSettings.ambientIntensity = 0.3f;
+        yield return new WaitForSeconds(1.5f);
     }
 }

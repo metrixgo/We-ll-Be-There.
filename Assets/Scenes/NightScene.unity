@@ -8158,9 +8158,12 @@ GameObject:
   - component: {fileID: 188258213}
   - component: {fileID: 188258212}
   - component: {fileID: 188258210}
+  - component: {fileID: 188258220}
+  - component: {fileID: 188258219}
+  - component: {fileID: 188258218}
   m_Layer: 0
   m_Name: Screen
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8406,6 +8409,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188258208}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &188258218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188258208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0000005, z: 0.1}
+  m_Center: {x: 0, y: 0.00000023841858, z: -0.000015258789}
+--- !u!114 &188258219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188258208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
+  selfDestructs: 0
+  triggers:
+  - dialogue;You;I think I need to close it... I believe there's a control somewhere.
+--- !u!114 &188258220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188258208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 188258219}
+        m_TargetAssemblyTypeName: TriggerSequences, Assembly-CSharp
+        m_MethodName: AddTriggers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &191456925
 GameObject:
   m_ObjectHideFlags: 0
@@ -17858,7 +17925,6 @@ Transform:
   - {fileID: 1023247135}
   - {fileID: 946663341}
   - {fileID: 2017869137}
-  - {fileID: 963805384}
   - {fileID: 530806466}
   - {fileID: 1158721348}
   - {fileID: 311062503}
@@ -47267,69 +47333,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962274336}
   m_Mesh: {fileID: 1116723703732533429, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
---- !u!1 &963805383
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 963805384}
-  - component: {fileID: 963805386}
-  - component: {fileID: 963805385}
-  m_Layer: 0
-  m_Name: colliders_014
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &963805384
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963805383}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -9.167691, y: 0.7199389, z: -1.8749641}
-  m_LocalScale: {x: 32.92877, y: 32.92877, z: 32.92877}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 371708657}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &963805385
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963805383}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4363955467884975381, guid: 2682db896e78ee14985174cccd1e3de1, type: 3}
---- !u!33 &963805386
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963805383}
-  m_Mesh: {fileID: -4363955467884975381, guid: 2682db896e78ee14985174cccd1e3de1, type: 3}
 --- !u!1 &965901793
 GameObject:
   m_ObjectHideFlags: 0
@@ -63063,6 +63066,7 @@ GameObject:
   - component: {fileID: 1294309194}
   - component: {fileID: 1294309196}
   - component: {fileID: 1294309195}
+  - component: {fileID: 1294309197}
   m_Layer: 0
   m_Name: Table_35
   m_TagString: Untagged
@@ -63143,6 +63147,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294309193}
   m_Mesh: {fileID: -8277404887247021215, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!65 &1294309197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294309193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.012658729, y: 0.0054789893, z: 0.01}
+  m_Center: {x: -0.00000011802294, y: -0.0007449901, z: -0.0013}
 --- !u!1 &1303972645
 GameObject:
   m_ObjectHideFlags: 0

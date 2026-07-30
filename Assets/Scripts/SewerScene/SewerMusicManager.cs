@@ -20,6 +20,12 @@ public class SewerMusicManager : MonoBehaviour
         vol = ad.volume;
     }
 
+    public void StopMusic()
+    {
+        if (prev != null) StopCoroutine(prev);
+        ad.Stop();
+    }
+
     public void ChangeTo(AudioClip newClip, float l, float newV)
     {
         if (prev != null) StopCoroutine(prev);

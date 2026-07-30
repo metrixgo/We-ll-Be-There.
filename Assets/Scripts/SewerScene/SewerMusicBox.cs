@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SewerMusicBox : MonoBehaviour
 {
-    [SerializeField] private AudioClip tense;
     [SerializeField] private GameObject trig;
     [SerializeField] private GameObject soundTrig;
     [SerializeField] private GameObject clock;
+    [SerializeField] private GameObject bloods;
 
     private AudioSource ad;
     private bool closed = false;
@@ -19,8 +19,8 @@ public class SewerMusicBox : MonoBehaviour
     {
         if (!closed)
         {
-            SewerMusicManager.instance.ChangeTo(tense, 3.0f, 50.0f);
             closed = true;
+            bloods.SetActive(true);
             Destroy(trig);
             Destroy(soundTrig);
             Destroy(clock);

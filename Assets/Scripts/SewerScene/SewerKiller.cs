@@ -1,3 +1,4 @@
+using KinoGlitch;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,7 +6,11 @@ using UnityEngine.UI;
 
 public class SewerKiller : MonoBehaviour
 {
+    [SerializeField] private AudioClip jumpScare;
+    [SerializeField] private AudioClip fall;
     [SerializeField] private Transform player;
+    [SerializeField] private DigitalGlitchController dgc;
+    [SerializeField] private GameObject jumpScareCam;
     [SerializeField] private Image screen;
 
     private bool killed = false;
@@ -24,21 +29,33 @@ public class SewerKiller : MonoBehaviour
         if (MainManager.instance.gameState == 1 && !killed) agent.isStopped = false;
         else agent.isStopped = true;
 
-        if (Vector3.Distance(transform.position, player.position) < 0.2f)
+        if (Vector3.Distance(transform.position, player.position) < 1.0f && MainManager.instance.gameState == 1)
         {
             killed = true;
             animator.SetInteger("State", 0);
             StartCoroutine(KillIt());
         }
 
-        if (agent.SetDestination(player.position))
-        {
-            screen.color = Color.red * Mathf.Clamp(0.7f - Mathf.Clamp(agent.remainingDistance, 0, 15.0f) / 15.0f, 0, 0.7f);
-        }
+        agent.SetDestination(player.position);
+        dgc.SetIntensity((15.0f - Vector3.Distance(transform.position, player.position)) / 60.0f);
     }
 
     private IEnumerator KillIt()
     {
-        yield return null;
+        player.gameObject.SetActive(false);
+        jumpScareCam.SetActive(true);
+        MainManager.instance.PlayEffect(jumpScare);
+        MainManager.instance.AddTrigger("wait;0.8");
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;1");
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#000000FF;4");
+        MainManager.instance.AddTrigger("loadscene;SewerScene");
+
+        float t = 0;
+        while (t < 0.8f)
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
+        MainManager.instance.PlayEffect(fall);
     }
 }

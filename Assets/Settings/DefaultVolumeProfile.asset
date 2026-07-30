@@ -324,6 +324,36 @@ MonoBehaviour:
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &-4173790168271197384
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3b4540a238c4a4ca10ab62f5e544bf, type: 3}
+  m_Name: AnalogGlitchVolume
+  m_EditorClassIdentifier: URPGlitch::URPGlitch.AnalogGlitchVolume
+  active: 1
+  <displayName>k__BackingField: 
+  scanLineJitter:
+    <fieldHash>k__BackingField: 1926603096
+    m_OverrideState: 1
+    m_Value: 0
+  verticalJump:
+    <fieldHash>k__BackingField: -2129013808
+    m_OverrideState: 1
+    m_Value: 0
+  horizontalShake:
+    <fieldHash>k__BackingField: -1889663416
+    m_OverrideState: 1
+    m_Value: 0
+  colorDrift:
+    <fieldHash>k__BackingField: -1650313024
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-4042125018439608916
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -346,6 +376,24 @@ MonoBehaviour:
   colorPrecision:
     m_OverrideState: 1
     m_Value: 32
+--- !u!114 &-3100225601747453005
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d536c364ebc24dd6b769ef6affde936a, type: 3}
+  m_Name: DigitalGlitchVolume
+  m_EditorClassIdentifier: URPGlitch::URPGlitch.DigitalGlitchVolume
+  active: 1
+  <displayName>k__BackingField: 
+  intensity:
+    <fieldHash>k__BackingField: 503840504
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-1833782531410818138
 MonoBehaviour:
   m_ObjectHideFlags: 3

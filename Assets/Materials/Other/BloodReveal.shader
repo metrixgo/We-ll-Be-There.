@@ -62,7 +62,7 @@
                 if (_LightOn < 0.5) return half4(0,0,0,0);
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
                 float3 toPixel = IN.worldPos - _LightPos;
-                float cone = smoothstep(_LightCosAngle, _LightCosAngle + 0.11, dot(normalize(_LightDir), normalize(toPixel)));
+                float cone = smoothstep(_LightCosAngle, _LightCosAngle + 0.2, dot(normalize(_LightDir), normalize(toPixel)));
                 float dist = saturate(1.0 - length(toPixel) / _LightRange);
                 color.a *= cone * dist;
                 return color;

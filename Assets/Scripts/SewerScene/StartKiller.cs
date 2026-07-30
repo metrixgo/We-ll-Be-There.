@@ -8,6 +8,7 @@ public class StartKiller : MonoBehaviour
     [SerializeField] private AudioClip jumpscare;
     [SerializeField] private RawImage ri;
     [SerializeField] private Material mat;
+    [SerializeField] private GameObject[] books;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,10 @@ public class StartKiller : MonoBehaviour
         SewerMusicManager.instance.ChangeTo(chase, 0, 100);
         MainManager.instance.PlayEffect(jumpscare);
         ri.material = mat;
+        foreach (GameObject book in books)
+        {
+            book.tag = "Untagged";
+        }
         Destroy(gameObject);
     }
 }

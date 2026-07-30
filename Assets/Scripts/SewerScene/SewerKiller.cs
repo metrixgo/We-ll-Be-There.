@@ -32,7 +32,7 @@ public class SewerKiller : MonoBehaviour
         if (MainManager.instance.gameState == 1 && !killed) agent.isStopped = false;
         else agent.isStopped = true;
 
-        if (Vector3.Distance(transform.position, player.position) < 1.0f && MainManager.instance.gameState == 1)
+        if (Vector3.Distance(transform.position, player.position) < 1.2f && MainManager.instance.gameState == 1)
         {
             killed = true;
             animator.SetInteger("State", 0);
@@ -53,7 +53,7 @@ public class SewerKiller : MonoBehaviour
         MainManager.instance.AddTrigger("wait;0.8");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;1");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#000000FF;4");
-        MainManager.instance.AddTrigger("loadscene;SewerScene");
+        MainManager.instance.AddTrigger("loadscene;SewerKilledScene");
 
         float t = 0;
         while (t < 0.8f)

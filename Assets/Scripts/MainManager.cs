@@ -322,10 +322,6 @@ public class MainManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         instance = this;
-    }
-
-    private void Start()
-    {
         musicPlayer.volume = PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
         effectsPlayer.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
         focusImg = focus.GetComponent<Image>();

@@ -25024,7 +25024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1005780459
 Transform:
   m_ObjectHideFlags: 0
@@ -49499,6 +49499,16 @@ MonoBehaviour:
   jumpscare: {fileID: 8300000, guid: db3039c4809d1d74aa7824021e61cb28, type: 3}
   ri: {fileID: 1809200048}
   mat: {fileID: 2100000, guid: d14aed6823d21df4a95f3ea096181974, type: 2}
+  books:
+  - {fileID: 1466991873}
+  - {fileID: 1739076984}
+  - {fileID: 1371518857}
+  - {fileID: 429986047}
+  - {fileID: 1682605128}
+  - {fileID: 1143886319}
+  - {fileID: 1405317808}
+  - {fileID: 1642307232}
+  - {fileID: 1858720171}
 --- !u!1 &1862186256
 GameObject:
   m_ObjectHideFlags: 0

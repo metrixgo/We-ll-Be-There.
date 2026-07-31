@@ -24,12 +24,12 @@ public class EscapeRope : MonoBehaviour
 
     private IEnumerator StartClimbing()
     {
-        player2fl.Open(playerfl.IsOpened());
         killer.SecondStage();
         player2.transform.position = player.transform.position;
         player2.transform.rotation = player.transform.rotation;
-        player.SetActive(false);
         player2.SetActive(true);
+        player2fl.Open(playerfl.IsOpened());
+        player.SetActive(false);
         Vector3 pos = player2.transform.localPosition;
         Quaternion rot = player2.transform.rotation;
 

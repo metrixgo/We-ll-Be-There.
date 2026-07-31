@@ -8,9 +8,13 @@ public class SewerFlashlight : MonoBehaviour
 
     private Light bulb;
 
-    private void Start()
+    private void Awake()
     {
         bulb = GetComponent<Light>();
+    }
+
+    private void Start()
+    {
         bulb.enabled = opened;
         if (opened)
         {
@@ -39,7 +43,7 @@ public class SewerFlashlight : MonoBehaviour
             Shader.SetGlobalInt("_LightOn", 0);
         }
 
-        if (MainManager.instance.gameState != 1) return;
+        if (MainManager.instance.AtPausedScreen()) return;
 
         if (Input.GetKeyDown(KeyCode.F))
         {

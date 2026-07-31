@@ -157,8 +157,8 @@ public class KeyPad : MonoBehaviour
         if (b)
         {
             MainManager.instance.AddTrigger("waitesc");
-            flashlight.Open(playerFlashlight.IsOpened());
             cam.SetActive(true);
+            flashlight.Open(playerFlashlight.IsOpened());
             player.SetActive(false);
             while (t < l)
             {

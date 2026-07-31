@@ -10435,7 +10435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1655245895}
@@ -11326,8 +11326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998c47f203f808f49a4829acea1383e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NightFlashlight
-  prompt: {fileID: 0}
   flashlight: {fileID: 8300000, guid: 0af543d73301e764ba002eb684ff5758, type: 3}
+  opened: 0
 --- !u!1 &480527850
 GameObject:
   m_ObjectHideFlags: 0
@@ -13455,7 +13455,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.05
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7f7d3a78427fc4344abc73c1a058079b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f0f6ab751b37b344a995e54301846207, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &566828558
 Transform:
@@ -28377,7 +28377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 368461129}
@@ -34729,7 +34729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1252495149}
@@ -35389,7 +35389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1550752023}
@@ -37460,7 +37460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 838865487}
@@ -41980,7 +41980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1241593481}
@@ -43459,7 +43459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 559926164}
@@ -45354,7 +45354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 1843154742}
@@ -49292,7 +49292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8958632f18414bc4897a699078d6b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SewerBooks
-  tense: {fileID: 0}
+  tense: {fileID: 8300000, guid: f8ca0754ae504de4d9fe039e71bb74d8, type: 3}
   teleport: {fileID: 8300000, guid: 94124df70e89d9049a71c64105139ad4, type: 3}
   clock: {fileID: 707006994}
   corBook: {fileID: 18264437}

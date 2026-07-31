@@ -10,11 +10,14 @@ public class SewerKiller : MonoBehaviour
     [SerializeField] private AudioClip fall;
     [SerializeField] private Transform player;
     [SerializeField] private DigitalGlitchController dgc;
+    [SerializeField] private Transform player2;
+    [SerializeField] private DigitalGlitchController dgc2;
     [SerializeField] private GameObject jumpScareCam;
     [SerializeField] private RawImage ri;
     [SerializeField] private Material mat;
 
     private bool killed = false;
+    private bool second = false;
     private NavMeshAgent agent;
     private Animator animator;
     private Vector3 camPos;
@@ -32,20 +35,36 @@ public class SewerKiller : MonoBehaviour
         if (MainManager.instance.gameState == 1 && !killed) agent.isStopped = false;
         else agent.isStopped = true;
 
-        if (Vector3.Distance(transform.position, player.position) < 1.2f && MainManager.instance.gameState == 1)
+        bool inReach = (Vector3.Distance(transform.position, player.position) < 1.2f && !second) || (Vector3.Distance(transform.position, player2.position) < 1.2f && second);
+
+        if (Vector3.Distance(transform.position, player.position) < 1.2f && MainManager.instance.gameState == 1 && !killed)
         {
             killed = true;
             animator.SetInteger("State", 0);
             StartCoroutine(KillIt());
         }
 
-        agent.SetDestination(player.position);
-        dgc.SetIntensity((10.0f - Vector3.Distance(transform.position, player.position)) / 20.0f);
+        if (!second)
+        {
+            agent.SetDestination(player.position);
+            dgc.SetIntensity((10.0f - Vector3.Distance(transform.position, player.position)) / 20.0f);
+        }
+        else
+        {
+            agent.SetDestination(player2.position);
+            dgc2.SetIntensity((10.0f - Vector3.Distance(transform.position, player2.position)) / 20.0f);
+        }
+    }
+
+    public void SecondStage()
+    {
+        second = true;
     }
 
     private IEnumerator KillIt()
     {
         player.gameObject.SetActive(false);
+        player2.gameObject.SetActive(false);
         jumpScareCam.SetActive(true);
         ri.material = mat;
         SewerMusicManager.instance.StopMusic();

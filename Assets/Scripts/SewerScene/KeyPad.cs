@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class KeyPad : MonoBehaviour
@@ -12,10 +11,10 @@ public class KeyPad : MonoBehaviour
     [SerializeField] private AudioClip correct;
     [SerializeField] private SewerMetalDoor door;
     [SerializeField] private GameObject cam;
-    [SerializeField] private GameObject flashLight;
+    [SerializeField] private SewerFlashlight flashlight;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerCam;
-    [SerializeField] private SewerFlashlight playerFlashLight;
+    [SerializeField] private SewerFlashlight playerFlashlight;
     [SerializeField] private Light pLight;
     [SerializeField] private Renderer pRend;
     [SerializeField] private GameObject[] keys;
@@ -137,6 +136,8 @@ public class KeyPad : MonoBehaviour
 
     public void FocusOn(bool b)
     {
+        StartCoroutine(FocusOnPad(b));
+        return;
         if (state != -1)
         {
             if (b && SewerBooks.num < 9) MainManager.instance.AddTrigger("dialogue;You;I don't know the code yet.");
@@ -156,8 +157,7 @@ public class KeyPad : MonoBehaviour
         if (b)
         {
             MainManager.instance.AddTrigger("waitesc");
-            if (playerFlashLight.IsOpened()) flashLight.SetActive(true);
-            else flashLight.SetActive(false);
+            flashlight.Open(playerFlashlight.IsOpened());
             cam.SetActive(true);
             player.SetActive(false);
             while (t < l)
@@ -184,8 +184,9 @@ public class KeyPad : MonoBehaviour
                 t += Time.deltaTime;
                 yield return null;
             }
-            cam.SetActive(false);
             player.SetActive(true);
+            playerFlashlight.Open(flashlight.IsOpened());
+            cam.SetActive(false);
             state = 0;
         }
     }

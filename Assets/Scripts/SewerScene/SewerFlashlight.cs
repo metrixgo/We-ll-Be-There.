@@ -63,4 +63,20 @@ public class SewerFlashlight : MonoBehaviour
     {
         return opened;
     }
+
+    public void Open(bool b)
+    {
+        opened = b;
+        bulb.enabled = b;
+        if (opened)
+        {
+            MainManager.instance.SetPromptColor(Color.red);
+            MainManager.instance.SetFocusColor(Color.red);
+        }
+        else
+        {
+            MainManager.instance.SetPromptColor(Color.white);
+            MainManager.instance.SetFocusColor(Color.white);
+        }
+    }
 }

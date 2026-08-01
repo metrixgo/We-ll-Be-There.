@@ -18,17 +18,15 @@ public class SewerKiller : MonoBehaviour
     [SerializeField] private Material mat;
 
     private int state = 1;
-    private float reach= 1.2f;
+    private float reach= 1.3f;
     private NavMeshAgent agent;
     private Animator animator;
     private Vector3 camPos;
-    private Vector3 ropePos = new Vector3(-1.74596214f, -1147.48999977f, -0.37992692f);
-
+    private Vector3 ropePos = new Vector3(-1.99596214f, -6.16445589f, -0.37992692f);
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        animator.SetInteger("State", 1);
         camPos = jumpScareCam.transform.localPosition;
     }
 
@@ -37,27 +35,27 @@ public class SewerKiller : MonoBehaviour
         if (MainManager.instance.gameState == 1 && state > 0) agent.isStopped = false;
         else agent.isStopped = true;
 
-        bool inReach = (Vector3.Distance(transform.position, player.position) < reach && state == 1) || (Vector3.Distance(transform.position, player2.position) < reach && state == 2);
+        bool inReach = (Vector3.Distance(transform.position, player.position) < reach && state == 1) || (Vector3.Distance(transform.position, player2.position) < reach * 3.0f && state == 2);
 
         if (inReach && MainManager.instance.gameState == 1)
         {
             state = 0;
-            animator.SetInteger("State", 0);
+            animator.SetBool("Killed", true);
             StartCoroutine(KillIt());
         }
 
         if (state == 1)
         {
             agent.SetDestination(player.position);
-            dgc.SetIntensity((10.0f - Vector3.Distance(transform.position, player.position)) / 20.0f);
+            dgc.SetIntensity(Mathf.Max((10.0f - Vector3.Distance(transform.position, player.position)) / 20.0f, 0));
         }
         else
         {
             agent.SetDestination(ropePos);
-            dgc2.SetIntensity((10.0f - Vector3.Distance(transform.position, player2.position)) / 20.0f);
+            dgc2.SetIntensity(Mathf.Max((10.0f - Vector3.Distance(transform.position, player2.position)) / 20.0f, 0));
         }
 
-        if (state == 2 && Vector3.Distance(transform.position, ropePos) < reach)
+        if (state == 2 && Vector3.Distance(transform.position, ropePos) < reach * 2.5f)
         {
             climbKiller.SetActive(true);
             Destroy(gameObject);

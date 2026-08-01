@@ -315,6 +315,7 @@ public class MainManager : MonoBehaviour
         {"Props", "杂物"},
         {"Screen", "屏幕"},
         {"I think I need to close it... I believe there's a control somewhere.", "我觉得我得把这个关了...我相信某处有个遥控器。"},
+        {"Press [A] and [D] to climb", "按 [A] 和 [D] 攀爬"},
     };
 
     private void Awake()

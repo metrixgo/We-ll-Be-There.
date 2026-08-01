@@ -80,7 +80,7 @@ public class Bicycle : MonoBehaviour
             }
         }
 
-        if (velocity < 1.0f) ad.Stop();
+        if (velocity < 1.5f) ad.Stop();
 
         Vector3 move = velocity * Time.deltaTime * transform.forward;
         transform.Translate(move, Space.World);

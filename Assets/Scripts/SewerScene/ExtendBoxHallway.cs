@@ -1,4 +1,3 @@
-using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,6 @@ public class ExtendBoxHallway : MonoBehaviour
     [SerializeField] private GameObject unit;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerHead;
-    [SerializeField] private NavMeshSurface surface;
     [SerializeField] private AudioClip die;
     [SerializeField] private AudioClip shift;
     [SerializeField] private Image screen;
@@ -40,7 +38,6 @@ public class ExtendBoxHallway : MonoBehaviour
             end.transform.Translate(Vector3.left * 12.0f, Space.World);
             Instantiate(unit, pos, rot);
             pos += Vector3.left * 12.0f;
-            surface.BuildNavMesh();
             MainManager.instance.AddTrigger("flashscreen;#FF000000;#FF000055;0.2");
             MainManager.instance.AddTrigger("flashscreen;#FF000055;#FF000000;1");
         }

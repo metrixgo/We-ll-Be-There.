@@ -13,14 +13,16 @@ public class SewerKiller : MonoBehaviour
     [SerializeField] private Transform player2;
     [SerializeField] private DigitalGlitchController dgc2;
     [SerializeField] private GameObject jumpScareCam;
+    [SerializeField] private GameObject climbKiller;
     [SerializeField] private RawImage ri;
     [SerializeField] private Material mat;
 
-    private bool killed = false;
-    private bool second = false;
+    private int state = 1;
+    private float reach= 1.2f;
     private NavMeshAgent agent;
     private Animator animator;
     private Vector3 camPos;
+    private Vector3 ropePos = new Vector3(-1.74596214f, -1147.48999977f, -0.37992692f);
 
     private void Start()
     {
@@ -32,33 +34,39 @@ public class SewerKiller : MonoBehaviour
 
     private void Update()
     {
-        if (MainManager.instance.gameState == 1 && !killed) agent.isStopped = false;
+        if (MainManager.instance.gameState == 1 && state > 0) agent.isStopped = false;
         else agent.isStopped = true;
 
-        bool inReach = (Vector3.Distance(transform.position, player.position) < 1.2f && !second) || (Vector3.Distance(transform.position, player2.position) < 1.2f && second);
+        bool inReach = (Vector3.Distance(transform.position, player.position) < reach && state == 1) || (Vector3.Distance(transform.position, player2.position) < reach && state == 2);
 
-        if (Vector3.Distance(transform.position, player.position) < 1.2f && MainManager.instance.gameState == 1 && !killed)
+        if (inReach && MainManager.instance.gameState == 1)
         {
-            killed = true;
+            state = 0;
             animator.SetInteger("State", 0);
             StartCoroutine(KillIt());
         }
 
-        if (!second)
+        if (state == 1)
         {
             agent.SetDestination(player.position);
             dgc.SetIntensity((10.0f - Vector3.Distance(transform.position, player.position)) / 20.0f);
         }
         else
         {
-            agent.SetDestination(player2.position);
+            agent.SetDestination(ropePos);
             dgc2.SetIntensity((10.0f - Vector3.Distance(transform.position, player2.position)) / 20.0f);
+        }
+
+        if (state == 2 && Vector3.Distance(transform.position, ropePos) < reach)
+        {
+            climbKiller.SetActive(true);
+            Destroy(gameObject);
         }
     }
 
     public void SecondStage()
     {
-        second = true;
+        state = 2;
     }
 
     private IEnumerator KillIt()

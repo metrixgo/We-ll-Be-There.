@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EscapeRope : MonoBehaviour
 {
@@ -14,26 +13,47 @@ public class EscapeRope : MonoBehaviour
     private bool climbedOn = false;
     private bool isLeft = true;
     private float progress = 0;
+    private float velocity = 0;
+    private float rotX;
+    private float rotY;
+    private float sensitivity;
     private AudioSource ad;
-    private Vector3 initPos = new Vector3(-0.5f, -3.025f, 0);
+    private Vector3 initPos = new Vector3(-0.25f, -3.025f, 0);
     private Quaternion initRot = Quaternion.Euler(0, 90.0f, 0);
 
     private void Start()
     {
         ad = player2.GetComponent<AudioSource>();
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
+        rotX = initRot.eulerAngles.x;
+        rotY = initRot.eulerAngles.y;
     }
 
     private void Update()
     {
         if (!climbedOn || MainManager.instance.gameState != 1) return;
 
+        velocity -= 0.5f * Time.deltaTime;
+        if (velocity <= 0) velocity = 0;
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
+
         float key = Input.GetAxisRaw("Horizontal");
         if (key < 0 && isLeft || key > 0 && !isLeft)
         {
             isLeft = !isLeft;
-            progress += 1.0f;
+            velocity = Mathf.Min(velocity + 0.07f, 0.3f);
             if (!ad.isPlaying) ad.Play();
         }
+
+        if (velocity < 0.15f) ad.Stop();
+
+        progress += velocity * Time.deltaTime;
+
+        player2.transform.localPosition = new Vector3(initPos.x + Mathf.Sin(progress * 7.5f) * 0.05f, initPos.y + progress, initPos.z + Mathf.Sin(progress * 5.2f) * 0.08f);
+        rotX -= Input.GetAxis("Mouse Y") * sensitivity;
+        rotX = Mathf.Clamp(rotX, -90.0f, 90.0f);
+        rotY += Input.GetAxis("Mouse X") * sensitivity;
+        player2.transform.rotation = Quaternion.Euler(rotX, rotY, 0);
     }
 
     public void ClimbOn()
@@ -52,12 +72,13 @@ public class EscapeRope : MonoBehaviour
         Vector3 pos = player2.transform.localPosition;
         Quaternion rot = player2.transform.rotation;
 
-        MainManager.instance.AddTrigger("wait;0.7");
+        float l = 1.0f;
+        MainManager.instance.AddTrigger("wait;" + l);
         float t = 0;
-        while(t < 0.7f)
+        while (t < l)
         {
-            player2.transform.localPosition = Vector3.Lerp(pos, initPos, t / 0.7f);
-            player2.transform.rotation = Quaternion.Slerp(rot, initRot, t / 0.7f);
+            player2.transform.localPosition = Vector3.Lerp(pos, initPos, t / l);
+            player2.transform.rotation = Quaternion.Slerp(rot, initRot, t / l);
             t += Time.deltaTime;
             yield return null;
         }

@@ -18,7 +18,7 @@ public class EscapeRope : MonoBehaviour
     private float rotY;
     private float sensitivity;
     private AudioSource ad;
-    private Vector3 initPos = new Vector3(-0.25f, -3.025f, 0);
+    private Vector3 initPos = new Vector3(-19.2359619f, 0.265543938f, -2.59992695f);
     private Quaternion initRot = Quaternion.Euler(0, 90.0f, 0);
 
     private void Start()
@@ -41,7 +41,7 @@ public class EscapeRope : MonoBehaviour
         if (key < 0 && isLeft || key > 0 && !isLeft)
         {
             isLeft = !isLeft;
-            velocity = Mathf.Min(velocity + 0.07f, 0.3f);
+            velocity = Mathf.Min(velocity + 0.07f, 0.6f);
             if (!ad.isPlaying) ad.Play();
         }
 

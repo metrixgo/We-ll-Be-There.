@@ -12,9 +12,10 @@ public class ClimbKiller : MonoBehaviour
     [SerializeField] private GameObject jumpScareCam;
     [SerializeField] private RawImage ri;
     [SerializeField] private Material mat;
+    [SerializeField] private Image screen;
 
     private int state = 1;
-    private float reach = 2.3f;
+    private float reach = 2.6f;
     private Animator animator;
     private Vector3 camPos;
 
@@ -35,8 +36,9 @@ public class ClimbKiller : MonoBehaviour
             StartCoroutine(KillIt());
         }
 
-        transform.Translate(Vector3.up * 0.3f * Time.deltaTime);
-        dgc.SetIntensity(Mathf.Max((5.0f - Mathf.Abs(player.position.y - transform.position.y)) / 10.0f, 0));
+        transform.Translate(Vector3.up * 0.55f * Time.deltaTime);
+        dgc.SetIntensity(Mathf.Max((7.0f - Mathf.Abs(player.position.y - transform.position.y)) / 14.0f, 0));
+        screen.color = Color.red * Mathf.Max((7.0f - Mathf.Abs(player.position.y - transform.position.y)) / 14.0f, 0);
     }
 
     private IEnumerator KillIt()

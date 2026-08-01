@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class SewerFlashlight : MonoBehaviour
@@ -43,7 +42,7 @@ public class SewerFlashlight : MonoBehaviour
             Shader.SetGlobalInt("_LightOn", 0);
         }
 
-        if (MainManager.instance.AtPausedScreen()) return;
+        if (MainManager.instance.gameState != 1) return;
 
         if (Input.GetKeyDown(KeyCode.F))
         {

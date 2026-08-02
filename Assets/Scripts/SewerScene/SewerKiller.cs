@@ -58,6 +58,7 @@ public class SewerKiller : MonoBehaviour
         if (state == 2 && Vector3.Distance(transform.position, ropePos) < reach * 2.5f)
         {
             climbKiller.SetActive(true);
+            SewerSubText.instance.Climbed();
             Destroy(gameObject);
         }
     }

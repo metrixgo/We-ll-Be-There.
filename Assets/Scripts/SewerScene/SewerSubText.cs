@@ -8,6 +8,8 @@ public class SewerSubText : MonoBehaviour
     private float opacity = 0;
     private AudioSource ad;
     private TextMeshProUGUI txt;
+    private float txtOpacity = 0.3f;
+    private Color txtColor = Color.red;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class SewerSubText : MonoBehaviour
     {
         if(opacity > 0)
         {
-            txt.color = Color.red * opacity;
+            txt.color = txtColor * opacity;
             opacity -= Time.deltaTime * 0.3f;
             if (opacity <= 0)
             {
@@ -32,8 +34,14 @@ public class SewerSubText : MonoBehaviour
 
     public void DisplayText(string s)
     {
-        txt.text = s;
-        opacity = 0.3f;
+        txt.text = MainManager.instance.Translate(s);
+        opacity = txtOpacity;
         ad.Play();
+    }
+
+    public void Climbed()
+    {
+        txtColor = Color.white;
+        txtOpacity = 0.8f;
     }
 }

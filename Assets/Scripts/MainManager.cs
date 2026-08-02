@@ -316,7 +316,12 @@ public class MainManager : MonoBehaviour
         {"Screen", "屏幕"},
         {"I think I need to close it... I believe there's a control somewhere.", "我觉得我得把这个关了...我相信某处有个遥控器。"},
         {"Press [A] and [D] to climb", "按 [A] 和 [D] 攀爬"},
-        {"Investigations suggested that 90% of deaths are caused by music. Don't try to play any music while you're alone. It will cause panic. Illusions. Maybe death. It affects you even when you can't hear it. So please, never listen to music.", "调查表明90%的死亡都是音乐引起的。不要尝试在你一个人的时候放音乐。这会导致痛苦。幻觉。也许死亡。就算你听不到音乐的时候它也会影响到你。所以求你了，永远不要听音乐。"},
+        {"Investigations suggested that 90% of deaths are caused by music. Don't play music alone. It will cause panic. Illusions. Maybe death. It affects you even when you can't hear it. So please, never listen to music.", "调查表明90%的死亡都是音乐引起的。不要一个人放音乐。这会导致痛苦。幻觉。也许死亡。就算你听不到音乐的时候它也会影响到你。所以求你了，永远不要听音乐。"},
+        {"STOP", "停下来"},
+        {"PLEASE", "求你了"},
+        {"DON'T RUN", "不要跑"},
+        {"YOU'LL REGRET THIS", "你会后悔的"},
+        {"NO!", "不！"},
     };
 
     private void Awake()

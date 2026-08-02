@@ -9,6 +9,7 @@ public class EscapeRope : MonoBehaviour
     [SerializeField] private SewerFlashlight playerfl;
     [SerializeField] private GameObject player2;
     [SerializeField] private SewerFlashlight player2fl;
+    [SerializeField] private AudioClip tense;
 
     private bool climbedOn = false;
     private bool isLeft = true;
@@ -17,6 +18,7 @@ public class EscapeRope : MonoBehaviour
     private float rotX;
     private float rotY;
     private float sensitivity;
+    private int state = 0;
     private AudioSource ad;
     private Vector3 initPos = new Vector3(-19.2359619f, 0.265543938f, -2.59992695f);
     private Quaternion initRot = Quaternion.Euler(0, 90.0f, 0);
@@ -54,6 +56,43 @@ public class EscapeRope : MonoBehaviour
         rotX = Mathf.Clamp(rotX, -90.0f, 90.0f);
         rotY += Input.GetAxis("Mouse X") * sensitivity;
         player2.transform.rotation = Quaternion.Euler(rotX, rotY, 0);
+
+        if(state == 0 && progress > 3.0f)
+        {
+            MainManager.instance.SetPrompt("");
+            state++;
+        }
+        else if(state == 1 && progress > 9.0f)
+        {
+            SewerMusicManager.instance.ChangeTo(tense, 1.0f, 80.0f);
+            SewerSubText.instance.DisplayText("STOP");
+            state++;
+        }
+        else if (state == 2 && progress > 15.0f)
+        {
+            SewerSubText.instance.DisplayText("PLEASE");
+            state++;
+        }
+        else if (state == 3 && progress > 18.0f)
+        {
+            SewerSubText.instance.DisplayText("DON'T RUN");
+            state++;
+        }
+        else if (state == 4 && progress > 24.0f)
+        {
+            SewerSubText.instance.DisplayText("YOU'LL REGRET THIS");
+            state++;
+        }
+        else if (state == 5 && progress > 30.0f)
+        {
+            SewerSubText.instance.DisplayText("NO!");
+            state++;
+        }
+        else if (state == 6 && progress > 33.0f)
+        {
+            MainManager.instance.SetPrompt("We made it", true);
+            state++;
+        }
     }
 
     public void ClimbOn()

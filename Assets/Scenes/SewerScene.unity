@@ -2107,7 +2107,7 @@ MonoBehaviour:
   jumpScareCam: {fileID: 487220635}
   ri: {fileID: 1809200048}
   mat: {fileID: 2100000, guid: 5a0b6309cc68bf34c83cec1a0bec4c53, type: 2}
-  screen: {fileID: 0}
+  screen: {fileID: 604876738}
 --- !u!1001 &55738971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6034,7 +6034,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  m_fontColor: {r: 1, g: 0, b: 0, a: 0.33333334}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -33002,6 +33002,7 @@ GameObject:
   - component: {fileID: 1246222967}
   - component: {fileID: 1246222966}
   - component: {fileID: 1246222965}
+  - component: {fileID: 1246222969}
   m_Layer: 0
   m_Name: Newspaper
   m_TagString: Interactable
@@ -33040,9 +33041,8 @@ MonoBehaviour:
   selfDestructs: 0
   triggers:
   - dialogue;Newspaper;Investigations suggested that 90% of deaths are caused by
-    music. Don't try to play any music while you're alone. It will cause panic. Illusions.
-    Maybe death. It affects you even when you can't hear it. So please, never listen
-    to music.
+    music. Don't play music alone. It will cause panic. Illusions. Maybe death. It
+    affects you even when you can't hear it. So please, never listen to music.
 --- !u!65 &1246222966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33121,6 +33121,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246222963}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1246222969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246222963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2fc4401665b934c874981bc65eaec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1246222965}
+        m_TargetAssemblyTypeName: TriggerSequences, Assembly-CSharp
+        m_MethodName: AddTriggers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1252495148
 GameObject:
   m_ObjectHideFlags: 0
@@ -45179,6 +45206,7 @@ MonoBehaviour:
   playerfl: {fileID: 479669404}
   player2: {fileID: 1615199171}
   player2fl: {fileID: 1769254467}
+  tense: {fileID: 0}
 --- !u!136 &1675765113
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -59145,7 +59173,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 4.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 240

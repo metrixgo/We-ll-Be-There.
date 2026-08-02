@@ -33,7 +33,7 @@ public class SewerSubText : MonoBehaviour
     public void DisplayText(string s)
     {
         txt.text = s;
-        opacity = 0.5f;
+        opacity = 0.3f;
         ad.Play();
     }
 }

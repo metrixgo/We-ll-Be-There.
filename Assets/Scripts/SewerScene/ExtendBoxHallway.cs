@@ -22,15 +22,18 @@ public class ExtendBoxHallway : MonoBehaviour
         idx++;
         if (idx >= 4)
         {
-            playerHead.SetActive(true);
-            playerHead.transform.parent = null;
-            playerHead.GetComponent<Rigidbody>().AddForce(0, 0.5f, 0, ForceMode.Impulse);
-            playerHead.GetComponent<Rigidbody>().AddTorque(Vector3.up / 3.0f, ForceMode.Impulse);
-            player.SetActive(false);
-            MainManager.instance.PlayEffect(die);
-            screen.color = Color.red / 2.0f;
-            MainManager.instance.AddTrigger("wait;3");
-            MainManager.instance.AddTrigger("loadscene;SewerScene;3");
+            if (player.activeSelf)
+            {
+                playerHead.SetActive(true);
+                playerHead.transform.parent = null;
+                playerHead.GetComponent<Rigidbody>().AddForce(0, 0.5f, 0, ForceMode.Impulse);
+                playerHead.GetComponent<Rigidbody>().AddTorque(Vector3.up / 3.0f, ForceMode.Impulse);
+                player.SetActive(false);
+                MainManager.instance.PlayEffect(die);
+                screen.color = Color.red / 2.0f;
+                MainManager.instance.AddTrigger("wait;3");
+                MainManager.instance.AddTrigger("loadscene;SewerScene;3");
+            }
         }
         else
         {

@@ -13,6 +13,7 @@ public class CleanUpClock : MonoBehaviour
     private float length = 180.0f;
     private float seconds;
     private int count = 0;
+    private AudioSource ad;
     private Dictionary<string, bool> status = new Dictionary<string, bool>()
     {
         {"covered", false},
@@ -25,6 +26,7 @@ public class CleanUpClock : MonoBehaviour
     private void Awake()
     {
         clock = this;
+        ad = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -52,6 +54,7 @@ public class CleanUpClock : MonoBehaviour
             else countdown.text = sec / 60 + ":" + sec % 60;
             if(sec <= 20) countdown.color = Color.red;
             seconds -= Time.deltaTime;
+            ad.volume = (1.0f - seconds / length) * PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
             yield return null;
         }
         countdown.text = "0:00";
@@ -61,11 +64,6 @@ public class CleanUpClock : MonoBehaviour
     public bool GetStatus(string s)
     {
         return status[s];
-    }
-
-    public float GetProgress()
-    {
-        return 1.0f - seconds/length;
     }
 
     public void Clean(string s, bool b)

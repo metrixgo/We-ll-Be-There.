@@ -90,7 +90,8 @@ public class EscapeRope : MonoBehaviour
         }
         else if (state == 6 && progress > 33.0f)
         {
-            MainManager.instance.SetPrompt("We made it", true);
+            MainManager.instance.AddTrigger("flashscreen;#00000000;#000000FF;3");
+            MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
             state++;
         }
     }
@@ -103,6 +104,7 @@ public class EscapeRope : MonoBehaviour
     private IEnumerator StartClimbing()
     {
         killer.SecondStage();
+        SewerSubText.instance.Climbed();
         player2.transform.position = playerCam.transform.position;
         player2.transform.rotation = playerCam.transform.rotation;
         player2.SetActive(true);

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SewerMusicBox : MonoBehaviour
 {
+    [SerializeField] private bool closed = false;
     [SerializeField] private GameObject trig;
     [SerializeField] private GameObject soundTrig;
     [SerializeField] private GameObject clock;
@@ -9,7 +10,6 @@ public class SewerMusicBox : MonoBehaviour
     [SerializeField] private GameObject box;
 
     private AudioSource ad;
-    private bool closed = false;
 
     private void Start()
     {

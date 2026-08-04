@@ -37,6 +37,20 @@ public class KeyPad : MonoBehaviour
 
     private void Update()
     {
+        if (wrongT > 0)
+        {
+            wrongT -= Time.deltaTime;
+            if (wrongT <= 0)
+            {
+                if (CompareTag("Interactable"))
+                {
+                    pLight.enabled = false;
+                    pRend.material.color = Color.white;
+                }
+                wrongT = 0;
+            }
+        }
+
         if (state != 1) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -98,20 +112,6 @@ public class KeyPad : MonoBehaviour
         }
 
         if (flg) MainManager.instance.PlayEffect(type);
-
-        if(wrongT > 0)
-        {
-            wrongT -= Time.deltaTime;
-            if(wrongT <= 0)
-            {
-                if (CompareTag("Interactable"))
-                {
-                    pLight.enabled = false;
-                    pRend.material.color = Color.white;
-                }
-                wrongT = 0;
-            }
-        }
 
     }
 

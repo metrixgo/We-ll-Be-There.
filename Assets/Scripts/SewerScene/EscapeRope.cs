@@ -46,7 +46,7 @@ public class EscapeRope : MonoBehaviour
         if (key < 0 && isLeft || key > 0 && !isLeft)
         {
             isLeft = !isLeft;
-            velocity = Mathf.Min(velocity + 0.07f, 0.6f);
+            velocity = Mathf.Min(velocity + 0.07f, 60.6f);
             if (!ad.isPlaying) ad.Play();
         }
 

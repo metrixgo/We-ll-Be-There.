@@ -84,7 +84,7 @@ public class SewerKiller : MonoBehaviour
         float t = 0;
         while (t < 0.8f)
         {
-            jumpScareCam.transform.localPosition = camPos + Vector3.up * Mathf.Sin(t * 50) * 0.1f;
+            jumpScareCam.transform.localPosition = camPos + Vector3.up * Mathf.Sin(t * 200) * 0.1f;
             t += Time.deltaTime;
             yield return null;
         }

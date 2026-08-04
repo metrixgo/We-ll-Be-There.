@@ -32,7 +32,7 @@ public class SewerBooks : MonoBehaviour
             alreadyRead = true;
             num++;
             page = num;
-            if (num == 9) SewerMusicManager.instance.ChangeTo(tense, 3.0f, 50.0f);
+            if (num == 9) SewerMusicManager.instance.ChangeTo(tense, 3.0f, 60.0f);
         }
 
         StartCoroutine(Teleport());

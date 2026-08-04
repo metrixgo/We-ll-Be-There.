@@ -6,6 +6,7 @@ public class SewerMusicBox : MonoBehaviour
     [SerializeField] private GameObject soundTrig;
     [SerializeField] private GameObject clock;
     [SerializeField] private GameObject bloods;
+    [SerializeField] private GameObject box;
 
     private AudioSource ad;
     private bool closed = false;
@@ -21,6 +22,7 @@ public class SewerMusicBox : MonoBehaviour
         {
             closed = true;
             bloods.SetActive(true);
+            box.tag = "Interactable";
             Destroy(trig);
             Destroy(soundTrig);
             Destroy(clock);

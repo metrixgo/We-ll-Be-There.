@@ -74,6 +74,7 @@ public class SewerKiller : MonoBehaviour
         jumpScareCam.SetActive(true);
         ri.material = mat;
         SewerMusicManager.instance.StopMusic();
+        MainManager.instance.StopMusic();
         MainManager.instance.PlayEffect(jumpScare);
         MainManager.instance.AddTrigger("wait;0.8");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;1");

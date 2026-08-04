@@ -5,11 +5,9 @@ public class SewerClock : MonoBehaviour
 {
     [SerializeField] private AudioClip tick;
     [SerializeField] private AudioClip tock;
-    [SerializeField] private AudioClip die;
     [SerializeField] private Image screen;
     [SerializeField] private AudioSource whispersAd;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject playerHead;
+    [SerializeField] private SeparatePlayerHead ph;
 
     private int beats = 0;
     private float t = 0;
@@ -47,17 +45,9 @@ public class SewerClock : MonoBehaviour
             ad.Play();
             beats++;
             if(beats % 20 == 1) SewerSubText.instance.DisplayText((181 - beats).ToString());
-            if(beats >= 181 && player.activeSelf && MainManager.instance.gameState == 1)
+            if(beats >= 181 && MainManager.instance.gameState == 1)
             {
-                playerHead.SetActive(true);
-                playerHead.transform.parent = null;
-                playerHead.GetComponent<Rigidbody>().AddForce(0, 0.5f, 0, ForceMode.Impulse);
-                playerHead.GetComponent<Rigidbody>().AddTorque(Vector3.up / 3.0f, ForceMode.Impulse);
-                player.SetActive(false);
-                MainManager.instance.PlayEffect(die);
-                screen.color = Color.red / 2.0f;
-                MainManager.instance.AddTrigger("wait;3");
-                MainManager.instance.AddTrigger("loadscene;SewerScene;3");
+                ph.Die();
             }
         }
 

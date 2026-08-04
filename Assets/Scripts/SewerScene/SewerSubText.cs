@@ -8,7 +8,7 @@ public class SewerSubText : MonoBehaviour
     private float opacity = 0;
     private AudioSource ad;
     private TextMeshProUGUI txt;
-    private float txtOpacity = 0.3f;
+    private float txtOpacity = 0.5f;
     private Color txtColor = Color.red;
 
     private void Awake()

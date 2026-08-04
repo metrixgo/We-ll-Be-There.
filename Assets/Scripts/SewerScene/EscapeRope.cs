@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EscapeRope : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EscapeRope : MonoBehaviour
     [SerializeField] private GameObject player2;
     [SerializeField] private SewerFlashlight player2fl;
     [SerializeField] private AudioClip tense;
+    [SerializeField] private AudioClip tenseMain;
+    [SerializeField] private Image screen;
 
     private bool climbedOn = false;
     private bool isLeft = true;
@@ -57,14 +60,15 @@ public class EscapeRope : MonoBehaviour
         rotY += Input.GetAxis("Mouse X") * sensitivity;
         player2.transform.rotation = Quaternion.Euler(rotX, rotY, 0);
 
-        if(state == 0 && progress > 3.0f)
+        if (state == 0 && progress > 3.0f)
         {
             MainManager.instance.SetPrompt("");
             state++;
         }
-        else if(state == 1 && progress > 9.0f)
+        else if (state == 1 && progress > 9.0f)
         {
-            SewerMusicManager.instance.ChangeTo(tense, 1.0f, 80.0f);
+            SewerMusicManager.instance.ChangeTo(tense, 2.0f, 100.0f);
+            MainManager.instance.PlayMusic(tenseMain);
             SewerSubText.instance.DisplayText("STOP");
             state++;
         }
@@ -90,8 +94,7 @@ public class EscapeRope : MonoBehaviour
         }
         else if (state == 6 && progress > 33.0f)
         {
-            MainManager.instance.AddTrigger("flashscreen;#00000000;#000000FF;3");
-            MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
+            StartCoroutine(Finish());
             state++;
         }
     }
@@ -99,6 +102,23 @@ public class EscapeRope : MonoBehaviour
     public void ClimbOn()
     {
         StartCoroutine(StartClimbing());
+    }
+
+    private IEnumerator Finish()
+    {
+        float t = 0;
+        while (t < 7.0f)
+        {
+            if(MainManager.instance.gameState != 1 && !MainManager.instance.AtPausedScreen())
+            {
+                screen.color = Color.clear;
+                break;
+            }
+            screen.color = Color.Lerp(Color.clear, Color.black, t / 7.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        if (MainManager.instance.gameState == 1) MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
     }
 
     private IEnumerator StartClimbing()

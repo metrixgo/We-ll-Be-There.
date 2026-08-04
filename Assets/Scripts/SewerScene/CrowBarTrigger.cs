@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,18 +7,17 @@ public class CrowBarTrigger : MonoBehaviour
 {
     [SerializeField] private AudioClip seal;
     [SerializeField] private AudioClip hit;
-    [SerializeField] private AudioClip die;
     [SerializeField] private AudioClip finishHit;
     [SerializeField] private AudioClip putAway;
     [SerializeField] private GameObject sealedDoor;
     [SerializeField] private GameObject scatteredRocks;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject playerHead;
+    [SerializeField] private SeparatePlayerHead ph;
     [SerializeField] private Image screen;
     [SerializeField] private TextMeshPro txt;
 
     private int state = 0;
     private int cnt = 0;
+    private float l = 8.0f;
     private float t = 0;
     private float hitT = 0;
     private float originalV = 0;
@@ -42,25 +40,15 @@ public class CrowBarTrigger : MonoBehaviour
                 hitT -= Time.deltaTime;
                 if (hitT <= 0) hitT = 0;
             }
-            screen.color = Color.Lerp(Color.clear, Color.red / 2.0f, t / 10.0f);
-            txt.color = Color.Lerp(Color.clear, Color.red, t / 10.0f);
-            if (t > 10.0f)
+            screen.color = Color.Lerp(Color.clear, Color.red * 0.7f, t / l);
+            txt.color = Color.Lerp(Color.clear, Color.red, t / l);
+            if (t > l)
             {
                 t = 0;
                 state = 2;
                 transform.parent = null;
                 gameObject.AddComponent<Rigidbody>();
-                if (player.activeSelf)
-                {
-                    playerHead.SetActive(true);
-                    playerHead.transform.parent = null;
-                    playerHead.GetComponent<Rigidbody>().AddForce(0, 1.0f, 0, ForceMode.Impulse);
-                    playerHead.GetComponent<Rigidbody>().AddTorque(Vector3.up / 3.0f, ForceMode.Impulse);
-                    player.SetActive(false);
-                    MainManager.instance.PlayEffect(die);
-                    MainManager.instance.AddTrigger("wait;3");
-                    MainManager.instance.AddTrigger("loadscene;SewerScene;3");
-                }
+                ph.Die();
             }
         }
         else if (state == 2)
@@ -81,8 +69,8 @@ public class CrowBarTrigger : MonoBehaviour
             }
             else
             {
-                screen.color = Color.Lerp(Color.red / 2.0f, Color.clear, 1 - t / 10.0f);
-                txt.color = Color.Lerp(Color.red, Color.clear, 1 - t / 10.0f);
+                screen.color = Color.Lerp(Color.clear, Color.red * 0.7f, t / l);
+                txt.color = Color.Lerp(Color.clear, Color.red, t / l);
                 ad.volume = Mathf.Lerp(originalV, 0, 1 - t / hitT);
             }
                 

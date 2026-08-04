@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class SewerFlashlight : MonoBehaviour
 {
-    [SerializeField] private AudioClip flashlight;
+    [SerializeField] private SeparatePlayerHead ph;
     [SerializeField] private bool opened = false;
 
     private Light bulb;
+    private AudioSource ad;
 
     private void Awake()
     {
         bulb = GetComponent<Light>();
+        ad = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -42,7 +44,7 @@ public class SewerFlashlight : MonoBehaviour
             Shader.SetGlobalInt("_LightOn", 0);
         }
 
-        if (MainManager.instance.gameState != 1) return;
+        if (MainManager.instance.AtPausedScreen() || ph.IsDead()) return;
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -58,7 +60,7 @@ public class SewerFlashlight : MonoBehaviour
                 MainManager.instance.SetPromptColor(Color.white);
                 MainManager.instance.SetFocusColor(Color.white);
             }
-            MainManager.instance.PlayEffect(flashlight);
+            ad.Play();
         }
     }
 

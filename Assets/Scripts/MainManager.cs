@@ -322,6 +322,8 @@ public class MainManager : MonoBehaviour
         {"DON'T RUN", "不要跑"},
         {"YOU'LL REGRET THIS", "你会后悔的"},
         {"NO!", "不！"},
+        {"Refrigerator Door", "冰箱门"},
+        {"Stove", "灶台"},
     };
 
     private void Awake()

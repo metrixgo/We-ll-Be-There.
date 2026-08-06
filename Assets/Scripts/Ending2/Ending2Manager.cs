@@ -22,10 +22,6 @@ public class Ending2Manager : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController controller;
     [SerializeField] private Avatar idleAv;
 
-    private bool opened = false;
-    private bool isTurning = false;
-    private float maxRot = 95.0f;
-    private float angSpeed = 150.0f;
     private AudioSource ad;
     private PlayerController pc;
 
@@ -38,22 +34,17 @@ public class Ending2Manager : MonoBehaviour
 
     public void InteractDoor()
     {
-        if (!isTurning)
-        {
-            isTurning = true;
-            StartCoroutine(OpenDoor());
-        }
+        if (MainManager.instance.gameState == 1) StartCoroutine(OpenDoor());
     }
 
     private IEnumerator OpenDoor()
     {
-        MainManager.instance.AddTrigger("wait;6.6");
-        MainManager.instance.AddTrigger("changescreen;#00000000;#ff0000ff;0");
-        MainManager.instance.AddTrigger("wait;0.2");
+        MainManager.instance.AddTrigger("wait;6");
+        MainManager.instance.AddTrigger("changescreen;#ff0000ff;#ff0000ff;0.2");
         MainManager.instance.AddTrigger("changescreen;#ff0000ff;#000000ff;2");
-        MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("changescreen;#000000ff;#00000088;5");
-        MainManager.instance.AddTrigger("flashdialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?;6;true");
+        MainManager.instance.AddTrigger("wait;2");
+        MainManager.instance.AddTrigger("changescreen;#000000ff;#00000088;4.5");
+        MainManager.instance.AddTrigger("dialogue;Policewoman;I got him. This thing can finally end... How did you know it was him?");
         string s = "";
         if (CleanUpClock.errorType == "mop") s = "We found his mop on the second floor with blood traces on it. We believe it was used to clean up the crime scene.";
         else if (CleanUpClock.errorType == "shovel") s = "We found his shovel in the garage covered with plastic fibers and blood. We believe it was used to hide the body.";
@@ -61,13 +52,24 @@ public class Ending2Manager : MonoBehaviour
         else if (CleanUpClock.errorType == "covered") s = "We found a suspicious spot in the backyard. We dug down and saw the actual body.";
         else if (CleanUpClock.errorType == "blood") s = "We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.";
         else s = "We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.";
-        MainManager.instance.AddTrigger("flashdialogue;Policeman;" + s + ";8;true");
-        MainManager.instance.AddTrigger("flashdialogue;Policewoman;Nice. Now shall we go eat lunch?;3;true");
+        MainManager.instance.AddTrigger("dialogue;Policeman;" + s);
+        MainManager.instance.AddTrigger("dialogue;Policewoman;Nice. Now shall we go eat lunch?");
         yield return new WaitForSeconds(1.0f);
         cars.Stop();
         MainManager.instance.StopMusic();
-        StartCoroutine(Turn());
-        yield return new WaitForSeconds(3.0f);
+        ad.clip = openDoor;
+        ad.Play();
+        float rot = 0;
+        Vector3 angles = transform.eulerAngles;
+        float goal = angles.y + 95.0f;
+        while (rot < 95.0f)
+        {
+            rot += 150.0f * Time.deltaTime;
+            transform.Rotate(0, 150.0f * Time.deltaTime, 0, Space.World);
+            yield return null;
+        }
+        transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
+        yield return new WaitForSeconds(2.0f);
         Vector3 startPos = player.transform.Find("Camera").position;
         Vector3 startRot = new Vector3(
             player.transform.Find("Camera").eulerAngles.x,
@@ -81,7 +83,7 @@ public class Ending2Manager : MonoBehaviour
         secondPlayer.transform.position = startPos;
         secondPlayer.transform.rotation = Quaternion.Euler(startRot);
         float t = 0;
-        while(t < 1.0f)
+        while (t < 1.0f)
         {
             secondPlayer.transform.position = Vector3.Lerp(startPos, endPos, t);
             secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t);
@@ -97,7 +99,7 @@ public class Ending2Manager : MonoBehaviour
         bool flg = false;
         while (t < 0.9f)
         {
-            if(t > 0.7f && !flg)
+            if (t > 0.5f && !flg)
             {
                 flg = true;
                 police.SetActive(true);
@@ -130,7 +132,7 @@ public class Ending2Manager : MonoBehaviour
         startRot = new Vector3(50.01f, -10.29f, 0);
         endRot = new Vector3(-20f, 10.0f, 0);
         secondPlayer.transform.rotation = Quaternion.Euler(startRot);
-        yield return new WaitForSeconds(4.2f);
+        yield return new WaitForSeconds(3.2f);
 
         ad.spatialBlend = 0;
         ad.clip = tinnitus;
@@ -138,19 +140,19 @@ public class Ending2Manager : MonoBehaviour
         ad.volume = 0;
         ad.Play();
         t = 0;
-        while (t < 5.0f)
+        while (t < 4.0f)
         {
-            ad.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 5.0f);
-            secondPlayer.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t / 5.0f));
+            ad.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 4.0f);
+            secondPlayer.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t / 4.0f));
             t += Time.deltaTime;
             yield return null;
         }
         ad.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f;
 
         t = 0;
-        while(MainManager.instance.gameState != 1)
+        while (MainManager.instance.gameState != 1)
         {
-            secondPlayer.transform.rotation = Quaternion.Euler(-20.0f + Mathf.Sin(t) * 2.0f, 10.0f + Mathf.Sin(t * 1.5f) * 2.0f, 0);
+            secondPlayer.transform.rotation = Quaternion.Euler(-20.0f - Mathf.Sin(t) * 5.0f, 10.0f + Mathf.Sin(t * 1.5f) * 2.0f, 0);
             t += Time.deltaTime;
             yield return null;
         }
@@ -164,8 +166,8 @@ public class Ending2Manager : MonoBehaviour
         t = 0;
         while (t < 2.0f)
         {
-            ad.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, 0, t / 5.0f);
-            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 5.0f);
+            ad.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, 0, t / 2.0f);
+            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 2.0f);
             t += Time.deltaTime;
             yield return null;
         }
@@ -186,38 +188,5 @@ public class Ending2Manager : MonoBehaviour
         Destroy(firstPlayer);
         player.SetActive(true);
         pc.Freeze(true);
-    }
-
-    private IEnumerator Turn()
-    {
-        ad.clip = openDoor;
-        ad.Play();
-        float rot = 0;
-        Vector3 angles = transform.eulerAngles;
-        float goal = angles.y;
-        if (!opened)
-        {
-            goal += maxRot;
-            while (rot < maxRot)
-            {
-                rot += angSpeed * Time.deltaTime;
-                transform.Rotate(0, angSpeed * Time.deltaTime, 0, Space.World);
-                yield return null;
-            }
-            transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
-        }
-        else
-        {
-            goal -= maxRot;
-            while (rot < maxRot)
-            {
-                rot += angSpeed * Time.deltaTime;
-                transform.Rotate(0, -angSpeed * Time.deltaTime, 0, Space.World);
-                yield return null;
-            }
-            transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
-        }
-        opened = !opened;
-        isTurning = false;
     }
 }

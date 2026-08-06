@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SewerKilledScene.unity
     guid: e8c494d573f954f4ca27bf6c115d49f9
   - enabled: 1
-    path: Assets/Scenes/SewerEscapedScene.unity
+    path: Assets/Scenes/Ending3.unity
     guid: 8601f76c702ff0649b7b8e69209bdc13
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

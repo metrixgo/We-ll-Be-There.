@@ -118,7 +118,7 @@ public class EscapeRope : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        if (MainManager.instance.gameState == 1) MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
+        if (MainManager.instance.gameState == 1) MainManager.instance.AddTrigger("loadscene;Ending3");
     }
 
     private IEnumerator StartClimbing()

@@ -324,6 +324,7 @@ public class MainManager : MonoBehaviour
         {"NO!", "不！"},
         {"Refrigerator Door", "冰箱门"},
         {"Stove", "灶台"},
+        {"There's no way I'm going back down there.", "我不可能再回去了。"},
     };
 
     private void Awake()

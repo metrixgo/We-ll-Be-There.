@@ -325,6 +325,9 @@ public class MainManager : MonoBehaviour
         {"Refrigerator Door", "冰箱门"},
         {"Stove", "灶台"},
         {"There's no way I'm going back down there.", "我不可能再回去了。"},
+        {"What... Is... Happening...", "发生...了...什么..."},
+        {"I need to get out... I need to get out of here...", "我得离开...我得离开这里..."},
+        {"Fuck... It is locked... It's over...", "该死的...这被锁上了...完了..."},
     };
 
     private void Awake()

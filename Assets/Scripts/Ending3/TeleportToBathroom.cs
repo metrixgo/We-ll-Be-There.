@@ -1,10 +1,9 @@
 using KinoGlitch;
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Ending3Manager : MonoBehaviour
+public class TeleportToBathroom : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private Transform playerCam;
@@ -13,6 +12,7 @@ public class Ending3Manager : MonoBehaviour
     [SerializeField] private Transform door2;
     [SerializeField] private Transform water;
     [SerializeField] private GameObject lights;
+    [SerializeField] private GameObject monster;
     [SerializeField] private AudioClip tense;
     [SerializeField] private AudioClip jumpscare;
     [SerializeField] private Image screen;
@@ -20,25 +20,26 @@ public class Ending3Manager : MonoBehaviour
     [SerializeField] private Material mat;
 
     private ParticleSystem ps;
-    private AudioSource ad;
+    private AudioSource doorAd;
+    private AudioSource playerAd;
     private DigitalGlitchController dgc;
     private Animator anim;
-    private PlayerController pc;
 
     public void OpenDoor()
     {
         ps = water.GetComponent<ParticleSystem>();
-        ad = door.GetComponent<AudioSource>();
+        doorAd = door.GetComponent<AudioSource>();
+        playerAd = endPlayer.GetComponent<AudioSource>();
         dgc = endPlayer.GetComponent<DigitalGlitchController>();
         anim = endPlayer.GetComponent<Animator>();
-        pc = player.GetComponent<PlayerController>();
         StartCoroutine(EndIt());
     }
 
     private IEnumerator EndIt()
     {
-        MainManager.instance.AddTrigger("wait;3");
-
+        MainManager.instance.AddTrigger("wait;20");
+        MainManager.instance.AddTrigger("dialogue;You;What... Is... Happening...");
+        MainManager.instance.AddTrigger("dialogue;You;I need to get out... I need to get out of here...");
         Vector3 startPos = playerCam.position;
         Quaternion startRot = playerCam.rotation;
         Vector3 endPos = endPlayer.position;
@@ -63,7 +64,7 @@ public class Ending3Manager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         ps.Play();
-        ad.Play();
+        doorAd.Play();
         float rot = 0;
         Vector3 angles = door.eulerAngles;
         float goal = angles.y + 95.0f;
@@ -84,19 +85,27 @@ public class Ending3Manager : MonoBehaviour
             yield return null;
         }
         door.rotation = Quaternion.Euler(angles.x, goal, angles.z);
-
         yield return new WaitForSeconds(1.0f);
         anim.enabled = true;
         yield return new WaitForSeconds(11.0f);
-        ad.Play();
-        yield return new WaitForSeconds(0.7f);
-        MainManager.instance.PlayEffect(jumpscare);
+        doorAd.Play();
         door.Rotate(0, -95f, 0, Space.World);
+        yield return new WaitForSeconds(0.9f);
+        monster.SetActive(true);
+        MainManager.instance.PlayEffect(jumpscare);
+        playerAd.Play();
+        screen.color = Color.red * 0.4f;
+        dgc.SetIntensity(0.2f);
         Destroy(door2.gameObject);
         lights.SetActive(true);
-        pc.SetPosition(endPlayer.position - 0.75f * Vector3.up);
-        pc.SetRotation(endPlayer.eulerAngles.y, endPlayer.eulerAngles.x);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
+        screen.color = Color.red * 0.2f;
+        dgc.SetIntensity(0.01f);
+        Destroy(monster);
+        player.transform.position = endPlayer.position - 0.75f * Vector3.up;
+        player.transform.rotation = Quaternion.Euler(0, endPlayer.eulerAngles.y, 0);
+        playerCam.rotation = Quaternion.Euler(endPlayer.eulerAngles.x, 0, 0);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         player.SetActive(true);
         Destroy(endPlayer);
     }
@@ -106,18 +115,13 @@ public class Ending3Manager : MonoBehaviour
         float t = 0;
         while (t < 3.0f)
         {
-            screen.color = Color.Lerp(Color.red * 0.6f, Color.red * 0.15f, t / 3.0f);
+            screen.color = Color.Lerp(Color.red * 0.6f, Color.red * 0.2f, t / 3.0f);
             dgc.SetIntensity(Mathf.Lerp(0.2f, 0.01f, t / 3.0f));
             t += Time.deltaTime;
             yield return null;
         }
         dgc.SetIntensity(0.01f);
+        screen.color = Color.red * 0.2f;
         t = 0;
-        while (true)
-        {
-            screen.color = Color.red * (0.15f + Mathf.Sin(t) * 0.05f);
-            t += Time.deltaTime;
-            yield return null;
-        }
     }
 }

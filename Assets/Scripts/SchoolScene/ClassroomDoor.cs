@@ -27,6 +27,7 @@ public class ClassroomDoor : MonoBehaviour
         {
             ad.clip = lockedDoor;
             interacted = true;
+            MainManager.instance.AddTrigger("wait;" + lockedDoor.length);
             MainManager.instance.AddTrigger("dialogue;You;The door is locked... I knew it.");
             MainManager.instance.AddTrigger("dialogue;You;They must've not noticed me when they locked this classroom...");
         }

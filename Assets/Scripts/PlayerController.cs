@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool runningRC = false;
     private int prev = 0;
     private int state = 0;
-    private CharacterController characterController; 
+    private CharacterController characterController;
     private Interactable curItem;
     private Interactable newItem;
 
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rotationX -= Input.GetAxis("Mouse Y") * sensitivity;
+        if (rotationX > 180.0f) rotationX -= 360.0f;
         rotationX = Mathf.Clamp(rotationX, -90.0f, 90.0f);
         cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
@@ -127,6 +128,16 @@ public class PlayerController : MonoBehaviour
         characterController.enabled = true;
     }
 
+    public void ResetCamT()
+    {
+        camT = 0;
+    }
+
+    public void SetRotX(float x)
+    {
+        rotationX = x;
+    }
+
     public void SetRotation(float y, float x)
     {
         SetRotation(y, x, 0);
@@ -134,7 +145,16 @@ public class PlayerController : MonoBehaviour
 
     public void SetRotation(float y, float x, float l)
     {
-        StartCoroutine(TurnTo(y, x, l));
+        if (l == 0)
+        {
+            transform.rotation = Quaternion.Euler(0, y, 0);
+            rotationX = x;
+            cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        }
+        else
+        {
+            StartCoroutine(TurnTo(y, x, l));
+        }
     }
 
     public void LookAt(Vector3 pos, float l)
@@ -200,7 +220,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 cam.localPosition = temp;
-                if(Mathf.Abs(temp.y - bottom[state]) < 0.02f && !flg)
+                if (Mathf.Abs(temp.y - bottom[state]) < 0.02f && !flg)
                 {
                     if (move.magnitude > 0.2f && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, characterController.height))
                     {
@@ -213,7 +233,7 @@ public class PlayerController : MonoBehaviour
                         else ad.clip = null;
                     }
                     flg = true;
-                    if(ad.clip != null) ad.Play();
+                    if (ad.clip != null) ad.Play();
                 }
                 else if (Mathf.Abs(temp.y - bottom[state]) > 0.02f) flg = false;
             }
@@ -231,7 +251,7 @@ public class PlayerController : MonoBehaviour
         float l = Mathf.Abs(camTrans.localPosition.y - mid) / 0.2f;
         float t = 0;
 
-        while(t < l)
+        while (t < l)
         {
             camTrans.localPosition = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1.0f, t / l));
             t += Time.deltaTime;
@@ -239,5 +259,6 @@ public class PlayerController : MonoBehaviour
         }
         camTrans.localPosition = endPos;
         runningRC = false;
+        camT = 0;
     }
 }

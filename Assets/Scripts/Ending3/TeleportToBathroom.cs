@@ -24,6 +24,7 @@ public class TeleportToBathroom : MonoBehaviour
     private AudioSource playerAd;
     private DigitalGlitchController dgc;
     private Animator anim;
+    private PlayerController pc;
 
     public void OpenDoor()
     {
@@ -32,6 +33,7 @@ public class TeleportToBathroom : MonoBehaviour
         playerAd = endPlayer.GetComponent<AudioSource>();
         dgc = endPlayer.GetComponent<DigitalGlitchController>();
         anim = endPlayer.GetComponent<Animator>();
+        pc = player.GetComponent<PlayerController>();
         StartCoroutine(EndIt());
     }
 
@@ -102,12 +104,12 @@ public class TeleportToBathroom : MonoBehaviour
         screen.color = Color.red * 0.2f;
         dgc.SetIntensity(0.01f);
         Destroy(monster);
-        player.transform.position = endPlayer.position - 0.75f * Vector3.up;
-        player.transform.rotation = Quaternion.Euler(0, endPlayer.eulerAngles.y, 0);
-        playerCam.rotation = Quaternion.Euler(endPlayer.eulerAngles.x, 0, 0);
+        pc.SetPosition(endPlayer.position - 0.75f * Vector3.up);
+        pc.SetRotation(endPlayer.eulerAngles.y, endPlayer.eulerAngles.x);
+        pc.ResetCamT();
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         player.SetActive(true);
-        Destroy(endPlayer);
+        Destroy(endPlayer.gameObject);
     }
 
     private IEnumerator ChangeScreen()

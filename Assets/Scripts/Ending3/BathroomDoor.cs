@@ -7,7 +7,7 @@ public class BathroomDoor : MonoBehaviour
 
     private AudioSource ad;
     private bool interacted = false;
-    private bool locked = true;
+    private bool keyInteracted = false;
 
     private void Start()
     {
@@ -16,11 +16,24 @@ public class BathroomDoor : MonoBehaviour
 
     public void TryOpen()
     {
+
+
         if (MainManager.instance.HasItem("Crowbar"))
         {
-            if (locked)
+            Debug.Log("YOU'RE A FUCKING GENIUS");
+        }
+        else if (MainManager.instance.HasItem("Key"))
+        {
+            if (!keyInteracted)
             {
-                Debug.Log("YOU'RE A FUCKING GENIUS");
+                keyInteracted = true;
+                MainManager.instance.AddTrigger("wait;" + lockedDoor.length);
+                MainManager.instance.AddTrigger("dialogue;You;Fuck... The key won't fit... It's over...");
+            }
+            if (!ad.isPlaying)
+            {
+                ad.clip = lockedDoor;
+                ad.Play();
             }
         }
         else
@@ -29,7 +42,7 @@ public class BathroomDoor : MonoBehaviour
             {
                 interacted = true;
                 MainManager.instance.AddTrigger("wait;" + lockedDoor.length);
-                MainManager.instance.AddTrigger("dialogue;You;Fuck... It is locked... It's over...");
+                MainManager.instance.AddTrigger("dialogue;You;It's locked?! I need to find the key NOW.");
             }
             if (!ad.isPlaying)
             {

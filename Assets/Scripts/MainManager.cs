@@ -327,7 +327,10 @@ public class MainManager : MonoBehaviour
         {"There's no way I'm going back down there.", "我不可能再回去了。"},
         {"What... Is... Happening...", "发生...了...什么..."},
         {"I need to get out... I need to get out of here...", "我得离开...我得离开这里..."},
-        {"Fuck... It is locked... It's over...", "该死的...这被锁上了...完了..."},
+        {"It's locked?! I need to find the key NOW.", "被锁住了？！我得找到钥匙。现在。"},
+        {"Fuck... The key won't fit... It's over...", "该死的...钥匙塞不进去...完了..."},
+        {"Cabinet Door", "柜门"},
+        {"Toilet Lid", "马桶盖"},
     };
 
     private void Awake()

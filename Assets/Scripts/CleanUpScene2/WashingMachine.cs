@@ -13,8 +13,6 @@ public class WashingMachine : MonoBehaviour
 
     private bool opened = false;
     private bool isTurning = false;
-    private float maxRot = 95.0f;
-    private float angSpeed = 230.0f;
     private float duration = 60.0f;
     private bool finished = false;
     private int state = 0;
@@ -89,26 +87,25 @@ public class WashingMachine : MonoBehaviour
         float goal = angles.y;
         if (!opened)
         {
-            goal += maxRot;
-            while (rot < maxRot)
+            goal += 95.0f;
+            while (rot < 95.0f)
             {
-                rot += angSpeed * Time.deltaTime;
-                door.transform.Rotate(0, angSpeed * Time.deltaTime, 0, Space.World);
+                rot += 230.0f * Time.deltaTime;
+                door.transform.Rotate(0, 230.0f * Time.deltaTime, 0, Space.World);
                 yield return null;
             }
-            door.transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
         }
         else
         {
-            goal -= maxRot;
-            while (rot < maxRot)
+            goal -= 95.0f;
+            while (rot < 95.0f)
             {
-                rot += angSpeed * Time.deltaTime;
-                door.transform.Rotate(0, -angSpeed * Time.deltaTime, 0, Space.World);
+                rot += 230.0f * Time.deltaTime;
+                door.transform.Rotate(0, -230.0f * Time.deltaTime, 0, Space.World);
                 yield return null;
             }
-            door.transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
         }
+        door.transform.rotation = Quaternion.Euler(angles.x, goal, angles.z);
         opened = !opened;
         isTurning = false;
     }

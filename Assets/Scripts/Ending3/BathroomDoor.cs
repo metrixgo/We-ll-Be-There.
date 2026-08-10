@@ -8,7 +8,10 @@ public class BathroomDoor : MonoBehaviour
     [SerializeField] private AudioClip open;
     [SerializeField] private AudioClip crowbar;
     [SerializeField] private AudioClip creakOpen;
-    [SerializeField] private Transform player;
+    [SerializeField] private AudioClip night;
+    [SerializeField] private ParticleControl water;
+    [SerializeField] private GameObject bathroom;
+    [SerializeField] private GameObject player;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform playerBar;
     [SerializeField] private Transform openCam;
@@ -72,7 +75,8 @@ public class BathroomDoor : MonoBehaviour
 
     private IEnumerator CrowbarOpen()
     {
-        player.gameObject.SetActive(false);
+        MainManager.instance.AddTrigger("wait;21");
+        player.SetActive(false);
         openCam.gameObject.SetActive(true);
 
         Vector3 startPos = playerCam.position;
@@ -106,7 +110,7 @@ public class BathroomDoor : MonoBehaviour
         t = 0;
         startRot = openBar.rotation;
         endRot = Quaternion.Euler(openBar.eulerAngles + Vector3.right * 20.0f);
-        while(t < 0.2f)
+        while (t < 0.2f)
         {
             openBar.rotation = Quaternion.Slerp(startRot, endRot, t / 0.2f);
             t += Time.deltaTime;
@@ -125,10 +129,10 @@ public class BathroomDoor : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        ad.clip = open;
-        ad.Play();
         yield return new WaitForSeconds(0.5f);
 
+        ad.clip = open;
+        ad.Play();
         t = 0;
         startPos = openBar.position;
         endPos = openBar.position - Vector3.up * 0.1f;
@@ -176,17 +180,29 @@ public class BathroomDoor : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         openCam.GetComponent<Animator>().enabled = true;
+        yield return new WaitForSeconds(1.0f);
+
         ad.clip = creakOpen;
         ad.Play();
+        MainManager.instance.StopMusic();
+        if (water.IsOpened()) water.ChangeParticles();
         t = 0;
         startRot = transform.rotation;
         endRot = Quaternion.Euler(transform.eulerAngles + Vector3.up * 40.0f);
-        while (t < 1.0f)
+        while (t < 2.0f)
         {
-            transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            transform.rotation = Quaternion.Slerp(startRot, endRot, t / 2.0f);
             t += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(8.5f);
 
+        PlayerController pc = player.GetComponent<PlayerController>();
+        Destroy(playerBar.gameObject);
+        Destroy(openBar);
+        pc.SetPosition(openCam.position - Vector3.up * 0.75f);
+        pc.SetRotation(openCam.eulerAngles.y, openCam.eulerAngles.x);
+        Destroy(bathroom);
+        player.SetActive(true);
     }
 }

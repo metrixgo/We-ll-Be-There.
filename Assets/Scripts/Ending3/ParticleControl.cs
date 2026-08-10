@@ -29,6 +29,11 @@ public class ParticleControl : MonoBehaviour
         }
     }
 
+    public bool IsOpened()
+    {
+        return opened;
+    }
+
     private IEnumerator Change()
     {
         float t = 0;

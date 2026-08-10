@@ -9374,7 +9374,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164328223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7399c2f4721846f4b97041c34cea0c0e, type: 2}
   m_CullingMode: 0
@@ -29010,7 +29010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!143 &508594363
 CharacterController:
   m_ObjectHideFlags: 0
@@ -29052,7 +29052,7 @@ MonoBehaviour:
   grassWalk: {fileID: 8300000, guid: e3c0f450dbba35d4b8ffb3316a753dc1, type: 3}
   rockWalk: {fileID: 8300000, guid: 6fcb622a1898d0d40b82695bb31c8e25, type: 3}
   woodWalk: {fileID: 8300000, guid: 15208416476bcf1479379474a1f2ce66, type: 3}
-  waterWalk: {fileID: 0}
+  waterWalk: {fileID: 8300000, guid: 9bb5649e2e41d664dbd6e78fc933e682, type: 3}
 --- !u!4 &508594365
 Transform:
   m_ObjectHideFlags: 0
@@ -29062,7 +29062,7 @@ Transform:
   m_GameObject: {fileID: 508594362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9848078, z: 0, w: 0.17364825}
-  m_LocalPosition: {x: -73.15, y: 0.9969653, z: -68.6}
+  m_LocalPosition: {x: -73.15, y: 0.996965, z: -68.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38034,8 +38034,11 @@ MonoBehaviour:
   lockedDoor: {fileID: 8300000, guid: 5e5a1b970cfbb494c9b289ad39e06b2d, type: 3}
   open: {fileID: 8300000, guid: 4ab234fafb4cf804cb67ba95ac4d5b70, type: 3}
   crowbar: {fileID: 8300000, guid: 3cb3e830817b5a24fa8959d3c3c4690c, type: 3}
-  creakOpen: {fileID: 0}
-  player: {fileID: 508594365}
+  creakOpen: {fileID: 8300000, guid: 4d16f95363b9dbc438163d1a01ea9c9b, type: 3}
+  night: {fileID: 8300000, guid: b64b47c7aa800334e9127e77c32c0e33, type: 3}
+  water: {fileID: 1292236297}
+  bathroom: {fileID: 3455866863611090260}
+  player: {fileID: 508594362}
   playerCam: {fileID: 1923483576}
   playerBar: {fileID: 1975064705}
   openCam: {fileID: 164328227}
@@ -38684,7 +38687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &678767645
 Animator:
   serializedVersion: 7
@@ -95637,7 +95640,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 93bf7742128c10d48832864e987410e2, type: 3}
 --- !u!1 &1488728500

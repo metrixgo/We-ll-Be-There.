@@ -5,6 +5,7 @@ public class BathroomDoor : MonoBehaviour
 {
     [SerializeField] private AudioClip lockedDoor;
     [SerializeField] private AudioClip open;
+    [SerializeField] private AudioClip crowbar;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform playerBar;
@@ -80,10 +81,54 @@ public class BathroomDoor : MonoBehaviour
         }
         yield return new WaitForSeconds(0.2f);
 
-        startPos = playerCam.position;
-        endPos = openCam.position;
-        startRot = playerCam.rotation;
-        endRot = openCam.rotation;
+        startPos = playerBar.position;
+        endPos = openBar.position;
+        startRot = playerBar.rotation;
+        endRot = openBar.rotation;
+        t = 0;
+        while (t < 0.5f)
+        {
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 0.5f);
+            openBar.rotation = Quaternion.Slerp(startRot, endRot, t / 0.5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
 
+        t = 0;
+        startRot = openBar.rotation;
+        endRot = Quaternion.Euler(openBar.eulerAngles + Vector3.right * 20.0f);
+        while(t < 0.2f)
+        {
+            openBar.rotation = Quaternion.Slerp(startRot, endRot, t / 0.2f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        ad.clip = crowbar;
+        ad.Play();
+        t = 0;
+        startPos = openBar.position;
+        endPos = openBar.position - Vector3.up * 0.4f;
+        while (t < 4.7f)
+        {
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 4.7f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        startPos = openBar.position;
+        endPos = openBar.position - Vector3.up * 0.1f;
+        startRot = transform.rotation;
+        endRot = Quaternion.Euler(transform.eulerAngles + Vector3.right * 20.0f);
+
+        while (t < 0.2f)
+        {
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 0.2f);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 }

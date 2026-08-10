@@ -75,7 +75,6 @@ public class MainManager : MonoBehaviour
         {"Bury the body in the backyard", "将尸体埋在后院"},
         {"Take the shovel from the garage", "从车库拿一把铲子"},
         {"Bury the body", "将尸体埋了"},
-        {"Take a shower", "去冲澡"},
         {"Go to bed", "上床睡觉"},
         {"Walking home this late might be a bad idea.", "这么晚走路回家可能不太好。"},
         {"I need to ride to get home faster.", "我需要骑车快点回家。"},
@@ -335,6 +334,7 @@ public class MainManager : MonoBehaviour
         {"Drawer", "抽屉"},
         {"There's nothing inside this trash can.", "这垃圾桶里面什么都没有。"},
         {"Trash Can", "垃圾桶"},
+        {"Shower", "淋浴"},
     };
 
     private void Awake()

@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Stove : MonoBehaviour
+public class ParticleControl : MonoBehaviour
 {
+    [SerializeField] private bool isButton = false;
     [SerializeField] private ParticleSystem ps;
     [SerializeField] private AudioSource ad;
 
@@ -19,7 +20,7 @@ public class Stove : MonoBehaviour
         selfAd = GetComponent<AudioSource>();
     }
 
-    public void ChangeFire()
+    public void ChangeParticles()
     {
         if (!isChanging)
         {
@@ -36,6 +37,17 @@ public class Stove : MonoBehaviour
         selfAd.Play();
         if (opened)
         {
+            if (isButton)
+            {
+                while (t < 0.5f)
+                {
+                    transform.Rotate(0, 90.0f * Time.deltaTime, 0);
+                    t += Time.deltaTime;
+                    yield return null;
+                }
+                t = 0;
+            }
+
             while (t < l)
             {
                 e.rateOverTime = Mathf.Lerp(psE, 0, t / l);
@@ -48,6 +60,17 @@ public class Stove : MonoBehaviour
         }
         else
         {
+            if (isButton)
+            {
+                while (t < 0.5f)
+                {
+                    transform.Rotate(0, -90.0f * Time.deltaTime, 0);
+                    t += Time.deltaTime;
+                    yield return null;
+                }
+                t = 0;
+            }
+
             ps.Play();
             ad.Play();
             while (t < l)

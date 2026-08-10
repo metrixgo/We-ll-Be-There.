@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BathroomDoor : MonoBehaviour
@@ -6,6 +7,7 @@ public class BathroomDoor : MonoBehaviour
     [SerializeField] private AudioClip lockedDoor;
     [SerializeField] private AudioClip open;
     [SerializeField] private AudioClip crowbar;
+    [SerializeField] private AudioClip creakOpen;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform playerBar;
@@ -16,10 +18,16 @@ public class BathroomDoor : MonoBehaviour
     private bool interacted = false;
     private bool keyInteracted = false;
     private bool locked = true;
+    private Vector3 openBarPos;
+    private Quaternion openBarRot;
 
     private void Start()
     {
         ad = GetComponent<AudioSource>();
+        openBarPos = openBar.position;
+        openBarRot = openBar.rotation;
+        openBar.localPosition = new Vector3(0, -0.15f, -0.05f);
+        openBar.localRotation = Quaternion.Euler(5.0f, 0, 0);
     }
 
     public void TryOpen()
@@ -81,10 +89,10 @@ public class BathroomDoor : MonoBehaviour
         }
         yield return new WaitForSeconds(0.2f);
 
-        startPos = playerBar.position;
-        endPos = openBar.position;
-        startRot = playerBar.rotation;
-        endRot = openBar.rotation;
+        startPos = openBar.position;
+        endPos = openBarPos;
+        startRot = openBar.rotation;
+        endRot = openBarRot;
         t = 0;
         while (t < 0.5f)
         {
@@ -111,24 +119,74 @@ public class BathroomDoor : MonoBehaviour
         t = 0;
         startPos = openBar.position;
         endPos = openBar.position - Vector3.up * 0.4f;
-        while (t < 4.7f)
+        while (t < 5.0f)
         {
-            openBar.position = Vector3.Lerp(startPos, endPos, t / 4.7f);
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 5.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        ad.clip = open;
+        ad.Play();
+        yield return new WaitForSeconds(0.5f);
+
+        t = 0;
+        startPos = openBar.position;
+        endPos = openBar.position - Vector3.up * 0.1f;
+        startRot = transform.rotation;
+        endRot = Quaternion.Euler(transform.eulerAngles + Vector3.up * 5.0f);
+        while (t < 0.2f)
+        {
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 0.2f);
+            transform.rotation = Quaternion.Slerp(startRot, endRot, t / 0.2f);
             t += Time.deltaTime;
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
 
+        t = 0;
         startPos = openBar.position;
-        endPos = openBar.position - Vector3.up * 0.1f;
-        startRot = transform.rotation;
-        endRot = Quaternion.Euler(transform.eulerAngles + Vector3.right * 20.0f);
-
-        while (t < 0.2f)
+        endPos = openBar.position + Vector3.up * 0.5f;
+        startRot = openBar.rotation;
+        endRot = Quaternion.Euler(openBar.eulerAngles - Vector3.right * 20.0f);
+        while (t < 0.5f)
         {
-            openBar.position = Vector3.Lerp(startPos, endPos, t / 0.2f);
+            openBar.position = Vector3.Lerp(startPos, endPos, t / 0.5f);
+            openBar.rotation = Quaternion.Slerp(startRot, endRot, t / 0.5f);
             t += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(0.1f);
+
+        t = 0;
+        startRot = openCam.rotation;
+        endRot = Quaternion.Euler(openCam.eulerAngles + Vector3.up * 30.0f);
+        while (t < 0.1f)
+        {
+            openCam.rotation = Quaternion.Slerp(startRot, endRot, t / 0.1f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        openCam.rotation = endRot;
+        yield return new WaitForSeconds(0.1f);
+
+        openBar.AddComponent<Rigidbody>();
+        openBar.GetComponent<Rigidbody>().AddForce(new Vector3(-0.8f, 0, -1.0f), ForceMode.Impulse);
+        openBar.SetParent(null);
+        openBar.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.1f);
+
+        openCam.GetComponent<Animator>().enabled = true;
+        ad.clip = creakOpen;
+        ad.Play();
+        t = 0;
+        startRot = transform.rotation;
+        endRot = Quaternion.Euler(transform.eulerAngles + Vector3.up * 40.0f);
+        while (t < 1.0f)
+        {
+            transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
     }
 }

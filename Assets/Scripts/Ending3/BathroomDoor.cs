@@ -1,13 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 public class BathroomDoor : MonoBehaviour
 {
     [SerializeField] private AudioClip lockedDoor;
     [SerializeField] private AudioClip open;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerCam;
+    [SerializeField] private Transform playerBar;
+    [SerializeField] private Transform openCam;
+    [SerializeField] private Transform openBar;
 
     private AudioSource ad;
     private bool interacted = false;
     private bool keyInteracted = false;
+    private bool locked = true;
 
     private void Start()
     {
@@ -16,11 +23,13 @@ public class BathroomDoor : MonoBehaviour
 
     public void TryOpen()
     {
-
-
         if (MainManager.instance.HasItem("Crowbar"))
         {
-            Debug.Log("YOU'RE A FUCKING GENIUS");
+            if (locked)
+            {
+                locked = false;
+                StartCoroutine(CrowbarOpen());
+            }
         }
         else if (MainManager.instance.HasItem("Key"))
         {
@@ -50,5 +59,31 @@ public class BathroomDoor : MonoBehaviour
                 ad.Play();
             }
         }
+    }
+
+    private IEnumerator CrowbarOpen()
+    {
+        player.gameObject.SetActive(false);
+        openCam.gameObject.SetActive(true);
+
+        Vector3 startPos = playerCam.position;
+        Vector3 endPos = openCam.position;
+        Quaternion startRot = playerCam.rotation;
+        Quaternion endRot = openCam.rotation;
+        float t = 0;
+        while (t < 1.0f)
+        {
+            openCam.position = Vector3.Lerp(startPos, endPos, t);
+            openCam.rotation = Quaternion.Slerp(startRot, endRot, t);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.2f);
+
+        startPos = playerCam.position;
+        endPos = openCam.position;
+        startRot = playerCam.rotation;
+        endRot = openCam.rotation;
+
     }
 }

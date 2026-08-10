@@ -331,6 +331,10 @@ public class MainManager : MonoBehaviour
         {"Fuck... The key won't fit... It's over...", "该死的...钥匙塞不进去...完了..."},
         {"Cabinet Door", "柜门"},
         {"Toilet Lid", "马桶盖"},
+        {"Key", "钥匙"},
+        {"Drawer", "抽屉"},
+        {"There's nothing inside this trash can.", "这垃圾桶里面什么都没有。"},
+        {"Trash Can", "垃圾桶"},
     };
 
     private void Awake()

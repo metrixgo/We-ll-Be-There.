@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BathroomDoor : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class BathroomDoor : MonoBehaviour
     [SerializeField] private AudioClip night;
     [SerializeField] private ParticleControl water;
     [SerializeField] private GameObject bathroom;
+    [SerializeField] private Material blackSky;
     [SerializeField] private GameObject player;
+    [SerializeField] private Image screen;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform playerBar;
     [SerializeField] private Transform openCam;
@@ -83,14 +86,17 @@ public class BathroomDoor : MonoBehaviour
         Vector3 endPos = openCam.position;
         Quaternion startRot = playerCam.rotation;
         Quaternion endRot = openCam.rotation;
+        Color scrCol = screen.color;
         float t = 0;
         while (t < 1.0f)
         {
             openCam.position = Vector3.Lerp(startPos, endPos, t);
             openCam.rotation = Quaternion.Slerp(startRot, endRot, t);
+            screen.color = Color.Lerp(scrCol, Color.clear, t);
             t += Time.deltaTime;
             yield return null;
         }
+        screen.color = Color.clear;
         yield return new WaitForSeconds(0.2f);
 
         startPos = openBar.position;
@@ -199,10 +205,11 @@ public class BathroomDoor : MonoBehaviour
 
         PlayerController pc = player.GetComponent<PlayerController>();
         Destroy(playerBar.gameObject);
-        Destroy(openBar);
+        Destroy(openBar.gameObject);
         pc.SetPosition(openCam.position - Vector3.up * 0.75f);
         pc.SetRotation(openCam.eulerAngles.y, openCam.eulerAngles.x);
         Destroy(bathroom);
+        RenderSettings.skybox = blackSky;
         player.SetActive(true);
     }
 }

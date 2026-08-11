@@ -32,6 +32,7 @@ public class TextTranslation : MonoBehaviour
             else if (s == "You should've went for the entrance...") r = "你当时应该去入口的...";
             else if (s == "...Except you didn't.") r = "...只不过你没有。";
             else if (s == "[esc] to exit") r = "[Esc] 退出";
+            else if (s == "run.") r = "跑。";
             else r = s;
             if(txt != null) txt.text = r;
             else txt2.text = r;

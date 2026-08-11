@@ -100,6 +100,7 @@ public class TeleportToBathroom : MonoBehaviour
         dgc.SetIntensity(0.2f);
         Destroy(door2.gameObject);
         lights.SetActive(true);
+        RenderSettings.fogDensity = 1.0f;
         yield return new WaitForSeconds(0.5f);
         screen.color = Color.red * 0.2f;
         dgc.SetIntensity(0.01f);

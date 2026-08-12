@@ -34,8 +34,8 @@ public class CorpseHeadChase : MonoBehaviour
         transform.LookAt(playerCam);
         transform.Translate(transform.forward * 4.9f * Time.deltaTime, Space.World);
         float dist = Vector3.Distance(transform.position, playerCam.position);
-        dgc.SetIntensity(Mathf.Max((7.0f - dist) / 28.0f, 0));
-        screen.color = Color.red * Mathf.Max((15.0f - dist) / 45.0f, 0);
+        dgc.SetIntensity(Mathf.Max((15.0f - dist) / 60.0f, 0));
+        screen.color = Color.red * Mathf.Max((20.0f - dist) / 60.0f, 0);
 
         if (dist < 0.4f)
         {

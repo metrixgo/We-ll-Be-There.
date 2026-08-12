@@ -11,7 +11,6 @@ public class TeleportToBathroom : MonoBehaviour
     [SerializeField] private Transform door;
     [SerializeField] private Transform door2;
     [SerializeField] private Transform water;
-    [SerializeField] private GameObject lights;
     [SerializeField] private GameObject monster;
     [SerializeField] private AudioClip tense;
     [SerializeField] private AudioClip jumpscare;
@@ -100,9 +99,7 @@ public class TeleportToBathroom : MonoBehaviour
         screen.color = Color.red * 0.4f;
         dgc.SetIntensity(0.2f);
         Destroy(door2.gameObject);
-        lights.SetActive(true);
         RenderSettings.skybox = blackSky;
-        RenderSettings.fogDensity = 0.6f;
         yield return new WaitForSeconds(0.5f);
         screen.color = Color.red * 0.2f;
         dgc.SetIntensity(0.01f);

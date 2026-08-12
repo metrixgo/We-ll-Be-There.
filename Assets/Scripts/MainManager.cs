@@ -335,6 +335,11 @@ public class MainManager : MonoBehaviour
         {"There's nothing inside this trash can.", "这垃圾桶里面什么都没有。"},
         {"Trash Can", "垃圾桶"},
         {"Shower", "淋浴"},
+        {"you've killed me.", "你杀了我。"},
+        {"why didn't you confess.", "为什么你不承认。"},
+        {"stop running. it's useless.", "不要跑了。没用的。"},
+        {"you can't get away.", "你逃不了的。"},
+        {"it's about time.", "是时候了。"},
     };
 
     private void Awake()
@@ -623,21 +628,15 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "flashdialogue")
             {
-                if (s.Length <= 4)
-                {
-                    promptText.enabled = true;
-                    taskText.enabled = true;
-                    focus.SetActive(true);
-                    gameState = 1;
-                }
+                promptText.enabled = true;
+                taskText.enabled = true;
+                focus.SetActive(true);
+                gameState = 1;
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2], float.Parse(s[3])));
-                if (s.Length <= 4)
-                {
-                    promptText.enabled = false;
-                    taskText.enabled = false;
-                    focus.SetActive(false);
-                    gameState = 0;
-                }
+                promptText.enabled = false;
+                taskText.enabled = false;
+                focus.SetActive(false);
+                gameState = 0;
             }
             else if (key == "flashwait")
             {
@@ -717,8 +716,8 @@ public class MainManager : MonoBehaviour
         dialogueText.text = "";
         dialogueScreen.SetActive(true);
         int idx = 0;
-        float t = 0, gap = 0.02f;
-        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;
+        float t = 0, gap = 0.01f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.02f;
         yield return new WaitForSeconds(0.05f);
         while (idx < content.Length)
         {

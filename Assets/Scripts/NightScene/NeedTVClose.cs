@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.UI;
 
 public class NeedTVClose : MonoBehaviour
@@ -65,14 +66,26 @@ public class NeedTVClose : MonoBehaviour
         Vector3 endPos = monster.transform.position + Vector3.up * 1.6f;
         Vector3 startScale = monster.transform.localScale;
         Vector3 endScale = monster.transform.localScale * 1.6f;
+        float l = 0, w = 0;
         while (t < 6.0f)
         {
-            if (subT <= 0 && Random.Range(0, 110) == 0) subT = Random.Range(0.1f, 0.3f);
-            if (subT > 0) RenderSettings.fogDensity = 1.0f;
-            else RenderSettings.fogDensity = 0.2f;
+            if (l > 0)
+            {
+                RenderSettings.fogDensity = 1.0f;
+                l -= Time.deltaTime;
+            }
+            else if (w > 0)
+            {
+                RenderSettings.fogDensity = 0.2f;
+                w -= Time.deltaTime;
+            }
+            else
+            {
+                w = Random.Range(0.1f, 1.0f);
+                l = Random.Range(0.1f, 0.3f);
+            }
             monster.transform.position = Vector3.Lerp(startPos, endPos, t / 6.0f);
             monster.transform.localScale = Vector3.Lerp(startScale, endScale, t / 6.0f);
-            subT -= Time.deltaTime;
             t += Time.deltaTime;
             yield return null;
         }

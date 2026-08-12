@@ -45541,7 +45541,7 @@ MonoBehaviour:
   isPhysical: 1
   selfDestructs: 0
   triggers:
-  - wait;0.1
+  - wait;0.05
   - changescreen;#FF0000FF;#FF0000FF;0.5
   - changescreen;#FF0000FF;#000000FF;2
   - loadscene;NightScene
@@ -45580,7 +45580,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.7755177, y: 1.8882042, z: 3.771527}
-  m_Center: {x: -0.8979375, y: 0.05758485, z: -0.57797146}
+  m_Center: {x: -0.8979375, y: -1.7, z: -0.57797146}
 --- !u!1 &935486392
 GameObject:
   m_ObjectHideFlags: 0

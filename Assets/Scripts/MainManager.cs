@@ -340,6 +340,11 @@ public class MainManager : MonoBehaviour
         {"stop running. it's useless.", "不要跑了。没用的。"},
         {"you can't get away.", "你逃不了的。"},
         {"it's about time.", "是时候了。"},
+        {"Dining Table", "餐桌"},
+        {"Why is there food??? It seems like someone is at my house.", "为什么会有食物？？？看起来有人在我家。"},
+        {"I think I heard someone showering upstairs. I think I need to check it out.", "我记得我听到有人在楼上洗澡。我觉得我得去检查一下。"},
+        {"It seems like the phone line has been cut...", "好像电话线被剪断了..."},
+        {"Radio", "广播"},
     };
 
     private void Awake()

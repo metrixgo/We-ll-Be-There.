@@ -1,0 +1,63 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TeleportBackToBathroom : MonoBehaviour
+{
+    [SerializeField] private Transform player;
+    [SerializeField] private CorpseHeadChase corpseHead;
+    [SerializeField] private GameObject teleportedBack;
+    [SerializeField] private HomeDoor door;
+    [SerializeField] private RawImage ri;
+    [SerializeField] private Material mat;
+    [SerializeField] private AudioClip breathing;
+    [SerializeField] private AudioClip night;
+
+    private static bool touched = false;
+    private AudioSource tinAd;
+
+    private void Start()
+    {
+        tinAd = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (MainManager.instance.gameState == 1 && !touched)
+        {
+            touched = true;
+            StartCoroutine(EscapeIt());
+        }
+    }
+
+    private IEnumerator EscapeIt()
+    {
+        tinAd.Play();
+        teleportedBack.SetActive(true);
+        corpseHead.EndChase();
+        door.InteractDoor();
+        ri.material = mat;
+        MainManager.instance.PlayEffect(breathing);
+        MainManager.instance.PlayMusic(night);
+        RenderSettings.fogDensity = 0.1f;
+
+        player.SetParent(transform);
+        Vector3 relPos = player.localPosition;
+        Quaternion relRot = player.localRotation;
+        player.SetParent(door.transform);
+        player.localPosition = relPos;
+        player.localRotation = relRot;
+        player.SetParent(null);
+
+        MainManager.instance.AddTrigger("wait;5");
+        yield return new WaitForSeconds(5.0f);
+        float t = 0;
+        while (t < 4.0f)
+        {
+            tinAd.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 4.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        tinAd.Stop();
+    }
+}

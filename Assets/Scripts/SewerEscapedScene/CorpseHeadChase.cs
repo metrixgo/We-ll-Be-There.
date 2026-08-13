@@ -11,6 +11,7 @@ public class CorpseHeadChase : MonoBehaviour
     [SerializeField] private GameObject jumpscareCam;
     [SerializeField] private AudioClip jumpscare;
 
+    private bool ended = false;
     private bool catched = false;
     private float origV;
     private AudioSource ad;
@@ -29,6 +30,15 @@ public class CorpseHeadChase : MonoBehaviour
 
     private void Update()
     {
+        if (ended)
+        {
+            dgc.SetIntensity(0);
+            screen.color = Color.clear;
+            MainManager.instance.SetPrompt("");
+            MainManager.instance.AddTrigger("canrun;0");
+            Destroy(gameObject);
+        }
+
         if (MainManager.instance.gameState != 1 || catched) return;
 
         transform.LookAt(playerCam);
@@ -44,6 +54,11 @@ public class CorpseHeadChase : MonoBehaviour
         }
     }
 
+    public void EndChase()
+    {
+        ended = true;
+    }
+
     private IEnumerator KillIt()
     {
         player.SetActive(false);
@@ -53,6 +68,7 @@ public class CorpseHeadChase : MonoBehaviour
         MainManager.instance.StopMusic();
         MainManager.instance.PlayEffect(jumpscare);
         MainManager.instance.SetPrompt("");
+        MainManager.instance.ClearTriggers();
         MainManager.instance.AddTrigger("wait;6");
         MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
         float t = 0, l = 0, w = 0;

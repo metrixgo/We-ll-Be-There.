@@ -21,6 +21,11 @@ public class HomeDoor : MonoBehaviour
         }
     }
 
+    public bool IsOpened()
+    {
+        return opened;
+    }
+
     private IEnumerator Turn()
     {
         ad.Play();

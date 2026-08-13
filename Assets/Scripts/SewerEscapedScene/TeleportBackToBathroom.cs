@@ -50,11 +50,11 @@ public class TeleportBackToBathroom : MonoBehaviour
         player.SetParent(null);
 
         MainManager.instance.AddTrigger("wait;5");
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(2.0f);
         float t = 0;
         while (t < 4.0f)
         {
-            tinAd.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, t / 4.0f);
+            tinAd.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f, 0, t / 4.0f);
             t += Time.deltaTime;
             yield return null;
         }

@@ -11,6 +11,7 @@ public class TeleportToBathroom : MonoBehaviour
     [SerializeField] private Transform door;
     [SerializeField] private Transform door2;
     [SerializeField] private GameObject door3;
+    [SerializeField] private GameObject door4;
     [SerializeField] private AlarmClock radio;
     [SerializeField] private Transform water;
     [SerializeField] private GameObject monster;
@@ -100,13 +101,14 @@ public class TeleportToBathroom : MonoBehaviour
         playerAd.Play();
         screen.color = Color.red * 0.4f;
         dgc.SetIntensity(0.2f);
-        door2.position -= new Vector3(59.15624712f, -4.313906077f, -228.965973f);
+        Destroy(door2.gameObject);
         RenderSettings.skybox = blackSky;
         yield return new WaitForSeconds(0.5f);
         screen.color = Color.red * 0.2f;
         dgc.SetIntensity(0.01f);
         Destroy(monster);
         door3.SetActive(true);
+        door4.SetActive(true);
         radio.Interact();
         pc.SetPosition(endPlayer.position - 0.75f * Vector3.up);
         pc.SetRotation(endPlayer.eulerAngles.y, endPlayer.eulerAngles.x);

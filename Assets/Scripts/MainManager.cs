@@ -342,9 +342,11 @@ public class MainManager : MonoBehaviour
         {"it's about time.", "是时候了。"},
         {"Dining Table", "餐桌"},
         {"Why is there food??? It seems like someone is at my house.", "为什么会有食物？？？看起来有人在我家。"},
-        {"I think I heard someone showering upstairs. I think I need to check it out.", "我记得我听到有人在楼上洗澡。我觉得我得去检查一下。"},
+        {"I think I hear someone showering upstairs. I think I need to check it out.", "我好像听到有人在楼上洗澡。我觉得我得去检查一下。"},
         {"It seems like the phone line has been cut...", "好像电话线被剪断了..."},
         {"Radio", "广播"},
+        {"Mom", "妈妈"},
+        {"What took you so long up here?", "你在上面这么久干什么呢？"},
     };
 
     private void Awake()

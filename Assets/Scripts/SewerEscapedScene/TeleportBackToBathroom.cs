@@ -6,7 +6,6 @@ public class TeleportBackToBathroom : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private CorpseHeadChase corpseHead;
-    [SerializeField] private GameObject teleportedBack;
     [SerializeField] private HomeDoor door;
     [SerializeField] private RawImage ri;
     [SerializeField] private Material mat;
@@ -33,7 +32,6 @@ public class TeleportBackToBathroom : MonoBehaviour
     private IEnumerator EscapeIt()
     {
         tinAd.Play();
-        teleportedBack.SetActive(true);
         corpseHead.EndChase();
         door.InteractDoor();
         ri.material = mat;
@@ -54,7 +52,7 @@ public class TeleportBackToBathroom : MonoBehaviour
         float t = 0;
         while (t < 4.0f)
         {
-            tinAd.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f, 0, t / 4.0f);
+            tinAd.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 300.0f, 0, t / 4.0f);
             t += Time.deltaTime;
             yield return null;
         }

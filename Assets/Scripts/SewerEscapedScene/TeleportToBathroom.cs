@@ -12,6 +12,7 @@ public class TeleportToBathroom : MonoBehaviour
     [SerializeField] private Transform door2;
     [SerializeField] private GameObject door3;
     [SerializeField] private GameObject door4;
+    [SerializeField] private GameObject mom;
     [SerializeField] private AlarmClock radio;
     [SerializeField] private Transform water;
     [SerializeField] private GameObject monster;
@@ -109,6 +110,7 @@ public class TeleportToBathroom : MonoBehaviour
         Destroy(monster);
         door3.SetActive(true);
         door4.SetActive(true);
+        mom.SetActive(true);
         radio.Interact();
         pc.SetPosition(endPlayer.position - 0.75f * Vector3.up);
         pc.SetRotation(endPlayer.eulerAngles.y, endPlayer.eulerAngles.x);

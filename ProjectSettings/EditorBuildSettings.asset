@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SewerEscapedScene.unity
     guid: 8601f76c702ff0649b7b8e69209bdc13
+  - enabled: 1
+    path: Assets/Scenes/Ending4.unity
+    guid: c796f153b6c51694ea9248fda59e4763
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

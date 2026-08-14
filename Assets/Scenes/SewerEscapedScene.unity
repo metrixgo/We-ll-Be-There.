@@ -3835,7 +3835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &51760926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16257,7 +16257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &283348440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25114,7 +25114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &419126045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27695,7 +27695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &466258473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30363,7 +30363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &494115827
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30789,7 +30789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &496082679
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32069,7 +32069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &507958340
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35113,7 +35113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &543463153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38930,7 +38930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &604019295
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42142,6 +42142,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654790126}
   m_Mesh: {fileID: 3578622697474687088, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &660573930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660573931}
+  m_Layer: 0
+  m_Name: MomHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660573931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660573930}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7326760823129824454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &662574981
 GameObject:
   m_ObjectHideFlags: 0
@@ -61852,7 +61883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &869469111
 AudioSource:
   m_ObjectHideFlags: 0
@@ -62934,7 +62965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &890241319
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63707,7 +63738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &897051652
 AudioSource:
   m_ObjectHideFlags: 0
@@ -69296,7 +69327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &972446667
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74811,7 +74842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1078510007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87559,7 +87590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1266716304
 AudioSource:
   m_ObjectHideFlags: 0
@@ -93485,7 +93516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1364699131
 AudioSource:
   m_ObjectHideFlags: 0
@@ -94292,7 +94323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1373234223
 AudioSource:
   m_ObjectHideFlags: 0
@@ -94987,7 +95018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1386029099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -100778,7 +100809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1404069217
 AudioSource:
   m_ObjectHideFlags: 0
@@ -100968,6 +100999,7 @@ GameObject:
   - component: {fileID: 1405105888}
   - component: {fileID: 1405105887}
   - component: {fileID: 1405105886}
+  - component: {fileID: 1405105893}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -101022,6 +101054,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1405105888}
         m_TargetAssemblyTypeName: HomeDoor, Assembly-CSharp
         m_MethodName: InteractDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1405105893}
+        m_TargetAssemblyTypeName: MomJumpscare, Assembly-CSharp
+        m_MethodName: LookAtHead
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -101220,6 +101264,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405105884}
   m_Mesh: {fileID: 5199856999354074234, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!114 &1405105893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405105884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e51fd04efbbf24b9f4e5157f3a0b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MomJumpscare
+  pc: {fileID: 508594364}
+  momHead: {fileID: 660573931}
+  jumpscare: {fileID: 8300000, guid: fd0b32802b0e2e14bae0d3ce89ed6d92, type: 3}
 --- !u!1 &1405275026
 GameObject:
   m_ObjectHideFlags: 0
@@ -103272,7 +103331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1446781657
 AudioSource:
   m_ObjectHideFlags: 0
@@ -105057,7 +105116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1468033528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -123719,7 +123778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1685450286
 AudioSource:
   m_ObjectHideFlags: 0
@@ -124347,7 +124406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1694538287
 AudioSource:
   m_ObjectHideFlags: 0
@@ -134275,7 +134334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1880852714
 AudioSource:
   m_ObjectHideFlags: 0
@@ -135733,7 +135792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1898265038
 AudioSource:
   m_ObjectHideFlags: 0
@@ -141093,7 +141152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &1962885106
 AudioSource:
   m_ObjectHideFlags: 0
@@ -144572,7 +144631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &2003941135
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147902,7 +147961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &2055009864
 AudioSource:
   m_ObjectHideFlags: 0
@@ -148482,7 +148541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &2067320133
 AudioSource:
   m_ObjectHideFlags: 0
@@ -151209,7 +151268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &2108119431
 AudioSource:
   m_ObjectHideFlags: 0
@@ -152225,7 +152284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
-  multiplier: 0.33333334
+  multiplier: 0.5
 --- !u!82 &2129664138
 AudioSource:
   m_ObjectHideFlags: 0
@@ -155296,6 +155355,7 @@ Transform:
   m_Children:
   - {fileID: 3643711936215481157}
   - {fileID: 3025769047542774866}
+  - {fileID: 660573931}
   m_Father: {fileID: 1460651709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7395432986507070504
@@ -155550,6 +155610,17 @@ MonoBehaviour:
   selfDestructs: 0
   triggers:
   - dialogue;Mom;What took you so long up here?
+  - dialogue;You;Mom! Where were you all these time?!
+  - dialogue;Mom;Son, what are you talking about? You said you wanted to use the
+    bathroom and you've been up here for like thirty minutes.
+  - dialogue;You;......
+  - dialogue;Mom;Anyways, please come down and eat dinner with us. I don't want you
+    to leave in the middle and hide in the bathroom with your phone.
+  - dialogue;You;Mom... I... Ok sure! Let's eat together!
+  - dialogue;Mom;Finally you're acting normal. I hope you can keep this up. Don't
+    act like we haven't seen each other for ten years.
+  - dialogue;You;............
+  - loadscene;Ending4;3
 --- !u!114 &7991130160362849920
 MonoBehaviour:
   m_ObjectHideFlags: 0

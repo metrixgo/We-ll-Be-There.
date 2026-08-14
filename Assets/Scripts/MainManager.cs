@@ -346,7 +346,13 @@ public class MainManager : MonoBehaviour
         {"It seems like the phone line has been cut...", "好像电话线被剪断了..."},
         {"Radio", "广播"},
         {"Mom", "妈妈"},
+        {"M...Mom?!", "妈...妈妈？！"},
         {"What took you so long up here?", "你在上面这么久干什么呢？"},
+        {"Mom! Where were you all these time?!", "妈妈！你这些日子都去哪了？！"},
+        {"Son, what are you talking about? You said you wanted to use the bathroom and you've been up here for like thirty minutes.", "不是儿子你说啥呢？你说你想去厕所然后在上面呆了三十分钟。"},
+        {"Anyways, please come down and eat dinner with us. I don't want you to leave in the middle and hide in the bathroom with your phone.", "不管怎么样，请下来跟我们吃晚餐。我不想让你中途离开然后带着个手机在厕所藏着。"},
+        {"Mom... I... Ok sure! Let's eat together!", "妈妈...我...当然！咱们一起吃吧！"},
+        {"Finally you're acting normal. I hope you can keep this up. Don't act like we haven't seen each other for ten years.", "你终于表现正常了。我希望你能保持下去，别跟十年没见过我一样。"},
     };
 
     private void Awake()

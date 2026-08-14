@@ -47,12 +47,12 @@ public class TeleportBackToBathroom : MonoBehaviour
         player.localRotation = relRot;
         player.SetParent(null);
 
-        MainManager.instance.AddTrigger("wait;5");
-        yield return new WaitForSeconds(2.0f);
+        MainManager.instance.AddTrigger("wait;4");
         float t = 0;
-        while (t < 4.0f)
+        while (t < 5.0f)
         {
-            tinAd.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 300.0f, 0, t / 4.0f);
+            RenderSettings.fogDensity = Mathf.Lerp(0.6f, 0.1f, t / 5.0f);
+            tinAd.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 200.0f, 0, t / 5.0f);
             t += Time.deltaTime;
             yield return null;
         }

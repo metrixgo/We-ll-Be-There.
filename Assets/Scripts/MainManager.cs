@@ -368,6 +368,9 @@ public class MainManager : MonoBehaviour
         {"Um... he's not feeling good right now. Give him some space. Let's just eat.", "额...他现在不舒服。给他点空间吧。咱们就吃饭。"},
         {"Ok. Yeah. Sure. Let's eat.", "哦。好。当然。咱们吃饭。"},
         {"Dad", "爸爸"},
+        {"Mayor", "市长"},
+        {"Is it about time?", "是时候了？"},
+        {"It is about time.", "是时候了。"},
     };
 
     private void Awake()
@@ -737,7 +740,8 @@ public class MainManager : MonoBehaviour
         isExecutingTriggers = false;
         gameState = 1;
         yield return new WaitForEndOfFrame();
-        if(triggers.Count == 0)
+        yield return new WaitForEndOfFrame();
+        if (triggers.Count == 0)
         {
             promptText.enabled = true;
             taskText.enabled = true;

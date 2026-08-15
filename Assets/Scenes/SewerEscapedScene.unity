@@ -60185,7 +60185,7 @@ GameObject:
   - component: {fileID: 843044299}
   - component: {fileID: 843044298}
   - component: {fileID: 843044297}
-  - component: {fileID: 843044296}
+  - component: {fileID: 843044302}
   m_Layer: 0
   m_Name: Call the Police
   m_TagString: Interactable
@@ -60208,19 +60208,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1947430297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &843044296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843044294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cec389f0d0678c4ab02c0c97715fdcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolicePhoneCall
-  phoneCall: {fileID: 8300000, guid: f2587c644293fe34997ce79c69d0ca06, type: 3}
 --- !u!114 &843044297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60236,9 +60223,9 @@ MonoBehaviour:
   onInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 843044296}
-        m_TargetAssemblyTypeName: HomePhone, Assembly-CSharp
-        m_MethodName: CallThePolice
+      - m_Target: {fileID: 843044302}
+        m_TargetAssemblyTypeName: TriggerSequences, Assembly-CSharp
+        m_MethodName: AddTriggers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -60345,6 +60332,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843044294}
   m_Mesh: {fileID: -4420810282019988501, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!114 &843044302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843044294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c439b90a65076947ace81fb419b5e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerSequences
+  isPhysical: 0
+  selfDestructs: 0
+  triggers:
+  - dialogue;You;It seems like the phone line has been cut...
 --- !u!1 &843265794
 GameObject:
   m_ObjectHideFlags: 0

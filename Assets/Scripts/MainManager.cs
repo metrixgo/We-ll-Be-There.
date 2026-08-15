@@ -353,6 +353,20 @@ public class MainManager : MonoBehaviour
         {"Anyways, please come down and eat dinner with us. I don't want you to leave in the middle and hide in the bathroom with your phone.", "不管怎么样，请下来跟我们吃晚餐。我不想让你中途离开然后带着个手机在厕所藏着。"},
         {"Mom... I... Ok sure! Let's eat together!", "妈妈...我...当然！咱们一起吃吧！"},
         {"Finally you're acting normal. I hope you can keep this up. Don't act like we haven't seen each other for ten years.", "你终于表现正常了。我希望你能保持下去，别跟十年没见过我一样。"},
+        {"...and I was so surprised you know, we both didn't see when that happened.", "...然后我当时好惊讶你懂的，我们俩都没看到那什么时候发生的。"},
+        {"I suspect someone broke it with a hammer, or else the hole on the glass door wouldn't be so uniform.", "我怀疑是有人用锤子砸的，否则玻璃门上的洞不会这么整齐。"},
+        {"Son, do you know who broke the glass door?", "儿子，你知道是谁砸碎了那个玻璃门吗？"},
+        {"I... don't know...", "我...不知道..."},
+        {"Mom, is there a hole in the backyard?", "妈妈，在后院里有一个洞吗？"},
+        {"I do think there are some traces of dirt there. But there should be no holes.", "我的确认为那里有些泥土的痕迹。但是应该没有洞。"},
+        {"What are you saying, didn't we already see that? Like the one that's very deep into the ground, with all kinds of...", "你说啥呢，我们不都已经看到了吗？就是那个在地底下很深的，里头有各种..."},
+        {"What? What do you mean? Dad!", "什么？你什么意思？爸爸！"},
+        {"N... Nothing.", "没...没什么。"},
+        {"Haha, got you with a joke, huh? There are no holes, what are you even worrying about.", "哈哈，开个玩笑你就被吓到了，是吧？根本就没有洞，你到底在担心什么。"},
+        {"Come on, are you not feeling well right now?", "哎呀，你现在感觉不舒服吗？"},
+        {"Let's sing together, how about that?", "咱们一起来唱歌吧，怎么样？"},
+        {"Um... he's not feeling good right now. Give him some space. Let's just eat.", "额...他现在不舒服。给他点空间吧。咱们就吃饭。"},
+        {"Ok. Yeah. Sure. Let's eat.", "哦。好。当然。咱们吃饭。"},
     };
 
     private void Awake()
@@ -594,7 +608,21 @@ public class MainManager : MonoBehaviour
             string key = s[0].ToLower();
             if (key == "dialogue")
             {
+                if (s.Length > 3)
+                {
+                    promptText.enabled = true;
+                    taskText.enabled = true;
+                    focus.SetActive(true);
+                    gameState = 1;
+                }
                 yield return StartCoroutine(DisplayDialogue(s[1], s[2]));
+                if (s.Length > 3)
+                {
+                    promptText.enabled = false;
+                    taskText.enabled = false;
+                    focus.SetActive(false);
+                    gameState = 0;
+                }
             }
             else if (key == "changescreen")
             {

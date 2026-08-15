@@ -1,9 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class Ending4Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject cam;
+    [SerializeField] private Transform cam;
     [SerializeField] private PlayerController pc;
+
+    private Coroutine moveCr;
+    private Vector3 startPos;
+    private Vector3 endPos;
 
     private void Start()
     {
@@ -22,14 +27,62 @@ public class Ending4Manager : MonoBehaviour
         MainManager.instance.AddTrigger("dialogue;Dad;N... Nothing.;1");
         MainManager.instance.AddTrigger("dialogue;You;???;1");
         MainManager.instance.AddTrigger("dialogue;Dad;Haha, got you with a joke, huh? There are no holes, what are you even worrying about.;1");
-        MainManager.instance.AddTrigger("dialogue;You;......;1");
-        MainManager.instance.AddTrigger("dialogue;Dad;Come on, are you not feeling well right now?");
-        MainManager.instance.AddTrigger("dialogue;Dad;Let's sing together, how about that?");
-        MainManager.instance.AddTrigger("dialogue;Mom;Um... he's not feeling good right now. Give him some space. Let's just eat.");
-        MainManager.instance.AddTrigger("dialogue;Dad;Ok. Yeah. Sure. Let's eat.");
-        MainManager.instance.AddTrigger("dialogue;You;......");
-        MainManager.instance.AddTrigger("dialogue;Dad;......");
-        MainManager.instance.AddTrigger("dialogue;???;......");
-        MainManager.instance.AddTrigger("dialogue;???;......");
+        StartCoroutine(MoreDialogues());
     }
+
+    private IEnumerator MoreDialogues()
+    {
+        yield return new WaitForSeconds(2.0f);
+        yield return new WaitUntil(() => !MainManager.instance.IsExecutingTriggers());
+        pc.gameObject.SetActive(false);
+        cam.gameObject.SetActive(true);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;You;......");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;Dad;Come on, are you not feeling well right now?");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;Dad;Let's sing together, how about that?");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;Mom;Um... he's not feeling good right now. Give him some space. Let's just eat.");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;Dad;Ok. Yeah. Sure. Let's eat.");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;You;......");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;Dad;......");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;???;......");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+        MainManager.instance.AddTrigger("dialogue;???;......");
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MoveBack();
+    }
+
+    private void MoveBack()
+    {
+        startPos = cam.position;
+        endPos = cam.position - Vector3.right * 2.0f;
+        if (moveCr != null) StopCoroutine(moveCr);
+        moveCr = StartCoroutine(ShiftBack());
+    }
+
+    private IEnumerator ShiftBack()
+    {
+        float t = 0;
+        while (t < 2.0f)
+        {
+            cam.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1.0f, t / 2.0f));
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }

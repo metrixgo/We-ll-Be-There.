@@ -92,7 +92,7 @@ public class BathroomDoor : MonoBehaviour
             openCam.position = Vector3.Lerp(startPos, endPos, t);
             openCam.rotation = Quaternion.Slerp(startRot, endRot, t);
             screen.color = Color.Lerp(scrCol, Color.clear, t);
-            RenderSettings.fogDensity = Mathf.Lerp(0.2f, 0.6f, t);
+            RenderSettings.fogDensity = Mathf.Lerp(0.2f, 0.4f, t);
             t += Time.deltaTime;
             yield return null;
         }

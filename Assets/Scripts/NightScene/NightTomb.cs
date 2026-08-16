@@ -55,7 +55,7 @@ public class NightTomb : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
         MainManager.instance.PlayEffect(slipRope);
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(2.0f);
         MainManager.instance.PlayEffect(land);
     }
 

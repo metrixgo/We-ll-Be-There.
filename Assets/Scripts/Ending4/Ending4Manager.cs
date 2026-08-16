@@ -7,6 +7,7 @@ public class Ending4Manager : MonoBehaviour
 {
     [SerializeField] private Transform cam;
     [SerializeField] private PlayerController pc;
+    [SerializeField] private GameObject jumpscareCam;
     [SerializeField] private GameObject police;
     [SerializeField] private GameObject killer;
     [SerializeField] private AudioClip tense;
@@ -14,7 +15,7 @@ public class Ending4Manager : MonoBehaviour
     [SerializeField] private AudioClip lightsOut;
     [SerializeField] private AudioClip tinnitus;
     [SerializeField] private AudioClip horrorAmb;
-    [SerializeField] private AudioClip ending;
+    [SerializeField] private AudioClip jumpscare;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private GameObject sounds;
 
@@ -51,7 +52,7 @@ public class Ending4Manager : MonoBehaviour
 
     private void Update()
     {
-        if (cam != null && killer != null) dgc.SetIntensity(Mathf.Max((8.0f - Vector3.Distance(cam.position, killer.transform.position)) / 240.0f, 0));
+        if (cam != null && killer != null) dgc.SetIntensity(Mathf.Max((8.0f - Vector3.Distance(cam.position, killer.transform.position)) / 80.0f, 0));
     }
 
     private IEnumerator MoreDialogues()
@@ -81,19 +82,21 @@ public class Ending4Manager : MonoBehaviour
         Destroy(sounds);
         MainManager.instance.StopMusic();
         policeAnim.SetBool("turn", true);
-        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("wait;3");
-        MainManager.instance.AddTrigger("dialogue;Mayor;It is about time.");
-        killer.SetActive(true);
         yield return new WaitForSeconds(2.0f);
         policeAnim.SetBool("turn", false);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MainManager.instance.AddTrigger("wait;" + (3 + jumpscare.length));
+        MainManager.instance.AddTrigger("dialogue;Mayor;It is about time.");
+        yield return new WaitForSeconds(2.0f);
         cam.position = new Vector3(-74.2829971f, 2.2f, -66.23f);
         cam.rotation = Quaternion.Euler(0, -90.0f, 0);
+        killer.SetActive(true);
         MainManager.instance.PlayMusic(tense);
+        MainManager.instance.PlayEffect(jumpscare);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.AddTrigger("wait;5");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;5");
-        MainManager.instance.AddTrigger("dialogue;Mom;Speaking of which, do you hear anything?;1");
+        MainManager.instance.AddTrigger("dialogue;Mom;...speaking of which, do you hear anything?;1");
         MainManager.instance.AddTrigger("dialogue;Dad;I don't hear anything.;1");
         MainManager.instance.AddTrigger("dialogue;You;......;1");
         MainManager.instance.AddTrigger("dialogue;You;I'm sorry...;1");
@@ -117,7 +120,7 @@ public class Ending4Manager : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitUntil(() => !MainManager.instance.IsExecutingTriggers());
 
         startPos = endPos;
         endPos = startPos + Vector3.right * 3.0f;
@@ -126,27 +129,33 @@ public class Ending4Manager : MonoBehaviour
         while (t < monsterOut.length)
         {
             killer.transform.position = Vector3.Lerp(startPos, endPos, t / monsterOut.length);
-            subTense.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f, t / monsterOut.length);
+            RenderSettings.fogDensity = Mathf.Lerp(0.4f, 0.8f, t / monsterOut.length);
             t += Time.deltaTime;
             yield return null;
         }
         MainManager.instance.PlayEffect(lightsOut);
-        RenderSettings.fogDensity = Mathf.Lerp(0.2f, 0.4f, t / 10.0f);
+        MainManager.instance.StopMusic();
         RenderSettings.ambientIntensity = 0;
+        RenderSettings.fogDensity = 1.0f;
         yield return new WaitForSeconds(2.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.SetPrompt("Press [xxxxx] to run");
+        MainManager.instance.SetPrompt("Press [xxxxx] to run", true);
         MainManager.instance.AddTrigger("dialogue;Dad;What is happening?!");
-        MainManager.instance.AddTrigger("flashdialogue;Mom;......Please......Help......Me............And............;0");
+        MainManager.instance.AddTrigger("flashdialogue;Mom;......Please......Help......Me............And............;1");
         yield return new WaitForSeconds(1.0f);
-        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        yield return new WaitUntil(() => !MainManager.instance.IsExecutingTriggers());
+        pc.gameObject.SetActive(false);
+        jumpscareCam.SetActive(true);
+        RenderSettings.fogDensity = 0.7f;
+        RenderSettings.ambientIntensity = 1.0f;
         subTense.clip = tinnitus;
         subTense.Play();
         MainManager.instance.StopMusic();
+        MainManager.instance.AddTrigger("wait;0.1");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;3");
         MainManager.instance.AddTrigger("changescreen;#FF0000FF;#000000FF;3");
         MainManager.instance.AddTrigger("wait;5");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(3.1f);
         t = 0;
         while(t < 3.0f)
         {
@@ -158,14 +167,16 @@ public class Ending4Manager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         title.gameObject.SetActive(true);
         MainManager.instance.PlayMusic(horrorAmb);
-        MainManager.instance.PlayEffect(ending);
+        MainManager.instance.PlayEffect(jumpscare);
         yield return new WaitForSeconds(3.0f);
+        t = 0;
         while (t < 3.0f)
         {
             title.color = Color.Lerp(Color.white, Color.clear, t / 3.0f);
             t += Time.deltaTime;
             yield return null;
         }
+        title.color = Color.clear;
         MainManager.instance.DisplayEnding("FINAL ENDING 4/5 - We'll Be There.", "You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.");
     }
 

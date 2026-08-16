@@ -372,6 +372,15 @@ public class MainManager : MonoBehaviour
         {"Mayor", "市长"},
         {"Is it about time?", "是时候了？"},
         {"It is about time.", "是时候了。"},
+        {"...speaking of which, do you hear anything?", "...说起这个，你听到什么东西了吗？"},
+        {"I don't hear anything.", "我啥也没听到。"},
+        {"I'm sorry...", "我很抱歉..."},
+        {"It's too late...", "太迟了..."},
+        {"Press [xxxxx] to run", "按 [xxxxx] 奔跑"},
+        {"What is happening?!", "发生啥事？！"},
+        {"......Please......Help......Me............And............", "...求你了...救...我......和......"},
+        {"FINAL ENDING 4/5 - We'll Be There.", "最终结局 4/5 - 我们会在。"},
+        {"You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.", "你设法活到了最后。你经历了所有幻觉。你意识到他们会在。你平静地面对了你的结局。你早已知道这会发生。你已经弥补了你的过错。"},
     };
 
     private void Awake()
@@ -879,6 +888,7 @@ public class MainManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         endingTitle.text = title;
+        effectsPlayer.Play();
         yield return new WaitForSeconds(1.0f);
         endingReturnMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;

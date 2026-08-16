@@ -31883,7 +31883,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 134.05, y: -33.755}
-  m_SizeDelta: {x: 268.1, y: 67.51}
+  m_SizeDelta: {x: 268.1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756708574
 MonoBehaviour:
@@ -41988,7 +41988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ending4Manager
   cam: {fileID: 149501633}
   pc: {fileID: 508594364}
-  jumpscareCam: {fileID: 0}
+  jumpscareCam: {fileID: 1063972830}
   police: {fileID: 8638022813682654408}
   killer: {fileID: 6472727056172347910}
   tense: {fileID: 8300000, guid: 74b625533ae848649892e21c361c8046, type: 3}
@@ -58964,8 +58964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 268.1, y: 67.51}
+  m_AnchoredPosition: {x: 0, y: 70}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1303972647
 MonoBehaviour:

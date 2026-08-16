@@ -99,7 +99,7 @@ public class Ending2Manager : MonoBehaviour
         bool flg = false;
         while (t < 0.9f)
         {
-            if (t > 0.5f && !flg)
+            if (t > 0.45f && !flg)
             {
                 flg = true;
                 police.SetActive(true);
@@ -157,17 +157,17 @@ public class Ending2Manager : MonoBehaviour
             yield return null;
         }
 
-        MainManager.instance.AddTrigger("changescreen;#00000088;#000000ff;2");
-        MainManager.instance.AddTrigger("ending;ENDING 2/5: EXPOSED;You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.");
+        MainManager.instance.AddTrigger("changescreen;#00000088;#000000ff;3");
+        MainManager.instance.AddTrigger("ending;ENDING 2/5 - EXPOSED;You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.");
         startPos = secondPlayer.transform.position;
         endPos = new Vector3(-51.56f, 0.6f, -70.0f);
         startRot = secondPlayer.transform.eulerAngles;
         endRot = new Vector3(90.0f, 10.0f, 0);
         t = 0;
-        while (t < 2.0f)
+        while (t < 3.0f)
         {
             ad.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Effects", 80.0f) / 500.0f, 0, t / 2.0f);
-            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 2.0f);
+            secondPlayer.transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), t / 3.0f);
             t += Time.deltaTime;
             yield return null;
         }

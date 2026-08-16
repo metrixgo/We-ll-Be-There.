@@ -41935,12 +41935,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037318581}
-  - component: {fileID: 1037318587}
   - component: {fileID: 1037318586}
   - component: {fileID: 1037318585}
   - component: {fileID: 1037318584}
   - component: {fileID: 1037318583}
   - component: {fileID: 1037318582}
+  - component: {fileID: 1037318587}
   m_Layer: 0
   m_Name: Book
   m_TagString: Interactable
@@ -42082,8 +42082,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037318580}
   m_Mesh: {fileID: -7779916524249223991, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
---- !u!65 &1037318587
-BoxCollider:
+--- !u!64 &1037318587
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42100,9 +42100,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.017584847, y: 0.023736812, z: 0.004466549}
-  m_Center: {x: 1.02676035e-17, y: -3.560977e-10, z: 0.0006126942}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7779916524249223991, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &1039937093
 GameObject:
   m_ObjectHideFlags: 0
@@ -53509,7 +53510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

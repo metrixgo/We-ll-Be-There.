@@ -172,7 +172,7 @@ public class MainManager : MonoBehaviour
         {"I should take a shower and sleep...", "我该去洗个澡然后睡觉了..."},
         {"May god bless me...", "愿上帝保佑我..."},
         {"I don't really want to sleep here...", "我不是很想睡在这..."},
-        {"ENDING 1/5: SURRENDER", "结局 1/5：自首"},
+        {"ENDING 1/5 - SURRENDER", "结局 1/5：自首"},
         {"You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.", "你向警察自首了。他们把你带到了警察局并询问发生了什么。当你描述完事情经过后，他们让你去了一个私人房间休息。你认为你做出了正确的选择并放下心来，但是你总感觉有什么奇怪的地方。并且当你意识到的时候，一切都太迟了。"},
         {"I can't see anything... Everything is black...", "我什么都看不到...一切都是黑色..."},
         {"Window", "窗户"},
@@ -243,7 +243,7 @@ public class MainManager : MonoBehaviour
         {"We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.", "我们用紫外线灯光发现了地上的血迹。我们相信那是他忘记清理的从案发现场带来的血迹。"},
         {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
         {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
-        {"ENDING 2/5: EXPOSED", "结局 2/5：暴露"},
+        {"ENDING 2/5 - EXPOSED", "结局 2/5：暴露"},
         {"You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.", "你以为你把一切都搞定了，但是警察还是查出了蛛丝马迹。现在，你只能看着一切事情对你发生。"},
         {"Stop where you are!", "别动！"},
         {"Policeman", "男警"},
@@ -447,12 +447,7 @@ public class MainManager : MonoBehaviour
 
     public void DisplayEnding(string t, string c)
     {
-        DisplayEnding(t, c, 4.0f);
-    }
-
-    public void DisplayEnding(string t, string c, float l)
-    {
-        StartCoroutine(Ending(t, c, l));
+        StartCoroutine(Ending(t, c));
     }
 
     public void ClearTriggers()
@@ -745,8 +740,7 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "ending")
             {
-                if (s.Length == 4) yield return StartCoroutine(Ending(s[1], s[2], float.Parse(s[3])));
-                else yield return StartCoroutine(Ending(s[1], s[2], 4.0f));
+                yield return StartCoroutine(Ending(s[1], s[2]));
             }
             else
             {
@@ -818,7 +812,7 @@ public class MainManager : MonoBehaviour
         yield return StartCoroutine(DisplayDialogue(speaker, content, -1.0f));
     }
 
-    private IEnumerator Ending(string title, string content, float l)
+    private IEnumerator Ending(string title, string content)
     {
         atEndingScreen = true;
         effectsPlayer.clip = writtingEffect;
@@ -828,20 +822,11 @@ public class MainManager : MonoBehaviour
         endingText.text = "";
         endingReturnMenu.SetActive(false);
         endingScreen.SetActive(true);
-        float t = 0;
-        endScreen.color = Color.clear;
-        while (t < l)
-        {
-            yield return null;
-            t += Time.deltaTime;
-            endScreen.color = Color.Lerp(Color.clear, Color.black, t / l);
-        }
-        endScreen.color = Color.black;
         screen.color = Color.clear;
         yield return new WaitForSeconds(0.5f);
         effectsPlayer.Play();
 
-        t = 0;
+        float t = 0;
         int idx = 0;
         float gap = 0.02f;
         if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;

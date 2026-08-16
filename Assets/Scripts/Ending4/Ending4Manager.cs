@@ -183,7 +183,7 @@ public class Ending4Manager : MonoBehaviour
             yield return null;
         }
         title.color = Color.clear;
-        MainManager.instance.DisplayEnding("FINAL ENDING 4/5 - We'll Be There.", "You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.", 1);
+        MainManager.instance.DisplayEnding("FINAL ENDING 4/5 - We'll Be There.", "You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.");
     }
 
     private IEnumerator DisplayMove(string speaker, string content)

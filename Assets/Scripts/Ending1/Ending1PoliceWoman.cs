@@ -21,7 +21,8 @@ public class Ending1PoliceWoman : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-        MainManager.instance.AddTrigger("ending;ENDING 1/5: SURRENDER;You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.");
+        MainManager.instance.AddTrigger("changescreen;#00000000;#000000FF;2");
+        MainManager.instance.AddTrigger("ending;ENDING 1/5 - SURRENDER;You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.");
 
         yield return new WaitForSeconds(2.0f);
         float t = 0, l = 10.0f;

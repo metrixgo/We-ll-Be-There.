@@ -51,7 +51,7 @@ public class NeedTVClose : MonoBehaviour
         pc.LookAt(new Vector3(-50.508f, 1.884f, -64.3f), 4.0f);
         MainManager.instance.AddTrigger("wait;11");
         MainManager.instance.PlayEffect(breath);
-        float t = 0, subT = 0;
+        float t = 0;
         while (t < 4.0f)
         {
             RenderSettings.fogDensity = Mathf.Lerp(0.6f, 0.2f, t / 4.0f);

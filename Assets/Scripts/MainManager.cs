@@ -26,6 +26,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource effectsPlayer;
     [SerializeField] private AudioClip writtingEffect;
+    [SerializeField] private AudioClip endingSound;
 
     public int gameState { get; private set; } = 1;
     private bool isExecutingTriggers = false;
@@ -437,7 +438,12 @@ public class MainManager : MonoBehaviour
 
     public void DisplayEnding(string t, string c)
     {
-        StartCoroutine(Ending(t, c));
+        DisplayEnding(t, c, 4.0f);
+    }
+
+    public void DisplayEnding(string t, string c, float l)
+    {
+        StartCoroutine(Ending(t, c, l));
     }
 
     public void ClearTriggers()
@@ -730,7 +736,8 @@ public class MainManager : MonoBehaviour
             }
             else if (key == "ending")
             {
-                yield return StartCoroutine(Ending(s[1], s[2]));
+                if (s.Length == 4) yield return StartCoroutine(Ending(s[1], s[2], float.Parse(s[3])));
+                else yield return StartCoroutine(Ending(s[1], s[2], 4.0f));
             }
             else
             {
@@ -771,8 +778,8 @@ public class MainManager : MonoBehaviour
         dialogueText.text = "";
         dialogueScreen.SetActive(true);
         int idx = 0;
-        float t = 0, gap = 0.01f;
-        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.02f;
+        float t = 0, gap = 0.02f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;
         yield return new WaitForSeconds(0.05f);
         while (idx < content.Length)
         {
@@ -801,7 +808,8 @@ public class MainManager : MonoBehaviour
     {
         yield return StartCoroutine(DisplayDialogue(speaker, content, -1.0f));
     }
-    private IEnumerator Ending(string title, string content)
+
+    private IEnumerator Ending(string title, string content, float l)
     {
         atEndingScreen = true;
         effectsPlayer.clip = writtingEffect;
@@ -813,44 +821,21 @@ public class MainManager : MonoBehaviour
         endingScreen.SetActive(true);
         float t = 0;
         endScreen.color = Color.clear;
-        while (t < 4.0f)
+        while (t < l)
         {
             yield return null;
             t += Time.deltaTime;
-            endScreen.color = Color.Lerp(Color.clear, Color.black, t / 4.0f);
+            endScreen.color = Color.Lerp(Color.clear, Color.black, t / l);
         }
         endScreen.color = Color.black;
-        yield return new WaitForSeconds(2.0f);
         screen.color = Color.clear;
+        yield return new WaitForSeconds(0.5f);
         effectsPlayer.Play();
 
         t = 0;
         int idx = 0;
         float gap = 0.02f;
         if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.04f;
-        while (idx < title.Length)
-        {
-            t += Time.deltaTime;
-            if (t >= gap)
-            {
-                t -= gap;
-                endingTitle.text += title[idx];
-                idx++;
-            }
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-            {
-                endingTitle.text = title;
-                break;
-            }
-            yield return null;
-        }
-
-        effectsPlayer.Stop();
-        yield return new WaitForSeconds(2.0f);
-        effectsPlayer.Play();
-
-        idx = 0;
-        t = 0;
         while (idx < content.Length)
         {
             t += Time.deltaTime;
@@ -867,9 +852,34 @@ public class MainManager : MonoBehaviour
             }
             yield return null;
         }
-
+        endingText.text = content;
+        yield return new WaitForSeconds(0.05f);
         effectsPlayer.Stop();
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return));
+        effectsPlayer.Play();
+
+        t = 0;
+        idx = content.Length;
+        gap = 0.002f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.004f;
+        while (idx >= 0)
+        {
+            t += Time.deltaTime;
+            if (t >= gap)
+            {
+                t -= gap;
+                endingText.text = endingText.text.Substring(0, idx);
+                idx--;
+            }
+            yield return null;
+        }
+        endingText.text = "";
+        effectsPlayer.Stop();
+        effectsPlayer.clip = endingSound;
         yield return new WaitForSeconds(2.0f);
+
+        endingTitle.text = title;
+        yield return new WaitForSeconds(1.0f);
         endingReturnMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

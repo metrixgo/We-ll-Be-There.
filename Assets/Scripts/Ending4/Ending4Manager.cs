@@ -1,5 +1,6 @@
 using KinoGlitch;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Ending4Manager : MonoBehaviour
@@ -9,6 +10,12 @@ public class Ending4Manager : MonoBehaviour
     [SerializeField] private GameObject police;
     [SerializeField] private GameObject killer;
     [SerializeField] private AudioClip tense;
+    [SerializeField] private AudioClip monsterOut;
+    [SerializeField] private AudioClip lightsOut;
+    [SerializeField] private AudioClip tinnitus;
+    [SerializeField] private AudioClip horrorAmb;
+    [SerializeField] private AudioClip ending;
+    [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private GameObject sounds;
 
     private Coroutine moveCr;
@@ -16,9 +23,11 @@ public class Ending4Manager : MonoBehaviour
     private Vector3 endPos;
     private DigitalGlitchController dgc;
     private AudioSource subTense;
+    private Animator policeAnim;
 
     private void Start()
     {
+        policeAnim = police.GetComponent<Animator>();
         subTense = GetComponent<AudioSource>();
         endPos = cam.position;
         dgc = cam.GetComponent<DigitalGlitchController>();
@@ -42,7 +51,7 @@ public class Ending4Manager : MonoBehaviour
 
     private void Update()
     {
-        dgc.SetIntensity(Mathf.Max((8.0f - Vector3.Distance(cam.position, killer.transform.position)) / 240.0f, 0));
+        if (cam != null && killer != null) dgc.SetIntensity(Mathf.Max((8.0f - Vector3.Distance(cam.position, killer.transform.position)) / 240.0f, 0));
     }
 
     private IEnumerator MoreDialogues()
@@ -65,38 +74,99 @@ public class Ending4Manager : MonoBehaviour
         MainManager.instance.AddTrigger("wait;5");
         MainManager.instance.AddTrigger("dialogue;Policewoman;Is it about time?");
         yield return new WaitForSeconds(3.0f);
+        foreach (Transform o in sounds.transform)
+        {
+            o.GetComponent<AudioSource>().enabled = false;
+        }
         Destroy(sounds);
         MainManager.instance.StopMusic();
-        police.GetComponent<Animator>().SetBool("turn", true);
-        yield return new WaitForSeconds(1.0f);
-        police.GetComponent<Animator>().SetBool("turn", false);
+        policeAnim.SetBool("turn", true);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.AddTrigger("wait;3");
         MainManager.instance.AddTrigger("dialogue;Mayor;It is about time.");
         killer.SetActive(true);
         yield return new WaitForSeconds(2.0f);
+        policeAnim.SetBool("turn", false);
         cam.position = new Vector3(-74.2829971f, 2.2f, -66.23f);
         cam.rotation = Quaternion.Euler(0, -90.0f, 0);
         MainManager.instance.PlayMusic(tense);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.AddTrigger("wait;5");
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;5");
+        MainManager.instance.AddTrigger("dialogue;Mom;Speaking of which, do you hear anything?;1");
+        MainManager.instance.AddTrigger("dialogue;Dad;I don't hear anything.;1");
+        MainManager.instance.AddTrigger("dialogue;You;......;1");
+        MainManager.instance.AddTrigger("dialogue;You;I'm sorry...;1");
+        MainManager.instance.AddTrigger("dialogue;Dad;What?;1");
+        MainManager.instance.AddTrigger("dialogue;You;It's too late...;1");
         yield return new WaitForSeconds(2.0f);
         cam.position = new Vector3(-76.0f, 2.2f, -66.35f);
-        cam.rotation = Quaternion.Euler(0, -90.0f, 0);
+        cam.rotation = Quaternion.Euler(0, 90.0f, 0);
         yield return new WaitForSeconds(3.0f);
         pc.gameObject.SetActive(true);
+        Vector3 startPos = new Vector3(-66.0885925f, 0.637409568f, -66.822998f);
+        Vector3 endPos = startPos + Vector3.right * 6.0f;
         Destroy(cam.gameObject);
         subTense.Play();
         float t = 0;
-        while(t < 5.0f)
+        while (t < 10.0f)
         {
+            killer.transform.position = Vector3.Lerp(startPos, endPos, t / 10.0f);
             subTense.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f, t / 5.0f);
+            RenderSettings.fogDensity = Mathf.Lerp(0.2f, 0.4f, t / 10.0f);
             t += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
 
-
+        startPos = endPos;
+        endPos = startPos + Vector3.right * 3.0f;
+        MainManager.instance.PlayEffect(monsterOut);
+        t = 0;
+        while (t < monsterOut.length)
+        {
+            killer.transform.position = Vector3.Lerp(startPos, endPos, t / monsterOut.length);
+            subTense.volume = Mathf.Lerp(0, PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f, t / monsterOut.length);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        MainManager.instance.PlayEffect(lightsOut);
+        RenderSettings.fogDensity = Mathf.Lerp(0.2f, 0.4f, t / 10.0f);
+        RenderSettings.ambientIntensity = 0;
+        yield return new WaitForSeconds(2.0f);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        MainManager.instance.SetPrompt("Press [xxxxx] to run");
+        MainManager.instance.AddTrigger("dialogue;Dad;What is happening?!");
+        MainManager.instance.AddTrigger("flashdialogue;Mom;......Please......Help......Me............And............;0");
+        yield return new WaitForSeconds(1.0f);
+        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
+        subTense.clip = tinnitus;
+        subTense.Play();
+        MainManager.instance.StopMusic();
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#FF0000FF;3");
+        MainManager.instance.AddTrigger("changescreen;#FF0000FF;#000000FF;3");
+        MainManager.instance.AddTrigger("wait;5");
+        yield return new WaitForSeconds(3.0f);
+        t = 0;
+        while(t < 3.0f)
+        {
+            subTense.volume = Mathf.Lerp(PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f, 0, t / 3.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        subTense.Stop();
+        yield return new WaitForSeconds(2.0f);
+        title.gameObject.SetActive(true);
+        MainManager.instance.PlayMusic(horrorAmb);
+        MainManager.instance.PlayEffect(ending);
+        yield return new WaitForSeconds(3.0f);
+        while (t < 3.0f)
+        {
+            title.color = Color.Lerp(Color.white, Color.clear, t / 3.0f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        MainManager.instance.DisplayEnding("FINAL ENDING 4/5 - We'll Be There.", "You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.");
     }
 
     private IEnumerator DisplayMove(string speaker, string content)

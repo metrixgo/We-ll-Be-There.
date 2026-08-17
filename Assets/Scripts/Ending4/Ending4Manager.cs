@@ -86,7 +86,7 @@ public class Ending4Manager : MonoBehaviour
         policeAnim.SetBool("turn", false);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.AddTrigger("wait;2");
-        MainManager.instance.AddTrigger("changescreen;#FF000066;#FF000000;" + (1 + jumpscare.length));
+        MainManager.instance.AddTrigger("changescreen;#FF000022;#FF000000;" + jumpscare.length);
         MainManager.instance.AddTrigger("dialogue;Mayor;It is about time.");
         yield return new WaitForSeconds(2.0f);
         cam.position = new Vector3(-74.2829971f, 2.2f, -66.23f);
@@ -150,7 +150,7 @@ public class Ending4Manager : MonoBehaviour
         pc.gameObject.SetActive(false);
         jumpscareCam.SetActive(true);
         RenderSettings.fogDensity = 0.7f;
-        RenderSettings.ambientIntensity = 0.3f;
+        RenderSettings.ambientIntensity = 0.7f;
         MainManager.instance.PlayEffect(jumpscare);
         MainManager.instance.StopMusic();
         MainManager.instance.AddTrigger("wait;0.3");

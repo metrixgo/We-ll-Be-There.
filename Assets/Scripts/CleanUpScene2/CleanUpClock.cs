@@ -32,6 +32,12 @@ public class CleanUpClock : MonoBehaviour
     private void Start()
     {
         seconds = length;
+        MainManager.instance.AddTask("Mop?");
+        MainManager.instance.AddTask("Shovel?");
+        MainManager.instance.AddTask("Clothes?");
+        MainManager.instance.AddTask("Backyard?");
+        MainManager.instance.AddTask("Blood?");
+        MainManager.instance.AddTask("Mop bucket?");
         StartCoroutine(CountDown());
     }
 

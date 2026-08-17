@@ -29,6 +29,7 @@ public class HomeBlood : MonoBehaviour
             MainManager.instance.PlayEffect(cleanEffect);
             MainManager.instance.AddTrigger("wait;"+(cleanEffect.length + 0.1f));
             CleanUpClock.clock.Clean("mop", false);
+            MainManager.instance.AddTask("Mop?");
             if (layers == 0)
             {
                 CleanUpClock.clock.FinishedOne();

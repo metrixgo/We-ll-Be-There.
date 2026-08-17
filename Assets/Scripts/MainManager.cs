@@ -544,6 +544,7 @@ public class MainManager : MonoBehaviour
 
     public void AddTask(string s)
     {
+        if (tasks.Contains(s)) return;
         tasks.Add(s);
         UpdateTask();
     }
@@ -859,12 +860,13 @@ public class MainManager : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         effectsPlayer.Stop();
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.1f);
         effectsPlayer.Play();
 
         t = 0;
         idx = content.Length;
-        gap = 0.002f;
-        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.004f;
+        gap = 0.004f;
+        if (PlayerPrefs.GetString("Language", "English") == "Chinese") gap = 0.008f;
         while (idx >= 0)
         {
             t += Time.deltaTime;
@@ -873,6 +875,11 @@ public class MainManager : MonoBehaviour
                 t -= gap;
                 endingText.text = endingText.text.Substring(0, idx);
                 idx--;
+            }
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                endingText.text = "";
+                break;
             }
             yield return null;
         }

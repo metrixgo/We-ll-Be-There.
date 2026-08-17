@@ -381,6 +381,15 @@ public class MainManager : MonoBehaviour
         {"......Please......Help......Me............And............", "...求你了...救...我......和......"},
         {"FINAL ENDING 4/5 - We'll Be There.", "最终结局 4/5 - 我们会在。"},
         {"You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.", "你设法活到了最后。你经历了所有幻觉。你意识到他们会在。你平静地面对了你的结局。你早已知道这会发生。你已经弥补了你的过错。"},
+        {"\"The Supernaturals\" - Ep. 09: Sewer Tense. What's up everyone, the story for today happens inside the sewer. Wooooo really spooky, isn't it?", "《超自然现象》 - Ep. 09：管道惊魂。大家好啊，今天的故事发生在下水道里。哇啊啊非常阴森，对吧？"},
+        {"Beside me is Eric, who's gonna talk about some of the, uh, INTERESTING parts down there. Come Eric, say hi to everyone!", "在我旁边的是埃里克，他会说一些管道里面的，呃，有趣的事情。来吧埃里克，跟大家打声招呼！"},
+        {"Hi, I'm Eric. With one sentence to summarize today's theme, NEVER trust ANYTHING you see in the sewer, especially if they give you some CLUES that you seemingly need.", "嗨，我是埃里克。用一句话概括今天的主题，永远不要相信任何在下水道里看到的东西，尤其是当他们给你看起来你很需要的线索。"},
+        {"I've been down the sewer once, and the *******s tricked me into inputting the wrong escape code. Until then I realized that ************", "我之前就去过一次下水道，然后 ****** 骗我输入了错误的逃离密码。直到那时我才意识到 ******"},
+        {"Internet safety tip! Never set your password to something simple like 0000. No one will do that, okay?", "网络安全小贴士！永远不要把你的密码设得太简单，比如0000。没有人会这么做的，好不？"},
+        {"Cake! Yum! nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom", "蛋糕！美味！ nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom nom"},
+        {"\"Blank\": Time is flying by? It's because you're doing so many things. Now sit down and meditate. Feel the air around your body.", "《空白》：时间飞逝？这是因为你在做太多东西了。现在坐下然后冥想。感受你身体周围的空气。"},
+        {"You will see that if you don't move for over 20 seconds, your mind can be teleported to anywhere you want.", "你会发现如果你静止不动超过20秒，你的思想会被传送到你想去的任何地方。"},
+        {"My world is a mess. It's like a game where the developer puts whatever they dream about inside the game.", "我的世界简直是一团糟。属于是一个游戏作者梦到什么往游戏里加什么了。"},
     };
 
     private void Awake()

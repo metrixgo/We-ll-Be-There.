@@ -48,7 +48,7 @@ public class CleanUpClock : MonoBehaviour
 
         while (seconds > 0)
         {
-            if(MainManager.instance.AtPausedScreen())
+            if (MainManager.instance.AtPausedScreen())
             {
                 countdown.text = "";
                 yield return null;
@@ -56,9 +56,9 @@ public class CleanUpClock : MonoBehaviour
             }
 
             int sec = Mathf.CeilToInt(seconds);
-            if(sec % 60 < 10) countdown.text = sec / 60 + ":0" + sec % 60;
+            if (sec % 60 < 10) countdown.text = sec / 60 + ":0" + sec % 60;
             else countdown.text = sec / 60 + ":" + sec % 60;
-            if(sec <= 20) countdown.color = Color.red;
+            if (sec <= 20) countdown.color = Color.red;
             seconds -= Time.deltaTime;
             ad.volume = (1.0f - seconds / length) * PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
             yield return null;
@@ -75,11 +75,22 @@ public class CleanUpClock : MonoBehaviour
     public void Clean(string s, bool b)
     {
         status[s] = b;
+        string type = "";
+        if (s == "mop") type = "Mop?";
+        else if (s == "shovel") type = "Shovel?";
+        else if (s == "clothes") type = "Clothes?";
+        else if (s == "covered") type = "Backyard?";
+        else if (s == "blood") type = "Blood?";
+        else if (s == "mopbucket") type = "Mop bucket?";
+
+        if (b) MainManager.instance.RemoveTask(type);
+        else MainManager.instance.AddTask(type);
     }
 
     public void FinishedOne()
     {
         count++;
+        if (count == 6) MainManager.instance.RemoveTask("Blood?");
     }
 
     private IEnumerator TimeUp()

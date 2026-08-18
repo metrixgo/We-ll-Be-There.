@@ -836,7 +836,6 @@ public class MainManager : MonoBehaviour
         endingReturnMenu.SetActive(false);
         endingScreen.SetActive(true);
         screen.color = Color.clear;
-        yield return new WaitForSeconds(0.5f);
         effectsPlayer.Play();
 
         float t = 0;

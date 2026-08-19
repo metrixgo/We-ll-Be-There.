@@ -53311,7 +53311,7 @@ GameObject:
   - component: {fileID: 1065190388}
   m_Layer: 0
   m_Name: Take a Shower
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

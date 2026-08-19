@@ -97,6 +97,7 @@ public class BathroomDoor : MonoBehaviour
             yield return null;
         }
         screen.color = Color.clear;
+        RenderSettings.fogDensity = 0.4f;
         yield return new WaitForSeconds(0.2f);
 
         startPos = openBar.position;

@@ -70,7 +70,7 @@ public class CorpseHeadChase : MonoBehaviour
         MainManager.instance.SetPrompt("");
         MainManager.instance.ClearTriggers();
         MainManager.instance.AddTrigger("wait;6");
-        MainManager.instance.AddTrigger("loadscene;SewerEscapedScene");
+        MainManager.instance.AddTrigger("loadscene;Ending3");
         float t = 0, l = 0, w = 0;
         while (t < 6.0f)
         {

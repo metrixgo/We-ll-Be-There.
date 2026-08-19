@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Tomb : MonoBehaviour
 {
+    [SerializeField] private GameObject putDownBody;
     [SerializeField] private GameObject packedBody;
     [SerializeField] private GameObject cover;
     [SerializeField] private GameObject dirtCover;
@@ -32,6 +33,7 @@ public class Tomb : MonoBehaviour
             packedBody.transform.SetParent(null);
             packedBody.transform.position = new Vector3(-73.127f, 0.3f, 359.596f);
             packedBody.transform.rotation = Quaternion.Euler(-90.0f, -90.0f, 0);
+            Destroy(putDownBody);
             MainManager.instance.PlayEffect(putEffect);
             MainManager.instance.AddTrigger("wait;0.5");
             MainManager.instance.AddTrigger("dialogue;You;Nice.");

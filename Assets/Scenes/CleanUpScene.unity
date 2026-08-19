@@ -2002,7 +2002,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 69e89bf43f706aa42840cfd94999265f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 04f6131dc54bdb54797014bd004b1f05, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -23268,9 +23268,9 @@ MonoBehaviour:
   isPhysical: 1
   selfDestructs: 1
   triggers:
-  - changescreen;#00000000;#000000FF;2
+  - changescreen;#00000000;#000000FF;1
   - moveplayerto;4.68;0.975;149.2
-  - changescreen;#000000FF;#00000000;2
+  - changescreen;#000000FF;#00000000;1
 --- !u!65 &454985784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39418,7 +39418,7 @@ Transform:
   m_GameObject: {fileID: 784062226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 4.5630035, y: 0.975, z: 126.35599}
+  m_LocalPosition: {x: 4.5630035, y: 0.9621217, z: 126.35599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53311,7 +53311,7 @@ GameObject:
   - component: {fileID: 1065190388}
   m_Layer: 0
   m_Name: Take a Shower
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53456,6 +53456,7 @@ MonoBehaviour:
   - {fileID: 1471429816}
   ad: {fileID: 51384667}
   ps: {fileID: 2086633721}
+  hold: {fileID: 154294581}
 --- !u!1 &1065215372
 GameObject:
   m_ObjectHideFlags: 0
@@ -55022,6 +55023,96 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102798667}
   m_Mesh: {fileID: 8070747807984536801, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
+--- !u!1 &1102817154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1102817157}
+  - component: {fileID: 1102817156}
+  - component: {fileID: 1102817155}
+  m_Layer: 0
+  m_Name: Packed Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1102817155
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102817154}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9633e2aa8d4557549a1d4f29ee87a23c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1102817156
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102817154}
+  m_Mesh: {fileID: 2959467708922500008, guid: 87585b2e03dbd4446ad17d70954d672d, type: 3}
+--- !u!4 &1102817157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102817154}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000021073422, y: -0, z: 1, w: -0.000000021073422}
+  m_LocalPosition: {x: -0.043458004, y: 0.25109953, z: 0.0013303447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1643533330}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
 --- !u!1 &1103199646
 GameObject:
   m_ObjectHideFlags: 0
@@ -69080,9 +69171,9 @@ MonoBehaviour:
   isPhysical: 1
   selfDestructs: 1
   triggers:
-  - changescreen;#00000000;#000000FF;2
+  - changescreen;#00000000;#000000FF;1
   - moveplayerto;5.457;0.786;340
-  - changescreen;#000000FF;#00000000;2
+  - changescreen;#000000FF;#00000000;1
 --- !u!65 &1350041530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84928,6 +85019,7 @@ MonoBehaviour:
   bag: {fileID: 1616552067381759881}
   packedBody: {fileID: 4525374090996183531}
   tomb: {fileID: 1643533326}
+  putDownBag: {fileID: 1159128517}
 --- !u!65 &1639641890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85160,6 +85252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4509f8b8afbe9d6489ee2764da27b545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tomb
+  putDownBody: {fileID: 1102817154}
   packedBody: {fileID: 4525374090996183531}
   cover: {fileID: 5085061008357384355}
   dirtCover: {fileID: 397599471}
@@ -85169,7 +85262,7 @@ MonoBehaviour:
   trigger: {fileID: 775251093}
   dig: {fileID: 8300000, guid: 9689ef06c6c21ed498330bc0d9c3509f, type: 3}
   putEffect: {fileID: 8300000, guid: 4a3fca8d3078e4040bfb3525adf05bd9, type: 3}
-  night: {fileID: 8300000, guid: f51d283852c615e4ca6abcc3826578c6, type: 3}
+  night: {fileID: 8300000, guid: b64b47c7aa800334e9127e77c32c0e33, type: 3}
   pc: {fileID: 784062230}
 --- !u!114 &1643533328
 MonoBehaviour:
@@ -85231,7 +85324,8 @@ Transform:
   m_LocalPosition: {x: -257.55154, y: 0.17474708, z: -76.40435}
   m_LocalScale: {x: 47.619034, y: 47.619026, z: 47.619034}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1102817157}
   m_Father: {fileID: 1722271296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644251631
@@ -92043,9 +92137,9 @@ MonoBehaviour:
   isPhysical: 1
   selfDestructs: 1
   triggers:
-  - changescreen;#00000000;#000000FF;2
+  - changescreen;#00000000;#000000FF;1
   - moveplayerto;4.68;0.975;149.2
-  - changescreen;#000000FF;#00000000;2
+  - changescreen;#000000FF;#00000000;1
 --- !u!65 &1769690229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104309,9 +104403,9 @@ MonoBehaviour:
   isPhysical: 1
   selfDestructs: 1
   triggers:
-  - changescreen;#00000000;#000000FF;2
+  - changescreen;#00000000;#000000FF;1
   - moveplayerto;5.457;0.786;340
-  - changescreen;#000000FF;#00000000;2
+  - changescreen;#000000FF;#00000000;1
 --- !u!65 &1984292316
 BoxCollider:
   m_ObjectHideFlags: 0

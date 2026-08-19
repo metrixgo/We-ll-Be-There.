@@ -172,7 +172,7 @@ public class MainManager : MonoBehaviour
         {"I should take a shower and sleep...", "我该去洗个澡然后睡觉了..."},
         {"May god bless me...", "愿上帝保佑我..."},
         {"I don't really want to sleep here...", "我不是很想睡在这..."},
-        {"ENDING 1/5 - SURRENDER", "结局 1/5：自首"},
+        {"ENDING 1/5 - SURRENDER", "结局 1/5 - 自首"},
         {"You surrendered yourself to the police. They brought you to the police station and asked what happened. After describing what you had gone through, they let you stay in a private room to rest. You thought you made the right choice and were very relieved, but you could feel something strange was going on. And when you realized it, it was too late.", "你向警察自首了。他们把你带到了警察局并询问发生了什么。当你描述完事情经过后，他们让你去了一个私人房间休息。你认为你做出了正确的选择并放下心来，但是你总感觉有什么奇怪的地方。并且当你意识到的时候，一切都太迟了。"},
         {"I can't see anything... Everything is black...", "我什么都看不到...一切都是黑色..."},
         {"Window", "窗户"},
@@ -246,7 +246,7 @@ public class MainManager : MonoBehaviour
         {"We used ultraviolet lights to find blood traces on the ground. We believe the blood was from the crime scene that he forgot to clean up.", "我们用紫外线灯光发现了地上的血迹。我们相信那是他忘记清理的从案发现场带来的血迹。"},
         {"We found a mop bucket on the first floor storage closet with blood in it. We believe it was used to clean up blood on items.", "我们在一楼储物间里发现了一个里面带有血迹的拖把桶。我们相信那是用于清理带有血迹的物品的。"},
         {"Nice. Now shall we go eat lunch?", "不错。现在咱们去吃午饭吧？"},
-        {"ENDING 2/5 - EXPOSED", "结局 2/5：暴露"},
+        {"ENDING 2/5 - EXPOSED", "结局 2/5 - 暴露"},
         {"You thought you took care of everything, but the police still managed to spot the trace. Now, you could only watch everything happen to you.", "你以为你把一切都搞定了，但是警察还是查出了蛛丝马迹。现在，你只能看着一切事情对你发生。"},
         {"Stop where you are!", "别动！"},
         {"Policeman", "男警"},
@@ -383,7 +383,7 @@ public class MainManager : MonoBehaviour
         {"What is happening?!", "发生啥事？！"},
         {"......Please......Help......Me............And............", "...求你了...救...我......和......"},
         {"FINAL ENDING 4/5 - We'll Be There.", "最终结局 4/5 - 我们会在。"},
-        {"You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake.", "你设法活到了最后。你经历了所有幻觉。你意识到他们会在。你平静地面对了你的结局。你早已知道这会发生。你已经弥补了你的过错。"},
+        {"You managed to survive to the end. You went through all the hallucinations. You realized they would be here. You faced your ending calmly. You knew it was going to happen. You've paid back your mistake. Thank you.", "你设法活到了最后。你经历了所有幻觉。你意识到他们会在。你平静地面对了你的结局。你早已知道这会发生。你已经弥补了你的过错。谢谢你。"},
         {"\"The Supernaturals\" - Ep. 09: Sewer Tense. What's up everyone, the story for today happens inside the sewer. Wooooo really spooky, isn't it?", "《超自然现象》 - Ep. 09：管道惊魂。大家好啊，今天的故事发生在下水道里。哇啊啊非常阴森，对吧？"},
         {"Beside me is Eric, who's gonna talk about some of the, uh, INTERESTING parts down there. Come Eric, say hi to everyone!", "在我旁边的是埃里克，他会说一些管道里面的，呃，有趣的事情。来吧埃里克，跟大家打声招呼！"},
         {"Hi, I'm Eric. With one sentence to summarize today's theme, NEVER trust ANYTHING you see in the sewer, especially if they give you some CLUES that you seemingly need.", "嗨，我是埃里克。用一句话概括今天的主题，永远不要相信任何在下水道里看到的东西，尤其是当他们给你看起来你很需要的线索。"},
@@ -393,6 +393,9 @@ public class MainManager : MonoBehaviour
         {"\"Blank\": Time is flying by? It's because you're doing so many things. Now sit down and meditate. Feel the air around your body.", "《空白》：时间飞逝？这是因为你在做太多东西了。现在坐下然后冥想。感受你身体周围的空气。"},
         {"You will see that if you don't move for over 20 seconds, your mind can be teleported to anywhere you want.", "你会发现如果你静止不动超过20秒，你的思想会被传送到你想去的任何地方。"},
         {"My world is a mess. It's like a game where the developer puts whatever they dream about inside the game.", "我的世界简直是一团糟。属于是一个游戏作者梦到什么往游戏里加什么了。"},
+        {"Your greatest fear came. They materialized.", "你最深的恐惧成真了。它们具现化了。"},
+        {"Ending 3/5 - Return", "结局 3/5 - 返回"},
+        {"I don't want to hold something while showering...", "我不想拿着什么东西冲澡..."},
     };
 
     private void Awake()

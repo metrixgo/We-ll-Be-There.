@@ -6,11 +6,17 @@ public class Shower : MonoBehaviour
     [SerializeField] private GameObject[] beds;
     [SerializeField] private AudioSource ad;
     [SerializeField] private ParticleSystem ps;
+    [SerializeField] private GameObject hold;
 
     private int times = 0;
 
     public void GoIn()
     {
+        if (hold.transform.childCount > 0)
+        {
+            MainManager.instance.AddTrigger("dialogue;You;I don't want to hold something while showering...");
+            return;
+        }
         times++;
         if (times == 1) StartCoroutine(Showering());
         else if (times <= 3) StartCoroutine(ShoweringAgain());

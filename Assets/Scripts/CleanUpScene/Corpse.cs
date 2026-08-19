@@ -7,6 +7,7 @@ public class Corpse : MonoBehaviour
     [SerializeField] private GameObject bag;
     [SerializeField] private GameObject packedBody;
     [SerializeField] private GameObject tomb;
+    [SerializeField] private GameObject putDownBag;
     
     public void Pack()
     {
@@ -36,5 +37,6 @@ public class Corpse : MonoBehaviour
         tomb.SetActive(true);
         Destroy(bag);
         Destroy(gameObject);
+        Destroy(putDownBag);
     }
 }

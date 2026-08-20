@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyPad : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class KeyPad : MonoBehaviour
     [SerializeField] private AudioClip type;
     [SerializeField] private AudioClip wrong;
     [SerializeField] private AudioClip correct;
+    [SerializeField] private AudioClip glitch;
+    [SerializeField] private GameObject clock;
     [SerializeField] private SewerMetalDoor door;
     [SerializeField] private GameObject cam;
     [SerializeField] private SewerFlashlight flashlight;
@@ -17,6 +20,8 @@ public class KeyPad : MonoBehaviour
     [SerializeField] private SewerFlashlight playerFlashlight;
     [SerializeField] private Light pLight;
     [SerializeField] private Renderer pRend;
+    [SerializeField] private RawImage ri;
+    [SerializeField] private Material mat;
     [SerializeField] private GameObject[] keys;
     [SerializeField] private TextMeshPro[] displays;
 
@@ -85,6 +90,12 @@ public class KeyPad : MonoBehaviour
                 FocusOn(false);
                 tag = "Untagged";
             }
+            else if (numsSize == 4 && nums[0] == 0 && nums[1] == 4 && nums[2] == 1 && nums[3] == 9)
+            {
+                flg = false;
+                state = -1;
+                StartCoroutine(GoToEnding());
+            }
             else
             {
                 numsSize = 0;
@@ -140,6 +151,18 @@ public class KeyPad : MonoBehaviour
         {
             StartCoroutine(FocusOnPad(b));
         }
+    }
+
+    private IEnumerator GoToEnding()
+    {
+        MainManager.instance.AddTrigger("wait;8");
+        yield return new WaitForSeconds(1.0f);
+        SewerMusicManager.instance.StopMusic();
+        MainManager.instance.PlayEffect(glitch);
+        ri.material = mat;
+        Destroy(clock);
+        yield return new WaitForSeconds(7.0f);
+        MainManager.instance.LoadScene("Ending5");
     }
 
     private IEnumerator FocusOnPad(bool b)

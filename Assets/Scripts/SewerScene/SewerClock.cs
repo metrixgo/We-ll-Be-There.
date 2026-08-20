@@ -44,7 +44,7 @@ public class SewerClock : MonoBehaviour
             }
             ad.Play();
             beats++;
-            if(beats % 20 == 1) SewerSubText.instance.DisplayText((181 - beats).ToString());
+            if(beats % 20 == 1 && beats <= 181) SewerSubText.instance.DisplayText((181 - beats).ToString());
             if(beats >= 181 && MainManager.instance.gameState == 1)
             {
                 ph.Die();

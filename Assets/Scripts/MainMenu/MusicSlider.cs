@@ -9,6 +9,11 @@ public class MusicSlider : MonoBehaviour
     private void OnEnable()
     {
         slider = GetComponent<Slider>();
+        Set();
+    }
+
+    public void Set()
+    {
         slider.value = PlayerPrefs.GetFloat("Music", 30.0f);
         Save(slider.value);
     }

@@ -12572,7 +12572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &479669401
 Transform:
   m_ObjectHideFlags: 0
@@ -24857,7 +24857,6 @@ GameObject:
   - component: {fileID: 907066150}
   - component: {fileID: 907066149}
   - component: {fileID: 907066148}
-  - component: {fileID: 907066151}
   m_Layer: 0
   m_Name: FlashlightPrompt
   m_TagString: Untagged
@@ -24917,23 +24916,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2111319899}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &907066151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907066147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe59fddfda3b0184894872d00a532165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SetObjectActive
-  isPhysical: 1
-  selfDestructs: 1
-  setActive: 1
-  objects:
-  - {fileID: 479669400}
 --- !u!1 &909967580
 GameObject:
   m_ObjectHideFlags: 0
@@ -29341,6 +29323,8 @@ MonoBehaviour:
   type: {fileID: 8300000, guid: 73e5e35169714374aa40551bf24da2eb, type: 3}
   wrong: {fileID: 8300000, guid: 725ff8fd41e6d9545889a9395188aeb2, type: 3}
   correct: {fileID: 8300000, guid: e3a0957598db8b84b8500092e984252c, type: 3}
+  glitch: {fileID: 8300000, guid: 1547d0554e8fc83479bc47073f3bd28d, type: 3}
+  clock: {fileID: 707006987}
   door: {fileID: 464662310}
   cam: {fileID: 2135038772}
   flashlight: {fileID: 44618422}
@@ -29349,6 +29333,8 @@ MonoBehaviour:
   playerFlashlight: {fileID: 479669404}
   pLight: {fileID: 175829075}
   pRend: {fileID: 1700708547}
+  ri: {fileID: 1809200048}
+  mat: {fileID: 2100000, guid: 2a8984eb1e112c24481de386fb54cb99, type: 2}
   keys:
   - {fileID: 1842154417}
   - {fileID: 484838252}

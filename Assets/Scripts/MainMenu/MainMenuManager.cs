@@ -14,6 +14,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Image english;
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource effectsPlayer;
+    [SerializeField] private SensitivitySlider ss;
+    [SerializeField] private EffectsSlider es;
+    [SerializeField] private MusicSlider ms;
 
     private void Start()
     {
@@ -24,6 +27,15 @@ public class MainMenuManager : MonoBehaviour
         if (PlayerPrefs.GetString("Save", "SchoolScene") != "SchoolScene") continueButton.SetActive(true);
         StartCoroutine(SetUp());
         StartCoroutine(GenerateCars());
+    }
+
+    public void ClearData()
+    {
+        PlayerPrefs.DeleteAll();
+        ToEnglish();
+        ss.Set();
+        es.Set();
+        ms.Set();
     }
 
     public void ToChinese()

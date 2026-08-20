@@ -395,6 +395,7 @@ public class MainManager : MonoBehaviour
         {"Your greatest fear came. They materialized.", "你最深的恐惧成真了。它们具现化了。"},
         {"Ending 3/5 - Return", "结局 3/5 - 返回"},
         {"I don't want to hold something while showering...", "我不想拿着什么东西冲澡..."},
+        {"I don't think I can think of anywhere I would like to go now.", "我感觉我现在想不出什么我想去的地方。"},
     };
 
     private void Awake()

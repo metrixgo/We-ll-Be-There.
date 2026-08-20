@@ -35,6 +35,7 @@ public class TenthBook : MonoBehaviour
         RenderSettings.ambientIntensity = 0.6f;
         yield return new WaitForSeconds(1.5f);
         DisplayBook.instance.DisplayPage(10);
+        PlayerPrefs.SetInt("KnowSecret", 1);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
 
         MainManager.instance.AddTrigger("wait;1");

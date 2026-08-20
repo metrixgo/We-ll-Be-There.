@@ -9,6 +9,11 @@ public class EffectsSlider : MonoBehaviour
     private void OnEnable()
     {
         slider = GetComponent<Slider>();
+        Set();
+    }
+
+    public void Set()
+    {
         slider.value = PlayerPrefs.GetFloat("Effects", 80.0f);
         Save(slider.value);
     }

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0;
     private float velocityY = -1.0f;
     private float camT = 0;
+    private float teleportT = 0;
     private Vector3 move;
     private bool canRun = false;
     private bool freezed = false;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        teleportT = 0;
         cam.fieldOfView = 60.0f;
         StartCoroutine(CameraBobbing());
     }
@@ -52,8 +54,25 @@ public class PlayerController : MonoBehaviour
 
         if (MainManager.instance.gameState != 1)
         {
+            teleportT = 0;
             move = Vector3.zero;
             return;
+        }
+
+        if (teleportT > 20.0f)
+        {
+            if (PlayerPrefs.GetInt("KnowSecret", 0) == 1)
+            {
+                MainManager.instance.LoadScene("SewerScene");
+            }
+            else
+            {
+                MainManager.instance.AddTrigger("dialogue;You;I don't think I can think of anywhere I would like to go now.");
+            }
+        }
+        else
+        {
+            teleportT += Time.deltaTime;
         }
 
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 10.0f);
@@ -63,7 +82,7 @@ public class PlayerController : MonoBehaviour
             float f = speed;
             if (canRun && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) f = runSpeed;
             move = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * f;
-
+            if (move.magnitude > 0.1f) teleportT = 0;
             if (characterController.isGrounded) velocityY = -1.0f;
             else velocityY -= 9.8f * Time.deltaTime;
             characterController.Move((move + Vector3.up * velocityY) * Time.deltaTime);

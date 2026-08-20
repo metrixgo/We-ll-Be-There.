@@ -138,8 +138,7 @@ public class KeyPad : MonoBehaviour
     {
         if (state != -1)
         {
-            if (b && SewerBooks.num < 9) MainManager.instance.AddTrigger("dialogue;You;I don't know the code yet.");
-            else StartCoroutine(FocusOnPad(b));
+            StartCoroutine(FocusOnPad(b));
         }
     }
 

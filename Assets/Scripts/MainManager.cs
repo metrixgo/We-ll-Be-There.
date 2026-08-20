@@ -313,7 +313,6 @@ public class MainManager : MonoBehaviour
         {"Keypad", "密码锁"},
         {"You just can't stop looping the music you like. It's such an addiction. Stop the music. Live a better life.", "你根本无法停止循环播放你喜欢的音乐。这简直就是上瘾。停下音乐。享受更好的生活。"},
         {"How about looking behind you?", "再看看你的后面呢？"},
-        {"I don't know the code yet.", "我还不知道密码是什么。"},
         {"Why does this look so much like a ritual...", "为什么这看起来这么像一个仪式..."},
         {"Props", "杂物"},
         {"Screen", "屏幕"},

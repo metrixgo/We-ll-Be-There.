@@ -18,7 +18,7 @@ public class Ending3Manager : MonoBehaviour
     {
         MainManager.instance.AddTrigger("changescreen;#000000FF;#00000000;10");
         MainManager.instance.AddTrigger("wait;7");
-        MainManager.instance.AddTrigger("changescreen;#000000FF;#000000FF;0.2");
+        MainManager.instance.AddTrigger("changescreen;#000000FF;#000000FF;0.1");
         MainManager.instance.AddTrigger("ending;Ending 3/5 - Return;Your greatest fear came. They materialized.");
         float t = 0;
         while(t < 16.3f)
@@ -28,7 +28,7 @@ public class Ending3Manager : MonoBehaviour
             yield return null;
         }
         t = 0;
-        float dis = Vector3.Distance(head.position, transform.position) - 0.25f;
+        float dis = Vector3.Distance(head.position, transform.position) - 0.2f;
         Vector3 startPos = head.position;
         Vector3 endPos = head.position + head.forward * dis;
         while(t < 0.7f)

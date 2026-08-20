@@ -39,13 +39,14 @@ public class CorpseHeadChase : MonoBehaviour
             Destroy(gameObject);
         }
 
+        float dist = Vector3.Distance(transform.position, playerCam.position);
+        dgc.SetIntensity(Mathf.Max((15.0f - dist) / 60.0f, 0));
+        screen.color = Color.red * Mathf.Max((20.0f - dist) / 60.0f, 0);
+
         if (MainManager.instance.gameState != 1 || catched) return;
 
         transform.LookAt(playerCam);
         transform.Translate(transform.forward * 4.9f * Time.deltaTime, Space.World);
-        float dist = Vector3.Distance(transform.position, playerCam.position);
-        dgc.SetIntensity(Mathf.Max((15.0f - dist) / 60.0f, 0));
-        screen.color = Color.red * Mathf.Max((20.0f - dist) / 60.0f, 0);
 
         if (dist < 0.4f)
         {

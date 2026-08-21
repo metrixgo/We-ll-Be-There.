@@ -7,6 +7,7 @@ public class CorpseJumpscare : MonoBehaviour
     [SerializeField] private GameObject corpse;
     [SerializeField] private AudioClip jumpScareEffect;
     [SerializeField] private AudioClip tenseMusic;
+    [SerializeField] private AudioSource clockAd;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +18,7 @@ public class CorpseJumpscare : MonoBehaviour
     {
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         corpse.SetActive(true);
+        clockAd.spatialBlend = 0;
         MainManager.instance.PlayEffect(jumpScareEffect);
         MainManager.instance.AddTrigger("changescreen;#FF000020;#FF000000;2");
         player.SetRotation(61.0f, 35.0f, 0.1f);

@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour
         ss.Set();
         es.Set();
         ms.Set();
+        continueButton.SetActive(false);
     }
 
     public void ToChinese()

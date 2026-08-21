@@ -39655,6 +39655,7 @@ MonoBehaviour:
   corpse: {fileID: 685144207}
   jumpScareEffect: {fileID: 8300000, guid: db3039c4809d1d74aa7824021e61cb28, type: 3}
   tenseMusic: {fileID: 8300000, guid: 74b625533ae848649892e21c361c8046, type: 3}
+  clockAd: {fileID: 1548620007}
 --- !u!1 &1886931856
 GameObject:
   m_ObjectHideFlags: 0

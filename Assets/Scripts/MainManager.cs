@@ -396,6 +396,8 @@ public class MainManager : MonoBehaviour
         {"Ending 3/5 - Return", "结局 3/5 - 返回"},
         {"I don't want to hold something while showering...", "我不想拿着什么东西冲澡..."},
         {"I don't think I can think of anywhere I would like to go now.", "我感觉我现在想不出什么我想去的地方。"},
+        {"SECRET ENDING 5/5 - .", "隐藏结局 5/5 - 。"},
+        {"Call... Mom?", "打电话...给妈妈？"},
     };
 
     private void Awake()

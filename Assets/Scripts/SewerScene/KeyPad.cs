@@ -80,6 +80,7 @@ public class KeyPad : MonoBehaviour
             flg = true;
             if (numsSize == 4 && nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0)
             {
+                Destroy(clock);
                 door.SetState(1);
                 ad.clip = correct;
                 ad.Play();
@@ -92,6 +93,7 @@ public class KeyPad : MonoBehaviour
             }
             else if (numsSize == 4 && nums[0] == 0 && nums[1] == 4 && nums[2] == 1 && nums[3] == 9)
             {
+                Destroy(clock);
                 flg = false;
                 state = -1;
                 StartCoroutine(GoToEnding());
@@ -160,7 +162,6 @@ public class KeyPad : MonoBehaviour
         SewerMusicManager.instance.StopMusic();
         MainManager.instance.PlayEffect(glitch);
         ri.material = mat;
-        Destroy(clock);
         yield return new WaitForSeconds(7.0f);
         MainManager.instance.LoadScene("Ending5");
     }

@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ending5Manager
   danger: {fileID: 203020535}
+  dirLight: {fileID: 1280377643}
 --- !u!4 &200544315
 Transform:
   m_ObjectHideFlags: 0
@@ -1903,7 +1904,7 @@ GameObject:
   - component: {fileID: 1155523830}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

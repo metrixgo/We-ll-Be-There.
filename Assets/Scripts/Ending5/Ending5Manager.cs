@@ -4,16 +4,22 @@ using UnityEngine;
 public class Ending5Manager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI danger;
+    [SerializeField] private Light dirLight;
 
     private bool reached = false;
     private float t = 0;
     private float hideT = 0;
 
+    private void Start()
+    {
+        MainManager.instance.AddTrigger("canrun;1");
+    }
+
     private void Update()
     {
         if (MainManager.instance.gameState != 1 || reached) return;
 
-        if (t > 30.0f)
+        if (t > 40.0f)
         {
             reached = true;
             MainManager.instance.StopMusic();
@@ -23,7 +29,7 @@ public class Ending5Manager : MonoBehaviour
 
         t += Time.deltaTime;
         hideT -= Time.deltaTime;
-        float prog = Mathf.Min(1, Mathf.Max(0, t - 15.0f) / 15.0f);
+        float prog = Mathf.Min(1, Mathf.Max(0, t - 20.0f) / 20.0f);
         if(hideT <= 0 && Random.Range(0, 300) == 0)
         {
             hideT = Random.Range(0.1f, 0.3f);
@@ -33,5 +39,6 @@ public class Ending5Manager : MonoBehaviour
         RenderSettings.fogDensity = prog / 5.0f + 0.01f;
         RenderSettings.fogColor = Color.Lerp(Color.white, Color.black, prog);
         RenderSettings.ambientIntensity = 1 - prog;
+        dirLight.intensity = 1 - prog;
     }
 }

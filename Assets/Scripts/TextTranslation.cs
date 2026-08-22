@@ -34,6 +34,7 @@ public class TextTranslation : MonoBehaviour
             else if (s == "[esc] to exit") r = "[Esc] 退出";
             else if (s == "run.") r = "跑。";
             else if (s == "clear data") r = "清除数据";
+            else if (s == "thank you for playing my game!") r = "感谢您游玩我的游戏！";
             else r = s;
             if(txt != null) txt.text = r;
             else txt2.text = r;

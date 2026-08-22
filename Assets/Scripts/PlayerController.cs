@@ -52,9 +52,10 @@ public class PlayerController : MonoBehaviour
 
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, 60.0f, 70.0f);
 
+        if (MainManager.instance.IsExecutingTriggers()) teleportT = 0;
+
         if (MainManager.instance.gameState != 1)
         {
-            teleportT = 0;
             move = Vector3.zero;
             return;
         }

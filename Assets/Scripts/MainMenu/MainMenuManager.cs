@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private bool secondMenu = false;
     [SerializeField] private GameObject[] cars;
     [SerializeField] private Image panel;
     [SerializeField] private GameObject startScreen;
@@ -25,8 +26,11 @@ public class MainMenuManager : MonoBehaviour
         musicPlayer.volume = PlayerPrefs.GetFloat("Music", 30.0f) / 100.0f;
         effectsPlayer.volume = PlayerPrefs.GetFloat("Effects", 80.0f) / 100.0f;
         if (PlayerPrefs.GetString("Save", "SchoolScene") != "SchoolScene") continueButton.SetActive(true);
-        StartCoroutine(SetUp());
-        StartCoroutine(GenerateCars());
+        if (!secondMenu)
+        {
+            StartCoroutine(SetUp());
+            StartCoroutine(GenerateCars());
+        }
     }
 
     public void ClearData()

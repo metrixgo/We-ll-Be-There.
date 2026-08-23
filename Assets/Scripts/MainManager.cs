@@ -398,6 +398,10 @@ public class MainManager : MonoBehaviour
         {"I don't think I can think of anywhere I would like to go now.", "我感觉我现在想不出什么我想去的地方。"},
         {"SECRET ENDING 5/5 - .", "隐藏结局 5/5 - 。"},
         {"Call... Mom?", "打电话...给妈妈？"},
+        {"...these books contain all the important information I need! Please, can you help me collect my remaining", "...这些书有我所有需要的重要信息！求你了，你能不能帮我找到我剩下的"},
+        {"books? Please... There are so many things inside...", "本书？求你了...里面有好多东西..."},
+        {"Poster", "海报"},
+        {"Thank you.", "谢谢你。"},
     };
 
     private void Awake()

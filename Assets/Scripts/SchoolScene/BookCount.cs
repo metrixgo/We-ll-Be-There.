@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class BookCount : MonoBehaviour
 {
-    private TextMeshPro count;
-    private bool first = false;
+    [SerializeField] private TextMeshPro count;
     [SerializeField] private GameObject trigger;
+
+    private string a;
+    private string b;
+    private bool first = false;
 
     private void Start()
     {
-        count = GetComponent<TextMeshPro>();
+        a = MainManager.instance.Translate("...these books contain all the important information I need! Please, can you help me collect my remaining");
+        b = MainManager.instance.Translate("books? Please... There are so many things inside...");
     }
 
     private void Update()
@@ -26,5 +30,13 @@ public class BookCount : MonoBehaviour
                 Destroy(trigger);
             }
         }
+    }
+
+    public void LookAt()
+    {
+        string s = "";
+        if (MainManager.instance.ItemCount("Book") == 9) s = "Thank you.";
+        else s = a + " " + (9 - MainManager.instance.ItemCount("Book")) + " " + b;
+        MainManager.instance.AddTrigger("dialogue;Poster;" + s);
     }
 }

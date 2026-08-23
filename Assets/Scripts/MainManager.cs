@@ -124,6 +124,7 @@ public class MainManager : MonoBehaviour
         {"Put Down", "放下"},
         {"Dig", "挖"},
         {"Take a Shower", "冲澡"},
+        {"Take a shower", "去冲澡"},
         {"Packed Body", "尸袋"},
         {"Shovel", "铲子"},
         {"Call the Police", "报警"},
@@ -290,7 +291,7 @@ public class MainManager : MonoBehaviour
         {"Plank", "木板"},
         {"What... I can't open this door...", "什么...我打不开这扇门..."},
         {"I need a shovel to dig open this.", "我需要铲子才能挖开这里。"},
-        {"It seems pretty dangerous to go down here...", "这样下去看起来很危险..."},
+        {"It seems pretty dangerous to go down here... I think I need to get a rope from the garage.", "这样下去看起来很危险...我觉得我得从车库里拿一个绳子。"},
         {"It's out of reach...", "我够不到..."},
         {"Box", "盒子"},
         {"Music Box", "音乐盒"},
@@ -493,7 +494,7 @@ public class MainManager : MonoBehaviour
 
     public void LoadScene(string s)
     {
-        if (s == "MainMenu") LoadScene(s, 2.0f);
+        if (s == "MainMenu" || s == "AfterEnding4") LoadScene(s, 2.0f);
         else LoadScene(s, 0);
     }
 

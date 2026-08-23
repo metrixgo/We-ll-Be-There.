@@ -70572,13 +70572,13 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.005
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -102574,11 +102574,11 @@ GameObject:
   - component: {fileID: 1923112043}
   - component: {fileID: 1923112045}
   - component: {fileID: 1923112044}
-  - component: {fileID: 1923112053}
   - component: {fileID: 1923112047}
   - component: {fileID: 1923112046}
   - component: {fileID: 1923112050}
   - component: {fileID: 1923112051}
+  - component: {fileID: 1923112052}
   m_Layer: 0
   m_Name: Microwave
   m_TagString: Interactable
@@ -102678,7 +102678,7 @@ MonoBehaviour:
   microwaving: {fileID: 8300000, guid: 86390f4588379fd41b473a2edb9eeb12, type: 3}
   door: {fileID: 1706313575}
   ramen: {fileID: 1167279750}
-  lit: {fileID: 0}
+  lit: {fileID: 1304477913}
   table: {fileID: 798855379}
 --- !u!114 &1923112047
 MonoBehaviour:
@@ -102818,8 +102818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SetSound
   isEffect: 1
   multiplier: 1
---- !u!65 &1923112053
-BoxCollider:
+--- !u!64 &1923112052
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102836,9 +102836,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.030591663, y: 0.019437239, z: 0.015952317}
-  m_Center: {x: -4.6566134e-10, y: -0.0002813805, z: 0.000000007450581}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5346889369757430517, guid: 4d507cd6a623aa64682839ff3ef726b9, type: 3}
 --- !u!1 &1923483571
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class NightTomb : MonoBehaviour
         }
         else if (state == 1)
         {
-            if (!MainManager.instance.HasItem("Rope")) MainManager.instance.AddTrigger("dialogue;You;It seems pretty dangerous to go down here...");
+            if (!MainManager.instance.HasItem("Rope")) MainManager.instance.AddTrigger("dialogue;You;It seems pretty dangerous to go down here... I think I need to get a rope from the garage.");
             else StartCoroutine(StartRopping());
         }
         else if (state == 2)

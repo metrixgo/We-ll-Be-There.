@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PoliceWoman : MonoBehaviour
 {
+    [SerializeField] private PlayerController pc;
     [SerializeField] private Interactable door;
     
     private Animator animator;
@@ -36,8 +37,8 @@ public class PoliceWoman : MonoBehaviour
         }
         animator.SetBool("walking", false);
         ad.Stop();
-        yield return new WaitUntil(() => MainManager.instance.gameState == 1);
-
+        yield return new WaitUntil(() => !MainManager.instance.IsExecutingTriggers());
+        pc.Freeze(false);
         yield return new WaitForSeconds(0.5f);
         ad.Play();
         animator.SetBool("walking", true);

@@ -17,7 +17,7 @@ public class CrowBarTrigger : MonoBehaviour
 
     private int state = 0;
     private int cnt = 0;
-    private float l = 8.0f;
+    private float l = 10.0f;
     private float t = 0;
     private float hitT = 0;
     private float originalV = 0;
@@ -40,7 +40,7 @@ public class CrowBarTrigger : MonoBehaviour
                 hitT -= Time.deltaTime;
                 if (hitT <= 0) hitT = 0;
             }
-            screen.color = Color.Lerp(Color.clear, Color.red * 0.7f, t / l);
+            screen.color = Color.Lerp(Color.clear, Color.red * 0.8f, t / l);
             txt.color = Color.Lerp(Color.clear, Color.red, t / l);
             if (t > l)
             {
@@ -69,7 +69,7 @@ public class CrowBarTrigger : MonoBehaviour
             }
             else
             {
-                screen.color = Color.Lerp(Color.clear, Color.red * 0.7f, t / l);
+                screen.color = Color.Lerp(Color.clear, Color.red * 0.8f, t / l);
                 txt.color = Color.Lerp(Color.clear, Color.red, t / l);
                 ad.volume = Mathf.Lerp(originalV, 0, 1 - t / hitT);
             }

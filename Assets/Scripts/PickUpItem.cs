@@ -42,7 +42,11 @@ public class PickUpItem : MonoBehaviour
                     transform.localScale = scale;
                 }
                 tag = "Untagged";
-                if(!pickedUpBefore) additionalEffect.Invoke();
+                if (!pickedUpBefore)
+                {
+                    pickedUpBefore = true;
+                    additionalEffect.Invoke();
+                }
                 if(putBack != null)
                 {
                     putBack.SetActive(true);
@@ -60,6 +64,5 @@ public class PickUpItem : MonoBehaviour
             additionalEffect.Invoke();
             Destroy(gameObject);
         }
-        pickedUpBefore = true;
     }
 }

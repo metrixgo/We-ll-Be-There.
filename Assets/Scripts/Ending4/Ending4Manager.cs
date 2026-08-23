@@ -143,7 +143,7 @@ public class Ending4Manager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         yield return new WaitUntil(() => MainManager.instance.gameState == 1);
         MainManager.instance.SetPrompt("Press [xxxxx] to run", true);
-        MainManager.instance.AddTrigger("dialogue;Dad;What is happening?!");
+        MainManager.instance.AddTrigger("dialogue;Dad;What is happening?!;1");
         MainManager.instance.AddTrigger("flashdialogue;Mom;......Please......Help......Me............And............;1");
         yield return new WaitForSeconds(1.0f);
         yield return new WaitUntil(() => !MainManager.instance.IsExecutingTriggers());
